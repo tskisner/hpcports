@@ -1,0 +1,8 @@
+HPC Ports
+===========
+
+This is a modification of the FreeBSD Ports system custimized for installing 
+packages on High Performance Computing systems.  The goal is to allow easy 
+building of relevant packages with a consistent compiler toolchain and 
+system-customized compile options.
+
