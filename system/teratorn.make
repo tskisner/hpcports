@@ -1,7 +1,11 @@
 
-ifndef CMBPREFIX
-  CMBPREFIX := /data/software/cmb
+ifndef PREFIX
+  PREFIX := /data/software/hpcports
 endif
+
+# software download location
+
+POOL = /data/software/src
 
 # compilers
 

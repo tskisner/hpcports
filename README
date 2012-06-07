@@ -1,8 +1,8 @@
 HPC Ports
 ===========
 
-This set of tools is "inspired" by the the FreeBSD Ports system and is
-intended to provide an easy way to install packages on High Performance 
+This set of tools is "inspired" by the FreeBSD Ports and macports systems
+and is intended to provide an easy way to install packages on High Performance 
 Computing (HPC) systems.  The goal is to allow easy building of packages
 with a consistent compiler toolchain and system-customized compile options.
 

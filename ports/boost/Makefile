@@ -10,11 +10,6 @@ PKG_EXTRACT = tar xjf
 
 PKG_PATCHES =
 
-PKG_DEPS =
-
-PKG_CPPFLAGS = -I$(PKG_PREFIX)/include
-
-PKG_LDFLAGS = -L$(PKG_PREFIX)/lib
 
 # Special rules for this package
 
