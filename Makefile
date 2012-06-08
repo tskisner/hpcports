@@ -2,7 +2,7 @@
 
 
 ifndef TARGET
-  TARGET = $(error TARGET undefined)UNDEFINED
+	TARGET = $(error TARGET undefined)UNDEFINED
 endif
 
 include system/$(TARGET).make

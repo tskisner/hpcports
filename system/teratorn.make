@@ -23,10 +23,10 @@ MPIFC = mpif90
 
 # compile flags
 
-CFLAGS = "-O0 -g"
-CXXFLAGS = "-O0 -g"
-FFLAGS = "-O0 -g"
-FCFLAGS = "-O0 -g"
+CFLAGS = -O0 -g
+CXXFLAGS = -O0 -g
+FFLAGS = -O0 -g
+FCFLAGS = -O0 -g
 
 # example override
 #boost_OVERRIDE = TRUE

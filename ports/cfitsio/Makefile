@@ -23,13 +23,26 @@ PKG_PATCHES =
 
 # rules for this package
 
-pre-fetch :
+pkg-prefetch :
+	@echo "" > /dev/null
 
-configure :
 
-pre-install :
+pkg-configure :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	./configure CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" \
+	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+	FC="$(F77)" FFLAGS="$(FFLAGS)" \
+	--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
-clean :
+
+pkg-preinstall :
+	@echo "" > /dev/null
+
+
+pkg-clean :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE) clean
 
 
 # Include common package rules
