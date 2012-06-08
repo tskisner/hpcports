@@ -9,11 +9,7 @@ include system/$(TARGET).make
 include system/defaults.make
 include ports/pkg_stale.make
 
-ifeq "$(STALE)" "FALSE"
-	include ports/pkg_list.make
-	include ports/pkg_deps.make
-	include ports/pkg_rules.make
-else
+ifneq "$(STALE)" "FALSE"
 	PKGS =
 endif
 
@@ -77,4 +73,10 @@ dist-clean : purge
 dist : dist-clean
 	@echo "Making release tarball..."
 
+
+ifeq "$(STALE)" "FALSE"
+	include ports/pkg_list.make
+	include ports/pkg_deps.make
+	include ports/pkg_rules.make
+endif
 

@@ -9,26 +9,22 @@ ifndef SHELL
 	export SHELL = /bin/sh
 endif
 
-ifndef UNGZIP
-	export UNGZIP = gunzip <
+ifndef PATCH
+	export PATCH = patch
 endif
 
-ifndef GZIP
-	export GZIP = | gzip -9 >
+ifndef GXTAR
+	export GXTAR = tar xzf
 endif
 
-ifndef UNBZIP
-	export UNBZIP = bunzip2 <
+ifndef GCTAR
+	export GCTAR = tar czf
 endif
 
-ifndef BZIP
-	export BZIP = | bzip2 -9 >
+ifndef BXTAR
+	export BXTAR = tar xjf
 endif
 
-ifndef XTAR
-	export XTAR = | tar xvf -
-endif
-
-ifndef CTAR
-	export CTAR = tar cvf -
+ifndef BCTAR
+	export BCTAR = tar cjf
 endif

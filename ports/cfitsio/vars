@@ -1,0 +1,2 @@
+PKG_CPPFLAGS = -I$(boost_PREFIX)/include
+PKG_LDFLAGS = -L$(boost_PREFIX)/lib

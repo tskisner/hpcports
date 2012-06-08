@@ -6,17 +6,17 @@ include ../../system/defaults.make
 
 # Package parameters
 
-PKG_NAME = boost
+PKG_NAME = cfitsio
 
-PKG_VERSION = 1.49.0
+PKG_VERSION = 3.30
 
-PKG_COMPRESSED = boost_1_49_0.tar.bz2
+PKG_COMPRESSED = cfitsio3300.tar.gz
 
-PKG_UNCOMPRESSED = boost_1_49_0
+PKG_UNCOMPRESSED = cfitsio
 
 PKG_BUILDDIR = $(PKG_UNCOMPRESSED)
 
-PKG_XTAR = $(BXTAR)
+PKG_XTAR = $(GXTAR)
 
 PKG_PATCHES =
 
