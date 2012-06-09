@@ -37,7 +37,10 @@ pkg-configure :
 
 
 pkg-preinstall :
-	@echo "" > /dev/null
+	@if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
+		cd $(STAGE)/$(PKG_BUILDDIR); \
+		$(MAKE) shared >> ../log.build 2>&1; \
+	fi
 
 
 pkg-clean :

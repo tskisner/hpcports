@@ -36,6 +36,18 @@ for pkg in ${pkgs}; do
 	echo "\t@if test \"x\$(${pkg}_OVERRIDE)\" = \"x\"; then \\" >> ports/pkg_rules.make
 	echo "\t\tcd ports/${pkg}; \$(MAKE) install; \\" >> ports/pkg_rules.make
 	echo "\tfi" >> ports/pkg_rules.make
+
+	echo "" >> ports/pkg_rules.make
+	echo "${pkg}-clean :" >> ports/pkg_rules.make
+	echo "\t@if test \"x\$(${pkg}_OVERRIDE)\" = \"x\"; then \\" >> ports/pkg_rules.make
+	echo "\t\tcd ports/${pkg}; \$(MAKE) clean; \\" >> ports/pkg_rules.make
+	echo "\tfi" >> ports/pkg_rules.make
+
+	echo "" >> ports/pkg_rules.make
+	echo "${pkg}-purge :" >> ports/pkg_rules.make
+	echo "\t@if test \"x\$(${pkg}_OVERRIDE)\" = \"x\"; then \\" >> ports/pkg_rules.make
+	echo "\t\tcd ports/${pkg}; \$(MAKE) purge; \\" >> ports/pkg_rules.make
+	echo "\tfi" >> ports/pkg_rules.make
 done
 echo "" >> ports/pkg_rules.make
 

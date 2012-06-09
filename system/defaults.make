@@ -1,4 +1,10 @@
 
+# HPC ports common
+
+ifndef BUILD_DYNAMIC
+	export BUILD_DYNAMIC = TRUE
+endif
+
 # various system tool defaults
 
 ifndef MAKE

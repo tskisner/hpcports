@@ -9,14 +9,14 @@ prefetch :
 
 fetch : prefetch
 	@if [ ! -e $(POOL)/$(PKG_COMPRESSED) ]; then \
-		echo "hpcports:  Fetching $(PKG_NAME)"; \
+		echo "$(PKG_NAME):  Fetching"; \
 		echo "  FAILED:  fetching of $(PKG_NAME) not yet implemented!"; \
 	fi;
 
 
 extract : fetch
 	@if [ ! -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
-		echo "hpcports:  Extracting $(PKG_NAME)"; \
+		echo "$(PKG_NAME):  Extracting"; \
 		if [ -e $(POOL)/$(PKG_COMPRESSED) ]; then \
 			mkdir -p $(STAGE); \
 			cd $(STAGE); \
@@ -29,13 +29,12 @@ extract : fetch
 			fi; \
 		fi; \
 	fi
-	
 
 
 patch : extract
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.extract ]; then \
-			echo "hpcports:  Patching $(PKG_NAME)"; \
+			echo "$(PKG_NAME):  Patching"; \
 			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
 			rm -f log.patch; \
 			for pfile in $(PKG_PATCHES); do \
@@ -50,7 +49,7 @@ patch : extract
 configure : patch
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.patch ]; then \
-			echo "hpcports:  Configuring $(PKG_NAME)"; \
+			echo "$(PKG_NAME):  Configuring"; \
 			$(MAKE) pkg-configure > $(STAGE)/log.configure 2>&1 && \
 			touch $(STAGE)/state.configure && \
 			rm $(STAGE)/state.patch; \
@@ -58,10 +57,10 @@ configure : patch
 	fi
 
 
-build : configure
+build : configure uninstall
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.configure ]; then \
-			echo "hpcports:  Building $(PKG_NAME)"; \
+			echo "$(PKG_NAME):  Building"; \
 			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
 			$(MAKE) > ../log.build 2>&1 && \
 			touch ../state.build && \
@@ -77,7 +76,7 @@ preinstall : build
 install : preinstall
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \
-			echo "hpcports:  Installing $(PKG_NAME)"; \
+			echo "$(PKG_NAME):  Installing"; \
 			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
 			$(MAKE) install > ../log.install 2>&1 && \
 			touch ../state.install && \
@@ -87,12 +86,40 @@ install : preinstall
 
 
 clean :
-	@echo "hpcports:  Cleaning $(PKG_NAME)"; \
-	$(MAKE) pkg-clean
+	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+		if [ -e $(STAGE)/state.build ]; then \
+			echo "$(PKG_NAME):  Cleaning"; \
+			$(MAKE) pkg-clean > $(STAGE)/log.clean 2>&1 && \
+			touch $(STAGE)/state.configure && \
+			rm $(STAGE)/state.build && \
+			rm $(STAGE)/log.build; \
+		else \
+			if [ -e $(STAGE)/state.install ]; then \
+				echo "$(PKG_NAME):  Cleaning"; \
+				$(MAKE) pkg-clean > $(STAGE)/log.clean 2>&1 && \
+				touch $(STAGE)/state.configure && \
+				rm $(STAGE)/state.install && \
+				rm -f $(STAGE)/log.install && \
+				rm -f $(STAGE)/log.build; \
+			fi; \
+		fi; \
+	fi
+
+
+uninstall :
+	@echo "$(PKG_NAME):  Uninstalling"; \
+	if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+		if [ -e $(STAGE)/state.install ]; then \
+			touch $(STAGE)/state.build && \
+			rm $(STAGE)/state.install && \
+			rm -f $(STAGE)/log.install; \
+		fi; \
+	fi; \
+	rm -rf $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
 purge :
-	@echo "hpcports:  Purging $(PKG_NAME)"; \
+	@echo "$(PKG_NAME):  Purging"; \
 	rm -rf $(STAGE)
 
 
