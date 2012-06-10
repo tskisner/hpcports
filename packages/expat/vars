@@ -1,0 +1,7 @@
+path = bin
+header = include
+ld = lib
+CC_lib = -lexpat
+CXX_lib = -lexpat
+F77_lib = -lexpat
+FC_lib = -lexpat
