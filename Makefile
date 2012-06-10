@@ -9,40 +9,40 @@ include system/$(TARGET).make
 include system/defaults.make
 
 
-help : ports/up2date
+help : packages/up2date
 	@cat tools/usage.txt
 
 
-ports/up2date :
+packages/up2date :
 	@$(SHELL) tools/pkg_update.sh
 
 
-ports/pkg_list.make : ports/up2date
-ports/pkg_deps.make : ports/up2date
-ports/pkg_rules.make : ports/up2date
+packages/pkg_list.make : packages/up2date
+packages/pkg_deps.make : packages/up2date
+packages/pkg_rules.make : packages/up2date
 
-include ports/pkg_list.make
-include ports/pkg_deps.make
-include ports/pkg_rules.make
+include packages/pkg_list.make
+include packages/pkg_deps.make
+include packages/pkg_rules.make
 
 
-status : ports/up2date
+status : packages/up2date
 	@echo "$(HPCP)"; \
 	for pkg in $(PKGS); do \
-		if [ -d ports/$${pkg}/staging_$(TARGET) ]; then \
-			if [ -e ports/$${pkg}/staging_$(TARGET)/state.install ]; then \
+		if [ -d packages/$${pkg}/staging_$(TARGET) ]; then \
+			if [ -e packages/$${pkg}/staging_$(TARGET)/state.install ]; then \
 				printf "%s%12s : (installed)\n" "$(HPCP)" "$${pkg}"; \
 			else \
-				if [ -e ports/$${pkg}/staging_$(TARGET)/state.build ]; then \
+				if [ -e packages/$${pkg}/staging_$(TARGET)/state.build ]; then \
 					printf "%s%12s : (built)\n" "$(HPCP)" "$${pkg}"; \
 				else \
-					if [ -e ports/$${pkg}/staging_$(TARGET)/state.configure ]; then \
+					if [ -e packages/$${pkg}/staging_$(TARGET)/state.configure ]; then \
 						printf "%s%12s : (configured)\n" "$(HPCP)" "$${pkg}"; \
 					else \
-						if [ -e ports/$${pkg}/staging_$(TARGET)/state.patch ]; then \
+						if [ -e packages/$${pkg}/staging_$(TARGET)/state.patch ]; then \
 							printf "%s%12s : (patched)\n" "$(HPCP)" "$${pkg}"; \
 						else \
-							if [ -e ports/$${pkg}/staging_$(TARGET)/state.extract ]; then \
+							if [ -e packages/$${pkg}/staging_$(TARGET)/state.extract ]; then \
 								printf "%s%12s : (extracted)\n" "$(HPCP)" "$${pkg}"; \
 							else \
 								printf "%s%12s : (not extracted)\n" "$(HPCP)" "$${pkg}"; \
@@ -61,33 +61,33 @@ status : ports/up2date
 install : $(PKGS)
 
 
-fetch : ports/up2date
+fetch : packages/up2date
 	@for pkg in $(PKGS); do \
-		cd ports/$${pkg}; \
+		cd packages/$${pkg}; \
 		$(MAKE) fetch; \
 		cd ../..; \
 	done
 
 
-clean : ports/up2date
+clean : packages/up2date
 	@for pkg in $(PKGS); do \
-		cd ports/$${pkg}; \
+		cd packages/$${pkg}; \
 		$(MAKE) clean; \
 		cd ../..; \
 	done
 
 
-purge : ports/up2date
+purge : packages/up2date
 	@for pkg in $(PKGS); do \
-		cd ports/$${pkg}; \
+		cd packages/$${pkg}; \
 		$(MAKE) purge; \
 		cd ../..; \
 	done
 
 
 dist-clean : purge
-	@rm -f ports/pkg_deps.make ports/pkg_list.make 
-	@rm -f ports/pkg_rules.make ports/up2date
+	@rm -f packages/pkg_deps.make packages/pkg_list.make 
+	@rm -f packages/pkg_rules.make packages/up2date
 
 
 dist : dist-clean
