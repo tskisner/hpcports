@@ -1,29 +1,29 @@
-#@COPYRIGHT@
+
 
 STAGE = staging_$(TARGET)
 
 
 prefetch :
-	@$(MAKE) pkg-prefetch
+	@$(MAKE) pkg-prefetch > /dev/null 2>&1
 
 
 fetch : prefetch
 	@if [ ! -e $(POOL)/$(PKG_COMPRESSED) ]; then \
-		echo "$(PKG_NAME):  Fetching"; \
-		echo "  FAILED:  fetching of $(PKG_NAME) not yet implemented!"; \
+		echo "$(HPCP)  $(PKG_NAME):  Fetching"; \
+		echo "$(HPCP)    FAILED:  fetching of $(PKG_NAME) not yet implemented!"; \
 	fi;
 
 
 extract : fetch
 	@if [ ! -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
-		echo "$(PKG_NAME):  Extracting"; \
+		echo "$(HPCP)  $(PKG_NAME):  Extracting"; \
 		if [ -e $(POOL)/$(PKG_COMPRESSED) ]; then \
 			mkdir -p $(STAGE); \
 			cd $(STAGE); \
 			rm -f log.*; \
 			$(PKG_XTAR) $(POOL)/$(PKG_COMPRESSED) > log.extract 2>&1; \
 			if [ ! -e $(PKG_UNCOMPRESSED) ]; then \
-				echo "  FAILED:  extracted source $(PKG_UNCOMPRESSED) was not created."; \
+				echo "$(HPCP)    FAILED:  extracted source $(PKG_UNCOMPRESSED) was not created."; \
 			else \
 				touch state.extract; \
 			fi; \
@@ -34,7 +34,7 @@ extract : fetch
 patch : extract
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.extract ]; then \
-			echo "$(PKG_NAME):  Patching"; \
+			echo "$(HPCP)  $(PKG_NAME):  Patching"; \
 			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
 			rm -f log.patch; \
 			for pfile in $(PKG_PATCHES); do \
@@ -49,7 +49,7 @@ patch : extract
 configure : patch
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.patch ]; then \
-			echo "$(PKG_NAME):  Configuring"; \
+			echo "$(HPCP)  $(PKG_NAME):  Configuring"; \
 			$(MAKE) pkg-configure > $(STAGE)/log.configure 2>&1 && \
 			touch $(STAGE)/state.configure && \
 			rm $(STAGE)/state.patch; \
@@ -60,7 +60,7 @@ configure : patch
 build : configure uninstall
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.configure ]; then \
-			echo "$(PKG_NAME):  Building"; \
+			echo "$(HPCP)  $(PKG_NAME):  Building"; \
 			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
 			$(MAKE) > ../log.build 2>&1 && \
 			touch ../state.build && \
@@ -76,7 +76,7 @@ preinstall : build
 install : preinstall
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \
-			echo "$(PKG_NAME):  Installing"; \
+			echo "$(HPCP)  $(PKG_NAME):  Installing"; \
 			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
 			$(MAKE) install > ../log.install 2>&1 && \
 			touch ../state.install && \
@@ -88,14 +88,14 @@ install : preinstall
 clean :
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \
-			echo "$(PKG_NAME):  Cleaning"; \
+			echo "$(HPCP)  $(PKG_NAME):  Cleaning"; \
 			$(MAKE) pkg-clean > $(STAGE)/log.clean 2>&1 && \
 			touch $(STAGE)/state.configure && \
 			rm $(STAGE)/state.build && \
 			rm $(STAGE)/log.build; \
 		else \
 			if [ -e $(STAGE)/state.install ]; then \
-				echo "$(PKG_NAME):  Cleaning"; \
+				echo "$(HPCP)  $(PKG_NAME):  Cleaning"; \
 				$(MAKE) pkg-clean > $(STAGE)/log.clean 2>&1 && \
 				touch $(STAGE)/state.configure && \
 				rm $(STAGE)/state.install && \
@@ -107,7 +107,7 @@ clean :
 
 
 uninstall :
-	@echo "$(PKG_NAME):  Uninstalling"; \
+	@echo "$(HPCP)  $(PKG_NAME):  Uninstalling"; \
 	if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.install ]; then \
 			touch $(STAGE)/state.build && \
@@ -119,7 +119,7 @@ uninstall :
 
 
 purge :
-	@echo "$(PKG_NAME):  Purging"; \
+	@echo "$(HPCP)  $(PKG_NAME):  Purging"; \
 	rm -rf $(STAGE)
 
 

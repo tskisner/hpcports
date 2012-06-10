@@ -1,2 +1,7 @@
-PKG_CPPFLAGS = -I$(boost_PREFIX)/include
-PKG_LDFLAGS = -L$(boost_PREFIX)/lib
+path =
+header = include
+ld = lib
+CC_lib = -lcfitsio
+CXX_lib = -lcfitsio
+F77_lib = -lcfitsio
+FC_lib = -lcfitsio

@@ -1,4 +1,4 @@
-HPC Ports
+HPCPorts
 ===========
 
 This set of tools is "inspired" by the FreeBSD Ports and macports systems
@@ -6,13 +6,48 @@ and is intended to provide an easy way to install packages on High Performance
 Computing (HPC) systems.  The goal is to allow easy building of packages
 with a consistent compiler toolchain and system-customized compile options.
 
-If this is a fresh clone of the source tree, you must do:
 
-$> ./init.sh
-
-before running any make commands.  For usage, type:
+Common Commands
+-----------------
 
 $> make help
 
+Displays this information.
+
+$> make update
+
+Updates the list of available packages and their versions.  This is 
+needed in order to detect new package versions after a git pull, for
+example.
+
+$> make install
+
+Fetch, extract, configure, compile, and install all packages.
+
+$> make purge
+
+Wipe all extracted sources and clean up working directories.
+
+
+
+Other Commands
+----------------
+
+$> make fetch
+
+Download all package sources to the staging directory (POOL) specified in
+the system/$TARGET.make file for this system.
+
+
+
+$> make clean
+
+
+Per-Package Commands
+----------------------
+
+You can also have fine-grained control over the individual packages.
+If you install an individual package, all dependencies will be
+installed first.
 
 

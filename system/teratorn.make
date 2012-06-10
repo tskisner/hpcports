@@ -28,8 +28,9 @@ CXXFLAGS = -O0 -g
 FFLAGS = -O0 -g
 FCFLAGS = -O0 -g
 
-# example override
+# package overrides
+
 #boost_OVERRIDE = TRUE
-#boost_CPPFLAGS = -I/ports/include
-#boost_LDFLAGS = -L/ports/lib
+#boost_PREFIX = /ports
+
 

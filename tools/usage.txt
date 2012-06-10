@@ -1,44 +1,23 @@
 
-Common Commands
-=================
+Usage:  make <command>
 
-$> make help
+where command is one of
 
-Displays this information.
+help   : show this information
 
-$> make update
+status : show current state of all packages
 
-Updates the list of available packages and their versions.  This is 
-needed in order to detect new package versions after a git pull, for
-example.
+install :
 
-$> make install
+purge :
 
-Fetch, extract, configure, compile, and install all packages.
+clean :
 
-$> make purge
+fetch :
 
-Wipe all extracted sources and clean up working directories.
+<pkg> :
 
+<pkg>-clean :
 
-
-Other Commands
-===============
-
-$> make fetch
-
-Download all package sources to the staging directory (POOL) specified in
-the system/$TARGET.make file for this system.
-
-
-
-$> make clean
-
-
-Per-Package Commands
-=====================
-
-You can also have fine-grained control over the individual packages.
-If you install an individual package, all dependencies will be
-installed first.
+<pkg>-purge :
 

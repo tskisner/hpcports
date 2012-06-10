@@ -1,6 +1,8 @@
 
 # HPC ports common
 
+HPCP = [HPCP]
+
 ifndef BUILD_DYNAMIC
 	export BUILD_DYNAMIC = TRUE
 endif
