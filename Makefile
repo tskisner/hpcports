@@ -10,7 +10,7 @@ include system/defaults.make
 
 
 help : packages/up2date
-	@cat tools/usage.txt
+	@cat tools/usage.txt | sed -e 's/^/$(HPCP)  /'
 
 
 packages/up2date :

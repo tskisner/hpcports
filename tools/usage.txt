@@ -3,21 +3,21 @@ Usage:  make <command>
 
 where command is one of
 
-help   : show this information
+  help        : show this information
 
-status : show current state of all packages
+  status      : show current state of all packages
 
-install :
+  install     : install all packages
 
-purge :
+  purge       : purge all packages
 
-clean :
+  clean       : clean all packages
 
-fetch :
+  fetch       : fetch all packages to pool directory
 
-<pkg> :
+  <pkg>       : build and install package
 
-<pkg>-clean :
+  <pkg>-clean : clean package
 
-<pkg>-purge :
+  <pkg>-purge : purge package
 

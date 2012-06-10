@@ -12,13 +12,9 @@ Common Commands
 
 $> make help
 
-Displays this information.
+Displays usage information.
 
-$> make update
-
-Updates the list of available packages and their versions.  This is 
-needed in order to detect new package versions after a git pull, for
-example.
+$> make status
 
 $> make install
 
