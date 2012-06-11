@@ -27,6 +27,7 @@ extract : fetch
 			else \
 				touch state.extract; \
 			fi; \
+			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 		fi; \
 	fi
 
@@ -50,6 +51,7 @@ configure : patch
 	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
 		if [ -e $(STAGE)/state.patch ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Configuring"; \
+			source $(STAGE)/dep_env.sh; \
 			$(MAKE) pkg-configure > $(STAGE)/log.configure 2>&1 && \
 			touch $(STAGE)/state.configure && \
 			rm $(STAGE)/state.patch; \
@@ -62,6 +64,7 @@ build : configure uninstall
 		if [ -e $(STAGE)/state.configure ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Building"; \
 			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
+			source ../dep_env.sh; \
 			$(MAKE) > ../log.build 2>&1 && \
 			touch ../state.build && \
 			rm ../state.configure; \
@@ -81,6 +84,13 @@ install : preinstall
 			$(MAKE) install > ../log.install 2>&1 && \
 			touch ../state.install && \
 			rm ../state.build; \
+			cp ../$(PKG_NAME).sh $(PREFIX)/env/; \
+			mkdir -p $(PREFIX)/env/modulefiles/$(PKG_NAME); \
+			cp ../$(PKG_NAME).module $(PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
+			if [ -e $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version ]; then \
+				cp $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion; \
+			fi; \
+			cp ../$(PKG_NAME).version $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
 		fi; \
 	fi
 
@@ -115,7 +125,14 @@ uninstall :
 			rm -f $(STAGE)/log.install; \
 		fi; \
 	fi; \
-	rm -rf $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	rm -rf $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+	rm -f $(PREFIX)/env/$(PKG_NAME).sh; \
+	rm -f $(PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
+	if [ -e $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion ]; then \
+		cp $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
+	else \
+		rm -rf $(PREFIX)/env/modulefiles/$(PKG_NAME); \
+	fi
 
 
 purge :

@@ -58,7 +58,11 @@ status : packages/up2date
 	echo "$(HPCP)"
 
 
-install : $(PKGS)
+install : install-common $(PKGS)
+
+
+install-common :
+	@mkdir -p $(PREFIX)/env/modulefiles
 
 
 fetch : packages/up2date

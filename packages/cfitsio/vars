@@ -1,7 +1,8 @@
 path =
+man =
 header = include
 ld = lib
-CC_lib = -lcfitsio
-CXX_lib = -lcfitsio
-F77_lib = -lcfitsio
-FC_lib = -lcfitsio
+lib_CC = -lcfitsio
+lib_CXX = -lcfitsio
+lib_F77 = -lcfitsio
+lib_FC = -lcfitsio

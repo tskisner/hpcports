@@ -1,4 +1,5 @@
 path = bin
+man = man
 header = include
 ld = lib
 CC_lib = -lexpat
