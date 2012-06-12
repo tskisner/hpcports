@@ -7,6 +7,10 @@ ifndef BUILD_DYNAMIC
 	export BUILD_DYNAMIC = TRUE
 endif
 
+ifndef TOOLCHAIN
+	export TOOLCHAIN = gnu
+endif
+
 # various system tool defaults
 
 ifndef MAKE
@@ -17,8 +21,16 @@ ifndef SHELL
 	export SHELL = /bin/sh
 endif
 
+ifndef CURL
+	export CURL = curl
+endif
+
 ifndef PATCH
 	export PATCH = patch
+endif
+
+ifndef GIT
+	export GIT = git
 endif
 
 ifndef GXTAR

@@ -91,6 +91,9 @@ process_var () {
 	return 0
 }
 
+echo "export ${PKG}_PREFIX=\"${PREFIX}/${PKG}-${VER}\"" >> ${PKG}.sh
+echo "setenv ${PKG}_PREFIX \"${PREFIX}/${PKG}-${VER}\"" >> ${PKG}.module
+
 cat ../vars | \
 while read line; do
 	process_var ${line}

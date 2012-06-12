@@ -8,15 +8,16 @@ include ../../system/defaults.make
 
 PKG_NAME = expat
 
-PKG_VERSION = 2.0.1
+PKG_VERSION = 2.1.0
 
-PKG_COMPRESSED = expat-2.0.1.tar.gz
+PKG_FORMAT = tar
+PKG_TAR = expat-2.1.0.tar.gz
+PKG_TAR_FETCH = $(CURL) -L http://sourceforge.net/projects/expat/files/expat/2.1.0/expat-2.1.0.tar.gz/download -o $(POOL)/$(PKG_TAR)
+PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_UNCOMPRESSED = expat-2.0.1
+PKG_SRCDIR = expat-2.1.0
 
-PKG_BUILDDIR = $(PKG_UNCOMPRESSED)
-
-PKG_XTAR = $(GXTAR)
+PKG_BUILDDIR = $(PKG_SRCDIR)
 
 PKG_PATCHES =
 

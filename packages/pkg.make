@@ -2,41 +2,81 @@
 
 STAGE = staging_$(TARGET)
 
+ifndef PKG_TAR_FETCH
+	PKG_TAR_FETCH = echo "NA"
+endif
+
+ifndef PKG_TAR_EXTRACT
+	PKG_TAR_EXTRACT = echo "NA"
+endif
+
+ifndef PKG_GIT_CLONE
+	PKG_GIT_CLONE = echo "NA"
+endif
+
+ifndef PKG_GIT_CHECKOUT
+	PKG_GIT_CHECKOUT = echo "NA"
+endif
+
 
 prefetch :
 	@$(MAKE) pkg-prefetch > /dev/null 2>&1
 
 
 fetch : prefetch
-	@if [ ! -e $(POOL)/$(PKG_COMPRESSED) ]; then \
-		echo "$(HPCP)  $(PKG_NAME):  Fetching"; \
-		echo "$(HPCP)    FAILED:  fetching of $(PKG_NAME) not yet implemented!"; \
+	@if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
+		if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
+			echo "$(HPCP)  $(PKG_NAME):  Fetching"; \
+			$(PKG_TAR_FETCH) > $(POOL)/$(PKG_NAME).fetchlog 2>&1; \
+			if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
+				echo "$(HPCP)    FAILED:  $(POOL)/$(PKG_TAR) was not fetched!"; \
+			fi; \
+		fi; \
+	else \
+		if [ "x$(PKG_FORMAT)" = "xgit" ]; then \
+			if [ ! -e $(POOL)/$(PKG_SRCDIR) ]; then \
+				echo "$(HPCP)  $(PKG_NAME):  Fetching"; \
+				cd $(POOL); \
+				$(PKG_GIT_CLONE) > $(PKG_NAME).fetchlog 2>&1; \
+				cd $(PKG_SRCDIR); \
+				$(PKG_GIT_CHECKOUT) >> $(POOL)/$(PKG_NAME).fetchlog 2>&1; \
+			fi; \
+		fi; \
 	fi;
 
 
 extract : fetch
-	@if [ ! -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+	@if [ ! -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		echo "$(HPCP)  $(PKG_NAME):  Extracting"; \
-		if [ -e $(POOL)/$(PKG_COMPRESSED) ]; then \
-			mkdir -p $(STAGE); \
-			cd $(STAGE); \
-			rm -f log.*; \
-			$(PKG_XTAR) $(POOL)/$(PKG_COMPRESSED) > log.extract 2>&1; \
-			if [ ! -e $(PKG_UNCOMPRESSED) ]; then \
-				echo "$(HPCP)    FAILED:  extracted source $(PKG_UNCOMPRESSED) was not created."; \
-			else \
-				touch state.extract; \
+		mkdir -p $(STAGE); \
+		cd $(STAGE); \
+		rm -f log.*; \
+		if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
+			echo "tar format"; \
+			if [ -e $(POOL)/$(PKG_TAR) ]; then \
+				$(PKG_TAR_EXTRACT) $(POOL)/$(PKG_TAR) > log.extract 2>&1; \
 			fi; \
-			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
+		else \
+			if [ "x$(PKG_FORMAT)" = "xgit" ]; then \
+				if [ -e $(POOL)/$(PKG_SRCDIR) ]; then \
+					ln -s $(POOL)/$(PKG_SRCDIR) $(PKG_SRCDIR); \
+				fi; \
+			fi; \
 		fi; \
+		if [ ! -e $(PKG_SRCDIR) ]; then \
+			echo "$(HPCP)    FAILED:  extracted source $(PKG_SRCDIR) was not created."; \
+		else \
+			touch state.extract; \
+		fi; \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 	fi
 
 
 patch : extract
-	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.extract ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Patching"; \
-			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
+			cd $(STAGE)/$(PKG_SRCDIR); \
 			rm -f log.patch; \
 			for pfile in $(PKG_PATCHES); do \
 				$(PATCH) -p1 < $${pfile} >> ../log.patch 2>&1; \
@@ -48,7 +88,7 @@ patch : extract
 
 
 configure : patch
-	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.patch ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Configuring"; \
 			source $(STAGE)/dep_env.sh; \
@@ -60,10 +100,10 @@ configure : patch
 
 
 build : configure uninstall
-	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.configure ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Building"; \
-			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
+			cd $(STAGE)/$(PKG_SRCDIR); \
 			source ../dep_env.sh; \
 			$(MAKE) > ../log.build 2>&1 && \
 			touch ../state.build && \
@@ -77,10 +117,10 @@ preinstall : build
 
 
 install : preinstall
-	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Installing"; \
-			cd $(STAGE)/$(PKG_UNCOMPRESSED); \
+			cd $(STAGE)/$(PKG_SRCDIR); \
 			$(MAKE) install > ../log.install 2>&1 && \
 			touch ../state.install && \
 			rm ../state.build; \
@@ -96,7 +136,7 @@ install : preinstall
 
 
 clean :
-	@if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Cleaning"; \
 			$(MAKE) pkg-clean > $(STAGE)/log.clean 2>&1 && \
@@ -118,7 +158,7 @@ clean :
 
 uninstall :
 	@echo "$(HPCP)  $(PKG_NAME):  Uninstalling"; \
-	if [ -e $(STAGE)/$(PKG_UNCOMPRESSED) ]; then \
+	if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.install ]; then \
 			touch $(STAGE)/state.build && \
 			rm $(STAGE)/state.install && \
