@@ -30,20 +30,17 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		./configure CC="$(CC)" CFLAGS="$(CFLAGS)" \
-		LDFLAGS="$(LDFLAGS)" \
-		CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-		F77="$(F77)" FFLAGS="$(FFLAGS)" \
-		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-	else \
-		./configure CC="$(CC)" CFLAGS="$(CFLAGS)" \
-		LDFLAGS="$(LDFLAGS)" \
-		CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-		F77="$(F77)" FFLAGS="$(FFLAGS)" \
-		--disable-shared \
-		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-	fi
+	dyn=""; \
+	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
+		dyn="--disable-shared"; \
+	fi; \
+	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" \
+	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+	F77="$(F77)" FFLAGS="$(FFLAGS)" \
+	./configure \
+	$${dyn} \
+	--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
 pkg-preinstall :

@@ -6,16 +6,16 @@ include ../../system/defaults.make
 
 # Package parameters
 
-PKG_NAME = fftw
+PKG_NAME = sqlite
 
-PKG_VERSION = 3.3.2
+PKG_VERSION = 3.7.13
 
 PKG_FORMAT = tar
-PKG_TAR = fftw-3.3.2.tar.gz
-PKG_TAR_FETCH = $(CURL) http://fftw.org/fftw-3.3.2.tar.gz -o $(POOL)/$(PKG_TAR)
+PKG_TAR = sqlite-autoconf-3071300.tar.gz
+PKG_TAR_FETCH = $(CURL) http://www.sqlite.org/sqlite-autoconf-3071300.tar.gz -o $(POOL)/$(PKG_TAR)
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = fftw-3.3.2
+PKG_SRCDIR = sqlite-autoconf-3071300
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
@@ -31,14 +31,15 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	dyn=""; \
-	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
+	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" \
+	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
-	MPICC="$(MPICC)" \
 	./configure \
-	--enable-threads --enable-mpi $${dyn} \
+	$${dyn} \
 	--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

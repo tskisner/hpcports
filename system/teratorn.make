@@ -13,7 +13,7 @@ TOOLCHAIN = darwin
 
 # permissions on installed files
 
-INST_GRP = kisner
+INST_GRP = staff
 INST_PERM = a+rX
 
 # serial compilers
