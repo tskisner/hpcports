@@ -7,9 +7,14 @@ endif
 
 POOL = /data/software/src
 
-# toolchain (gnu, intel, ibm)
+# toolchain (gnu, darwin, intel, ibm)
 
-TOOLCHAIN = gnu
+TOOLCHAIN = darwin
+
+# permissions on installed files
+
+INST_GRP = kisner
+INST_PERM = a+rX
 
 # serial compilers
 
@@ -32,15 +37,19 @@ CXXFLAGS = -O0 -g
 FFLAGS = -O0 -g
 FCFLAGS = -O0 -g
 
+# OpenMP flags
+
+OMPFLAGS = -fopenmp
+
 # vendor math libraries
 
 VENDOR = apple
-APPLE_CPPFLAGS = 
+APPLE_CPPFLAGS =
 APPLE_LDFLAGS = -Wl,-framework,Accelerate
-APPLE_LIBS_CC = 
-APPLE_LIBS_CXX = 
-APPLE_LIBS_F77 = 
-APPLE_LIBS_FC = 
+APPLE_LIBS_CC =
+APPLE_LIBS_CXX =
+APPLE_LIBS_F77 =
+APPLE_LIBS_FC =
 
 # package overrides
 

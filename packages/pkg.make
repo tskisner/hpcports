@@ -26,7 +26,7 @@ prefetch :
 fetch : prefetch
 	@if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
 		if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
-			echo "$(HPCP)  $(PKG_NAME):  Fetching"; \
+			echo "$(HPCP)  $(PKG_NAME):  Fetching tarball"; \
 			$(PKG_TAR_FETCH) > $(POOL)/$(PKG_NAME).fetchlog 2>&1; \
 			if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
 				echo "$(HPCP)    FAILED:  $(POOL)/$(PKG_TAR) was not fetched!"; \
@@ -35,11 +35,12 @@ fetch : prefetch
 	else \
 		if [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 			if [ ! -e $(POOL)/$(PKG_SRCDIR) ]; then \
-				echo "$(HPCP)  $(PKG_NAME):  Fetching"; \
+				echo "$(HPCP)  $(PKG_NAME):  Cloning git repo"; \
 				cd $(POOL); \
 				$(PKG_GIT_CLONE) > $(PKG_NAME).fetchlog 2>&1; \
+				echo "$(HPCP)  $(PKG_NAME):  Checking out git revision"; \
 				cd $(PKG_SRCDIR); \
-				$(PKG_GIT_CHECKOUT) >> $(POOL)/$(PKG_NAME).fetchlog 2>&1; \
+				$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME).fetchlog 2>&1; \
 			fi; \
 		fi; \
 	fi;
@@ -52,14 +53,14 @@ extract : fetch
 		cd $(STAGE); \
 		rm -f log.*; \
 		if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
-			echo "tar format"; \
 			if [ -e $(POOL)/$(PKG_TAR) ]; then \
 				$(PKG_TAR_EXTRACT) $(POOL)/$(PKG_TAR) > log.extract 2>&1; \
 			fi; \
 		else \
 			if [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 				if [ -e $(POOL)/$(PKG_SRCDIR) ]; then \
-					ln -s $(POOL)/$(PKG_SRCDIR) $(PKG_SRCDIR); \
+					cp -a $(POOL)/$(PKG_SRCDIR) ./ && \
+					rm -rf $(PKG_SRCDIR)/.git; \
 				fi; \
 			fi; \
 		fi; \
@@ -77,9 +78,9 @@ patch : extract
 		if [ -e $(STAGE)/state.extract ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Patching"; \
 			cd $(STAGE)/$(PKG_SRCDIR); \
-			rm -f log.patch; \
+			rm -f ../log.patch; \
 			for pfile in $(PKG_PATCHES); do \
-				$(PATCH) -p1 < $${pfile} >> ../log.patch 2>&1; \
+				$(PATCH) -p1 < ../../$${pfile} >> ../log.patch 2>&1; \
 			done; \
 			touch ../state.patch && \
 			rm ../state.extract; \
@@ -99,9 +100,10 @@ configure : patch
 	fi
 
 
-build : configure uninstall
+build : configure
 	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.configure ]; then \
+			$(MAKE) uninstall; \
 			echo "$(HPCP)  $(PKG_NAME):  Building"; \
 			cd $(STAGE)/$(PKG_SRCDIR); \
 			source ../dep_env.sh; \
@@ -124,6 +126,8 @@ install : preinstall
 			$(MAKE) install > ../log.install 2>&1 && \
 			touch ../state.install && \
 			rm ../state.build; \
+			chgrp -R $(INST_GRP) $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+			chmod -R $(INST_PERM) $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 			cp ../$(PKG_NAME).sh $(PREFIX)/env/; \
 			mkdir -p $(PREFIX)/env/modulefiles/$(PKG_NAME); \
 			cp ../$(PKG_NAME).module $(PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
@@ -131,6 +135,8 @@ install : preinstall
 				cp $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion; \
 			fi; \
 			cp ../$(PKG_NAME).version $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
+			chgrp -R $(INST_GRP) $(PREFIX)/env/modulefiles/$(PKG_NAME); \
+			chmod -R $(INST_PERM) $(PREFIX)/env/modulefiles/$(PKG_NAME); \
 		fi; \
 	fi
 

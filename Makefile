@@ -62,7 +62,13 @@ install : install-common $(PKGS)
 
 
 install-common :
-	@mkdir -p $(PREFIX)/env/modulefiles
+	@mkdir -p $(PREFIX)/env/modulefiles; \
+	chgrp -R $(INST_GRP) $(PREFIX); \
+	chgrp -R $(INST_GRP) $(PREFIX)/env; \
+	chgrp -R $(INST_GRP) $(PREFIX)/env/modulefiles; \
+	chmod -R $(INST_PERM) $(PREFIX); \
+	chmod -R $(INST_PERM) $(PREFIX)/env; \
+	chmod -R $(INST_PERM) $(PREFIX)/env/modulefiles
 
 
 fetch : packages/up2date

@@ -1,0 +1,8 @@
+path = bin
+man = share/man
+header = include
+ld = lib
+CC_lib = -lfftw3_threads -lfftw
+CXX_lib = -lfftw3_threads -lfftw
+F77_lib = -lfftw3_threads -lfftw
+FC_lib = -lfftw3_threads -lfftw

@@ -30,11 +30,18 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	boostchain=""; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
-		echo "using gcc : : $(CXX) : cflags=$(CFLAGS) cxxflags=$(CXXFLAGS) " > user-config.jam \
+		echo "using gcc : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
+		boostchain="gcc"; \
+	fi; \
+	if [ "x$(TOOLCHAIN)" = "xdarwin" ]; then \
+		echo "using darwin : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
+		boostchain="darwin"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xintel" ]; then \
-		echo "using intel-linux : : $(CXX) : cflags=$(CFLAGS) cxxflags=$(CXXFLAGS) " > user-config.jam \
+		echo "using intel : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
+		boostchain="intel"; \
 	fi; \
 	opts="variant=release "; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
@@ -42,10 +49,10 @@ pkg-configure :
 	else \
 		opts="$${opts}link=static runtime-link=static"; \
 	fi; \
-	./bootstrap.sh --prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-	echo "OPTS = \"$${opts}\"" > hpcp_opts.make
+	echo "OPTS = $${opts}" > hpcp_opts.make; \
+	./bootstrap.sh --with-toolset=$${boostchain} --prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
-
+	
 pkg-preinstall :
 	@echo "" > /dev/null
 

@@ -1,7 +1,7 @@
 
 # HPC ports common
 
-HPCP = [HPCP]
+HPCP = --->
 
 ifndef BUILD_DYNAMIC
 	export BUILD_DYNAMIC = TRUE
@@ -23,6 +23,10 @@ endif
 
 ifndef CURL
 	export CURL = curl
+endif
+
+ifndef PYTHON
+	export PYTHON = python
 endif
 
 ifndef PATCH
