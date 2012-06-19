@@ -9,7 +9,8 @@ POOL = /data/software/hpcports_pool
 
 # UNIX tools
 
-export MAKE := make
+MAKE = make
+PYTHON = python
 
 # toolchain (gnu, darwin, intel, ibm)
 

@@ -30,6 +30,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	pyopt="--without-python"; \
+	if [ "x$(PYTHON)" != "x" ]; then \
+		pyopt="--with-python=$(PYTHON)"; \
+	fi; \
 	boostchain=""; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
 		echo "using gcc : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
@@ -50,7 +54,7 @@ pkg-configure :
 		opts="$${opts}link=static runtime-link=static"; \
 	fi; \
 	echo "OPTS = $${opts}" > hpcp_opts.make; \
-	./bootstrap.sh --with-toolset=$${boostchain} --prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 	
 pkg-preinstall :

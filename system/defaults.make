@@ -25,10 +25,6 @@ ifndef SHELL
 	export SHELL = /bin/sh
 endif
 
-ifndef PYTHON
-	export PYTHON = python
-endif
-
 ifndef PATCH
 	export PATCH = patch
 endif

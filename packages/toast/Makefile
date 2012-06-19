@@ -33,13 +33,18 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \
 	fi; \
+	pyopt="--disable-python"; \
+	if [ "x$(PYTHON)" != "x" ]; then \
+		pyopt="--enable-python"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	PYTHON="$(PYTHON)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
 	./configure \
-	$${dyn} \
+	$${dyn} $${pyopt} \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \
 	--with-expat=$(expat_PREFIX) \
