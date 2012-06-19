@@ -68,6 +68,9 @@ install : install-common $(PKGS)
 
 install-common :
 	@mkdir -p $(PREFIX)/env/modulefiles; \
+	mkdir -p $(POOL); \
+	chgrp -R $(INST_GRP) $(POOL); \
+	chmod -R $(INST_PERM) $(POOL); \
 	chgrp -R $(INST_GRP) $(PREFIX); \
 	chgrp -R $(INST_GRP) $(PREFIX)/env; \
 	chgrp -R $(INST_GRP) $(PREFIX)/env/modulefiles; \
