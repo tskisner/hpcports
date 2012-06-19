@@ -7,6 +7,10 @@ endif
 
 POOL = /data/software/hpcports_pool
 
+# UNIX tools
+
+export MAKE := make
+
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = darwin

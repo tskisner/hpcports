@@ -12,7 +12,7 @@ PKG_VERSION = 2.4.2
 
 PKG_FORMAT = tar
 PKG_TAR = libtool-2.4.2.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftpmirror.gnu.org/libtool/libtool-2.4.2.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/libtool/libtool-2.4.2.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = libtool-2.4.2

@@ -14,7 +14,7 @@ endif
 # various system tool defaults
 
 ifndef MAKE
-	export MAKE = make
+	export MAKE = make -s
 endif
 
 ifndef WGET
