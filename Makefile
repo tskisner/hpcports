@@ -17,6 +17,11 @@ packages/up2date :
 	@$(SHELL) tools/pkg_update.sh
 
 
+update :
+	@rm -f packages/up2date; \
+	$(MAKE) help > /dev/null 2>&1
+
+
 packages/pkg_list.make : packages/up2date
 packages/pkg_deps.make : packages/up2date
 packages/pkg_rules.make : packages/up2date

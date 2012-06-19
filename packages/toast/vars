@@ -1,0 +1,5 @@
+path = bin
+man =
+header = include
+ld = lib
+lib_CXX = -ltoast

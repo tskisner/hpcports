@@ -1,5 +1,5 @@
 
-hpcp="[HPCP]"
+hpcp="--->"
 
 echo "${hpcp}  Updating package list"
 

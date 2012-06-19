@@ -5,7 +5,7 @@ endif
 
 # software download location
 
-POOL = /data/software/src
+POOL = /data/software/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
@@ -40,6 +40,11 @@ FCFLAGS = -O0 -g
 # OpenMP flags
 
 OMPFLAGS = -fopenmp
+
+# Fortran mixing
+
+FCLIBS = -lgfortran -lgfortranbegin
+MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # vendor math libraries
 

@@ -55,11 +55,15 @@ process_var () {
 				else
 					if [ "x${var}" = "xld" ]; then
 						OUT=""
+						LD=""
 						for val in ${vals}; do
 							OUT="${OUT}${PREFIX}/${PKG}-${VER}/${val}:"
+							LD="${LD}-L${PREFIX}/${PKG}-${VER}/${val} "
 							echo "prepend-path LD_LIBRARY_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
 						done
 						echo "export LD_LIBRARY_PATH=${OUT}\$LD_LIBRARY_PATH" >> ${PKG}.sh
+						echo "export ${PKG}_LDFLAGS=\"${LD}\"" >> ${PKG}.sh
+						echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
 					else
 						if [ "x${var}" = "xlib_CC" ]; then
 							echo "export ${PKG}_LIBS_CC=\"${vals}\"" >> ${PKG}.sh
