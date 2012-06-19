@@ -1,0 +1,8 @@
+path = bin
+man =
+header = include
+ld = lib
+data = share/healpix
+lib_CC = -lchealpix
+lib_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
+lib_FC = -lhealpix

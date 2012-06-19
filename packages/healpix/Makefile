@@ -6,16 +6,16 @@ include ../../system/defaults.make
 
 # Package parameters
 
-PKG_NAME = sqlite
+PKG_NAME = healpix
 
-PKG_VERSION = 3.7.13
+PKG_VERSION = 2.15a
 
 PKG_FORMAT = tar
-PKG_TAR = sqlite-autoconf-3071300.tar.gz
-PKG_TAR_FETCH = curl http://www.sqlite.org/sqlite-autoconf-3071300.tar.gz -o $(POOL)/$(PKG_TAR)
-PKG_TAR_EXTRACT = $(GXTAR)
+PKG_TAR = healpix-2.15a.tar.bz2
+PKG_TAR_FETCH = 
+PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = sqlite-autoconf-3071300
+PKG_SRCDIR = healpix-2.15a
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
@@ -30,16 +30,19 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	dyn=""; \
-	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="--disable-shared"; \
+	dyn="--disable-shared"; \
+	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
+		dyn=""; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	F77="$(F77)" FFLAGS="$(FFLAGS)" \
+	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
+	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
+	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
 	./configure \
 	$${dyn} \
+	--with-cfitsio-cpp=$(cfitsio_CPPFLAGS) \
+	--with-cfitsio-libs="$(cfitsio_LDFLAGS)$(cfitsio_LIBS_CC)" \
 	--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
