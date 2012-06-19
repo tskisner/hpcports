@@ -1,1 +1,1 @@
-boost fftw
+autoconf automake libtool boost fftw
