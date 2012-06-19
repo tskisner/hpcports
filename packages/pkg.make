@@ -28,6 +28,8 @@ fetch : prefetch
 		if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Fetching tarball"; \
 			$(PKG_TAR_FETCH) > $(POOL)/$(PKG_NAME).fetchlog 2>&1; \
+			chgrp -R $(INST_GRP) $(POOL)/$(PKG_TAR); \
+			chmod -R $(INST_PERM) $(POOL)/$(PKG_TAR); \
 			if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
 				echo "$(HPCP)    FAILED:  $(POOL)/$(PKG_TAR) was not fetched!"; \
 			fi; \
@@ -41,6 +43,8 @@ fetch : prefetch
 				echo "$(HPCP)  $(PKG_NAME):  Checking out git revision"; \
 				cd $(PKG_SRCDIR); \
 				$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME).fetchlog 2>&1; \
+				chgrp -R $(INST_GRP) $(POOL)/$(PKG_SRCDIR); \
+				chmod -R $(INST_PERM) $(POOL)/$(PKG_SRCDIR); \
 			fi; \
 		fi; \
 	fi;
