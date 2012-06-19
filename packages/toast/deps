@@ -1,1 +1,1 @@
-autoconf automake libtool cfitsio expat sqlite boost moat
+curl m4 autoconf automake libtool cfitsio expat sqlite boost moat

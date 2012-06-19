@@ -6,16 +6,16 @@ include ../../system/defaults.make
 
 # Package parameters
 
-PKG_NAME = libtool
+PKG_NAME = curl
 
-PKG_VERSION = 2.4.2
+PKG_VERSION = 7.26.0
 
 PKG_FORMAT = tar
-PKG_TAR = libtool-2.4.2.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftpmirror.gnu.org/libtool/libtool-2.4.2.tar.gz
-PKG_TAR_EXTRACT = $(GXTAR)
+PKG_TAR = curl-7.26.0.tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://curl.haxx.se/download/curl-7.26.0.tar.bz2
+PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = libtool-2.4.2
+PKG_SRCDIR = curl-7.26.0
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 

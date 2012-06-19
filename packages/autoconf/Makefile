@@ -12,7 +12,7 @@ PKG_VERSION = 2.69
 
 PKG_FORMAT = tar
 PKG_TAR = autoconf-2.69.tar.gz
-PKG_TAR_FETCH = $(CURL) http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = autoconf-2.69

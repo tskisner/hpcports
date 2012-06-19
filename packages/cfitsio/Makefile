@@ -12,7 +12,7 @@ PKG_VERSION = 3.30
 
 PKG_FORMAT = tar
 PKG_TAR = cfitsio3300.tar.gz
-PKG_TAR_FETCH = $(CURL) ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3300.tar.gz -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = curl ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3300.tar.gz -o $(POOL)/$(PKG_TAR)
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = cfitsio

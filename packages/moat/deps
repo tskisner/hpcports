@@ -1,1 +1,1 @@
-autoconf automake libtool boost fftw
+curl m4 autoconf automake libtool boost fftw

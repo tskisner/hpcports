@@ -12,7 +12,7 @@ PKG_VERSION = 3.3.2
 
 PKG_FORMAT = tar
 PKG_TAR = fftw-3.3.2.tar.gz
-PKG_TAR_FETCH = $(CURL) http://fftw.org/fftw-3.3.2.tar.gz -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = curl http://fftw.org/fftw-3.3.2.tar.gz -o $(POOL)/$(PKG_TAR)
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = fftw-3.3.2

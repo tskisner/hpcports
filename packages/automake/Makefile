@@ -12,7 +12,7 @@ PKG_VERSION = 1.12.1
 
 PKG_FORMAT = tar
 PKG_TAR = automake-1.12.1.tar.gz
-PKG_TAR_FETCH = $(CURL) http://ftp.gnu.org/gnu/automake/automake-1.12.1.tar.gz -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/automake/automake-1.12.1.tar.gz
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = automake-1.12.1

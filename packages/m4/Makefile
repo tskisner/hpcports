@@ -12,7 +12,7 @@ PKG_VERSION = 1.4.16
 
 PKG_FORMAT = tar
 PKG_TAR = m4-1.4.16.tar.bz2
-PKG_TAR_FETCH = $(CURL) http://ftp.gnu.org/gnu/m4/m4-1.4.16.tar.bz2 -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/m4/m4-1.4.16.tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = m4-1.4.16

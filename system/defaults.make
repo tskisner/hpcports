@@ -17,12 +17,12 @@ ifndef MAKE
 	export MAKE = make
 endif
 
-ifndef SHELL
-	export SHELL = /bin/sh
+ifndef WGET
+	export WGET = wget
 endif
 
-ifndef CURL
-	export CURL = curl
+ifndef SHELL
+	export SHELL = /bin/sh
 endif
 
 ifndef PYTHON

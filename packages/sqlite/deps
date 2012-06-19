@@ -1,1 +1,1 @@
-autoconf automake libtool
+curl m4 autoconf automake libtool
