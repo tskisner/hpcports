@@ -33,28 +33,60 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \
 	fi; \
-	vendorstr=""; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
-		vendorstr="--with-fftw-cpp=no --with-accelerate-cpp=$(APPLE_CPPFLAGS) --with-accelerate-libs=\"$(APPLE_LDFLAGS)$(APPLE_LIBS_CXX)\""; \
+		CC="$(CC)" CFLAGS="$(CFLAGS)" \
+		CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+		F77="$(F77)" FFLAGS="$(FFLAGS)" \
+		MPICXX="$(MPICXX)" \
+		./configure \
+		$${dyn} \
+		--with-fftw-cpp=no \
+		--with-accelerate-cpp=$(APPLE_CPPFLAGS) \
+		--with-accelerate-libs="$(APPLE_LDFLAGS) $(APPLE_LIBS_CXX)" \
+		--with-papi-cpp=no \
+		--with-boost=$(boost_PREFIX) \
+		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "xamd" ]; then \
-		vendorstr="--with-fftw-cpp=no --with-acml-cpp=$(AMD_CPPFLAGS) --with-acml-libs=\"$(AMD_LDFLAGS)$(AMD_LIBS_CXX)\""; \
+		CC="$(CC)" CFLAGS="$(CFLAGS)" \
+		CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+		F77="$(F77)" FFLAGS="$(FFLAGS)" \
+		MPICXX="$(MPICXX)" \
+		./configure \
+		$${dyn} \
+		--with-fftw-cpp=no \
+		--with-acml-cpp=$(AMD_CPPFLAGS) \
+		--with-acml-libs="$(AMD_LDFLAGS) $(AMD_LIBS_CXX)" \
+		--with-papi-cpp=no \
+		--with-boost=$(boost_PREFIX) \
+		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
-		vendorstr="--with-fftw-cpp=no --with-mkl-cpp=$(INTEL_CPPFLAGS) --with-mkl-libs=\"$(INTEL_LDFLAGS)$(INTEL_LIBS_CXX)\""; \
+		CC="$(CC)" CFLAGS="$(CFLAGS)" \
+		CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+		F77="$(F77)" FFLAGS="$(FFLAGS)" \
+		MPICXX="$(MPICXX)" \
+		./configure \
+		$${dyn} \
+		--with-fftw-cpp=no \
+		--with-mkl-cpp=$(INTEL_CPPFLAGS) \
+		--with-mkl-libs="$(INTEL_LDFLAGS) $(INTEL_LIBS_CXX)" \
+		--with-papi-cpp=no \
+		--with-boost=$(boost_PREFIX) \
+		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "x" ]; then \
-		vendorstr="--with-fftw-cpp=$(fftw_CPPFLAGS)"; \
-	fi; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	F77="$(F77)" FFLAGS="$(FFLAGS)" \
-	MPICXX="$(MPICXX)" \
-	./configure \
-	$${dyn} $${vendorstr} \
-	--with-papi-cpp=no \
-	--with-boost=$(boost_PREFIX) \
-	--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+		CC="$(CC)" CFLAGS="$(CFLAGS)" \
+		CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+		F77="$(F77)" FFLAGS="$(FFLAGS)" \
+		MPICXX="$(MPICXX)" \
+		./configure \
+		$${dyn} \
+		--with-fftw-cpp=$(fftw_CPPFLAGS) \
+		--with-papi-cpp=no \
+		--with-boost=$(boost_PREFIX) \
+		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+	fi
 
 
 pkg-preinstall :
