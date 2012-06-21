@@ -38,9 +38,9 @@ for pkg in ${pkgs}; do
 	echo "	fi" >> packages/pkg_rules.make
 
 	echo "" >> packages/pkg_rules.make
-	echo "${pkg}-clean :" >> packages/pkg_rules.make
+	echo "${pkg}-fetch :" >> packages/pkg_rules.make
 	echo "	@if test \"x\$(${pkg}_OVERRIDE)\" = \"x\"; then \\" >> packages/pkg_rules.make
-	echo "		cd packages/${pkg}; \$(MAKE) clean; \\" >> packages/pkg_rules.make
+	echo "		cd packages/${pkg}; \$(MAKE) fetch; \\" >> packages/pkg_rules.make
 	echo "	fi" >> packages/pkg_rules.make
 
 	echo "" >> packages/pkg_rules.make

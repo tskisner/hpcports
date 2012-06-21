@@ -34,31 +34,9 @@ include packages/pkg_rules.make
 status : packages/up2date
 	@echo "$(HPCP)"; \
 	for pkg in $(PKGS); do \
-		if [ -d packages/$${pkg}/staging_$(TARGET) ]; then \
-			if [ -e packages/$${pkg}/staging_$(TARGET)/state.install ]; then \
-				printf "%s%12s : (installed)\n" "$(HPCP)" "$${pkg}"; \
-			else \
-				if [ -e packages/$${pkg}/staging_$(TARGET)/state.build ]; then \
-					printf "%s%12s : (built)\n" "$(HPCP)" "$${pkg}"; \
-				else \
-					if [ -e packages/$${pkg}/staging_$(TARGET)/state.configure ]; then \
-						printf "%s%12s : (configured)\n" "$(HPCP)" "$${pkg}"; \
-					else \
-						if [ -e packages/$${pkg}/staging_$(TARGET)/state.patch ]; then \
-							printf "%s%12s : (patched)\n" "$(HPCP)" "$${pkg}"; \
-						else \
-							if [ -e packages/$${pkg}/staging_$(TARGET)/state.extract ]; then \
-								printf "%s%12s : (extracted)\n" "$(HPCP)" "$${pkg}"; \
-							else \
-								printf "%s%12s : (not extracted)\n" "$(HPCP)" "$${pkg}"; \
-							fi; \
-						fi; \
-					fi; \
-				fi; \
-			fi; \
-		else \
-			printf "%s%12s : (not extracted)\n" "$(HPCP)" "$${pkg}"; \
-		fi; \
+		cd packages/$${pkg}; \
+		$(MAKE) status; \
+		cd ../..; \
 	done; \
 	echo "$(HPCP)"
 
@@ -83,6 +61,14 @@ fetch : packages/up2date
 	@for pkg in $(PKGS); do \
 		cd packages/$${pkg}; \
 		$(MAKE) fetch; \
+		cd ../..; \
+	done
+
+
+uninstall : packages/up2date
+	@for pkg in $(PKGS); do \
+		cd packages/$${pkg}; \
+		$(MAKE) uninstall; \
 		cd ../..; \
 	done
 
