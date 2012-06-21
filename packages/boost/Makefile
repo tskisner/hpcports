@@ -30,7 +30,7 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	pyopt="--without-python"; \
+	pyopt="--with-python=no"; \
 	if [ "x$(PYTHON)" != "x" ]; then \
 		pyopt="--with-python=$(PYTHON)"; \
 	fi; \
