@@ -12,7 +12,7 @@ PKG_VERSION = 3.7.13
 
 PKG_FORMAT = tar
 PKG_TAR = sqlite-autoconf-3071300.tar.gz
-PKG_TAR_FETCH = curl http://www.sqlite.org/sqlite-autoconf-3071300.tar.gz -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://www.sqlite.org/sqlite-autoconf-3071300.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = sqlite-autoconf-3071300

@@ -54,18 +54,16 @@ fetch : prefetch
 				echo "$(HPCP)    FAILED:  $(POOL)/$(PKG_TAR) was not fetched!"; \
 			fi; \
 		fi; \
-	else \
-		if [ "x$(PKG_FORMAT)" = "xgit" ]; then \
-			if [ ! -e $(POOL)/$(PKG_SRCDIR) ]; then \
-				echo "$(HPCP)  $(PKG_NAME):  Cloning git repo"; \
-				cd $(POOL); \
-				$(PKG_GIT_CLONE) > $(PKG_NAME).fetchlog 2>&1; \
-				echo "$(HPCP)  $(PKG_NAME):  Checking out git revision"; \
-				cd $(PKG_SRCDIR); \
-				$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME).fetchlog 2>&1; \
-				chgrp -R $(INST_GRP) $(POOL)/$(PKG_SRCDIR); \
-				chmod -R $(INST_PERM) $(POOL)/$(PKG_SRCDIR); \
-			fi; \
+	elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
+		if [ ! -e $(POOL)/$(PKG_SRCDIR) ]; then \
+			echo "$(HPCP)  $(PKG_NAME):  Cloning git repo"; \
+			cd $(POOL); \
+			$(PKG_GIT_CLONE) > $(PKG_NAME).fetchlog 2>&1; \
+			echo "$(HPCP)  $(PKG_NAME):  Checking out git revision"; \
+			cd $(PKG_SRCDIR); \
+			$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME).fetchlog 2>&1; \
+			chgrp -R $(INST_GRP) $(POOL)/$(PKG_SRCDIR); \
+			chmod -R $(INST_PERM) $(POOL)/$(PKG_SRCDIR); \
 		fi; \
 	fi;
 
@@ -80,12 +78,14 @@ extract : fetch
 			if [ -e $(POOL)/$(PKG_TAR) ]; then \
 				$(PKG_TAR_EXTRACT) $(POOL)/$(PKG_TAR) > log.extract 2>&1; \
 			fi; \
-		else \
-			if [ "x$(PKG_FORMAT)" = "xgit" ]; then \
-				if [ -e $(POOL)/$(PKG_SRCDIR) ]; then \
-					cp -a $(POOL)/$(PKG_SRCDIR) ./ && \
-					rm -rf $(PKG_SRCDIR)/.git; \
-				fi; \
+		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
+			if [ -e $(POOL)/$(PKG_SRCDIR) ]; then \
+				cp -a $(POOL)/$(PKG_SRCDIR) ./ && \
+				rm -rf $(PKG_SRCDIR)/.git; \
+			fi; \
+		elif [ "x$(PKG_FORMAT)" = "xnone" ]; then \
+			if [ -e ../$(PKG_SRCDIR) ]; then \
+				cp -a ../$(PKG_SRCDIR) ./ && \
 			fi; \
 		fi; \
 		if [ ! -e $(PKG_SRCDIR) ]; then \

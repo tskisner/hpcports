@@ -1,0 +1,41 @@
+#!@SHELL@
+
+comp=off
+cflags=off
+omp=off
+incl=off
+lflags=off
+libs=off
+mix=off
+
+lang=C
+
+usage () {
+	echo ""
+	echo "  Usage:  cmbconfig"
+	echo "          --comp (print compiler)"
+    echo "          --cflags (print compile options)"
+    echo "          --omp (print OpenMP flags)"
+    echo "          --incl (print include directories)"
+    echo "          --lflags (print linking directories)"
+    echo "          --libs (print libraries)"
+    echo "          --lang < C | CXX | F77 | F90 | MPIC | MPICXX | MPIF77 | MPIF90 >"
+    echo "          --mix (FORCE fortran language mixing flags)"
+    echo ""
+}
+
+while [ $# -gt 0 ]; do
+	case "$1" in
+		-v)  vflag=on;;
+		-f)  filename="$2"; shift;;
+		--)	shift; break;;
+		-*) echo >&2 \
+	    "usage: $0 [-v] [-f file] [file ...]"
+	    exit 1;;
+		*)  break;;	# terminate while loop
+	esac
+	shift
+done
+
+# all command line switches are processed,
+# "$@" contains all packages

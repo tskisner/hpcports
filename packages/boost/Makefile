@@ -12,7 +12,7 @@ PKG_VERSION = 1.49.0
 
 PKG_FORMAT = tar
 PKG_TAR = boost_1_49_0.tar.bz2
-PKG_TAR_FETCH = curl -L http://sourceforge.net/projects/boost/files/boost/1.49.0/boost_1_49_0.tar.bz2/download -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://sourceforge.net/projects/boost/files/boost/1.49.0/boost_1_49_0.tar.bz2/download
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = boost_1_49_0

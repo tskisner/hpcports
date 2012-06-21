@@ -12,7 +12,7 @@ PKG_VERSION = f62ff7f
 
 PKG_FORMAT = git
 PKG_GIT_CLONE = $(GIT) clone git@github.com:tskisner/MOAT.git
-PKG_GIT_CHECKOUT = $(GIT) checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1; ./autogen.sh
+PKG_GIT_CHECKOUT = $(GIT) checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
 PKG_SRCDIR = MOAT
 
@@ -29,6 +29,7 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	./autogen.sh; \
 	dyn="--disable-shared"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \

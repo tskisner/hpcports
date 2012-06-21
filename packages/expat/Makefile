@@ -12,7 +12,7 @@ PKG_VERSION = 2.1.0
 
 PKG_FORMAT = tar
 PKG_TAR = expat-2.1.0.tar.gz
-PKG_TAR_FETCH = curl -L http://sourceforge.net/projects/expat/files/expat/2.1.0/expat-2.1.0.tar.gz/download -o $(POOL)/$(PKG_TAR)
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://sourceforge.net/projects/expat/files/expat/2.1.0/expat-2.1.0.tar.gz/download
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = expat-2.1.0
