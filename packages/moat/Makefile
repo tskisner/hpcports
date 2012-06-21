@@ -8,7 +8,7 @@ include ../../system/defaults.make
 
 PKG_NAME = moat
 
-PKG_VERSION = f62ff7f
+PKG_VERSION = 2044ac8
 
 PKG_FORMAT = git
 PKG_GIT_CLONE = $(GIT) clone git@github.com:tskisner/MOAT.git
