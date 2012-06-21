@@ -1,5 +1,9 @@
 path = bin
-man =
 header = include
 ld = lib
+lib_CC = -ltoast
 lib_CXX = -ltoast
+lib_FC = -lftoast -ltoast
+lib_MPICC = -ltoast-mpi
+lib_MPICXX = -ltoast-mpi
+lib_MPIFC = -lftoast-mpi -ltoast-mpi

@@ -1,2 +1,8 @@
 path = bin
-man = man
+man = share/man
+header = include
+ld = lib
+lib_CC = -lcurl
+lib_CXX = -lcurl
+lib_F77 = -lcurl
+lib_FC = -lcurl

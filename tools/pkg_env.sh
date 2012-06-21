@@ -38,58 +38,59 @@ process_var () {
 				echo "export PATH=${PREFIX}/${PKG}-${VER}/${val}:\$PATH" >> ${PKG}.sh
 				echo "prepend-path PATH ${PREFIX}/${PKG}-${VER}/${val}" >> ${PKG}.module
 			done
+		elif [ "x${var}" = "xman" ]; then
+			for val in ${vals}; do
+				echo "export MANPATH=${PREFIX}/${PKG}-${VER}/${val}:\$MANPATH" >> ${PKG}.sh
+				echo "prepend-path MANPATH ${PREFIX}/${PKG}-${VER}/${val}" >> ${PKG}.module
+			done
+		elif [ "x${var}" = "xheader" ]; then
+			OUT=""
+			for val in ${vals}; do
+				OUT="${OUT}-I${PREFIX}/${PKG}-${VER}/${val} "
+			done
+			echo "export ${PKG}_CPPFLAGS=\"${OUT}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_CPPFLAGS \"${OUT}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xdata" ]; then
+			echo "export ${PKG}_DATA=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_DATA \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xld" ]; then
+			OUT=""
+			LD=""
+			for val in ${vals}; do
+				OUT="${OUT}${PREFIX}/${PKG}-${VER}/${val}:"
+				LD="${LD}-L${PREFIX}/${PKG}-${VER}/${val} "
+				echo "prepend-path LD_LIBRARY_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
+			done
+			echo "export LD_LIBRARY_PATH=${OUT}\$LD_LIBRARY_PATH" >> ${PKG}.sh
+			echo "export ${PKG}_LDFLAGS=\"${LD}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_CC" ]; then
+			echo "export ${PKG}_LIBS_CC=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_CC \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_CXX" ]; then
+			echo "export ${PKG}_LIBS_CXX=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_CXX \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_F77" ]; then
+			echo "export ${PKG}_LIBS_F77=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_F77 \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_FC" ]; then
+			echo "export ${PKG}_LIBS_FC=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_FC \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_MPICC" ]; then
+			echo "export ${PKG}_LIBS_MPICC=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_MPICC \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_MPICXX" ]; then
+			echo "export ${PKG}_LIBS_MPICXX=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_MPICXX \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_MPIF77" ]; then
+			echo "export ${PKG}_LIBS_MPIF77=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_MPIF77 \"${vals}\"" >> ${PKG}.module
+		elif [ "x${var}" = "xlib_MPIFC" ]; then
+			echo "export ${PKG}_LIBS_MPIFC=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_LIBS_MPIFC \"${vals}\"" >> ${PKG}.module
 		else
-			if [ "x${var}" = "xman" ]; then
-				for val in ${vals}; do
-					echo "export MANPATH=${PREFIX}/${PKG}-${VER}/${val}:\$MANPATH" >> ${PKG}.sh
-					echo "prepend-path MANPATH ${PREFIX}/${PKG}-${VER}/${val}" >> ${PKG}.module
-				done
-			else
-				if [ "x${var}" = "xheader" ]; then
-					OUT=""
-					for val in ${vals}; do
-						OUT="${OUT}-I${PREFIX}/${PKG}-${VER}/${val} "
-					done
-					echo "export ${PKG}_CPPFLAGS=\"${OUT}\"" >> ${PKG}.sh
-					echo "setenv ${PKG}_CPPFLAGS \"${OUT}\"" >> ${PKG}.module
-				else
-					if [ "x${var}" = "xld" ]; then
-						OUT=""
-						LD=""
-						for val in ${vals}; do
-							OUT="${OUT}${PREFIX}/${PKG}-${VER}/${val}:"
-							LD="${LD}-L${PREFIX}/${PKG}-${VER}/${val} "
-							echo "prepend-path LD_LIBRARY_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
-						done
-						echo "export LD_LIBRARY_PATH=${OUT}\$LD_LIBRARY_PATH" >> ${PKG}.sh
-						echo "export ${PKG}_LDFLAGS=\"${LD}\"" >> ${PKG}.sh
-						echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
-					else
-						if [ "x${var}" = "xlib_CC" ]; then
-							echo "export ${PKG}_LIBS_CC=\"${vals}\"" >> ${PKG}.sh
-							echo "setenv ${PKG}_LIBS_CC \"${vals}\"" >> ${PKG}.module
-						else
-							if [ "x${var}" = "xlib_CXX" ]; then
-								echo "export ${PKG}_LIBS_CXX=\"${vals}\"" >> ${PKG}.sh
-								echo "setenv ${PKG}_LIBS_CXX \"${vals}\"" >> ${PKG}.module
-							else
-								if [ "x${var}" = "xlib_F77" ]; then
-									echo "export ${PKG}_LIBS_F77=\"${vals}\"" >> ${PKG}.sh
-									echo "setenv ${PKG}_LIBS_F77 \"${vals}\"" >> ${PKG}.module
-								else
-									if [ "x${var}" = "xlib_FC" ]; then
-										echo "export ${PKG}_LIBS_FC=\"${vals}\"" >> ${PKG}.sh
-										echo "setenv ${PKG}_LIBS_FC \"${vals}\"" >> ${PKG}.module
-									else
-										echo "export ${PKG}_${var}=\"${vals}\"" >> ${PKG}.sh
-										echo "setenv ${PKG}_${var} \"${vals}\"" >> ${PKG}.module
-									fi
-								fi
-							fi
-						fi
-					fi
-				fi
-			fi
+			echo "export ${PKG}_${var}=\"${vals}\"" >> ${PKG}.sh
+			echo "setenv ${PKG}_${var} \"${vals}\"" >> ${PKG}.module
 		fi
 	fi
 	return 0

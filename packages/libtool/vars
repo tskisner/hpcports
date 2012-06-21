@@ -1,2 +1,4 @@
 path = bin
-man = man
+man = share/man
+header = include
+ld = lib

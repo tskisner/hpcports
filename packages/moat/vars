@@ -1,5 +1,5 @@
 path = bin
-man =
 header = include
 ld = lib
 lib_CXX = -lmoat
+lib_MPICXX = -lmoat-mpi

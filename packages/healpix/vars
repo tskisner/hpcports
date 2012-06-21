@@ -6,3 +6,4 @@ data = share/healpix
 lib_CC = -lchealpix
 lib_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
 lib_FC = -lhealpix
+lib_MPIFC = -lhealpix-mpi

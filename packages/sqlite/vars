@@ -1,8 +1,8 @@
 path = bin
-man = man
+man = share/man
 header = include
 ld = lib
-CC_lib = -lexpat
-CXX_lib = -lexpat
-F77_lib = -lexpat
-FC_lib = -lexpat
+lib_CC = -lsqlite3
+lib_CXX = -lsqlite3
+lib_F77 = -lsqlite3
+lib_FC = -lsqlite3
