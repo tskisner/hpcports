@@ -55,7 +55,10 @@ fetch : prefetch
 			fi; \
 		fi; \
 	elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
-		if [ ! -e $(POOL)/$(PKG_SRCDIR) ]; then \
+		if [ ! -e $(POOL)/$(PKG_NAME).git_$(PKG_VERSION) ]; then \
+			echo "$(HPCP)  $(PKG_NAME):  Wiping old git versions"; \
+			rm -rf $(POOL)/$(PKG_SRCDIR) $(POOL)/$(PKG_NAME).fetchlog; \
+			rm -f $(POOL)/$(PKG_NAME).git_*; \
 			echo "$(HPCP)  $(PKG_NAME):  Cloning git repo"; \
 			cd $(POOL); \
 			$(PKG_GIT_CLONE) > $(PKG_NAME).fetchlog 2>&1; \
@@ -64,8 +67,9 @@ fetch : prefetch
 			$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME).fetchlog 2>&1; \
 			chgrp -R $(INST_GRP) $(POOL)/$(PKG_SRCDIR); \
 			chmod -R $(INST_PERM) $(POOL)/$(PKG_SRCDIR); \
+			touch $(POOL)/$(PKG_NAME).git_$(PKG_VERSION); \
 		fi; \
-	fi;
+	fi
 
 
 extract : fetch
@@ -85,7 +89,7 @@ extract : fetch
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xnone" ]; then \
 			if [ -e ../$(PKG_SRCDIR) ]; then \
-				cp -a ../$(PKG_SRCDIR) ./ && \
+				cp -a ../$(PKG_SRCDIR) ./; \
 			fi; \
 		fi; \
 		if [ ! -e $(PKG_SRCDIR) ]; then \

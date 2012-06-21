@@ -6,7 +6,7 @@
 
 # software download location
 
-POOL = /project/projectdirs/cmb/modules/carver/hpcports_pool
+POOL = /project/projectdirs/cmb/modules/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
