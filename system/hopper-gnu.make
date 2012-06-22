@@ -50,7 +50,8 @@ OMPFLAGS = -fopenmp
 
 # Fortran mixing
 
-FCLIBS = -lgfortran
+FLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
+FCLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
 # vendor math libraries
