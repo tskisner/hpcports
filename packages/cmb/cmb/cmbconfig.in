@@ -1,12 +1,12 @@
 #!@SHELL@
 
-comp=off
-cflags=off
-omp=off
-incl=off
-lflags=off
-libs=off
-mix=off
+comp=false
+cflags=false
+omp=false
+incl=false
+lflags=false
+libs=false
+mix=false
 
 lang=C
 
@@ -21,21 +21,112 @@ usage () {
     echo "          --libs (print libraries)"
     echo "          --lang < C | CXX | F77 | F90 | MPIC | MPICXX | MPIF77 | MPIF90 >"
     echo "          --mix (FORCE fortran language mixing flags)"
+    echo "          [pkg] [pkg] ..."
+    echo "          Where packages are one or more of:  "
+    echo "            cfitsio, fftw, healpix, healpix_mpi, chealpix, cxxhealpix,"
+    echo "            moat, moat_mpi, toast, toast_mpi"
     echo ""
 }
 
+docfitsio=false
+dofftw=false
+dochealpix=false
+docxxhealpix=false
+dohealpix=false
+dohealpix_mpi=false
+domoat=false
+domoat_mpi=false
+dotoast=false
+dotoast_mpi=false
+
 while [ $# -gt 0 ]; do
 	case "$1" in
-		-v)  vflag=on;;
-		-f)  filename="$2"; shift;;
+		--comp) comp=true;;
+		--cflags) cflags=true;;
+		--omp) omp=true;;
+		--incl) incl=true;;
+		--lflags) lflags=true;;
+		--libs) libs=true;;
+		--mix) mix=true;;
+		--lang) lang="$2"; shift;;
 		--)	shift; break;;
-		-*) echo >&2 \
-	    "usage: $0 [-v] [-f file] [file ...]"
-	    exit 1;;
-		*)  break;;	# terminate while loop
+		-*) usage(); exit 1;;
+		cfitsio) docfitsio=true;;
+		fftw3) dofftw=true;;
+		healpix) dohealpix=true;;
+		healpix_mpi) dohealpix_mpi=true;;
+		cxxhealpix) docxxhealpix=true;;
+		chealpix) dochealpix=true;;
+		moat) domoat=true;;
+		moat_mpi) domoat_mpi=true;;
+		toast) dotoast=true;;
+		toast_mpi) dotoast_mpi=true;;
+		*) break;;	# terminate while loop
 	esac
 	shift
 done
 
-# all command line switches are processed,
-# "$@" contains all packages
+# set up dependencies
+
+if [ dotoast_mpi = true ]; then
+	dotoast=true
+	domoat_mpi=true
+fi
+
+if [ domoat_mpi = true ]; then
+	domoat=true
+fi
+
+if [ dotoast = true ]; then
+	domoat=true
+	docfitsio=true
+fi
+
+if [ domoat = true ]; then
+	dofftw=true
+fi
+
+if [ dohealpix_mpi = true ]; then
+	dohealpix=true
+fi
+
+if [ dohealpix = true ]; then
+	docfitsio=true
+fi
+
+if [ dochealpix = true ]; then
+	docfitsio=true
+fi
+
+if [ docxxhealpix = true ]; then
+	docfitsio=true
+fi
+
+total=""
+
+if [ docomp = on ]; then
+	if [ lang = "C" ]; then
+
+	elif [ lang = "CXX" ]; then
+
+if ($lang eq "C") {
+	$total = "@CC@ ";
+    } elsif ($lang eq "CXX") {
+	$total = "@CXX@ ";
+    } elsif ($lang eq "F77") {
+	$total = "@F77@ ";
+    } elsif ($lang eq "F90") {
+	$total = "@F90@ ";
+    } elsif ($lang eq "MPIC") {
+	$total = "@MPCC@ ";
+    } elsif ($lang eq "MPICXX") {
+	$total = "@MPCXX@ ";
+    } elsif ($lang eq "MPIF77") {
+	$total = "@MPF77@ ";
+    } elsif ($lang eq "MPIF90") {
+	$total = "@MPF90@ ";
+    } else {
+	print "\nThe \"--lang\" option must specify one of the allowed keywords.\n";
+	useage;
+
+
