@@ -82,22 +82,24 @@ extract : fetch
 			if [ -e $(POOL)/$(PKG_TAR) ]; then \
 				$(PKG_TAR_EXTRACT) $(POOL)/$(PKG_TAR) > log.extract 2>&1; \
 			fi; \
+			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 			if [ -e $(POOL)/$(PKG_SRCDIR) ]; then \
 				cp -a $(POOL)/$(PKG_SRCDIR) ./ && \
 				rm -rf $(PKG_SRCDIR)/.git; \
 			fi; \
+			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 		elif [ "x$(PKG_FORMAT)" = "xnone" ]; then \
 			if [ -e ../$(PKG_SRCDIR) ]; then \
 				cp -a ../$(PKG_SRCDIR) ./; \
 			fi; \
+			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) HPCP $(STAGE) $(PREFIX); \
 		fi; \
 		if [ ! -e $(PKG_SRCDIR) ]; then \
 			echo "$(HPCP)    FAILED:  extracted source $(PKG_SRCDIR) was not created."; \
 		else \
 			touch state.extract; \
 		fi; \
-		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 	fi
 
 
@@ -158,7 +160,7 @@ install :
 				$(MAKE) install > ../log.install 2>&1 \
 				chgrp -R $(INST_GRP) $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 				chmod -R $(INST_PERM) $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-				cp ../$(PKG_NAME).sh $(PREFIX)/env/; \
+				cp ../$(PKG_NAME)-$(PKG_VERSION).sh $(PREFIX)/env/; \
 				mkdir -p $(PREFIX)/env/modulefiles/$(PKG_NAME); \
 				cp ../$(PKG_NAME).module $(PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
 				if [ -e $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version ]; then \
@@ -188,7 +190,7 @@ uninstall :
 	@echo "$(HPCP)  $(PKG_NAME):  Uninstalling"; \
 	rm -f $(STAGE)/log.install; \
 	rm -rf $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-	rm -f $(PREFIX)/env/$(PKG_NAME).sh; \
+	rm -f $(PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
 	rm -f $(PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
 	rm -f $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
 	if [ -e $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion ]; then \

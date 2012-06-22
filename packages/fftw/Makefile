@@ -4,18 +4,20 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = fftw
 
-PKG_VERSION = 3.3.2
-
 PKG_FORMAT = tar
-PKG_TAR = fftw-3.3.2.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://fftw.org/fftw-3.3.2.tar.gz
+PKG_TAR = fftw-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://fftw.org/fftw-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = fftw-3.3.2
+PKG_SRCDIR = fftw-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 

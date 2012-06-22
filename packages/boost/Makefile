@@ -4,11 +4,13 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = boost
-
-PKG_VERSION = 1.49.0
 
 PKG_FORMAT = tar
 PKG_TAR = boost_1_49_0.tar.bz2

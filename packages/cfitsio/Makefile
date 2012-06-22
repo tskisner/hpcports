@@ -4,11 +4,13 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = cfitsio
-
-PKG_VERSION = 3.30
 
 PKG_FORMAT = tar
 PKG_TAR = cfitsio3300.tar.gz

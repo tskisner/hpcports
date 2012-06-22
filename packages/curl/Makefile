@@ -4,18 +4,20 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = curl
 
-PKG_VERSION = 7.26.0
-
 PKG_FORMAT = tar
-PKG_TAR = curl-7.26.0.tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://curl.haxx.se/download/curl-7.26.0.tar.bz2
+PKG_TAR = curl-$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://curl.haxx.se/download/curl-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = curl-7.26.0
+PKG_SRCDIR = curl-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 

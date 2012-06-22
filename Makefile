@@ -23,11 +23,9 @@ update :
 
 
 packages/pkg_list.make : packages/up2date
-packages/pkg_deps.make : packages/up2date
 packages/pkg_rules.make : packages/up2date
 
 include packages/pkg_list.make
-include packages/pkg_deps.make
 include packages/pkg_rules.make
 
 

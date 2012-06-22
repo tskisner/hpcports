@@ -4,11 +4,13 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = toast
-
-PKG_VERSION = 8b1e811
 
 PKG_FORMAT = git
 PKG_GIT_CLONE = $(GIT) clone git@github.com:tskisner/TOAST.git

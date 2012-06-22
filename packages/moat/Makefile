@@ -4,11 +4,13 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = moat
-
-PKG_VERSION = 2044ac8
 
 PKG_FORMAT = git
 PKG_GIT_CLONE = $(GIT) clone git@github.com:tskisner/MOAT.git

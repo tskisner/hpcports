@@ -4,11 +4,13 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = sqlite
-
-PKG_VERSION = 3.7.13
 
 PKG_FORMAT = tar
 PKG_TAR = sqlite-autoconf-3071300.tar.gz

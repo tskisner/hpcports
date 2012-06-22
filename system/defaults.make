@@ -22,7 +22,7 @@ ifndef WGET
 endif
 
 ifndef SHELL
-	export SHELL = /bin/sh
+	export SHELL = /bin/bash
 endif
 
 ifndef PATCH

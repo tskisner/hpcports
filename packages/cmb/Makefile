@@ -4,11 +4,13 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell git rev-parse --short HEAD)
+
 # Package parameters
 
 PKG_NAME = cmb
-
-PKG_VERSION := $(shell date +%Y%m%d)
 
 PKG_FORMAT = none
 
@@ -27,7 +29,7 @@ pkg-prefetch :
 
 pkg-configure :
 	@echo "" > /dev/null
-	
+
 
 pkg-preinstall :
 	@echo "" > /dev/null

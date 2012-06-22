@@ -4,18 +4,20 @@
 include ../../system/$(TARGET).make
 include ../../system/defaults.make
 
+# Package version
+
+PKG_VERSION := $(shell head -n 1 version)
+
 # Package parameters
 
 PKG_NAME = healpix
 
-PKG_VERSION = 2.15a
-
 PKG_FORMAT = tar
-PKG_TAR = healpix-2.15a.tar.bz2
+PKG_TAR = healpix-$(PKG_VERSION).tar.bz2
 PKG_TAR_FETCH = 
 PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = healpix-2.15a
+PKG_SRCDIR = healpix-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
