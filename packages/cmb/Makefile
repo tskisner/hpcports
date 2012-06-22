@@ -6,7 +6,7 @@ include ../../system/defaults.make
 
 # Package version
 
-PKG_VERSION := $(shell git rev-parse --short HEAD)
+PKG_VERSION := $(shell date +%Y%m%d)
 
 # Package parameters
 
@@ -24,7 +24,10 @@ PKG_PATCHES =
 # rules for this package
 
 pkg-prefetch :
-	@echo "" > /dev/null
+	@mkdir -p $(STAGE); \
+	echo "PREFIX = $(PREFIX)" > $(STAGE)/opts.make; \
+	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
+	echo "VERSION = $(PKG_VERSION)" >> $(STAGE)/opts.make
 
 
 pkg-configure :

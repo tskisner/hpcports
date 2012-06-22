@@ -82,24 +82,22 @@ extract : fetch
 			if [ -e $(POOL)/$(PKG_TAR) ]; then \
 				$(PKG_TAR_EXTRACT) $(POOL)/$(PKG_TAR) > log.extract 2>&1; \
 			fi; \
-			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 			if [ -e $(POOL)/$(PKG_SRCDIR) ]; then \
 				cp -a $(POOL)/$(PKG_SRCDIR) ./ && \
 				rm -rf $(PKG_SRCDIR)/.git; \
 			fi; \
-			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 		elif [ "x$(PKG_FORMAT)" = "xnone" ]; then \
 			if [ -e ../$(PKG_SRCDIR) ]; then \
 				cp -a ../$(PKG_SRCDIR) ./; \
 			fi; \
-			$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) HPCP $(STAGE) $(PREFIX); \
 		fi; \
 		if [ ! -e $(PKG_SRCDIR) ]; then \
 			echo "$(HPCP)    FAILED:  extracted source $(PKG_SRCDIR) was not created."; \
 		else \
 			touch state.extract; \
 		fi; \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
 	fi
 
 

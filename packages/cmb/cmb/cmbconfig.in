@@ -104,29 +104,182 @@ fi
 
 total=""
 
-if [ docomp = on ]; then
+if [ comp = true ]; then
 	if [ lang = "C" ]; then
-
+		total="${total}${HPCP_CC} "
 	elif [ lang = "CXX" ]; then
+		total="${total}${HPCP_CXX} "
+	elif [ lang = "F77" ]; then
+		total="${total}${HPCP_F77} "
+	elif [ lang = "F90" ]; then
+		total="${total}${HPCP_FC} "
+	elif [ lang = "MPIC" ]; then
+		total="${total}${HPCP_MPICC} "
+	elif [ lang = "MPICXX" ]; then
+		total="${total}${HPCP_MPICXX} "
+	elif [ lang = "MPIF77" ]; then
+		total="${total}${HPCP_MPIF77} "
+	elif [ lang = "MPIF90" ]; then
+		total="${total}${HPCP_MPIFC} "
+	else
+		echo "invalid language"
+		exit 1
+	fi
+fi
 
-if ($lang eq "C") {
-	$total = "@CC@ ";
-    } elsif ($lang eq "CXX") {
-	$total = "@CXX@ ";
-    } elsif ($lang eq "F77") {
-	$total = "@F77@ ";
-    } elsif ($lang eq "F90") {
-	$total = "@F90@ ";
-    } elsif ($lang eq "MPIC") {
-	$total = "@MPCC@ ";
-    } elsif ($lang eq "MPICXX") {
-	$total = "@MPCXX@ ";
-    } elsif ($lang eq "MPIF77") {
-	$total = "@MPF77@ ";
-    } elsif ($lang eq "MPIF90") {
-	$total = "@MPF90@ ";
-    } else {
-	print "\nThe \"--lang\" option must specify one of the allowed keywords.\n";
-	useage;
+if [ cflags = true ]; then
+	if [ lang = "C" ]; then
+		total="${total}${HPCP_CFLAGS} "
+	elif [ lang = "CXX" ]; then
+		total="${total}${HPCP_CXXFLAGS} "
+	elif [ lang = "F77" ]; then
+		total="${total}${HPCP_FFLAGS} "
+	elif [ lang = "F90" ]; then
+		total="${total}${HPCP_FCFLAGS} "
+	elif [ lang = "MPIC" ]; then
+		total="${total}${HPCP_CFLAGS} "
+	elif [ lang = "MPICXX" ]; then
+		total="${total}${HPCP_CXXFLAGS} "
+	elif [ lang = "MPIF77" ]; then
+		total="${total}${HPCP_FFLAGS} "
+	elif [ lang = "MPIF90" ]; then
+		total="${total}${HPCP_FCFLAGS} "
+	else
+		echo "invalid language"
+		exit 1
+	fi
+fi
 
+inc=""
+
+if [ incl = true ]; then
+	if [ dotoast = true ]; then
+		inc="${toast_CPPFLAGS} ${inc}"
+	fi
+	if [ domoat = true ]; then
+		inc="${moat_CPPFLAGS} ${inc}"
+	fi
+	if [ dohealpix = true ]; then
+		inc="${healpix_CPPFLAGS} ${inc}"
+	fi
+	if [ dochealpix = true ]; then
+		inc="${healpix_CPPFLAGS} ${inc}"
+	fi
+	if [ docxxhealpix = true ]; then
+		inc="${healpix_CPPFLAGS} ${inc}"
+	fi
+	if [ dofftw = true ]; then
+		inc="${fftw_CPPFLAGS} ${inc}"
+	fi
+	if [ docfitsio = true ]; then
+		inc="${cfitsio_CPPFLAGS} ${inc}"
+	fi
+fi
+
+total="${total}${inc} "
+
+ld=""
+
+if [ lflags = true ]; then
+	if [ dotoast = true ]; then
+		ld="${toast_LDFLAGS} ${ld}"
+	fi
+	if [ domoat = true ]; then
+		ld="${moat_LDFLAGS} ${ld}"
+	fi
+	if [ dohealpix = true ]; then
+		ld="${healpix_LDFLAGS} ${ld}"
+	fi
+	if [ dochealpix = true ]; then
+		ld="${healpix_LDFLAGS} ${ld}"
+	fi
+	if [ docxxhealpix = true ]; then
+		ld="${healpix_LDFLAGS} ${ld}"
+	fi
+	if [ dofftw = true ]; then
+		ld="${fftw_LDFLAGS} ${ld}"
+	fi
+	if [ docfitsio = true ]; then
+		ld="${cfitsio_LDFLAGS} ${ld}"
+	fi
+fi
+
+total="${total}${ld} "
+
+link=""
+
+if [ libs = true ]; then
+	if [ dotoast_mpi = true ]; then
+		if [ lang = "MPIC" ]; then
+			link="${link}${toast_LIBS_MPICC} "
+		elif [ lang = "MPICXX" ]; then
+			link="${link}${toast_LIBS_MPICXX} "
+		elif [ lang = "MPIF90" ]; then
+			link="${link}${toast_LIBS_MPIFC} "
+			mix=true
+		fi
+	fi
+	if [ dotoast = true ]; then
+		if [ lang = "C" ]; then
+			link="${link}${toast_LIBS_CC} "
+		elif [ lang = "CXX" ]; then
+			link="${link}${toast_LIBS_CXX} "
+		elif [ lang = "F90" ]; then
+			link="${link}${toast_LIBS_FC} "
+			mix=true
+		fi
+	fi
+	if [ domoat_mpi = true ]; then
+		link="${link}${moat_LIBS_MPICXX} "
+	fi
+	if [ domoat = true ]; then
+		link="${link}${moat_LIBS_CXX} "
+	fi
+	if [ dohealpix_mpi = true ]; then
+		link="${link}${healpix_LIBS_MPIFC} "
+	fi
+	if [ dohealpix = true ]; then
+		link="${link}${healpix_LIBS_FC} "
+		if [ lang = "C" ]; then
+			mix=true
+		elif [ lang = "CXX" ]; then
+			mix=true
+		fi
+	fi
+	if [ dochealpix = true ]; then
+		link="${link}${healpix_LIBS_CC} "
+	fi
+	if [ docxxhealpix = true ]; then
+		link="${link}${healpix_LIBS_CXX} "
+	fi
+	if [ dofftw = true ]; then
+		link="${link}${fftw_LIBS_CC} "
+	fi
+	if [ docfitsio = true ]; then
+		link="${link}${cfitsio_LIBS_CC} "
+	fi
+fi
+
+total="${total}${link} "
+
+
+if [ mix = true ]; then
+	if [ lang = "C" ]; then
+		total="${total}${HPCP_FCLIBS} ${HPCP_FLIBS} "
+	elif [ lang = "CXX" ]; then
+		total="${total}${HPCP_FCLIBS} ${HPCP_FLIBS} "
+	elif [ lang = "MPIC" ]; then
+		total="${total}${HPCP_MPIFCLIBS} ${HPCP_MPIFLIBS} ${HPCP_FCLIBS} ${HPCP_FLIBS} "
+	elif [ lang = "MPICXX" ]; then
+		total="${total}${HPCP_MPIFCLIBS} ${HPCP_MPIFLIBS} ${HPCP_FCLIBS} ${HPCP_FLIBS} "
+	fi
+fi
+
+if [ omp = true ]; then
+	total="${total}${HPCP_OMPFLAGS} "
+fi
+
+echo ${total}
+
+exit 0
 

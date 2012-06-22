@@ -1,6 +1,9 @@
+include ../opts.make
+
 
 cmbconfig : cmbconfig.in
-	@./gen_cmbconfig.sh
+	@cp cmbconfig.in cmbconfig; \
+	chmod +x cmbconfig
 
 
 clean :
@@ -8,6 +11,6 @@ clean :
 
 
 install : cmbconfig
-	@mkdir -p $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin; \
-	cp -a cmbconfig $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin/
+	@mkdir -p $(PREFIX)/$(NAME)-$(VERSION)/bin; \
+	cp cmbconfig $(PREFIX)/$(NAME)-$(VERSION)/bin/
 
