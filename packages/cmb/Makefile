@@ -25,7 +25,8 @@ PKG_PATCHES =
 
 pkg-prefetch :
 	@mkdir -p $(STAGE); \
-	echo "PREFIX = $(PREFIX)" > $(STAGE)/opts.make; \
+	echo "SHELL = $(SHELL)" > $(STAGE)/opts.make; \
+	echo "PREFIX = $(PREFIX)" >> $(STAGE)/opts.make; \
 	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
 	echo "VERSION = $(PKG_VERSION)" >> $(STAGE)/opts.make
 

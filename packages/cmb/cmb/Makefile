@@ -2,8 +2,7 @@ include ../opts.make
 
 
 cmbconfig : cmbconfig.in
-	@cp cmbconfig.in cmbconfig; \
-	chmod +x cmbconfig
+	@./gen_cmbconfig.sh $(SHELL)
 
 
 clean :
