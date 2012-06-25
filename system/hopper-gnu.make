@@ -71,5 +71,6 @@ AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/g
 
 # package overrides
 
-
+fftw_OVERRIDE = TRUE
+fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 
