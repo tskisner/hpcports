@@ -63,7 +63,7 @@ APPLE_LIBS_FC =
 
 # package overrides
 
-#boost_OVERRIDE = TRUE
-#boost_PREFIX = /ports
-
+boost_OVERRIDE = TRUE
+boost_PREFIX = /ports
+boost_VERSION = 1.49-macports
 

@@ -2,6 +2,8 @@
 
 STAGE = staging_$(HPCP_TARGET)
 
+PKG_OVERRIDE = $($(PKG_NAME)_OVERRIDE)
+
 ifndef PKG_TAR_FETCH
 	PKG_TAR_FETCH = echo "NA"
 endif
@@ -20,22 +22,26 @@ endif
 
 
 status :
-	@if [ -d $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
-		printf "%s%12s : (installed)\n" "$(HPCP)" "$(PKG_NAME)"; \
-	elif [ -d $(STAGE) ]; then \
-		if [ -e $(STAGE)/state.build ]; then \
-			printf "%s%12s : (built)\n" "$(HPCP)" "$(PKG_NAME)"; \
-		elif [ -e $(STAGE)/state.configure ]; then \
-			printf "%s%12s : (configured)\n" "$(HPCP)" "$(PKG_NAME)"; \
-		elif [ -e $(STAGE)/state.patch ]; then \
-			printf "%s%12s : (patched)\n" "$(HPCP)" "$(PKG_NAME)"; \
-		elif [ -e $(STAGE)/state.extract ]; then \
-			printf "%s%12s : (extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
+	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
+		if [ -d $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
+			printf "%s%12s : (installed)\n" "$(HPCP)" "$(PKG_NAME)"; \
+		elif [ -d $(STAGE) ]; then \
+			if [ -e $(STAGE)/state.build ]; then \
+				printf "%s%12s : (built)\n" "$(HPCP)" "$(PKG_NAME)"; \
+			elif [ -e $(STAGE)/state.configure ]; then \
+				printf "%s%12s : (configured)\n" "$(HPCP)" "$(PKG_NAME)"; \
+			elif [ -e $(STAGE)/state.patch ]; then \
+				printf "%s%12s : (patched)\n" "$(HPCP)" "$(PKG_NAME)"; \
+			elif [ -e $(STAGE)/state.extract ]; then \
+				printf "%s%12s : (extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
+			else \
+				printf "%s%12s : (not extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
+			fi; \
 		else \
 			printf "%s%12s : (not extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
 		fi; \
 	else \
-		printf "%s%12s : (not extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
+		printf "%s%12s : (Overridden)\n" "$(HPCP)" "$(PKG_NAME)"; \
 	fi
 
 
@@ -97,7 +103,7 @@ extract : fetch
 		else \
 			touch state.extract; \
 		fi; \
-		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(HPCP_PREFIX); \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET); \
 	fi
 
 
@@ -147,7 +153,7 @@ preinstall : build
 
 
 install :
-	@if [ -e $(HPCP_HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
+	@if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
 		echo "$(HPCP)  $(PKG_NAME):  Already installed"; \
 	else \
 		$(MAKE) preinstall; \

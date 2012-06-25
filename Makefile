@@ -56,35 +56,16 @@ install-common :
 
 
 fetch : packages/up2date
-	@for pkg in $(PKGS); do \
-		cd packages/$${pkg}; \
-		$(MAKE) fetch; \
-		cd ../..; \
-	done
 
 
 uninstall : packages/up2date
-	@for pkg in $(PKGS); do \
-		cd packages/$${pkg}; \
-		$(MAKE) uninstall; \
-		cd ../..; \
-	done
 
 
 clean : packages/up2date
-	@for pkg in $(PKGS); do \
-		cd packages/$${pkg}; \
-		$(MAKE) clean; \
-		cd ../..; \
-	done
+	rm -rf packages/overrides_$(HPCP_TARGET)
 
 
 purge : packages/up2date
-	@for pkg in $(PKGS); do \
-		cd packages/$${pkg}; \
-		$(MAKE) purge; \
-		cd ../..; \
-	done
 
 
 dist-clean : purge
@@ -94,7 +75,5 @@ dist-clean : purge
 
 dist : dist-clean
 	@echo "Making release tarball..."
-
-
 
 
