@@ -46,6 +46,7 @@ pkg-configure :
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
+	LDFLAGS="$(LDFLAGS)" \
 	./configure \
 	$${dyn} $${pyopt} \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \

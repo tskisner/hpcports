@@ -39,10 +39,10 @@ MPIFC = ftn
 
 # compile flags
 
-CFLAGS = -O3 -march=native
-CXXFLAGS = -O3 -march=native
-FFLAGS = -O3 -march=native
-FCFLAGS = -O3 -march=native
+CFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
+CXXFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
+FFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
+FCFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
 
 # OpenMP flags
 
@@ -54,15 +54,20 @@ FLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
 FCLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
+# Linking
+
+LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+
 # vendor math libraries
 
 VENDOR = amd
 AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
 AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
-AMD_LIBS_CC = -lacml_mp -lacml_mv
-AMD_LIBS_CXX = -lacml_mp -lacml_mv
-AMD_LIBS_F77 = -lacml_mp -lacml_mv
-AMD_LIBS_FC = -lacml_mp -lacml_mv
+AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # package overrides
 
