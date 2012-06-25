@@ -2,7 +2,7 @@
 # use this prefix (set from the command line) to update the 
 # live hpcports install used by many people
 #
-# export PREFIX=/project/projectdirs/cmb/modules/carver/hpcports_gnu
+# export HPCP_PREFIX=/project/projectdirs/cmb/modules/carver/hpcports_gnu
 
 # software download location
 

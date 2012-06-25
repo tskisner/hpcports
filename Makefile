@@ -1,11 +1,11 @@
 #@COPYRIGHT@
 
 
-ifndef TARGET
-TARGET = $(error TARGET undefined)UNDEFINED
+ifndef HPCP_TARGET
+HPCP_TARGET = $(error HPCP_TARGET undefined)UNDEFINED
 endif
 
-include system/$(TARGET).make
+include system/$(HPCP_TARGET).make
 include system/defaults.make
 
 
@@ -43,16 +43,16 @@ install : install-common $(PKGS)
 
 
 install-common :
-	@mkdir -p $(PREFIX)/env/modulefiles; \
+	@mkdir -p $(HPCP_PREFIX)/env/modulefiles; \
 	mkdir -p $(POOL); \
 	chgrp -R $(INST_GRP) $(POOL); \
 	chmod -R $(INST_PERM) $(POOL); \
-	chgrp -R $(INST_GRP) $(PREFIX); \
-	chgrp -R $(INST_GRP) $(PREFIX)/env; \
-	chgrp -R $(INST_GRP) $(PREFIX)/env/modulefiles; \
-	chmod -R $(INST_PERM) $(PREFIX); \
-	chmod -R $(INST_PERM) $(PREFIX)/env; \
-	chmod -R $(INST_PERM) $(PREFIX)/env/modulefiles
+	chgrp -R $(INST_GRP) $(HPCP_PREFIX); \
+	chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env; \
+	chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles; \
+	chmod -R $(INST_PERM) $(HPCP_PREFIX); \
+	chmod -R $(INST_PERM) $(HPCP_PREFIX)/env; \
+	chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles
 
 
 fetch : packages/up2date

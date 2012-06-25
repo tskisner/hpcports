@@ -1,6 +1,6 @@
 
-ifndef PREFIX
-  PREFIX := /data/software/hpcports
+ifndef HPCP_PREFIX
+  HPCP_PREFIX := /data/software/hpcports
 endif
 
 # software download location

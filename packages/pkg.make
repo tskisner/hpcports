@@ -1,6 +1,6 @@
 
 
-STAGE = staging_$(TARGET)
+STAGE = staging_$(HPCP_TARGET)
 
 ifndef PKG_TAR_FETCH
 	PKG_TAR_FETCH = echo "NA"
@@ -20,7 +20,7 @@ endif
 
 
 status :
-	@if [ -d $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
+	@if [ -d $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
 		printf "%s%12s : (installed)\n" "$(HPCP)" "$(PKG_NAME)"; \
 	elif [ -d $(STAGE) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \
@@ -97,7 +97,7 @@ extract : fetch
 		else \
 			touch state.extract; \
 		fi; \
-		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(PREFIX); \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(STAGE) $(HPCP_PREFIX); \
 	fi
 
 
@@ -147,7 +147,7 @@ preinstall : build
 
 
 install :
-	@if [ -e $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
+	@if [ -e $(HPCP_HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
 		echo "$(HPCP)  $(PKG_NAME):  Already installed"; \
 	else \
 		$(MAKE) preinstall; \
@@ -156,17 +156,17 @@ install :
 				echo "$(HPCP)  $(PKG_NAME):  Installing"; \
 				cd $(STAGE)/$(PKG_SRCDIR); \
 				$(MAKE) install > ../log.install 2>&1 \
-				chgrp -R $(INST_GRP) $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-				chmod -R $(INST_PERM) $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-				cp ../$(PKG_NAME)-$(PKG_VERSION).sh $(PREFIX)/env/; \
-				mkdir -p $(PREFIX)/env/modulefiles/$(PKG_NAME); \
-				cp ../$(PKG_NAME).module $(PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
-				if [ -e $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version ]; then \
-					cp $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion; \
+				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+				cp ../$(PKG_NAME)-$(PKG_VERSION).sh $(HPCP_PREFIX)/env/; \
+				mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
+				cp ../$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
+				if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version ]; then \
+					cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion; \
 				fi; \
-				cp ../$(PKG_NAME).version $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
-				chgrp -R $(INST_GRP) $(PREFIX)/env/modulefiles/$(PKG_NAME); \
-				chmod -R $(INST_PERM) $(PREFIX)/env/modulefiles/$(PKG_NAME); \
+				cp ../$(PKG_NAME).version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
+				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
+				chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
 			fi; \
 		fi; \
 	fi
@@ -187,14 +187,14 @@ clean :
 uninstall :
 	@echo "$(HPCP)  $(PKG_NAME):  Uninstalling"; \
 	rm -f $(STAGE)/log.install; \
-	rm -rf $(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-	rm -f $(PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
-	rm -f $(PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
-	rm -f $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
-	if [ -e $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion ]; then \
-		mv $(PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion $(PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
+	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
+	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
+	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
+	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion ]; then \
+		mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
 	else \
-		rm -rf $(PREFIX)/env/modulefiles/$(PKG_NAME); \
+		rm -rf $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
 	fi
 
 

@@ -1,7 +1,7 @@
 
 # System configuration
 
-include ../../system/$(TARGET).make
+include ../../system/$(HPCP_TARGET).make
 include ../../system/defaults.make
 
 # Package version
@@ -46,7 +46,7 @@ pkg-configure :
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
-	LDFLAGS="$(LDFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)"\
 	./configure \
 	$${dyn} $${pyopt} \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
@@ -55,7 +55,7 @@ pkg-configure :
 	--with-sqlite=$(sqlite_PREFIX) \
 	--with-cfitsio-cpp=$(cfitsio_CPPFLAGS) \
 	--with-cfitsio-libs="$(cfitsio_LDFLAGS)$(cfitsio_LIBS_CXX)" \
-	--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
 pkg-preinstall :

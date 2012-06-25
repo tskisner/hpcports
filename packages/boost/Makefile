@@ -1,7 +1,7 @@
 
 # System configuration
 
-include ../../system/$(TARGET).make
+include ../../system/$(HPCP_TARGET).make
 include ../../system/defaults.make
 
 # Package version
@@ -56,7 +56,7 @@ pkg-configure :
 		opts="$${opts}link=static runtime-link=static"; \
 	fi; \
 	echo "OPTS = $${opts}" > hpcp_opts.make; \
-	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 	
 pkg-preinstall :

@@ -1,7 +1,7 @@
 
 # System configuration
 
-include ../../system/$(TARGET).make
+include ../../system/$(HPCP_TARGET).make
 include ../../system/defaults.make
 
 # Package version
@@ -26,7 +26,7 @@ PKG_PATCHES =
 pkg-prefetch :
 	@mkdir -p $(STAGE); \
 	echo "SHELL = $(SHELL)" > $(STAGE)/opts.make; \
-	echo "PREFIX = $(PREFIX)" >> $(STAGE)/opts.make; \
+	echo "PREFIX = $(HPCP_PREFIX)" >> $(STAGE)/opts.make; \
 	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
 	echo "VERSION = $(PKG_VERSION)" >> $(STAGE)/opts.make
 

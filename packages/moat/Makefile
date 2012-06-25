@@ -1,7 +1,7 @@
 
 # System configuration
 
-include ../../system/$(TARGET).make
+include ../../system/$(HPCP_TARGET).make
 include ../../system/defaults.make
 
 # Package version
@@ -51,7 +51,7 @@ pkg-configure :
 		--with-accelerate-libs="$(APPLE_LDFLAGS) $(APPLE_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "xamd" ]; then \
 		CC="$(CC)" CFLAGS="$(CFLAGS)" \
@@ -68,7 +68,7 @@ pkg-configure :
 		--with-acml-libs="$(AMD_LDFLAGS) $(AMD_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
 		CC="$(CC)" CFLAGS="$(CFLAGS)" \
@@ -85,7 +85,7 @@ pkg-configure :
 		--with-mkl-libs="$(INTEL_LDFLAGS) $(INTEL_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "x" ]; then \
 		CC="$(CC)" CFLAGS="$(CFLAGS)" \
@@ -100,7 +100,7 @@ pkg-configure :
 		--with-fftw-cpp=$(fftw_CPPFLAGS) \
 		--with-papi-cpp=no \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi
 
 

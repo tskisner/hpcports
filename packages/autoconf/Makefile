@@ -1,7 +1,7 @@
 
 # System configuration
 
-include ../../system/$(TARGET).make
+include ../../system/$(HPCP_TARGET).make
 include ../../system/defaults.make
 
 # Package version
@@ -33,7 +33,7 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	./configure \
-	--prefix=$(PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
 pkg-preinstall :
