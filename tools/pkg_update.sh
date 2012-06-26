@@ -65,7 +65,7 @@ for pkg in ${pkgs}; do
 	echo "		if [ -e \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version ]; then \\" >> packages/pkg_rules.make
 	echo "			mv \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.oldversion; \\" >> packages/pkg_rules.make
 	echo "		fi; \\" >> packages/pkg_rules.make
-	echo "		cp ${pkg}.module \$(HPCP_PREFIX)/env/modulefiles/${pkg}/\$(${pkg}_VERSION)-hpcp; \\" >> packages/pkg_rules.make
+	echo "		cp ${pkg}.module \$(HPCP_PREFIX)/env/modulefiles/${pkg}/\$(${pkg}_VERSION)-\$(HPCP_ENV); \\" >> packages/pkg_rules.make
 	echo "		cp ${pkg}.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version; \\" >> packages/pkg_rules.make
 	echo "		chgrp -R \$(INST_GRP) \$(HPCP_PREFIX)/env/modulefiles/${pkg}; \\" >> packages/pkg_rules.make
 	echo "		chmod -R \$(INST_PERM) \$(HPCP_PREFIX)/env/modulefiles/${pkg}; \\" >> packages/pkg_rules.make
@@ -97,7 +97,7 @@ for pkg in ${pkgs}; do
 	echo "	else \\" >> packages/pkg_rules.make
 	echo "		echo \"\$(HPCP)  ${pkg}:  Uninstalling (module for overridden package)\"; \\" >> packages/pkg_rules.make
 	echo "		rm -f \$(HPCP_PREFIX)/env/${pkg}-\$(${pkg}_VERSION).sh; \\" >> packages/pkg_rules.make
-	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}/\$(${pkg}_VERSION)-hpcp; \\" >> packages/pkg_rules.make
+	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}/\$(${pkg}_VERSION)-\$(HPCP_ENV); \\" >> packages/pkg_rules.make
 	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version; \\" >> packages/pkg_rules.make
 	echo "		if [ -e \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.oldversion ]; then \\" >> packages/pkg_rules.make
 	echo "			mv \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.oldversion \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version; \\" >> packages/pkg_rules.make
