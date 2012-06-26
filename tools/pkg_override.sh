@@ -3,6 +3,7 @@
 
 PKG=$1
 VER=$2
+ENV=$3
 
 
 # File headers
@@ -67,6 +68,6 @@ echo '#%Module##################################################################
 ####' > ${PKG}.version
 echo "## version file for ${PKG}" >> ${PKG}.version
 echo '##' >> ${PKG}.version
-echo "set ModulesVersion      \"${VER}-hpcp\"" >> ${PKG}.version
+echo "set ModulesVersion      \"${VER}-${ENV}\"" >> ${PKG}.version
 
 

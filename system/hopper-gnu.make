@@ -4,6 +4,17 @@
 #
 # export HPCP_PREFIX=/project/projectdirs/cmb/modules/hopper/hpcports_gnu
 
+# OS environment version
+#
+# For hopper, bump the major version when upgrading compilers and bump
+# the minor version when upgrading MPI or vendor libs.  Document configuration
+# here:
+#
+# 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5
+#
+
+HPCP_ENV = 1.0
+
 # software download location
 
 HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool

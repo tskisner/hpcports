@@ -103,7 +103,7 @@ extract : fetch
 		else \
 			touch state.extract; \
 		fi; \
-		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET); \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET) $(HPCP_ENV); \
 	fi
 
 
@@ -166,7 +166,11 @@ install :
 				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 				cp ../$(PKG_NAME)-$(PKG_VERSION).sh $(HPCP_PREFIX)/env/; \
 				mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
-				cp ../$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
+				if [ $(PKG_NAME) = "hpcp" ]; then \
+					cp ../$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION); \
+				else \
+					cp ../$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-$(HPCP_ENV); \
+				fi; \
 				if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version ]; then \
 					cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion; \
 				fi; \
@@ -195,7 +199,11 @@ uninstall :
 	rm -f $(STAGE)/log.install; \
 	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
-	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-hpcp; \
+	if [ $(PKG_NAME) = "hpcp" ]; then \
+		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION); \
+	else \
+		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-$(HPCP_ENV); \
+	fi; \
 	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
 	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion ]; then \
 		mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \

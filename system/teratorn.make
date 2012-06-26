@@ -3,6 +3,10 @@ ifndef HPCP_PREFIX
   HPCP_PREFIX := /data/software/hpcports
 endif
 
+# OS environment version
+
+HPCP_ENV = gcc447
+
 # software download location
 
 HPCP_POOL = /data/software/hpcports_pool

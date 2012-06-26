@@ -4,6 +4,17 @@
 #
 # export HPCP_PREFIX=/project/projectdirs/cmb/modules/carver/hpcports_gnu
 
+# OS environment version
+#
+# For carver, bump the major version when upgrading compilers and bump
+# the minor version when upgrading MKL or MPI.  Document configuration
+# here:
+#
+# 1.0 : gcc-4.7.0, MKL 10.2, OpenMPI 1.4.5
+#
+
+HPCP_ENV = 1.0
+
 # software download location
 
 HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool

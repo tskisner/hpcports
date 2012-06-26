@@ -8,8 +8,7 @@ PKG=$1
 VER=$2
 PREFIX=$3
 TARGET=$4
-
-GITHASH=`git rev-parse --short HEAD`
+ENV=$5
 
 # File headers
 
@@ -150,8 +149,10 @@ for dep in ${deps}; do
 		echo "}" >> ${PKG}.module
 		echo "" >> ${PKG}.module
 	else
-		# FIXME!!!  This does not handle generated versions, like datestamp
-		depver=${GITHASH}
+		# FIXME!!!  This does not handle dependencies with generated versions.
+		# This means that all packages with generated versions that are not
+		# equal to $(HPCP_ENV) cannot be used as dependencies.
+		depver=${ENV}
 		if [ -e ../../${dep}/version ]; then
 			depver=`head -n 1 ../../${dep}/version`
 		fi
@@ -159,18 +160,25 @@ for dep in ${deps}; do
 		echo "if [ module-info mode load ] {" >> ${PKG}.module
 		echo "	if [ is-loaded ${dep} ] {" >> ${PKG}.module
 		echo "	} else {" >> ${PKG}.module
-		echo "	  module load ${dep}/${depver}-hpcp" >> ${PKG}.module
+		echo "	  module load ${dep}/${depver}-${ENV}" >> ${PKG}.module
 		echo "	}" >> ${PKG}.module
 		echo "}" >> ${PKG}.module
 		echo "" >> ${PKG}.module
 	fi
 done
 
-if [ ${PKG} != "hpcp" ]; then
+if [ ${PKG} = "hpcp" ]; then
+	if [ -e ../../../system/${TARGET}.module ]; then
+		echo "if [ module-info mode load ] {" >> ${PKG}.module
+		cat ../../../system/${TARGET}.module >> ${PKG}.module
+		echo "}" >> ${PKG}.module
+		echo "" >> ${PKG}.module
+	fi
+else
 	echo "if [ module-info mode load ] {" >> ${PKG}.module
 	echo "	if [ is-loaded hpcp ] {" >> ${PKG}.module
 	echo "	} else {" >> ${PKG}.module
-	echo "	  module load hpcp/${GITHASH}-hpcp" >> ${PKG}.module
+	echo "	  module load hpcp/${ENV}" >> ${PKG}.module
 	echo "	}" >> ${PKG}.module
 	echo "}" >> ${PKG}.module
 	echo "" >> ${PKG}.module
