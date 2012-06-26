@@ -10,7 +10,7 @@
 # the minor version when upgrading MPI or vendor libs.  Document configuration
 # here:
 #
-# 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5
+# 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5, fftw 3.3.0.0
 #
 
 HPCP_ENV = 1.0
@@ -84,7 +84,7 @@ AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/g
 
 fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
-fftw_VERSION = 3.2.2.1
+fftw_VERSION = 3.3.0.0
 
 blas_OVERRIDE = TRUE
 blas_PREFIX = $(ACML_DIR)/gfortran64_mp
