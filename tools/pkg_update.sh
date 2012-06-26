@@ -13,11 +13,15 @@ pkg_uninstall=""
 
 for entry in `ls packages`; do
 	if [ -d packages/${entry} ]; then
-		pkgs="${pkgs} ${entry}"
-		pkg_fetch="${pkg_fetch} ${entry}-fetch"
-		pkg_clean="${pkg_clean} ${entry}-clean"
-		pkg_purge="${pkg_purge} ${entry}-purge"
-		pkg_uninstall="${pkg_uninstall} ${entry}-uninstall"
+		ignore=`echo ${entry} | sed -e "s#overrides_.*#IGNORE#"`
+		echo ${ignore}
+		if [ "x${ignore}" != "xIGNORE" ]; then
+			pkgs="${pkgs} ${entry}"
+			pkg_fetch="${pkg_fetch} ${entry}-fetch"
+			pkg_clean="${pkg_clean} ${entry}-clean"
+			pkg_purge="${pkg_purge} ${entry}-purge"
+			pkg_uninstall="${pkg_uninstall} ${entry}-uninstall"
+		fi
 	fi
 done
 
@@ -79,6 +83,10 @@ for pkg in ${pkgs}; do
 	echo "${pkg}-clean :" >> packages/pkg_rules.make
 	echo "	@if [ \"x\$(${pkg}_OVERRIDE)\" != \"xTRUE\" ]; then \\" >> packages/pkg_rules.make
 	echo "		cd packages/${pkg}; \$(MAKE) clean; \\" >> packages/pkg_rules.make
+	echo "	else \\" >> packages/pkg_rules.make
+	echo "		rm -f packages/overrides_\$(HPCP_TARGET)/${pkg}; \\" >> packages/pkg_rules.make
+	echo "		rm -f packages/overrides_\$(HPCP_TARGET)/${pkg}.module; \\" >> packages/pkg_rules.make
+	echo "		rm -f packages/overrides_\$(HPCP_TARGET)/${pkg}.version; \\" >> packages/pkg_rules.make
 	echo "	fi" >> packages/pkg_rules.make
 
 
@@ -103,6 +111,10 @@ for pkg in ${pkgs}; do
 	echo "${pkg}-purge :" >> packages/pkg_rules.make
 	echo "	@if [ \"x\$(${pkg}_OVERRIDE)\" != \"xTRUE\" ]; then \\" >> packages/pkg_rules.make
 	echo "		cd packages/${pkg}; \$(MAKE) purge; \\" >> packages/pkg_rules.make
+	echo "	else \\" >> packages/pkg_rules.make
+	echo "		rm -f packages/overrides_\$(HPCP_TARGET)/${pkg}; \\" >> packages/pkg_rules.make
+	echo "		rm -f packages/overrides_\$(HPCP_TARGET)/${pkg}.module; \\" >> packages/pkg_rules.make
+	echo "		rm -f packages/overrides_\$(HPCP_TARGET)/${pkg}.version; \\" >> packages/pkg_rules.make
 	echo "	fi" >> packages/pkg_rules.make
 
 done

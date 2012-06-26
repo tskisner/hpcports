@@ -216,20 +216,20 @@ link=""
 if [ $libs = true ]; then
 	if [ $dotoast_mpi = true ]; then
 		if [ $lang = "MPIC" ]; then
-			link="${link}${toast_LIBS_MPICC} ${toast_LIBS_CC} ${expat_LIBS_CC} ${sqlite_LIBS_CC} "
+			link="${link}${toast_LIBS_MPICC} "
 		elif [ $lang = "MPICXX" ]; then
-			link="${link}${toast_LIBS_MPICXX} ${toast_LIBS_CXX} ${expat_LIBS_CC} ${sqlite_LIBS_CC} "
+			link="${link}${toast_LIBS_MPICXX} "
 		elif [ $lang = "MPIF90" ]; then
-			link="${link}${toast_LIBS_MPIFC} ${toast_LIBS_FC} ${expat_LIBS_CC} ${sqlite_LIBS_CC} "
+			link="${link}${toast_LIBS_MPIFC} "
 			mix=true
 		fi
 	fi
 	if [ $dotoast = true ]; then
-		if [ $lang = "C" ]; then
+		if [ $lang = "C" ] || [ $lang = "MPIC" ]; then
 			link="${link}${toast_LIBS_CC} ${expat_LIBS_CC} ${sqlite_LIBS_CC} "
-		elif [ $lang = "CXX" ]; then
+		elif [ $lang = "CXX" ] || [ $lang = "MPICXX" ]; then
 			link="${link}${toast_LIBS_CXX} ${expat_LIBS_CC} ${sqlite_LIBS_CC} "
-		elif [ $lang = "F90" ]; then
+		elif [ $lang = "F90" ] || [ $lang = "MPIF90" ]; then
 			link="${link}${toast_LIBS_FC} ${expat_LIBS_CC} ${sqlite_LIBS_CC} "
 			mix=true
 		fi
@@ -245,9 +245,9 @@ if [ $libs = true ]; then
 	fi
 	if [ $dohealpix = true ]; then
 		link="${link}${healpix_LIBS_FC} "
-		if [ $lang = "C" ]; then
+		if [ $lang = "C" ] || [ $lang = "MPIC" ]; then
 			mix=true
-		elif [ $lang = "CXX" ]; then
+		elif [ $lang = "CXX" ] || [ $lang = "MPICXX" ]; then
 			mix=true
 		fi
 	fi
