@@ -14,7 +14,7 @@ PKG_NAME = automake
 
 PKG_FORMAT = tar
 PKG_TAR = automake-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/automake/automake-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/automake/automake-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = automake-$(PKG_VERSION)

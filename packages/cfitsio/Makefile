@@ -14,7 +14,7 @@ PKG_NAME = cfitsio
 
 PKG_FORMAT = tar
 PKG_TAR = cfitsio3300.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3300.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3300.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = cfitsio

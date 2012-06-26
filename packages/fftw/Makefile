@@ -14,7 +14,7 @@ PKG_NAME = fftw
 
 PKG_FORMAT = tar
 PKG_TAR = fftw-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://fftw.org/fftw-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://fftw.org/fftw-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = fftw-$(PKG_VERSION)

@@ -14,7 +14,7 @@ PKG_NAME = autoconf
 
 PKG_FORMAT = tar
 PKG_TAR = autoconf-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/autoconf/autoconf-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/autoconf/autoconf-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = autoconf-$(PKG_VERSION)

@@ -14,7 +14,7 @@ PKG_NAME = libtool
 
 PKG_FORMAT = tar
 PKG_TAR = libtool-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/libtool/libtool-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/libtool/libtool-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = libtool-$(PKG_VERSION)

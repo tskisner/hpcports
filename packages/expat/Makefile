@@ -14,7 +14,7 @@ PKG_NAME = expat
 
 PKG_FORMAT = tar
 PKG_TAR = expat-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(POOL)/$(PKG_TAR) http://sourceforge.net/projects/expat/files/expat/$(PKG_VERSION)/expat-$(PKG_VERSION).tar.gz/download
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/expat/files/expat/$(PKG_VERSION)/expat-$(PKG_VERSION).tar.gz/download
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = expat-$(PKG_VERSION)

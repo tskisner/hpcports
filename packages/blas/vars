@@ -1,0 +1,5 @@
+ld = lib
+lib_CC = -lblas
+lib_CXX = -lblas
+lib_F77 = -lblas
+lib_FC = -lblas
