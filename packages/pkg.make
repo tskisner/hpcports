@@ -161,7 +161,7 @@ install :
 			if [ -e $(STAGE)/state.build ]; then \
 				echo "$(HPCP)  $(PKG_NAME):  Installing"; \
 				cd $(STAGE)/$(PKG_SRCDIR); \
-				$(MAKE) install > ../log.install 2>&1 \
+				$(MAKE) install > ../log.install 2>&1; \
 				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 				cp ../$(PKG_NAME)-$(PKG_VERSION).sh $(HPCP_PREFIX)/env/; \

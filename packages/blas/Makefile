@@ -36,7 +36,7 @@ pkg-configure :
 	echo "SHELL = $(SHELL)" >> make.inc; \
 	echo "FORTRAN = $(FC)" >> make.inc; \
 	echo "OPTS = $(FCFLAGS)" >> make.inc; \
-	echo "DRVOPTS = \$(OPTS)" >> make.inc; \
+	echo "DRVOPTS = $(FCFLAGS)" >> make.inc; \
 	echo "NOOPT = " >> make.inc; \
 	echo "LOADER = $(FC)" >> make.inc; \
 	echo "LOADOPTS = " >> make.inc; \
@@ -47,7 +47,7 @@ pkg-configure :
 	echo "" >> make.inc; \
 	echo "build : all" >> make.inc; \
 	echo "install : build" >> make.inc; \
-	echo "	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib \\" >> make.inc; \
+	echo "	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \\\\" >> make.inc; \
 	echo "	cp libblas.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/" >> make.inc; \
 	echo "" >> make.inc
 

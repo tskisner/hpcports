@@ -76,5 +76,12 @@ INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
 
 # package overrides
 
-
+blas_OVERRIDE = TRUE
+blas_PREFIX = $(MKL_HOME)
+blas_VERSION = 10.2
+blas_LDFLAGS = -L$(MKL_HOME)/lib/em64t
+blas_LIBS_CC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+blas_LIBS_CXX = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+blas_LIBS_F77 = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+blas_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
 
