@@ -46,7 +46,7 @@ pkg-configure :
 		MPICXX="$(MPICXX)" \
 		./configure \
 		$${dyn} \
-		--with-fftw-cpp=no \
+		--with-fftw-cpp=$(fftw_CPPFLAGS) \
 		--with-accelerate-cpp=$(APPLE_CPPFLAGS) \
 		--with-accelerate-libs="$(APPLE_LDFLAGS) $(APPLE_LIBS_CXX)" \
 		--with-papi-cpp=no \

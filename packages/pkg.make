@@ -51,29 +51,29 @@ prefetch :
 
 fetch : prefetch
 	@if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
-		if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
+		if [ ! -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Fetching tarball"; \
-			$(PKG_TAR_FETCH) > $(POOL)/$(PKG_NAME).fetchlog 2>&1; \
-			chgrp -R $(INST_GRP) $(POOL)/$(PKG_TAR); \
-			chmod -R $(INST_PERM) $(POOL)/$(PKG_TAR); \
-			if [ ! -e $(POOL)/$(PKG_TAR) ]; then \
-				echo "$(HPCP)    FAILED:  $(POOL)/$(PKG_TAR) was not fetched!"; \
+			$(PKG_TAR_FETCH) > $(HPCP_POOL)/$(PKG_NAME).fetchlog 2>&1; \
+			chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_TAR); \
+			chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_TAR); \
+			if [ ! -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
+				echo "$(HPCP)    FAILED:  $(HPCP_POOL)/$(PKG_TAR) was not fetched!"; \
 			fi; \
 		fi; \
 	elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
-		if [ ! -e $(POOL)/$(PKG_NAME).git_$(PKG_VERSION) ]; then \
+		if [ ! -e $(HPCP_POOL)/$(PKG_NAME).git_$(PKG_VERSION) ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Wiping old git versions"; \
-			rm -rf $(POOL)/$(PKG_SRCDIR) $(POOL)/$(PKG_NAME).fetchlog; \
-			rm -f $(POOL)/$(PKG_NAME).git_*; \
+			rm -rf $(HPCP_POOL)/$(PKG_SRCDIR) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
+			rm -f $(HPCP_POOL)/$(PKG_NAME).git_*; \
 			echo "$(HPCP)  $(PKG_NAME):  Cloning git repo"; \
-			cd $(POOL); \
+			cd $(HPCP_POOL); \
 			$(PKG_GIT_CLONE) > $(PKG_NAME).fetchlog 2>&1; \
 			echo "$(HPCP)  $(PKG_NAME):  Checking out git revision"; \
 			cd $(PKG_SRCDIR); \
 			$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME).fetchlog 2>&1; \
-			chgrp -R $(INST_GRP) $(POOL)/$(PKG_SRCDIR); \
-			chmod -R $(INST_PERM) $(POOL)/$(PKG_SRCDIR); \
-			touch $(POOL)/$(PKG_NAME).git_$(PKG_VERSION); \
+			chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_SRCDIR); \
+			chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_SRCDIR); \
+			touch $(HPCP_POOL)/$(PKG_NAME).git_$(PKG_VERSION); \
 		fi; \
 	fi
 
@@ -85,12 +85,12 @@ extract : fetch
 		cd $(STAGE); \
 		rm -f log.*; \
 		if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
-			if [ -e $(POOL)/$(PKG_TAR) ]; then \
-				$(PKG_TAR_EXTRACT) $(POOL)/$(PKG_TAR) > log.extract 2>&1; \
+			if [ -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
+				$(PKG_TAR_EXTRACT) $(HPCP_POOL)/$(PKG_TAR) > log.extract 2>&1; \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
-			if [ -e $(POOL)/$(PKG_SRCDIR) ]; then \
-				cp -a $(POOL)/$(PKG_SRCDIR) ./ && \
+			if [ -e $(HPCP_POOL)/$(PKG_SRCDIR) ]; then \
+				cp -a $(HPCP_POOL)/$(PKG_SRCDIR) ./ && \
 				rm -rf $(PKG_SRCDIR)/.git; \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xnone" ]; then \

@@ -7,43 +7,120 @@ Computing (HPC) systems.  The goal is to allow easy building of packages
 with a consistent compiler toolchain and system-customized compile options.
 
 
+Requirements
+-------------
+
+HPCPorts itself requires a full featured "make" (such as GNU make) and a
+Bourne compatible shell.  It also assumes that you have serial and MPI
+compilers for C, C++, F77, and F03.  The compiler toolchains supported are:
+GCC, Darwin-GCC, Intel, and IBM (FIXME: test this last one).
+
+Also, HPCPorts assumes that you will be managing your software using the
+modules environment:
+
+  http://modules.sourceforge.net/
+
+If you are NOT using modules, you will have to manually source shell scripts
+to use the packages and also change the names of these any time package
+versions change.  Just install the modules package above and make your life
+easier.
+
+
+Installation and Set-up
+------------------------
+
+You run HPCPorts directly from the git checkout.  The choices you need to make
+are:
+
+  1.  Where do you want to download sources to?  (the "HPCP_POOL" directory)
+  2.  Where do you want to install packages to?  (the "HPCP_PREFIX" directory)
+  3.  What is the config file called for this machine (the "HPCP_TARGET")
+
+Create a file in the system directory called ${HPCP_TARGET}.make and export this
+environment variable (export HPCP_TARGET=<machine name>).
+
+Look at the "example.make" file in the system directory and also the various
+config files for other machines.  In fact a good starting point is to copy the
+example file and adjust for your particular situation.
+
+After the HPCP_POOL directory is set in your config and the HPCP_PREFIX path
+is set (either in the system make snippet or in your shell environment), then 
+you are ready to build packages.
+
+Any time you do a fresh git clone, pull from a remote, or otherwise change the
+git commit you are working at, you should do:
+
+  $> make update
+
+to re-generate package build rules.
+
+
 Common Commands
 -----------------
 
 $> make help
 
-Displays usage information.
+    Displays usage information.
+
+$> make update
+
+    Run this any time you clone, pull, checkout, or otherwise change revisions.
 
 $> make status
 
+    Show the current state of all packages.
+
 $> make install
 
-Fetch, extract, configure, compile, and install all packages.
+    Fetch, extract, configure, compile, and install all packages.
 
 $> make purge
 
-Wipe all extracted sources and clean up working directories.
-
+    Wipe all extracted sources and clean up working directories.
 
 
 Other Commands
 ----------------
 
-$> make fetch
+$> make uninstall
 
-Download all package sources to the staging directory (POOL) specified in
-the system/$TARGET.make file for this system.
-
-
+    Remove all current versions of the packages from the install prefix.
 
 $> make clean
+
+    Descend into all package directories and "make clean".
+
+$> make fetch
+
+    Download all package sources to the staging directory (HPCP_POOL) specified
+    in the system/$HPCP_TARGET.make file for this system.
 
 
 Per-Package Commands
 ----------------------
 
-You can also have fine-grained control over the individual packages.
-If you install an individual package, all dependencies will be
-installed first.
+You can also have fine-grained control over the individual packages.  If you 
+install an individual package, all dependencies will be installed first.
 
+$> make <package>-install
+
+    Fetch, extract, configure, compile, and install this package and
+    all dependencies.
+
+$> make <package>-purge
+
+    Wipe extracted source and entire working directory.
+
+$> make <package>-uninstall
+
+    Remove the current version of the package from the install prefix.
+
+$> make <package>-clean
+
+    Descend into the package directory and run "make clean".
+
+$> make <package>-fetch
+
+    Download the package source to the staging directory (HPCP_POOL) specified
+    in the system/$HPCP_TARGET.make file for this system.
 

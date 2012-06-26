@@ -6,7 +6,7 @@ include ../../system/defaults.make
 
 # Package version
 
-PKG_VERSION := $(shell date +%Y%m%d)
+PKG_VERSION := $(shell git rev-parse --short HEAD)
 
 # Package parameters
 

@@ -5,7 +5,7 @@ endif
 
 # software download location
 
-POOL = /data/software/hpcports_pool
+HPCP_POOL = /data/software/hpcports_pool
 
 # UNIX tools
 

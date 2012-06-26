@@ -68,12 +68,9 @@ clean : packages/up2date
 purge : packages/up2date
 
 
-dist-clean : purge
+git-clean : purge
 	@rm -f packages/pkg_deps.make packages/pkg_list.make 
 	@rm -f packages/pkg_rules.make packages/up2date
 
-
-dist : dist-clean
-	@echo "Making release tarball..."
 
 
