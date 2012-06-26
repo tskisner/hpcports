@@ -192,6 +192,10 @@ echo '#%Module##################################################################
 ####' > ${PKG}.version
 echo "## version file for ${PKG}" >> ${PKG}.version
 echo '##' >> ${PKG}.version
-echo "set ModulesVersion      \"${VER}-hpcp\"" >> ${PKG}.version
+if [ ${PKG} = "hpcp" ]; then
+	echo "set ModulesVersion      \"${VER}\"" >> ${PKG}.version
+else
+	echo "set ModulesVersion      \"${VER}-${ENV}\"" >> ${PKG}.version
+fi
 
 
