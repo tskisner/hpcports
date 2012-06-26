@@ -44,9 +44,9 @@ install : install-common $(PKGS)
 
 install-common :
 	@mkdir -p $(HPCP_PREFIX)/env/modulefiles; \
-	mkdir -p $(POOL); \
-	chgrp -R $(INST_GRP) $(POOL); \
-	chmod -R $(INST_PERM) $(POOL); \
+	mkdir -p $(HPCP_POOL); \
+	chgrp -R $(INST_GRP) $(HPCP_POOL); \
+	chmod -R $(INST_PERM) $(HPCP_POOL); \
 	chgrp -R $(INST_GRP) $(HPCP_PREFIX); \
 	chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env; \
 	chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles; \
