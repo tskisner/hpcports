@@ -1,5 +1,5 @@
 ld = lib
-lib_CC = -lscalapack
-lib_CXX = -lscalapack
-lib_F77 = -lscalapack
-lib_FC = -lscalapack
+lib_MPICC = -lscalapack
+lib_MPICXX = -lscalapack
+lib_MPIF77 = -lscalapack
+lib_MPIFC = -lscalapack
