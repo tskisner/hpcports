@@ -45,6 +45,9 @@ pkg-prefetch :
 	echo "setenv HPCP_FCLIBS \"$(FCLIBS)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_MPIFLIBS \"$(MPIFLIBS)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_MPIFCLIBS \"$(MPIFCLIBS)\"" >> $(STAGE)/base.module; \
+	echo "setenv HPCP_TARGET \"$(HPCP_TARGET)\"" >> $(STAGE)/base.module; \
+	echo "setenv HPCP_ENV \"$(HPCP_ENV)\"" >> $(STAGE)/base.module; \
+	echo "setenv HPCP_TOOLCHAIN \"$(TOOLCHAIN)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_VENDOR \"$(VENDOR)\"" >> $(STAGE)/base.module; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
 		echo "setenv HPCP_VENDOR_CPPFLAGS \"$(APPLE_CPPFLAGS)\"" >> $(STAGE)/base.module; \

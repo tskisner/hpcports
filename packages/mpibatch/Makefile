@@ -6,7 +6,7 @@ include ../../system/defaults.make
 
 # Package version
 
-PKG_VERSION := 20120627
+PKG_VERSION := $(shell head -n 1 version)
 
 # Package parameters
 

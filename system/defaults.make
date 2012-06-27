@@ -25,6 +25,10 @@ ifndef SHELL
 	export SHELL = /bin/bash
 endif
 
+ifndef MD5
+	export MD5 = md5sum
+endif
+
 ifndef PATCH
 	export PATCH = patch
 endif

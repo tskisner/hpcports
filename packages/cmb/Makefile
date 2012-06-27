@@ -6,7 +6,7 @@ include ../../system/defaults.make
 
 # Package version
 
-PKG_VERSION := $(shell git rev-parse --short HEAD)
+PKG_VERSION := $(shell $(SHELL) ./gen_version.sh $(MD5) $(HPCP_ENV))
 
 # Package parameters
 

@@ -13,6 +13,7 @@ HPCP_POOL = /data/software/hpcports_pool
 
 # UNIX tools
 
+MD5 = md5
 MAKE = make
 PYTHON = python
 

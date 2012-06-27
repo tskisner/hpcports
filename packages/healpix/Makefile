@@ -41,6 +41,7 @@ pkg-configure :
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
+	IDL="idl" \
 	./configure \
 	$${dyn} \
 	--with-cfitsio-cpp=$(cfitsio_CPPFLAGS) \
