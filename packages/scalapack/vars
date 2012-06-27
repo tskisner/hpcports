@@ -1,0 +1,5 @@
+ld = lib
+lib_CC = -lscalapack
+lib_CXX = -lscalapack
+lib_F77 = -lscalapack
+lib_FC = -lscalapack

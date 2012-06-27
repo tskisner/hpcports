@@ -1,0 +1,18 @@
+diff -urN scalapack-2.0.2_orig/Makefile scalapack-2.0.2/Makefile
+--- scalapack-2.0.2_orig/Makefile	2011-10-19 10:38:15.000000000 -0700
++++ scalapack-2.0.2/Makefile	2012-06-27 10:05:52.000000000 -0700
+@@ -47,7 +47,8 @@
+ #
+ ############################################################################
+ 
+-all: lib exe example
++all: lib
++#all: lib exe example
+ 
+ lib: blacslib toolslib pblaslib redistlib scalapacklib
+ 
+@@ -107,3 +108,4 @@
+ cleanexample:
+ 	( cd EXAMPLE; $(MAKE) clean )
+ 
++include rules.inc
