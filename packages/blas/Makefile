@@ -34,11 +34,11 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	echo "PLAT = " > make.inc; \
 	echo "SHELL = $(SHELL)" >> make.inc; \
-	echo "FORTRAN = $(FC)" >> make.inc; \
-	echo "OPTS = $(FCFLAGS)" >> make.inc; \
-	echo "DRVOPTS = $(FCFLAGS)" >> make.inc; \
+	echo "FORTRAN = $(F77)" >> make.inc; \
+	echo "OPTS = $(FFLAGS)" >> make.inc; \
+	echo "DRVOPTS = $(FFLAGS)" >> make.inc; \
 	echo "NOOPT = " >> make.inc; \
-	echo "LOADER = $(FC)" >> make.inc; \
+	echo "LOADER = $(F77)" >> make.inc; \
 	echo "LOADOPTS = " >> make.inc; \
 	echo "ARCH = ar" >> make.inc; \
 	echo "ARCHFLAGS = cr" >> make.inc; \
