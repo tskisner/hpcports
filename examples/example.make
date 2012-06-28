@@ -1,59 +1,62 @@
 
-# use this prefix (set from the command line) to update the 
-# live hpcports install used by many people
+# if you are only ever installing to one place, you can set the 
+# prefix here.  otherwise, you can set it from the shell.
 #
-# export HPCP_PREFIX=/project/projectdirs/cmb/modules/hopper/hpcports_gnu
+# HPCP_PREFIX = /home/user/hpcports
 
-# OS environment version
-#
-# For hopper, bump the major version when upgrading compilers and bump
-# the minor version when upgrading MPI or vendor libs.  Document configuration
-# here:
-#
-# 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5, fftw 3.3.0.0
+# OS environment version : this should be some kind of identifier
+# which maps to the unique compiler and other system libraries used
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = gcc470
 
 # software download location
 
-HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
+HPCP_POOL = /home/user/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = gnu
-BUILD_DYNAMIC = FALSE
 
-# UNIX tools
+# set to FALSE to disable shared libraries
+#BUILD_DYNAMIC = FALSE
 
-SHELL = /bin/bash
-MAKE = make -s
+# Various tools.  the defaults are below, and you
+# can uncomment and change them if necessary.
+#
+#SHELL = /bin/bash
+#MAKE = make -s
+#WGET = wget
+#MD5 = md5sum
+#PATCH = patch
+#GIT = git
 
-# permissions on installed files
+# permissions on installed files. these permissions will
+# be applied to both the POOL directory and the install prefix.
 
-INST_GRP = cmb
+INST_GRP = user
 INST_PERM = g+rwX,o+rX
 
 # serial compilers
 
-CC = cc
-CXX = CC
-F77 = ftn
-FC = ftn
+CC = gcc
+CXX = g++
+F77 = gfortran
+FC = gfortran
 
 # MPI compilers
 
-MPICC = cc
-MPICXX = CC
-MPIF77 = ftn
-MPIFC = ftn
+MPICC = mpicc
+MPICXX = mpicxx
+MPIF77 = mpif77
+MPIFC = mpif90
 
 # compile flags
 
-CFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
-CXXFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
-FFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
-FCFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
+CFLAGS = -O3 -fPIC -DNDEBUG
+CXXFLAGS = -O3 -fPIC -DNDEBUG
+FFLAGS = -O3 -fPIC -DNDEBUG
+FCFLAGS = -O3 -fPIC -DNDEBUG
 
 # OpenMP flags
 
@@ -61,93 +64,42 @@ OMPFLAGS = -fopenmp
 
 # Fortran mixing
 
-FLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
-MPIFCLIBS =
+FLIBS = -lgfortran
+FCLIBS = -lgfortran
+MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
-# Linking
+# Linking.  These are passed to all linking operations, and can
+# be used as a catch-all to link to special system libraries.
 
-LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = 
+LIBS = 
 
-# vendor math libraries
+# vendor math libraries.  supported are apple, intel, and amd:
 
-VENDOR = amd
-AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
-AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
-AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+#VENDOR = apple
+#APPLE_CPPFLAGS =
+#APPLE_LDFLAGS = -Wl,-framework,Accelerate
+#APPLE_LIBS_CC =
+#APPLE_LIBS_CXX =
+#APPLE_LIBS_F77 =
+#APPLE_LIBS_FC =
+
+#VENDOR = intel
+#INTEL_CPPFLAGS = -I$(MKL_INC)
+#INTEL_LDFLAGS = -L$(MKL_HOME)/lib/em64t
+#INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+#INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+#INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+#INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+
+#VENDOR = amd
+#AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
+#AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
+#AMD_LIBS_CC = -lacml_mp -lacml_mv
+#AMD_LIBS_CXX = -lacml_mp -lacml_mv
+#AMD_LIBS_F77 = -lacml_mp -lacml_mv
+#AMD_LIBS_FC = -lacml_mp -lacml_mv
 
 # package overrides
 
-fftw_OVERRIDE = TRUE
-fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
-fftw_VERSION = 3.3.0.0
 
-# we get BLAS, Lapack, and ScaLapack from Cray libsci
-
-blas_OVERRIDE = TRUE
-blas_VERSION = 11.0.06
-
-lapack_OVERRIDE = TRUE
-lapack_VERSION = 11.0.06
-
-scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 11.0.06
-
-
-# HPC ports common
-
-HPCP = --->
-
-ifndef BUILD_DYNAMIC
-	export BUILD_DYNAMIC = TRUE
-endif
-
-ifndef TOOLCHAIN
-	export TOOLCHAIN = gnu
-endif
-
-# various system tool defaults
-
-ifndef MAKE
-	export MAKE = make -s
-endif
-
-ifndef WGET
-	export WGET = wget
-endif
-
-ifndef SHELL
-	export SHELL = /bin/bash
-endif
-
-ifndef MD5
-	export MD5 = md5sum
-endif
-
-ifndef PATCH
-	export PATCH = patch
-endif
-
-ifndef GIT
-	export GIT = git
-endif
-
-ifndef GXTAR
-	export GXTAR = tar xzf
-endif
-
-ifndef GCTAR
-	export GCTAR = tar czf
-endif
-
-ifndef BXTAR
-	export BXTAR = tar xjf
-endif
-
-ifndef BCTAR
-	export BCTAR = tar cjf
-endif
