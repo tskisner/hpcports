@@ -1,9 +1,4 @@
 
-# use this prefix (set from the command line) to update the 
-# live hpcports install used by many people
-#
-# export HPCP_PREFIX=/project/projectdirs/cmb/modules/carver/hpcports_gnu
-
 # OS environment version
 #
 # For carver, bump the major version when upgrading compilers and bump
@@ -50,10 +45,10 @@ MPIFC = mpif90
 
 # compile flags
 
-CFLAGS = -O3 -march=native -fPIC -DNDEBUG
-CXXFLAGS = -O3 -march=native -fPIC -DNDEBUG
-FFLAGS = -O3 -march=native -fPIC -DNDEBUG
-FCFLAGS = -O3 -march=native -fPIC -DNDEBUG
+CFLAGS = -O0 -g -fPIC
+CXXFLAGS = -O0 -g -fPIC
+FFLAGS = -O0 -g -fPIC
+FCFLAGS = -O0 -g -fPIC
 
 # OpenMP flags
 
