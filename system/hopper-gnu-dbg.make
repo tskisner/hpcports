@@ -1,9 +1,4 @@
 
-# use this prefix (set from the command line) to update the 
-# live hpcports install used by many people
-#
-# export HPCP_PREFIX=/project/projectdirs/cmb/modules/hopper/hpcports_gnu
-
 # OS environment version
 #
 # For hopper, bump the major version when upgrading compilers and bump
@@ -50,10 +45,10 @@ MPIFC = ftn
 
 # compile flags
 
-CFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
-CXXFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
-FFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
-FCFLAGS = -O3 -march=native -m64 -static -fPIC -DNDEBUG
+CFLAGS = -O0 -g -m64 -static -fPIC
+CXXFLAGS = -O0 -g -m64 -static -fPIC
+FFLAGS = -O0 -g -m64 -static -fPIC
+FCFLAGS = -O0 -g -m64 -static -fPIC
 
 # OpenMP flags
 
