@@ -39,7 +39,7 @@ are:
 Create a file in the system directory called ${HPCP_TARGET}.make and export this
 environment variable (export HPCP_TARGET=<machine name>).
 
-Look at the "example.make" file in the system directory and also the various
+Look at the "example.make" file in the examples directory and also the various
 config files for other machines.  In fact a good starting point is to copy the
 example file and adjust for your particular situation.
 
