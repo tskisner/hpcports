@@ -4,7 +4,6 @@ Usage:  make <command>
 where command is one of
 
   help            : show this information
-  update          : rebuild package list after a git pull / clone
   status          : show current state of all packages
 
   install         : install all packages

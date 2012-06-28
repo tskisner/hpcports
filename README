@@ -47,13 +47,6 @@ After the HPCP_POOL directory is set in your config and the HPCP_PREFIX path
 is set (either in the system make snippet or in your shell environment), then 
 you are ready to build packages.
 
-Any time you do a fresh git clone, pull from a remote, or otherwise change the
-git commit you are working at, you should do:
-
-  $> make update
-
-to re-generate package build rules.
-
 
 Common Commands
 -----------------
@@ -61,10 +54,6 @@ Common Commands
 $> make help
 
     Displays usage information.
-
-$> make update
-
-    Run this any time you clone, pull, checkout, or otherwise change revisions.
 
 $> make status
 

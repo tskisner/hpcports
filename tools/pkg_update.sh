@@ -1,4 +1,6 @@
 
+GITHASH=$1
+
 hpcp="--->"
 
 echo "${hpcp}  Updating package list"
@@ -14,7 +16,6 @@ pkg_uninstall=""
 for entry in `ls packages`; do
 	if [ -d packages/${entry} ]; then
 		ignore=`echo ${entry} | sed -e "s#overrides_.*#IGNORE#"`
-		echo ${ignore}
 		if [ "x${ignore}" != "xIGNORE" ]; then
 			pkgs="${pkgs} ${entry}"
 			pkg_fetch="${pkg_fetch} ${entry}-fetch"
@@ -123,6 +124,6 @@ done
 echo "" >> packages/pkg_rules.make
 
 
-touch packages/up2date
+touch packages/up2date.${GITHASH}
 
 
