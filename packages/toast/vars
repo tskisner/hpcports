@@ -1,6 +1,7 @@
 path = bin
 header = include
 ld = lib
+python = lib
 lib_CC = -ltoast
 lib_CXX = -ltoast
 lib_FC = -lftoast -ltoast

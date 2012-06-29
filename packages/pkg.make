@@ -100,7 +100,7 @@ extract : fetch
 		else \
 			touch state.extract; \
 		fi; \
-		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET) $(HPCP_ENV); \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET) $(HPCP_ENV) $(PYTHON); \
 	fi
 
 

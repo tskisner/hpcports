@@ -27,6 +27,9 @@ TOOLCHAIN = gnu
 
 SHELL = /bin/bash
 MAKE = make -s
+
+# Python
+
 PYTHON = python
 
 # permissions on installed files

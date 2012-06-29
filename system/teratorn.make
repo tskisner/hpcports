@@ -15,6 +15,9 @@ HPCP_POOL = /data/software/hpcports_pool
 
 MD5 = md5
 MAKE = make
+
+# Python
+
 PYTHON = python
 
 # toolchain (gnu, darwin, intel, ibm)
