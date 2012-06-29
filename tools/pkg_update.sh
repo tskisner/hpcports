@@ -61,7 +61,7 @@ for pkg in ${pkgs}; do
 	echo "		mkdir -p packages/overrides_\$(HPCP_TARGET); \\" >> packages/pkg_rules.make
 	echo "		cd packages/overrides_\$(HPCP_TARGET); \\" >> packages/pkg_rules.make
 	echo "		touch ${pkg}; \\" >> packages/pkg_rules.make
-	echo "		\$(SHELL) ../../tools/pkg_override.sh ${pkg} \$(${pkg}_VERSION) \$(HPCP_ENV); \\" >> packages/pkg_rules.make
+	echo "		\$(SHELL) ../../tools/pkg_override.sh ${pkg} \$(HPCP_ENV) \$(${pkg}_PREFIX) \$(${pkg}_VERSION) \$(${pkg}_CPPFLAGS) \$(${pkg}_LDFLAGS) \$(${pkg}_DATA) \$(${pkg}_LIBS_CC) \$(${pkg}_LIBS_CXX) \$(${pkg}_LIBS_F77) \$(${pkg}_LIBS_FC) \$(${pkg}_LIBS_MPICC) \$(${pkg}_LIBS_MPICXX) \$(${pkg}_LIBS_MPIF77) \$(${pkg}_LIBS_MPIFC); \\" >> packages/pkg_rules.make
 	echo "		mkdir -p \$(HPCP_PREFIX)/env/modulefiles/${pkg}; \\" >> packages/pkg_rules.make
 	echo "		if [ -e \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version ]; then \\" >> packages/pkg_rules.make
 	echo "			mv \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.oldversion; \\" >> packages/pkg_rules.make
