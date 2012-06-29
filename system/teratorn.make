@@ -71,4 +71,6 @@ APPLE_LIBS_FC =
 boost_OVERRIDE = TRUE
 boost_PREFIX = /ports
 boost_VERSION = 1.49-macports
+boost_CPPFLAGS = -I/ports/include
+boost_LDFLAGS = -L/ports/lib
 

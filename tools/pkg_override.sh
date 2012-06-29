@@ -1,21 +1,38 @@
 
 # This generates a fake module file for packages with local overrides
 
-PKG=$1
-ENV=$2
-PREFIX=$3
-VER=$4
-CPP=$5
-LD=$6
-DATA=$7
-LIB_CC=$8
-LIB_CXX=$9
-LIB_F77=$10
-LIB_FC=$11
-LIB_MPICC=$12
-LIB_MPICXX=$13
-LIB_MPIF77=$14
-LIB_MPIFC=$15
+echo $@
+
+PKG=${1}
+ENV=${2}
+
+PREFIX=${3}
+VER=${4}
+CPP=${5}
+LD=${6}
+DATA=${7}
+LIB_CC=${8}
+LIB_CXX=${9}
+LIB_F77=${10}
+LIB_FC=${11}
+LIB_MPICC=${12}
+LIB_MPICXX=${13}
+LIB_MPIF77=${14}
+LIB_MPIFC=${15}
+
+PREFIX=`echo ${PREFIX} | sed -e 's#^x##'`
+VER=`echo ${VER} | sed -e 's#^x##'`
+CPP=`echo ${CPP} | sed -e 's#^x##'`
+LD=`echo ${LD} | sed -e 's#^x##'`
+DATA=`echo ${DATA} | sed -e 's#^x##'`
+LIB_CC=`echo ${LIB_CC} | sed -e 's#^x##'`
+LIB_CXX=`echo ${LIB_CXX} | sed -e 's#^x##'`
+LIB_F77=`echo ${LIB_F77} | sed -e 's#^x##'`
+LIB_FC=`echo ${LIB_FC} | sed -e 's#^x##'`
+LIB_MPICC=`echo ${LIB_MPICC} | sed -e 's#^x##'`
+LIB_MPICXX=`echo ${LIB_MPICXX} | sed -e 's#^x##'`
+LIB_MPIF77=`echo ${LIB_MPIF77} | sed -e 's#^x##'`
+LIB_MPIFC=`echo ${LIB_MPIFC} | sed -e 's#^x##'`
 
 # File headers
 
@@ -54,18 +71,42 @@ echo "" >> ${PKG}.module
 echo "conflict ${PKG}" >> ${PKG}.module
 echo "" >> ${PKG}.module
 
-echo "setenv ${PKG}_PREFIX \"${PREFIX}\"" >> ${PKG}.module
-echo "setenv ${PKG}_CPPFLAGS \"${CPP}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
-echo "setenv ${PKG}_DATA \"${DATA}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_CC \"${LIB_CC}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_CXX \"${LIB_CXX}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_F77 \"${LIB_F77}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_FC \"${LIB_FC}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_MPICC \"${LIB_MPICC}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_MPICXX \"${LIB_MPICXX}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_MPIF77 \"${LIB_MPIF77}\"" >> ${PKG}.module
-echo "setenv ${PKG}_LIBS_MPIFC \"${LIB_MPIFC}\"" >> ${PKG}.module
+if [ x${PREFIX} != x ]; then
+	echo "setenv ${PKG}_PREFIX \"${PREFIX}\"" >> ${PKG}.module
+fi
+if [ x${CPP} != x ]; then
+	echo "setenv ${PKG}_CPPFLAGS \"${CPP}\"" >> ${PKG}.module
+fi
+if [ x${LD} != x ]; then
+	echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
+fi
+if [ x${DATA} != x ]; then
+	echo "setenv ${PKG}_DATA \"${DATA}\"" >> ${PKG}.module
+fi
+if [ x${LIB_CC} != x ]; then
+	echo "setenv ${PKG}_LIBS_CC \"${LIB_CC}\"" >> ${PKG}.module
+fi
+if [ x${LIB_CXX} != x ]; then
+	echo "setenv ${PKG}_LIBS_CXX \"${LIB_CXX}\"" >> ${PKG}.module
+fi
+if [ x${LIB_F77} != x ]; then
+	echo "setenv ${PKG}_LIBS_F77 \"${LIB_F77}\"" >> ${PKG}.module
+fi
+if [ x${LIB_FC} != x ]; then
+	echo "setenv ${PKG}_LIBS_FC \"${LIB_FC}\"" >> ${PKG}.module
+fi
+if [ x${LIB_MPICC} != x ]; then
+	echo "setenv ${PKG}_LIBS_MPICC \"${LIB_MPICC}\"" >> ${PKG}.module
+fi
+if [ x${LIB_MPICXX} != x ]; then
+	echo "setenv ${PKG}_LIBS_MPICXX \"${LIB_MPICXX}\"" >> ${PKG}.module
+fi
+if [ x${LIB_MPIF77} != x ]; then
+	echo "setenv ${PKG}_LIBS_MPIF77 \"${LIB_MPIF77}\"" >> ${PKG}.module
+fi
+if [ x${LIB_MPIFC} != x ]; then
+	echo "setenv ${PKG}_LIBS_MPIFC \"${LIB_MPIFC}\"" >> ${PKG}.module
+fi
 
 # Handle dependencies.  Since this is an external piece of software,
 # we have no idea what versions of dependencies are required.  Presumably
