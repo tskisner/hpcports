@@ -16,10 +16,6 @@ HPCP_POOL = /data/software/hpcports_pool
 MD5 = md5
 MAKE = make
 
-# Python
-
-PYTHON = python
-
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = darwin
@@ -70,6 +66,10 @@ APPLE_LIBS_F77 =
 APPLE_LIBS_FC =
 
 # package overrides
+
+python_OVERRIDE = TRUE
+python_PREFIX = /ports
+python_VERSION = 2.7.3
 
 boost_OVERRIDE = TRUE
 boost_PREFIX = /ports

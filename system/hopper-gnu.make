@@ -86,6 +86,9 @@ fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = 3.3.0.0
 
+python_OVERRIDE = TRUE
+python_VERSION = 2.7.1
+
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE

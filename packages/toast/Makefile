@@ -36,10 +36,7 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \
 	fi; \
-	pyopt="--disable-python"; \
-	if [ "x$(PYTHON)" != "x" ]; then \
-		pyopt="--enable-python"; \
-	fi; \
+	pyopt="--with-python=python"; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	PYTHON="$(PYTHON)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \

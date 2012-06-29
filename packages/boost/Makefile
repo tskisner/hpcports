@@ -32,10 +32,7 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	pyopt="--with-python=no"; \
-	if [ "x$(PYTHON)" != "x" ]; then \
-		pyopt="--with-python=$(PYTHON)"; \
-	fi; \
+	pyopt="--with-python=python"; \
 	boostchain=""; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
 		echo "using gcc : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \

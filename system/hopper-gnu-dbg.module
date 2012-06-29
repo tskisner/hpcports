@@ -6,4 +6,5 @@
     module load acml/4.4.0
     module unload xt-shmem
     module load fftw/3.3.0.0
+    module load python/2.7.1
   }
