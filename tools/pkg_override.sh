@@ -1,8 +1,6 @@
 
 # This generates a fake module file for packages with local overrides
 
-echo $@
-
 PKG=${1}
 ENV=${2}
 
