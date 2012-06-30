@@ -100,7 +100,7 @@ extract : fetch
 		else \
 			touch state.extract; \
 		fi; \
-		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET) $(HPCP_ENV) $(PYTHON); \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET) $(HPCP_ENV); \
 	fi
 
 
@@ -136,42 +136,35 @@ build : configure
 		if [ -e $(STAGE)/state.configure ]; then \
 			$(MAKE) uninstall; \
 			echo "$(HPCP)  $(PKG_NAME):  Building"; \
-			cd $(STAGE)/$(PKG_SRCDIR); \
-			source ../dep_env.sh; \
-			$(MAKE) > ../log.build 2>&1 && \
-			touch ../state.build && \
-			rm ../state.configure; \
+			source $(STAGE)/dep_env.sh; \
+			$(MAKE) pkg-build > $(STAGE)/log.build 2>&1 && \
+			touch $(STAGE)/state.build && \
+			rm $(STAGE)/state.configure; \
 		fi; \
 	fi
 
 
-preinstall : build
-	@$(MAKE) pkg-preinstall
-
-
-install :
+install : build
 	@if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
 		echo "$(HPCP)  $(PKG_NAME):  Already installed"; \
 	else \
-		$(MAKE) preinstall; \
 		if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 			if [ -e $(STAGE)/state.build ]; then \
 				echo "$(HPCP)  $(PKG_NAME):  Installing"; \
-				cd $(STAGE)/$(PKG_SRCDIR); \
-				$(MAKE) install > ../log.install 2>&1; \
+				$(MAKE) pkg-install > $(STAGE)/log.install 2>&1; \
 				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-				cp ../$(PKG_NAME)-$(PKG_VERSION).sh $(HPCP_PREFIX)/env/; \
+				cp $(STAGE)/$(PKG_NAME)-$(PKG_VERSION).sh $(HPCP_PREFIX)/env/; \
 				mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
 				if [ $(PKG_NAME) = "hpcp" ]; then \
-					cp ../$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION); \
+					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION); \
 				else \
-					cp ../$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-$(HPCP_ENV); \
+					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-$(HPCP_ENV); \
 				fi; \
 				if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version ]; then \
 					cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion; \
 				fi; \
-				cp ../$(PKG_NAME).version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
+				cp $(STAGE)/$(PKG_NAME).version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
 				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
 				chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
 			fi; \

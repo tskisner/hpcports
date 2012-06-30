@@ -9,8 +9,8 @@ VER=$2
 PREFIX=$3
 TARGET=$4
 ENV=$5
-PYTHON=$6
 
+PYTHON=`which python`
 PYTHON_VER=""
 if [ x${PYTHON} != x ]; then
 	PYTHON_VER=`${PYTHON} --version 2>&1 | sed -e "s#^Python\ \(.\)\.\(.\)\..*#\1.\2#"`

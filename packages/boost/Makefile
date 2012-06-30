@@ -21,7 +21,7 @@ PKG_SRCDIR = boost_1_49_0
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_boost_make.patch
+PKG_PATCHES =
 
 
 # rules for this package
@@ -46,23 +46,27 @@ pkg-configure :
 		echo "using intel : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
 		boostchain="intel"; \
 	fi; \
+	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+
+
+pkg-build :
+	@echo "" >/dev/null
+
+
+pkg-install :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	opts="variant=release "; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		opts="$${opts}link=shared runtime-link=shared"; \
 	else \
 		opts="$${opts}link=static runtime-link=static"; \
 	fi; \
-	echo "OPTS = $${opts}" > hpcp_opts.make; \
-	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
-
-	
-pkg-preinstall :
-	@echo "" > /dev/null
+	./b2 $${opts} install
 
 
 pkg-clean :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) clean
+	./b2 --clean
 
 
 # Include common package rules

@@ -58,6 +58,10 @@ OMPFLAGS = -fopenmp
 FCLIBS = -lgfortran
 MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
+# general linking
+
+LIBS = -lm
+
 # vendor math libraries
 
 VENDOR = intel

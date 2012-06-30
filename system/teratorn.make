@@ -67,13 +67,13 @@ APPLE_LIBS_FC =
 
 # package overrides
 
-python_OVERRIDE = TRUE
-python_PREFIX = /ports
-python_VERSION = 2.7.3
+#python_OVERRIDE = TRUE
+#python_PREFIX = /ports
+#python_VERSION = 2.7.3
 
-boost_OVERRIDE = TRUE
-boost_PREFIX = /ports
-boost_VERSION = 1.49-macports
-boost_CPPFLAGS = -I/ports/include
-boost_LDFLAGS = -L/ports/lib
+#boost_OVERRIDE = TRUE
+#boost_PREFIX = /ports
+#boost_VERSION = 1.49-macports
+#boost_CPPFLAGS = -I/ports/include
+#boost_LDFLAGS = -L/ports/lib
 

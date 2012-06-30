@@ -10,11 +10,14 @@ PKG_VERSION := $(shell head -n 1 version)
 
 # Package parameters
 
-PKG_NAME = mpibatch
+PKG_NAME = nose
 
-PKG_FORMAT = none
+PKG_FORMAT = tar
+PKG_TAR = nose-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://pypi.python.org/packages/source/n/nose/nose-$(PKG_VERSION).tar.gz#md5=144f237b615e23f21f6a50b2183aa817
+PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = mpibatch
+PKG_SRCDIR = nose-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
@@ -24,14 +27,7 @@ PKG_PATCHES =
 # rules for this package
 
 pkg-prefetch :
-	@mkdir -p $(STAGE); \
-	echo "PREFIX = $(HPCP_PREFIX)" > $(STAGE)/opts.make; \
-	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
-	echo "VERSION = $(PKG_VERSION)" >> $(STAGE)/opts.make; \
-	echo "MPICC = $(MPICC)" >> $(STAGE)/opts.make; \
-	echo "CFLAGS = $(CFLAGS)" >> $(STAGE)/opts.make; \
-	echo "LDFLAGS = $(LDFLAGS)" >> $(STAGE)/opts.make; \
-	echo "LIBS = $(LIBS)" >> $(STAGE)/opts.make
+	@echo "" > /dev/null
 
 
 pkg-configure :
@@ -40,17 +36,17 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE)
+	python setup.py build 
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
 pkg-clean :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) clean
+	python setup.py clean
 
 
 # Include common package rules

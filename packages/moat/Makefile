@@ -104,8 +104,14 @@ pkg-configure :
 	fi
 
 
-pkg-preinstall :
-	@echo "" > /dev/null
+pkg-build :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE)
+
+
+pkg-install :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE) install
 
 
 pkg-clean :

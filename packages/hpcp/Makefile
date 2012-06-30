@@ -25,9 +25,6 @@ PKG_PATCHES =
 
 pkg-prefetch :
 	@mkdir -p $(STAGE); \
-	echo "PREFIX = $(HPCP_PREFIX)" > $(STAGE)/opts.make; \
-	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
-	echo "VERSION = $(PKG_VERSION)" >> $(STAGE)/opts.make; \
 	echo "setenv HPCP_CC \"$(CC)\"" > $(STAGE)/base.module; \
 	echo "setenv HPCP_CXX \"$(CXX)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_F77 \"$(F77)\"" >> $(STAGE)/base.module; \
@@ -79,13 +76,16 @@ pkg-configure :
 	@echo "" > /dev/null
 
 
-pkg-preinstall :
+pkg-build :
 	@echo "" > /dev/null
 
 
+pkg-install :
+	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin
+
+
 pkg-clean :
-	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) clean
+	@echo "" > /dev/null
 
 
 # Include common package rules

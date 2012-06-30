@@ -45,15 +45,17 @@ pkg-configure :
 	echo "RANLIB = ranlib" >> make.inc; \
 	echo "BLASLIB = libblas.a" >> make.inc; \
 	echo "" >> make.inc; \
-	echo "build : all" >> make.inc; \
-	echo "install : build" >> make.inc; \
-	echo "	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \\\\" >> make.inc; \
-	echo "	cp libblas.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/" >> make.inc; \
-	echo "" >> make.inc
 
 
-pkg-preinstall :
-	@echo "" > /dev/null
+pkg-build :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE)
+
+
+pkg-install :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \
+	cp libblas.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/
 
 
 pkg-clean :

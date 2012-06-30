@@ -39,11 +39,17 @@ pkg-configure :
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
-pkg-preinstall :
+pkg-build :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE)
+
+
+pkg-install :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	@if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		cd $(STAGE)/$(PKG_BUILDDIR); \
 		$(MAKE) shared >> ../log.build 2>&1; \
-	fi
+	fi; \
+	$(MAKE) install
 
 
 pkg-clean :

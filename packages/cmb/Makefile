@@ -24,24 +24,25 @@ PKG_PATCHES =
 # rules for this package
 
 pkg-prefetch :
-	@mkdir -p $(STAGE); \
-	echo "SHELL = $(SHELL)" > $(STAGE)/opts.make; \
-	echo "PREFIX = $(HPCP_PREFIX)" >> $(STAGE)/opts.make; \
-	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
-	echo "VERSION = $(PKG_VERSION)" >> $(STAGE)/opts.make
+	@echo "" > /dev/null
 
 
 pkg-configure :
 	@echo "" > /dev/null
 
 
-pkg-preinstall :
-	@echo "" > /dev/null
+pkg-build :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	./gen_cmbconfig.sh $(SHELL)
+
+
+pkg-install :
+	@mkdir -p $(PREFIX)/$(NAME)-$(VERSION)/bin; \
+	cp $(STAGE)/$(PKG_BUILDDIR)/cmbconfig $(PREFIX)/$(NAME)-$(VERSION)/bin/
 
 
 pkg-clean :
-	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) clean
+	@rm -f $(STAGE)/$(PKG_BUILDDIR)/cmbconfig
 
 
 # Include common package rules
