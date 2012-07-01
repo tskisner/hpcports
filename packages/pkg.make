@@ -108,6 +108,7 @@ patch : extract
 	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.extract ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Patching"; \
+			source $(STAGE)/dep_env.sh; \
 			cd $(STAGE)/$(PKG_SRCDIR); \
 			rm -f ../log.patch; \
 			for pfile in $(PKG_PATCHES); do \

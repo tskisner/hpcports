@@ -41,10 +41,11 @@ pkg-configure :
 		nognu=""; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	CPPFLAGS="$(sqlite_CPPFLAGS)" \
 	OPT="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" \
-	LIBS="$(LIBS)" \
+	LDFLAGS="$(sqlite_LDFLAGS) $(LDFLAGS)" \
+	LIBS="$(sqlite_LIBS_CC) $(LIBS)" \
 	./configure \
 	$${dyn} $${nognu} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)

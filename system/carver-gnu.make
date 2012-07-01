@@ -79,8 +79,8 @@ INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
 
 # package overrides
 
-python_OVERRIDE = TRUE
-python_VERSION = 2.7.1
+#python_OVERRIDE = TRUE
+#python_VERSION = 2.7.1
 
 blas_OVERRIDE = TRUE
 blas_PREFIX = $(MKL_HOME)
