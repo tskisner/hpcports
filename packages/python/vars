@@ -10,3 +10,4 @@ lib_MPICC = -lpython2.7
 lib_MPICXX = -lpython2.7
 lib_MPIF77 = -lpython2.7
 lib_MPIFC = -lpython2.7
+SITE = python2.7

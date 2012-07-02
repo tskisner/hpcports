@@ -9,12 +9,8 @@ VER=$2
 PREFIX=$3
 TARGET=$4
 ENV=$5
+PYSITE=$6
 
-PYTHON=`which python`
-PYTHON_VER=""
-if [ x${PYTHON} != x ]; then
-	PYTHON_VER=`${PYTHON} --version 2>&1 | sed -e "s#^Python\ \(.\)\.\(.\)\..*#\1.\2#"`
-fi
 
 # File headers
 
@@ -52,12 +48,10 @@ process_var () {
 				echo "prepend-path MANPATH ${PREFIX}/${PKG}-${VER}/${val}" >> ${PKG}.module
 			done
 		elif [ "x${var}" = "xpython" ]; then
-			if [ x${PYTHON} != x ]; then
-				for val in ${vals}; do
-					echo "export PYTHONPATH=${PREFIX}/${PKG}-${VER}/${val}/python${PYTHON_VER}/site-packages:\$PYTHONPATH" >> ${PKG}-${VER}.sh
-					echo "prepend-path PYTHONPATH ${PREFIX}/${PKG}-${VER}/${val}/python${PYTHON_VER}/site-packages" >> ${PKG}.module
-				done
-			fi
+			for val in ${vals}; do
+				echo "export PYTHONPATH=${PREFIX}/${PKG}-${VER}/${val}/${PYSITE}/site-packages:\$PYTHONPATH" >> ${PKG}-${VER}.sh
+				echo "prepend-path PYTHONPATH ${PREFIX}/${PKG}-${VER}/${val}/${PYSITE}/site-packages" >> ${PKG}.module
+			done
 		elif [ "x${var}" = "xheader" ]; then
 			OUT=""
 			for val in ${vals}; do

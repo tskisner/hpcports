@@ -11,6 +11,13 @@ ifndef TOOLCHAIN
 	export TOOLCHAIN = gnu
 endif
 
+# special case:  we need to know the python site directory.  Override this in
+# the system file if needed:
+
+ifndef python_SITE
+	export python_SITE = python2.7
+endif
+
 # various system tool defaults
 
 ifndef MAKE
