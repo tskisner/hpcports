@@ -36,7 +36,7 @@ pkg-configure :
 	echo "FORTRAN = $(FC)" >> make.inc; \
 	echo "OPTS = $(FCFLAGS)" >> make.inc; \
 	echo "DRVOPTS = $(FCFLAGS)" >> make.inc; \
-	echo "NOOPT = " >> make.inc; \
+	echo "NOOPT = $(FCFLAGS)" >> make.inc; \
 	echo "LOADER = $(FC)" >> make.inc; \
 	echo "LOADOPTS = " >> make.inc; \
 	echo "TIMER = INT_ETIME" >> make.inc; \

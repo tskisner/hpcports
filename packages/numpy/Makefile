@@ -31,36 +31,38 @@ pkg-prefetch :
 
 
 pkg-configure :
-	cd $(STAGE)/$(PKG_BUILDDIR)/numpy/distutils; \
-	echo "[ALL]" > site.cfg; \
+	cd $(STAGE)/$(PKG_BUILDDIR); \
+	echo "[DEFAULT]" > site.cfg; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		echo "search_static_first = 0" >> site.cfg; \
 	else \
 		echo "search_static_first = 1" >> site.cfg; \
 	fi; \
 	echo "" >> site.cfg; \
-	echo "[blas_opt]" >> site.cfg; \
+	echo "[blas]" >> site.cfg; \
+	echo "language = f77" >> site.cfg; \
 	blascpp=`echo $(blas_CPPFLAGS) | sed -e "s#-I##g"`; \
 	echo "include_dirs = $${blascpp}" >> site.cfg; \
 	blasld=`echo $(blas_LDFLAGS) | sed -e "s#-L##g"`; \
 	echo "library_dirs = $${blasld}" >> site.cfg; \
-	blaslib=`echo $(blas_LIBS_CC) | sed -e "s#-l##g"`; \
-	echo "libraries = $${blaslib}" >> site.cfg; \
+	blaslib=`echo $(blas_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
+	echo "blas_libs = $${blaslib}" >> site.cfg; \
 	echo "" >> site.cfg; \
-	echo "[lapack_opt]" >> site.cfg; \
+	echo "[lapack]" >> site.cfg; \
+	echo "language = f77" >> site.cfg; \
 	lapackcpp=`echo $(lapack_CPPFLAGS) | sed -e "s#-I##g"`; \
 	echo "include_dirs = $${lapackcpp}" >> site.cfg; \
 	lapackld=`echo $(lapack_LDFLAGS) | sed -e "s#-L##g"`; \
 	echo "library_dirs = $${lapackld}" >> site.cfg; \
-	lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g"`; \
-	echo "libraries = $${lapacklib}" >> site.cfg; \
+	lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
+	echo "lapack_libs = $${lapacklib}" >> site.cfg; \
 	echo "" >> site.cfg; \
 	echo "[fftw]" >> site.cfg; \
 	fftwcpp=`echo $(fftw_CPPFLAGS) | sed -e "s#-I##g"`; \
 	echo "include_dirs = $${fftwcpp}" >> site.cfg; \
 	fftwld=`echo $(fftw_LDFLAGS) | sed -e "s#-L##g"`; \
 	echo "library_dirs = $${fftwld}" >> site.cfg; \
-	fftwlib=`echo $(fftw_LIBS_CC) | sed -e "s#-l##g"`; \
+	fftwlib=`echo $(fftw_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 	echo "fftw_libs = $${fftwlib}" >> site.cfg; \
 	echo "" >> site.cfg
 
