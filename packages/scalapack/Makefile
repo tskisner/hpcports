@@ -21,7 +21,7 @@ PKG_SRCDIR = scalapack-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_scalapack_make.patch
 
 
 # rules for this package

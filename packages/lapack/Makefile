@@ -21,7 +21,7 @@ PKG_SRCDIR = lapack-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_lapack_make.patch
 
 
 # rules for this package

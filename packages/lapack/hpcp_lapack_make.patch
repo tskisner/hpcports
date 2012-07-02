@@ -1,0 +1,13 @@
+diff -urN lapack-3.4.1_orig/Makefile lapack-3.4.1/Makefile
+--- lapack-3.4.1_orig/Makefile	2012-04-13 11:13:07.000000000 -0700
++++ lapack-3.4.1/Makefile	2012-07-02 14:09:59.000000000 -0700
+@@ -6,7 +6,8 @@
+ 
+ include make.inc
+ 
+-all: lapack_install lib blas_testing lapack_testing 
++all: lapack_install lib
++#all: lapack_install lib blas_testing lapack_testing 
+ 
+ lib: lapacklib tmglib
+ #lib: blaslib variants lapacklib tmglib
