@@ -21,7 +21,7 @@ PKG_SRCDIR = lapack-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_lapack_make.patch
+PKG_PATCHES =
 
 
 # rules for this package
@@ -47,14 +47,11 @@ pkg-configure :
 	echo "RANLIB = ranlib" >> make.inc; \
 	echo "USEXBLAS = No" >> make.inc; \
 	echo "XBLASLIB = " >> make.inc; \
+	echo "BLASLIB = $(blas_LDFLAGS) $(blas_LIBS_F77)" >> make.inc; \
 	echo "LAPACKLIB = liblapack.a" >> make.inc; \
 	echo "TMGLIB = libtmglib.a" >> make.inc; \
 	echo "LAPACKELIB = liblapacke.a" >> make.inc; \
-	echo "" >> make.inc; \
-	echo "install : all" > rules.inc; \
-	echo "	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \\\\" >> rules.inc; \
-	echo "	cp liblapack.a libtmglib.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/" >> rules.inc; \
-	echo "" >> rules.inc
+	echo "" >> make.inc
 
 
 pkg-build :
@@ -64,7 +61,8 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \
+	cp liblapack.a libtmglib.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/
 
 
 pkg-clean :

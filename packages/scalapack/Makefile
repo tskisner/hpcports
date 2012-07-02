@@ -21,7 +21,7 @@ PKG_SRCDIR = scalapack-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_scalapack_make.patch
+PKG_PATCHES =
 
 
 # rules for this package
@@ -50,10 +50,6 @@ pkg-configure :
 	echo "LAPACKLIB = $(lapack_LIBS_F77)" >> SLmake.inc; \
 	echo "LIBS = \$$(LAPACKLIB) \$$(BLASLIB)" >> SLmake.inc; \
 	echo "" >> SLmake.inc; \
-	echo "install : all" > rules.inc; \
-	echo "	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \\\\" >> rules.inc; \
-	echo "	cp libscalapack.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/" >> rules.inc; \
-	echo "" >> rules.inc
 
 
 pkg-build :
@@ -63,7 +59,8 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \
+	cp libscalapack.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/
 
 
 pkg-clean :

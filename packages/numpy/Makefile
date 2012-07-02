@@ -31,18 +31,8 @@ pkg-prefetch :
 
 
 pkg-configure :
-	cd $(STAGE)/$(PKG_BUILDDIR); \
+	cd $(STAGE)/$(PKG_BUILDDIR)/numpy/distutils; \
 	echo "[ALL]" > site.cfg; \
-	blascpp=`echo $(blas_CPPFLAGS) | sed -e "s#-I##g"`; \
-	lapackcpp=`echo $(lapack_CPPFLAGS) | sed -e "s#-I##g"`; \
-	fftwcpp=`echo $(fftw_CPPFLAGS) | sed -e "s#-I##g"`; \
-	include=`echo "$${blascpp} $${lapackcpp} $${fftwcpp}" | sed -e "s# #:#g"`; \
-	echo "include_dirs = $${include}" >> site.cfg; \
-	blasld=`echo $(blas_LDFLAGS) | sed -e "s#-L##g"`; \
-	lapackld=`echo $(lapack_LDFLAGS) | sed -e "s#-L##g"`; \
-	fftwld=`echo $(fftw_LDFLAGS) | sed -e "s#-L##g"`; \
-	ldstr=`echo "$${blasld} $${lapackld} $${fftwld}" | sed -e "s# #:#g"`; \
-	echo "library_dirs = $${ldstr}" >> site.cfg; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		echo "search_static_first = 0" >> site.cfg; \
 	else \
@@ -50,16 +40,28 @@ pkg-configure :
 	fi; \
 	echo "" >> site.cfg; \
 	echo "[blas_opt]" >> site.cfg; \
+	blascpp=`echo $(blas_CPPFLAGS) | sed -e "s#-I##g"`; \
+	echo "include_dirs = $${blascpp}" >> site.cfg; \
+	blasld=`echo $(blas_LDFLAGS) | sed -e "s#-L##g"`; \
+	echo "library_dirs = $${blasld}" >> site.cfg; \
 	blaslib=`echo $(blas_LIBS_CC) | sed -e "s#-l##g"`; \
 	echo "libraries = $${blaslib}" >> site.cfg; \
 	echo "" >> site.cfg; \
 	echo "[lapack_opt]" >> site.cfg; \
+	lapackcpp=`echo $(lapack_CPPFLAGS) | sed -e "s#-I##g"`; \
+	echo "include_dirs = $${lapackcpp}" >> site.cfg; \
+	lapackld=`echo $(lapack_LDFLAGS) | sed -e "s#-L##g"`; \
+	echo "library_dirs = $${lapackld}" >> site.cfg; \
 	lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g"`; \
 	echo "libraries = $${lapacklib}" >> site.cfg; \
 	echo "" >> site.cfg; \
 	echo "[fftw]" >> site.cfg; \
+	fftwcpp=`echo $(fftw_CPPFLAGS) | sed -e "s#-I##g"`; \
+	echo "include_dirs = $${fftwcpp}" >> site.cfg; \
+	fftwld=`echo $(fftw_LDFLAGS) | sed -e "s#-L##g"`; \
+	echo "library_dirs = $${fftwld}" >> site.cfg; \
 	fftwlib=`echo $(fftw_LIBS_CC) | sed -e "s#-l##g"`; \
-	echo "libraries = $${fftwlib}" >> site.cfg; \
+	echo "fftw_libs = $${fftwlib}" >> site.cfg; \
 	echo "" >> site.cfg
 
 
