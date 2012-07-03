@@ -37,8 +37,8 @@ pkg-build :
 
 
 pkg-install :
-	@mkdir -p $(PREFIX)/$(NAME)-$(VERSION)/bin; \
-	cp $(STAGE)/$(PKG_BUILDDIR)/cmbconfig $(PREFIX)/$(NAME)-$(VERSION)/bin/
+	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin; \
+	cp $(STAGE)/$(PKG_BUILDDIR)/cmbconfig $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin/
 
 
 pkg-clean :
