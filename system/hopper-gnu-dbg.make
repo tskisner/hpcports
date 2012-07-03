@@ -5,7 +5,7 @@
 # the minor version when upgrading MPI or vendor libs.  Document configuration
 # here:
 #
-# 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5, fftw 3.3.0.0
+# 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5, fftw 3.3.0.0, python 2.7.1
 #
 
 HPCP_ENV = 1.0
@@ -76,6 +76,10 @@ AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/
 AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # package overrides
+
+python_OVERRIDE = TRUE
+python_SITE = python2.7
+python_VERSION = 2.7.1
 
 fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
