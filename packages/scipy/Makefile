@@ -36,12 +36,12 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	python setup.py build
+	export ATLAS=None; python setup.py build
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	export ATLAS=None; export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
 pkg-clean :

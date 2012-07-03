@@ -33,10 +33,11 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	./autogen.sh; \
 	dyn="--disable-shared"; \
+	pyopt="--with-python=no"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \
+		pyopt="--with-python=python"; \
 	fi; \
-	pyopt="--with-python=python"; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	PYTHON="$(PYTHON)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \

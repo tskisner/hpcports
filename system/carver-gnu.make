@@ -79,15 +79,12 @@ INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
 
 # package overrides
 
-#python_OVERRIDE = TRUE
-#python_VERSION = 2.7.1
-
 blas_OVERRIDE = TRUE
 blas_PREFIX = $(MKL_HOME)
 blas_VERSION = 10.2
-blas_LDFLAGS = -L$(MKL_HOME)/lib/em64t
-blas_LIBS_CC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
-blas_LIBS_CXX = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
-blas_LIBS_F77 = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
-blas_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
+blas_LDFLAGS = $(INTEL_LDFLAGS)
+blas_LIBS_CC = $(INTEL_LIBS_CC)
+blas_LIBS_CXX = $(INTEL_LIBS_CXX)
+blas_LIBS_F77 = $(INTEL_LIBS_F77)
+blas_LIBS_FC = $(INTEL_LIBS_FC)
 

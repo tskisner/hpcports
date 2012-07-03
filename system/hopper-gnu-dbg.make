@@ -81,13 +81,16 @@ fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = 3.3.0.0
 
-python_OVERRIDE = TRUE
-python_VERSION = 2.7.1
-
-# we get BLAS, Lapack, and ScaLapack from Cray libsci
+# we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 11.0.06
+blas_VERSION = 4.4.0
+blas_CPPFLAGS = $(AMD_CPPFLAGS)
+blas_LDFLAGS = $(AMD_LDFLAGS)
+blas_LIBS_CC = $(AMD_LIBS_CC)
+blas_LIBS_CXX = $(AMD_LIBS_CXX)
+blas_LIBS_FC = $(AMD_LIBS_FC)
+blas_LIBS_F77 = $(AMD_LIBS_F77)
 
 lapack_OVERRIDE = TRUE
 lapack_VERSION = 11.0.06
