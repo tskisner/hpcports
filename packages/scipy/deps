@@ -1,1 +1,1 @@
-numpy
+blas lapack fftw python nose numpy
