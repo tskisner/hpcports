@@ -10,18 +10,18 @@ PKG_VERSION := $(shell head -n 1 version)
 
 # Package parameters
 
-PKG_NAME = python
+PKG_NAME = readline
 
 PKG_FORMAT = tar
-PKG_TAR = Python-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.python.org/ftp/python/$(PKG_VERSION)/Python-$(PKG_VERSION).tar.bz2
-PKG_TAR_EXTRACT = $(BXTAR)
+PKG_TAR = readline-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.gnu.org/gnu/readline/readline-6.2.tar.gz
+PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = Python-$(PKG_VERSION)
+PKG_SRCDIR = readline-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_readline_shlib.patch
 
 
 # rules for this package
@@ -32,22 +32,15 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	dyn="--enable-shared"; \
+	dyn="--enable-shared --disable-static"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="--disable-shared"; \
-	fi; \
-	nognu="--without-gcc"; \
-	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
-		nognu=""; \
+		dyn="--disable-shared --enable-static"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CPPFLAGS="$(sqlite_CPPFLAGS) $(readline_CPPFLAGS)" \
-	OPT="$(CFLAGS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	LDFLAGS="$(sqlite_LDFLAGS) $(readline_LDFLAGS) $(LDFLAGS)" \
-	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(LIBS)" \
+	LDFLAGS="$(LDFLAGS)" \
+	LIBS="$(LIBS)" \
 	./configure \
-	$${dyn} $${nognu} \
+	$${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

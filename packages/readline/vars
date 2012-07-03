@@ -1,0 +1,8 @@
+path = bin
+man = share/man
+header = include
+ld = lib
+lib_CC = -lhistory -lreadline
+lib_CXX = -lhistory -lreadline
+lib_F77 = -lhistory -lreadline
+lib_FC = -lhistory -lreadline

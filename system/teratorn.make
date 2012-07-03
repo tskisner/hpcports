@@ -41,10 +41,10 @@ MPIFC = mpif90
 
 # compile flags
 
-CFLAGS = -O0 -g
-CXXFLAGS = -O0 -g
-FFLAGS = -O0 -g
-FCFLAGS = -O0 -g
+CFLAGS = -O0 -g -fPIC
+CXXFLAGS = -O0 -g -fPIC
+FFLAGS = -O0 -g -fPIC
+FCFLAGS = -O0 -g -fPIC
 
 # OpenMP flags
 
