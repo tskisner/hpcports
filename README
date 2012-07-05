@@ -13,17 +13,12 @@ Requirements
 HPCPorts itself requires a full featured "make" (such as GNU make) and a
 Bourne compatible shell.  It also assumes that you have serial and MPI
 compilers for C, C++, F77, and F03.  The compiler toolchains supported are:
-GCC, Darwin-GCC, Intel, and IBM (FIXME: test this last one).
-
-Also, HPCPorts assumes that you will be managing your software using the
-modules environment:
+GCC, Darwin-GCC, Intel, and IBM (FIXME: test this last one).  Also, HPCPorts 
+requires that you have the modules environment:
 
   http://modules.sourceforge.net/
 
-If you are NOT using modules, you will have to manually source shell scripts
-to use the packages and also change the names of these any time package
-versions change.  Just install the modules package above and make your life
-easier.
+as well as the "wget" command line tool.
 
 
 Installation and Set-up

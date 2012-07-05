@@ -1,1 +1,1 @@
-blas lapack scalapack mpibatch boost cfitsio expat sqlite moat toast healpix fftw scalapack
+scalapack mpibatch toast healpix

@@ -173,6 +173,10 @@ install : build
 	fi
 
 
+reinstall :
+	@$(MAKE) uninstall; $(MAKE) install
+
+
 clean :
 	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \

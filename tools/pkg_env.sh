@@ -163,7 +163,7 @@ for dep in ${deps}; do
 		if [ -e ../../${dep}/version ]; then
 			depver=`head -n 1 ../../${dep}/version`
 		fi
-		echo "source ${PREFIX}/env/${dep}-${depver}.sh" >> dep_env.sh
+		echo "module load ${dep}/${depver}-${ENV}" >> dep_env.sh
 		echo "if [ module-info mode load ] {" >> ${PKG}.module
 		echo "	if [ is-loaded ${dep} ] {" >> ${PKG}.module
 		echo "	} else {" >> ${PKG}.module

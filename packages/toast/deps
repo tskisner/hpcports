@@ -1,1 +1,1 @@
-m4 autoconf automake libtool cfitsio expat sqlite readline python numpy boost moat
+autoconf automake libtool cfitsio expat sqlite numpy moat

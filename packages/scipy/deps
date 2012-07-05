@@ -1,1 +1,1 @@
-blas lapack fftw readline python nose numpy
+fftw numpy
