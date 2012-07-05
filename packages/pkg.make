@@ -20,6 +20,8 @@ ifndef PKG_GIT_CHECKOUT
 	PKG_GIT_CHECKOUT = echo "NA"
 endif
 
+MOD_SUFFIX = -hpcp
+
 
 status :
 	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
@@ -54,8 +56,8 @@ fetch : prefetch
 		if [ ! -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Fetching tarball"; \
 			$(PKG_TAR_FETCH) > $(HPCP_POOL)/$(PKG_NAME).fetchlog 2>&1; \
-			chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_TAR); \
-			chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_TAR); \
+			chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_TAR) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
+			chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_TAR) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
 			if [ ! -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
 				echo "$(HPCP)    FAILED:  $(HPCP_POOL)/$(PKG_TAR) was not fetched!"; \
 			fi; \
@@ -69,8 +71,8 @@ fetch : prefetch
 			mv $(PKG_SRCDIR) $(PKG_NAME)-$(PKG_VERSION); \
 			cd $(PKG_NAME)-$(PKG_VERSION); \
 			$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME)-$(PKG_VERSION).fetchlog 2>&1; \
-			chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION); \
-			chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION); \
+			chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION).fetchlog; \
+			chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION).fetchlog; \
 		fi; \
 	fi
 
@@ -156,18 +158,24 @@ install : build
 				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 				cp $(STAGE)/$(PKG_NAME)-$(PKG_VERSION).sh $(HPCP_PREFIX)/env/; \
-				mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
+				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
+				chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
+				suffix="$(MOD_SUFFIX)"; \
 				if [ $(PKG_NAME) = "hpcp" ]; then \
-					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION); \
+					suffix=""; \
+				fi; \
+				mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
+				if [ $(PKG_NAME) = "hpcp" ]; then \
+					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_VERSION); \
 				else \
-					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-$(HPCP_ENV); \
+					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_VERSION)-$(HPCP_ENV); \
 				fi; \
-				if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version ]; then \
-					cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion; \
+				if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version ]; then \
+					cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion; \
 				fi; \
-				cp $(STAGE)/$(PKG_NAME).version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
-				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
-				chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
+				cp $(STAGE)/$(PKG_NAME).version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
+				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
+				chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 			fi; \
 		fi; \
 	fi
@@ -194,16 +202,18 @@ uninstall :
 	rm -f $(STAGE)/log.install; \
 	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
+	suffix="$(MOD_SUFFIX)"; \
 	if [ $(PKG_NAME) = "hpcp" ]; then \
+		suffix=""; \
 		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION); \
 	else \
-		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION)-$(HPCP_ENV); \
+		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_VERSION)-$(HPCP_ENV); \
 	fi; \
-	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
-	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion ]; then \
-		mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/.version; \
+	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
+	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion ]; then \
+		mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
 	else \
-		rm -rf $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME); \
+		rm -rf $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 	fi
 
 

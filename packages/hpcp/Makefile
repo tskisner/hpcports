@@ -46,6 +46,7 @@ pkg-prefetch :
 	echo "setenv HPCP_ENV \"$(HPCP_ENV)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_TOOLCHAIN \"$(TOOLCHAIN)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_VENDOR \"$(VENDOR)\"" >> $(STAGE)/base.module; \
+	echo "setenv HPCP_DYNAMIC \"$(BUILD_DYNAMIC)\"" >> $(STAGE)/base.module; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
 		echo "setenv HPCP_VENDOR_CPPFLAGS \"$(APPLE_CPPFLAGS)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LDFLAGS \"$(APPLE_LDFLAGS)\"" >> $(STAGE)/base.module; \

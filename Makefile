@@ -46,16 +46,16 @@ install : install-common $(PKGS)
 
 
 install-common :
-	@mkdir -p $(HPCP_PREFIX)/env/modulefiles; \
-	mkdir -p $(HPCP_POOL); \
-	chgrp -R $(INST_GRP) $(HPCP_POOL); \
-	chmod -R $(INST_PERM) $(HPCP_POOL); \
-	chgrp -R $(INST_GRP) $(HPCP_PREFIX); \
-	chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env; \
-	chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles; \
-	chmod -R $(INST_PERM) $(HPCP_PREFIX); \
-	chmod -R $(INST_PERM) $(HPCP_PREFIX)/env; \
-	chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles
+	@if [ ! -d $(HPCP_POOL) ]; then \
+		mkdir -p $(HPCP_POOL); \
+		chgrp -R $(INST_GRP) $(HPCP_POOL); \
+		chmod -R $(INST_PERM) $(HPCP_POOL); \
+	fi; \
+	if [ ! -d $(HPCP_PREFIX)/env/modulefiles ]; then \
+		mkdir -p $(HPCP_PREFIX)/env/modulefiles; \
+		chgrp -R $(INST_GRP) $(HPCP_PREFIX); \
+		chmod -R $(INST_PERM) $(HPCP_PREFIX); \
+	fi
 
 
 fetch : packages/up2date.$(GITHASH)
