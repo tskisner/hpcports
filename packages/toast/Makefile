@@ -50,6 +50,7 @@ pkg-configure :
 	--with-boost=$(boost_PREFIX) \
 	--with-expat=$(expat_PREFIX) \
 	--with-sqlite=$(sqlite_PREFIX) \
+	--with-getdata=$(getdata_PREFIX) \
 	--with-cfitsio-cpp=$(cfitsio_CPPFLAGS) \
 	--with-cfitsio-libs="$(cfitsio_LDFLAGS)$(cfitsio_LIBS_CXX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
