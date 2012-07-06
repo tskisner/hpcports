@@ -1,1 +1,1 @@
-autoconf automake libtool cfitsio expat sqlite numpy moat
+autoconf automake libtool cfitsio expat sqlite python numpy moat
