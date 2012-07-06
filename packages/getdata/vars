@@ -1,0 +1,7 @@
+header = include
+python = lib
+ld = lib
+lib_CC = -lgetdata
+lib_CXX = -lgetdata++ -lgetdata
+lib_F77 = -lfgetdata -lgetdata
+lib_FC = -lf95getdata -lgetdata
