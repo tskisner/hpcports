@@ -1,0 +1,8 @@
+path = bin
+man = man
+header = include
+ld = lib
+lib_CC = -lbz2
+lib_CXX = -lbz2
+lib_F77 = -lbz2
+lib_FC = -lbz2
