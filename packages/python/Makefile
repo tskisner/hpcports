@@ -44,10 +44,11 @@ pkg-configure :
 	CPPFLAGS="$(sqlite_CPPFLAGS) $(readline_CPPFLAGS)" \
 	OPT="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	LDFLAGS="$(sqlite_LDFLAGS) $(readline_LDFLAGS) $(LDFLAGS)" \
-	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(LIBS)" \
+	LDFLAGS="$(LDFLAGS)" \
+	LIBS="$(sqlite_LDFLAGS) $(sqlite_LIBS_CC) $(readline_LDFLAGS) $(readline_LIBS_CC) $(LIBS)" \
 	./configure \
 	$${dyn} $${nognu} \
+	--disable-toolbox-glue \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

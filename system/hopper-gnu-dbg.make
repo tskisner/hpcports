@@ -10,6 +10,10 @@
 
 HPCP_ENV = 1.0
 
+# suffix, to avoid name collisions with nersc modules
+
+MOD_SUFFIX = -hpcp
+
 # software download location
 
 HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool

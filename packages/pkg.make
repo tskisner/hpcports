@@ -20,8 +20,6 @@ ifndef PKG_GIT_CHECKOUT
 	PKG_GIT_CHECKOUT = echo "NA"
 endif
 
-MOD_SUFFIX = -hpcp
-
 
 status :
 	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
@@ -102,7 +100,7 @@ extract : fetch
 		else \
 			touch state.extract; \
 		fi; \
-		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET) $(HPCP_ENV) $(python_SITE); \
+		$(SHELL) ../../../tools/pkg_env.sh $(PKG_NAME) $(PKG_VERSION) $(HPCP_PREFIX) $(HPCP_TARGET) $(HPCP_ENV) $(python_SITE) $(MOD_SUFFIX); \
 	fi
 
 

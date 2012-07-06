@@ -10,6 +10,7 @@ PREFIX=$3
 TARGET=$4
 ENV=$5
 PYSITE=$6
+MOD=$7
 
 # dependency names
 
@@ -181,9 +182,9 @@ for dep in ${deps}; do
 		fi
 		echo "source ${PREFIX}/env/${dep}-${depver}.sh" >> dep_env.sh
 		echo "if [ module-info mode load ] {" >> ${PKG}.module
-		echo "	if [ is-loaded ${dep} ] {" >> ${PKG}.module
+		echo "	if [ is-loaded ${dep}${MOD} ] {" >> ${PKG}.module
 		echo "	} else {" >> ${PKG}.module
-		echo "	  module load ${dep}/${depver}-${ENV}" >> ${PKG}.module
+		echo "	  module load ${dep}${MOD}/${depver}-${ENV}" >> ${PKG}.module
 		echo "	}" >> ${PKG}.module
 		echo "}" >> ${PKG}.module
 		echo "" >> ${PKG}.module
@@ -213,7 +214,7 @@ echo "" >> ${PKG}.module
 
 echo '#%Module###################################################################
 ####' > ${PKG}.version
-echo "## version file for ${PKG}" >> ${PKG}.version
+echo "## version file for ${PKG}${MOD}" >> ${PKG}.version
 echo '##' >> ${PKG}.version
 if [ ${PKG} = "hpcp" ]; then
 	echo "set ModulesVersion      \"${VER}\"" >> ${PKG}.version

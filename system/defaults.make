@@ -11,6 +11,10 @@ ifndef TOOLCHAIN
 	export TOOLCHAIN = gnu
 endif
 
+ifndef MOD_SUFFIX
+	export MOD_SUFFIX =
+endif
+
 # special case:  we need to know the python site directory.  Override this in
 # the system file if needed:
 
