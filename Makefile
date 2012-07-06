@@ -17,7 +17,7 @@ help : packages/up2date.$(GITHASH)
 
 packages/up2date.$(GITHASH) :
 	@rm -f packages/up2date.*; \
-	$(SHELL) tools/pkg_update.sh $(GITHASH)
+	$(SHELL) tools/pkg_update.sh $(GITHASH) $(MOD_SUFFIX)
 
 
 update :

@@ -69,40 +69,40 @@ echo "" >> ${PKG}.module
 echo "conflict ${PKG}" >> ${PKG}.module
 echo "" >> ${PKG}.module
 
-if [ x${PREFIX} != x ]; then
+if [ "x${PREFIX}" != x ]; then
 	echo "setenv ${PKG}_PREFIX \"${PREFIX}\"" >> ${PKG}.module
 fi
-if [ x${CPP} != x ]; then
+if [ "x${CPP}" != x ]; then
 	echo "setenv ${PKG}_CPPFLAGS \"${CPP}\"" >> ${PKG}.module
 fi
-if [ x${LD} != x ]; then
+if [ "x${LD}" != x ]; then
 	echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
 fi
-if [ x${DATA} != x ]; then
+if [ "x${DATA}" != x ]; then
 	echo "setenv ${PKG}_DATA \"${DATA}\"" >> ${PKG}.module
 fi
-if [ x${LIB_CC} != x ]; then
+if [ "x${LIB_CC}" != x ]; then
 	echo "setenv ${PKG}_LIBS_CC \"${LIB_CC}\"" >> ${PKG}.module
 fi
-if [ x${LIB_CXX} != x ]; then
+if [ "x${LIB_CXX}" != x ]; then
 	echo "setenv ${PKG}_LIBS_CXX \"${LIB_CXX}\"" >> ${PKG}.module
 fi
-if [ x${LIB_F77} != x ]; then
+if [ "x${LIB_F77}" != x ]; then
 	echo "setenv ${PKG}_LIBS_F77 \"${LIB_F77}\"" >> ${PKG}.module
 fi
-if [ x${LIB_FC} != x ]; then
+if [ "x${LIB_FC}" != x ]; then
 	echo "setenv ${PKG}_LIBS_FC \"${LIB_FC}\"" >> ${PKG}.module
 fi
-if [ x${LIB_MPICC} != x ]; then
+if [ "x${LIB_MPICC}" != x ]; then
 	echo "setenv ${PKG}_LIBS_MPICC \"${LIB_MPICC}\"" >> ${PKG}.module
 fi
-if [ x${LIB_MPICXX} != x ]; then
+if [ "x${LIB_MPICXX}" != x ]; then
 	echo "setenv ${PKG}_LIBS_MPICXX \"${LIB_MPICXX}\"" >> ${PKG}.module
 fi
-if [ x${LIB_MPIF77} != x ]; then
+if [ "x${LIB_MPIF77}" != x ]; then
 	echo "setenv ${PKG}_LIBS_MPIF77 \"${LIB_MPIF77}\"" >> ${PKG}.module
 fi
-if [ x${LIB_MPIFC} != x ]; then
+if [ "x${LIB_MPIFC}" != x ]; then
 	echo "setenv ${PKG}_LIBS_MPIFC \"${LIB_MPIFC}\"" >> ${PKG}.module
 fi
 

@@ -1,5 +1,6 @@
 
 GITHASH=$1
+SUFFIX=$2
 
 hpcp="--->"
 
@@ -61,15 +62,15 @@ for pkg in ${pkgs}; do
 	echo "		mkdir -p packages/overrides_\$(HPCP_TARGET); \\" >> packages/pkg_rules.make
 	echo "		cd packages/overrides_\$(HPCP_TARGET); \\" >> packages/pkg_rules.make
 	echo "		touch ${pkg}; \\" >> packages/pkg_rules.make
-	echo "		\$(SHELL) ../../tools/pkg_override.sh ${pkg} \$(HPCP_ENV) x\$(${pkg}_PREFIX) x\$(${pkg}_VERSION) x\$(${pkg}_CPPFLAGS) x\$(${pkg}_LDFLAGS) x\$(${pkg}_DATA) x\$(${pkg}_LIBS_CC) x\$(${pkg}_LIBS_CXX) x\$(${pkg}_LIBS_F77) x\$(${pkg}_LIBS_FC) x\$(${pkg}_LIBS_MPICC) x\$(${pkg}_LIBS_MPICXX) x\$(${pkg}_LIBS_MPIF77) x\$(${pkg}_LIBS_MPIFC); \\" >> packages/pkg_rules.make
-	echo "		mkdir -p \$(HPCP_PREFIX)/env/modulefiles/${pkg}; \\" >> packages/pkg_rules.make
-	echo "		if [ -e \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version ]; then \\" >> packages/pkg_rules.make
-	echo "			mv \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.oldversion; \\" >> packages/pkg_rules.make
+	echo "		\$(SHELL) ../../tools/pkg_override.sh ${pkg} \$(HPCP_ENV) \"x\$(${pkg}_PREFIX)\" \"x\$(${pkg}_VERSION)\" \"x\$(${pkg}_CPPFLAGS)\" \"x\$(${pkg}_LDFLAGS)\" \"x\$(${pkg}_DATA)\" \"x\$(${pkg}_LIBS_CC)\" \"x\$(${pkg}_LIBS_CXX)\" \"x\$(${pkg}_LIBS_F77)\" \"x\$(${pkg}_LIBS_FC)\" \"x\$(${pkg}_LIBS_MPICC)\" \"x\$(${pkg}_LIBS_MPICXX)\" \"x\$(${pkg}_LIBS_MPIF77)\" \"x\$(${pkg}_LIBS_MPIFC)\"; \\" >> packages/pkg_rules.make
+	echo "		mkdir -p \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}; \\" >> packages/pkg_rules.make
+	echo "		if [ -e \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.version ]; then \\" >> packages/pkg_rules.make
+	echo "			mv \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.oldversion; \\" >> packages/pkg_rules.make
 	echo "		fi; \\" >> packages/pkg_rules.make
-	echo "		cp ${pkg}.module \$(HPCP_PREFIX)/env/modulefiles/${pkg}/\$(${pkg}_VERSION)-\$(HPCP_ENV); \\" >> packages/pkg_rules.make
-	echo "		cp ${pkg}.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version; \\" >> packages/pkg_rules.make
-	echo "		chgrp -R \$(INST_GRP) \$(HPCP_PREFIX)/env/modulefiles/${pkg}; \\" >> packages/pkg_rules.make
-	echo "		chmod -R \$(INST_PERM) \$(HPCP_PREFIX)/env/modulefiles/${pkg}; \\" >> packages/pkg_rules.make
+	echo "		cp ${pkg}.module \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/\$(${pkg}_VERSION)-\$(HPCP_ENV); \\" >> packages/pkg_rules.make
+	echo "		cp ${pkg}.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.version; \\" >> packages/pkg_rules.make
+	echo "		chgrp -R \$(INST_GRP) \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}; \\" >> packages/pkg_rules.make
+	echo "		chmod -R \$(INST_PERM) \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}; \\" >> packages/pkg_rules.make
 	echo "	fi" >> packages/pkg_rules.make
 
 
@@ -98,12 +99,12 @@ for pkg in ${pkgs}; do
 	echo "	else \\" >> packages/pkg_rules.make
 	echo "		echo \"\$(HPCP)  ${pkg}:  Uninstalling (module for overridden package)\"; \\" >> packages/pkg_rules.make
 	echo "		rm -f \$(HPCP_PREFIX)/env/${pkg}-\$(${pkg}_VERSION).sh; \\" >> packages/pkg_rules.make
-	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}/\$(${pkg}_VERSION)-\$(HPCP_ENV); \\" >> packages/pkg_rules.make
-	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version; \\" >> packages/pkg_rules.make
-	echo "		if [ -e \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.oldversion ]; then \\" >> packages/pkg_rules.make
-	echo "			mv \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.oldversion \$(HPCP_PREFIX)/env/modulefiles/${pkg}/.version; \\" >> packages/pkg_rules.make
+	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/\$(${pkg}_VERSION)-\$(HPCP_ENV); \\" >> packages/pkg_rules.make
+	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.version; \\" >> packages/pkg_rules.make
+	echo "		if [ -e \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.oldversion ]; then \\" >> packages/pkg_rules.make
+	echo "			mv \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.oldversion \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.version; \\" >> packages/pkg_rules.make
 	echo "		else \\" >> packages/pkg_rules.make
-	echo "			rm -rf \$(HPCP_PREFIX)/env/modulefiles/${pkg}; \\" >> packages/pkg_rules.make
+	echo "			rm -rf \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}; \\" >> packages/pkg_rules.make
 	echo "		fi \\" >> packages/pkg_rules.make
 	echo "	fi" >> packages/pkg_rules.make
 
