@@ -36,12 +36,16 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" \
 	PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
 	$(MAKE)
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" \
 	PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
 	$(MAKE) install
 
