@@ -1,1 +1,1 @@
-scalapack mpibatch toast healpix
+m4 autoconf automake libtool blas lapack scalapack boost cfitsio expat sqlite fftw mpibatch readline python nose numpy scipy moat toast healpix pyfits ipython matplotlib

@@ -95,6 +95,18 @@ nose_VERSION = 2.7.1
 numpy_OVERRIDE = TRUE
 numpy_VERSION = 2.7.1
 
+scipy_OVERRIDE = TRUE
+scipy_VERSION = 2.7.1
+
+pyfits_OVERRIDE = TRUE
+pyfits_VERSION = 2.7.1
+
+ipython_OVERRIDE = TRUE
+ipython_VERSION = 2.7.1
+
+matplotlib_OVERRIDE = TRUE
+matplotlib_VERSION = 2.7.1
+
 # we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
