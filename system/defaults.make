@@ -29,7 +29,7 @@ ifndef MAKE
 endif
 
 ifndef WGET
-	export WGET = wget
+	export WGET = wget --no-check-certificate
 endif
 
 ifndef SHELL
