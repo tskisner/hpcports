@@ -1,0 +1,47 @@
+diff -urN healpy_orig/hpbeta/config/config.HPCP healpy/hpbeta/config/config.HPCP
+--- healpy_orig/hpbeta/config/config.HPCP	1969-12-31 16:00:00.000000000 -0800
++++ healpy/hpbeta/config/config.HPCP	2012-07-06 21:33:21.000000000 -0700
+@@ -0,0 +1,17 @@
++
++EXTERNAL_CFITSIO = yes
++CFITSIO_EXT_PREFIX = $(cfitsio_PREFIX)
++CFITSIO_EXT_LIB = $(cfitsio_LDFLAGS) $(cfitsio_LIBS_CXX)
++CFITSIO_EXT_INC = $(cfitsio_CPPFLAGS)
++
++CL = $(CC)
++CCFLAGS_NO_C= $(CFLAGS) $(OMPFLAGS)
++CCFLAGS= $(CCFLAGS_NO_C) -c
++CLFLAGS= -L. -L$(LIBDIR) $(OMPFLAGS) $(LDFLAGS) $(LIBS) -lm
++
++CXXL = $(CXX)
++CXXCFLAGS_NO_C = $(CXXFLAGS) $(OMPFLAGS)
++CXXCFLAGS = $(CXXCFLAGS_NO_C) -c
++CXXLFLAGS = -L. -L$(LIBDIR) $(OMPFLAGS) $(LDFLAGS) $(LIBS)
++
++ARCREATE= ar cr
+diff -urN healpy_orig/hpbeta/libcfitsio/planck.make healpy/hpbeta/libcfitsio/planck.make
+--- healpy_orig/hpbeta/libcfitsio/planck.make	2012-07-06 21:18:11.000000000 -0700
++++ healpy/hpbeta/libcfitsio/planck.make	2012-07-06 21:29:52.000000000 -0700
+@@ -3,7 +3,7 @@
+ ifeq ($(EXTERNAL_CFITSIO),yes)
+ 
+ LIB_$(PKG):=$(CFITSIO_EXT_LIB)
+-FULL_INCLUDE+= -I$(CFITSIO_EXT_INC)
++FULL_INCLUDE+= $(CFITSIO_EXT_INC)
+ 
+ else
+ 
+diff -urN healpy_orig/setup.py healpy/setup.py
+--- healpy_orig/setup.py	2012-07-06 21:18:11.000000000 -0700
++++ healpy/setup.py	2012-07-06 21:21:56.000000000 -0700
+@@ -42,8 +42,8 @@
+ # For each option, check is it is set or unset
+ # check first in defaults, then in environment and finally on command line
+ try:
+-    default_options = DEFAULT_OPT_DICT[SYSTEM_STRING]
+-    HEALPIX_TARGET = TARGET_DICT[SYSTEM_STRING]
++    default_options = 
++    HEALPIX_TARGET = HPCP
+ except KeyError:
+     raise AssertionError ('Unsupported platform: %s' % SYSTEM_STRING)
+ 
