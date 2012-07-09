@@ -55,6 +55,10 @@ OMPFLAGS = -fopenmp
 FCLIBS = -lgfortran -lgfortranbegin
 MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
+# Linking
+
+LDFLAGS = -L/ports/lib
+
 # vendor math libraries
 
 VENDOR = apple

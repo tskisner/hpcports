@@ -36,11 +36,11 @@ pkg-configure :
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure \
+	--without-python \
 	--with-openssl=$(openssl_PREFIX) \
 	--with-curl=$(curl_PREFIX) \
 	--with-expat=$(expat_PREFIX) \
 	--with-zlib=$(zlib_PREFIX) \
-	--with-python=$(python_PREFIX) \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
