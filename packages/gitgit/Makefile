@@ -10,7 +10,7 @@ PKG_VERSION := $(shell head -n 1 version)
 
 # Package parameters
 
-PKG_NAME = git
+PKG_NAME = gitgit
 
 PKG_FORMAT = tar
 PKG_TAR = git-git-v1.7.11.1-0-g0e64a95.tar.gz
@@ -31,7 +31,17 @@ pkg-prefetch :
 
 
 pkg-configure :
-	
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE) configure; \
+	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	./configure \
+	--with-openssl=$(openssl_PREFIX) \
+	--with-curl=$(curl_PREFIX) \
+	--with-expat=$(expat_PREFIX) \
+	--with-zlib=$(zlib_PREFIX) \
+	--with-python=$(python_PREFIX) \
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
 pkg-build :
