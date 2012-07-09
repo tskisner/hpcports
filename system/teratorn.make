@@ -71,6 +71,8 @@ APPLE_LIBS_FC =
 
 # package overrides
 
+git_OVERRIDE = TRUE
+
 gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.18.1.1
 gettext_CPPFLAGS = -I/ports/include

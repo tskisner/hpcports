@@ -63,6 +63,10 @@ fetch : prefetch
 	elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 		if [ ! -e $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Cloning git repo"; \
+			gitver=`head -n 1 ../gitgit/version`; \
+			if [ -e $(HPCP_PREFIX)/env/gitgit-$${gitver} ]; then \
+				. $(HPCP_PREFIX)/env/gitgit-$${gitver}; \
+			fi; \
 			cd $(HPCP_POOL); \
 			$(PKG_GIT_CLONE) > $(PKG_NAME)-$(PKG_VERSION).fetchlog 2>&1; \
 			echo "$(HPCP)  $(PKG_NAME):  Checking out git revision"; \
