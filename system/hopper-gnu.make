@@ -112,6 +112,18 @@ ipython_VERSION = 2.7.1
 matplotlib_OVERRIDE = TRUE
 matplotlib_VERSION = 2.7.1
 
+mpi4py_OVERRIDE = TRUE
+mpi4py_VERSION = 2.7.1
+
+pyslalib_OVERRIDE = TRUE
+pyslalib_VERSION = 2.7.1
+
+scientific_OVERRIDE = TRUE
+scientific_VERSION = 2.7.1
+
+healpy_OVERRIDE = TRUE
+healpy_VERSION = 2.7.1
+
 # we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE

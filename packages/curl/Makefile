@@ -43,6 +43,8 @@ pkg-configure :
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	./configure \
 	$${dyn} \
+	--with-ssl="$(openssl_PREFIX)" \
+	--with-zlib="$(zlib_PREFIX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

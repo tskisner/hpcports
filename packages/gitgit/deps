@@ -1,1 +1,1 @@
-autoconf automake libtool curl zlib expat openssl
+autoconf automake libtool curl zlib expat openssl gettext

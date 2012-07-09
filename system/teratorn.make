@@ -71,6 +71,11 @@ APPLE_LIBS_FC =
 
 # package overrides
 
+gettext_OVERRIDE = TRUE
+gettext_VERSION = 0.18.1.1
+gettext_CPPFLAGS = -I/ports/include
+gettext_LDFLAGS = -L/ports/lib
+
 #python_OVERRIDE = TRUE
 #python_PREFIX = /ports
 #python_VERSION = 2.7.3

@@ -34,7 +34,8 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) configure; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	CPPFLAGS="$(gettext_CPPFLAGS)" \
+	LDFLAGS="$(LDFLAGS) $(gettext_LDFLAGS)" LIBS="$(gettext_LIBS_CC) $(LIBS)" \
 	./configure \
 	--without-python \
 	--with-openssl=$(openssl_PREFIX) \
