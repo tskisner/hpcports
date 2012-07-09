@@ -1,8 +1,8 @@
 path = bin
-man = share/man
+man = ssl/man
 header = include
 ld = lib
-lib_CC = -lcurl
-lib_CXX = -lcurl
-lib_F77 = -lcurl
-lib_FC = -lcurl
+lib_CC = -lssl -lcrypto
+lib_CXX = -lssl -lcrypto
+lib_F77 = -lssl -lcrypto
+lib_FC = -lssl -lcrypto

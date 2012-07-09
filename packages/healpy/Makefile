@@ -13,8 +13,8 @@ PKG_VERSION := $(shell head -n 1 version)
 PKG_NAME = healpy
 
 PKG_FORMAT = git
-PKG_GIT_CLONE = $(GIT) clone https://github.com/healpy/healpy.git
-PKG_GIT_CHECKOUT = $(GIT) checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
+PKG_GIT_CLONE = git clone https://github.com/healpy/healpy.git
+PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
 PKG_SRCDIR = healpy
 
