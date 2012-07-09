@@ -1,0 +1,8 @@
+path = bin
+man = share/man
+header = include
+ld = lib
+lib_CC = -lgettext
+lib_CXX = -lgettext
+lib_F77 = -lgettext
+lib_FC = -lgettext
