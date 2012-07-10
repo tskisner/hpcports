@@ -37,7 +37,8 @@ pkg-configure :
 		dyn="--disable-shared"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" \
+	LDFLAGS="$(LDFLAGS) $(zlib_LDFLAGS) $(openssl_LDFLAGS)" \
+	LIBS="$(openssl_LIBS_CC) $(zlib_LIBS_CC) $(LIBS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \

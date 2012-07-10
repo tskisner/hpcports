@@ -86,6 +86,27 @@ AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/g
 
 # package overrides
 
+readline_OVERRIDE = TRUE
+readline_VERSION = 5.2
+
+gzip_OVERRIDE = TRUE
+gzip_VERSON = 1.3.12
+
+gettext_OVERRIDE = TRUE
+gettext_VERSION = 0.17.0
+
+gitgit_OVERRIDE = TRUE
+gitgit_VERSION = 1.7.7.4
+
+zlib_OVERRIDE = TRUE
+zlib_VERSION = 1.2.3
+
+openssl_OVERRIDE = TRUE
+openssl_VERSION = 0.9.8
+
+curl_OVERRIDE = TRUE
+curl_VERSION = 7.19.0
+
 python_OVERRIDE = TRUE
 python_SITE = python2.7
 python_VERSION = 2.7.1
