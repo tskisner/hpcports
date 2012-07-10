@@ -17,6 +17,7 @@ LIB_MPICC=${12}
 LIB_MPICXX=${13}
 LIB_MPIF77=${14}
 LIB_MPIFC=${15}
+MOD=${16}
 
 PREFIX=`echo ${PREFIX} | sed -e 's#^x##'`
 VER=`echo ${VER} | sed -e 's#^x##'`
@@ -66,7 +67,7 @@ echo "  puts stderr \"\\\t and linking against libraries in this package.\"" >> 
 echo "  puts stderr \"\"" >> ${PKG}.module
 echo "}" >> ${PKG}.module
 echo "" >> ${PKG}.module
-echo "conflict ${PKG}" >> ${PKG}.module
+echo "conflict ${PKG}${MOD}" >> ${PKG}.module
 echo "" >> ${PKG}.module
 
 if [ "x${PREFIX}" != x ]; then
@@ -115,9 +116,9 @@ deps=`head -n 1 ../${PKG}/deps`
 
 for dep in ${deps}; do
 	echo "if [ module-info mode load ] {" >> ${PKG}.module
-	echo "	if [ is-loaded ${dep} ] {" >> ${PKG}.module
+	echo "	if [ is-loaded ${dep}${MOD} ] {" >> ${PKG}.module
 	echo "	} else {" >> ${PKG}.module
-	echo "	  module load ${dep}" >> ${PKG}.module
+	echo "	  module load ${dep}${MOD}" >> ${PKG}.module
 	echo "	}" >> ${PKG}.module
 	echo "}" >> ${PKG}.module
 	echo "" >> ${PKG}.module
@@ -129,7 +130,7 @@ echo "" >> ${PKG}.module
 
 echo '#%Module###################################################################
 ####' > ${PKG}.version
-echo "## version file for ${PKG}" >> ${PKG}.version
+echo "## version file for ${PKG}${MOD}" >> ${PKG}.version
 echo '##' >> ${PKG}.version
 echo "set ModulesVersion      \"${VER}-${ENV}\"" >> ${PKG}.version
 

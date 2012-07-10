@@ -156,7 +156,7 @@ echo "  puts stderr \"\\\t and linking against libraries in this package.\"" >> 
 echo "  puts stderr \"\"" >> ${PKG}.module
 echo "}" >> ${PKG}.module
 echo "" >> ${PKG}.module
-echo "conflict ${PKG}" >> ${PKG}.module
+echo "conflict ${PKG}${MOD}" >> ${PKG}.module
 echo "" >> ${PKG}.module
 
 # Handle dependencies
