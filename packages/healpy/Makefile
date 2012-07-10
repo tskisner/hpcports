@@ -35,6 +35,10 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	export CC="$(CC)"; export CFLAGS="$(CFLAGS)"; \
+	export CXX="$(CXX)"; export CXXFLAGS="$(CXXFLAGS)"; \
+	export OMPFLAGS="$(OMPFLAGS)"; \
+	export CFITSIO_EXT_PREFIX=$(cfitsio_PREFIX); \
 	python setup.py build 
 
 
@@ -42,6 +46,10 @@ pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/$(python_SITE)/site-packages; \
 	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
+	export CC="$(CC)"; export CFLAGS="$(CFLAGS)"; \
+	export CXX="$(CXX)"; export CXXFLAGS="$(CXXFLAGS)"; \
+	export OMPFLAGS="$(OMPFLAGS)"; \
+	export CFITSIO_EXT_PREFIX=$(cfitsio_PREFIX); \
 	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
