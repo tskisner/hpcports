@@ -46,9 +46,6 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		$(MAKE) shared >> ../log.build 2>&1; \
-	fi; \
 	$(MAKE) install
 
 

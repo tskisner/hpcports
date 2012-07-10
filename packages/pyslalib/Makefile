@@ -13,7 +13,7 @@ PKG_VERSION := $(shell head -n 1 version)
 PKG_NAME = pyslalib
 
 PKG_FORMAT = git
-PKG_GIT_CLONE = git clone https://github.com/scottransom/pyslalib.git
+PKG_GIT_CLONE = git clone http://github.com/scottransom/pyslalib.git
 PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
 PKG_SRCDIR = pyslalib
