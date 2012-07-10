@@ -32,6 +32,7 @@ LIB_MPICC=`echo ${LIB_MPICC} | sed -e 's#^x##'`
 LIB_MPICXX=`echo ${LIB_MPICXX} | sed -e 's#^x##'`
 LIB_MPIF77=`echo ${LIB_MPIF77} | sed -e 's#^x##'`
 LIB_MPIFC=`echo ${LIB_MPIFC} | sed -e 's#^x##'`
+MOD=`echo ${MOD} | sed -e 's#^x##'`
 
 # File headers
 
