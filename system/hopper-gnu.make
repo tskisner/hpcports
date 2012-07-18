@@ -145,6 +145,9 @@ scientific_VERSION = 2.7.1
 healpy_OVERRIDE = TRUE
 healpy_VERSION = 2.7.1
 
+numexpr_OVERRIDE = TRUE
+numexpr_VERSION = 2.7.1
+
 # we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
