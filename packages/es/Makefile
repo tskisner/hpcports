@@ -12,12 +12,11 @@ PKG_VERSION := $(shell head -n 1 version)
 
 PKG_NAME = es
 
-PKG_FORMAT = tar
-PKG_TAR = es-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/downloads/rcthomas/es/es-0.98.tar.gz
-PKG_TAR_EXTRACT = $(GXTAR)
+PKG_FORMAT = git
+PKG_GIT_CLONE = git clone git://github.com/rcthomas/es.git
+PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
-PKG_SRCDIR = es-$(PKG_VERSION)
+PKG_SRCDIR = es
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
@@ -32,6 +31,7 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	./autogen.sh; \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
