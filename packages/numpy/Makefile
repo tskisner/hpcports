@@ -31,7 +31,7 @@ pkg-prefetch :
 
 
 pkg-configure :
-	cd $(STAGE)/$(PKG_BUILDDIR); \
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	echo "[DEFAULT]" > site.cfg; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		echo "search_static_first = 0" >> site.cfg; \
@@ -49,7 +49,7 @@ pkg-configure :
 		echo "mkl_libs = $${intellib}" >> site.cfg; \
 		lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "lapack_libs = $${lapacklib}" >> site.cfg; \
-		echo "" >> site.cfg; \		
+		echo "" >> site.cfg; \
 	else \
 		echo "[blas]" >> site.cfg; \
 		echo "language = f77" >> site.cfg; \

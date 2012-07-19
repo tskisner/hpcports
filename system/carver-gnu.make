@@ -76,10 +76,10 @@ LIBS = -lm -lpthread
 VENDOR = intel
 INTEL_CPPFLAGS = -I$(MKL_INC)
 INTEL_LDFLAGS = -L$(MKL_HOME)/lib/em64t
-INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
-INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
-INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
-INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
+INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
+INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
+INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
 
 # package overrides
 
@@ -91,4 +91,13 @@ blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(INTEL_LIBS_CXX)
 blas_LIBS_F77 = $(INTEL_LIBS_F77)
 blas_LIBS_FC = $(INTEL_LIBS_FC)
+
+lapack_OVERRIDE = TRUE
+lapack_PREFIX = $(MKL_HOME)
+lapack_VERSION = 10.2
+lapack_LDFLAGS = $(INTEL_LDFLAGS)
+lapack_LIBS_CC = -lmkl_lapack
+lapack_LIBS_CXX = -lmkl_lapack
+lapack_LIBS_F77 = -lmkl_lapack
+lapack_LIBS_FC = -lmkl_lapack
 
