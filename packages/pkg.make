@@ -60,6 +60,16 @@ fetch : prefetch
 				echo "$(HPCP)    FAILED:  $(HPCP_POOL)/$(PKG_TAR) was not fetched!"; \
 			fi; \
 		fi; \
+	elif [ "x$(PKG_FORMAT)" = "xzip" ]; then \
+		if [ ! -e $(HPCP_POOL)/$(PKG_ZIP) ]; then \
+			echo "$(HPCP)  $(PKG_NAME):  Fetching zip file"; \
+			$(PKG_ZIP_FETCH) > $(HPCP_POOL)/$(PKG_NAME).fetchlog 2>&1; \
+			chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_ZIP) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
+			chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_ZIP) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
+			if [ ! -e $(HPCP_POOL)/$(PKG_ZIP) ]; then \
+				echo "$(HPCP)    FAILED:  $(HPCP_POOL)/$(PKG_ZIP) was not fetched!"; \
+			fi; \
+		fi; \
 	elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 		if [ ! -e $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
 			echo "$(HPCP)  $(PKG_NAME):  Cloning git repo"; \
@@ -88,6 +98,10 @@ extract : fetch
 		if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
 			if [ -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
 				$(PKG_TAR_EXTRACT) $(HPCP_POOL)/$(PKG_TAR) > log.extract 2>&1; \
+			fi; \
+		elif [ "x$(PKG_FORMAT)" = "xzip" ]; then \
+			if [ -e $(HPCP_POOL)/$(PKG_ZIP) ]; then \
+				$(PKG_ZIP_EXTRACT) $(PKG_SRCDIR) $(HPCP_POOL)/$(PKG_ZIP) > log.extract 2>&1; \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 			if [ -e $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
