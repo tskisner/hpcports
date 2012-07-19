@@ -63,3 +63,12 @@ endif
 ifndef BCTAR
 	export BCTAR = tar cjf
 endif
+
+ifndef UZIP
+	export UZIP = unzip -d
+endif
+
+ifndef ZIP
+	export ZIP = zip -r
+endif
+

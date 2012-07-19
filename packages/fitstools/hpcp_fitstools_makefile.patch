@@ -1,0 +1,36 @@
+diff -urN cexamples_orig/Makefile cexamples/Makefile
+--- cexamples_orig/Makefile	1969-12-31 16:00:00.000000000 -0800
++++ cexamples/Makefile	2012-07-19 11:20:14.000000000 -0700
+@@ -0,0 +1,32 @@
++include ../opts.make
++
++PROGS = \
++cookbook \
++fitscopy \
++imarith \
++imcopy \
++imlist \
++imstat \
++listhead \
++liststruc \
++modhead \
++tabcalc \
++tablist \
++tabmerge \
++tabselect
++
++all : $(PROGS)
++
++$(PROGS) : % : %.o
++	$(CC) -o $@ $< $(cfitsio_LDFLAGS) $(cfitsio_LIBS_CC) $(LDFLAGS) $(LIBS)
++
++%.o : %.c
++	$(CC) $(CFLAGS) $(cfitsio_CPPFLAGS) -o $@ -c $<
++
++clean :
++	@rm -f $(PROGS) *.o
++
++install : all
++	@mkdir -p $(PREFIX)/$(NAME)-$(VERSION)/bin; \
++	cp $(PROGS) $(PREFIX)/$(NAME)-$(VERSION)/bin/
++
