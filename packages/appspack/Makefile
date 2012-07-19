@@ -13,7 +13,7 @@ PKG_VERSION := $(shell head -n 1 version)
 PKG_NAME = appspack
 
 PKG_FORMAT = tar
-PKG_TAR = appspack-$(PKG_VERSION).tar.bz2
+PKG_TAR = appspack-$(PKG_VERSION).tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://software.sandia.gov/appspack/downloads/appspack-5.0.1-C3.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 

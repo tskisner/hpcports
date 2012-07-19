@@ -1,6 +1,7 @@
+path = bin
 header = include
 ld = lib
-lib_CC = -lgetdata
-lib_CXX = -lgetdata++ -lgetdata
-lib_F77 = -lfgetdata -lgetdata
-lib_FC = -lf95getdata -lgetdata
+lib_CC = -lappspack
+lib_CXX = -lappspack
+lib_F77 = -lappspack
+lib_FC = -lappspack
