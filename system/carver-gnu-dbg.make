@@ -87,3 +87,12 @@ blas_LIBS_CXX = $(INTEL_LIBS_CXX)
 blas_LIBS_F77 = $(INTEL_LIBS_F77)
 blas_LIBS_FC = $(INTEL_LIBS_FC)
 
+lapack_OVERRIDE = TRUE
+lapack_PREFIX = $(MKL_HOME)
+lapack_VERSION = 10.2
+lapack_LDFLAGS = $(INTEL_LDFLAGS)
+lapack_LIBS_CC = -lmkl_lapack
+lapack_LIBS_CXX = -lmkl_lapack
+lapack_LIBS_F77 = -lmkl_lapack
+lapack_LIBS_FC = -lmkl_lapack
+
