@@ -45,7 +45,7 @@ pkg-configure :
 	./configure \
 	$${dyn} \
 	--with-cfitsio-cpp=$(cfitsio_CPPFLAGS) \
-	--with-cfitsio-libs="$(cfitsio_LDFLAGS)$(cfitsio_LIBS_CC)" \
+	--with-cfitsio-libs="$(cfitsio_LDFLAGS) $(cfitsio_LIBS_CC)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
