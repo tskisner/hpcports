@@ -72,19 +72,92 @@ APPLE_LIBS_FC =
 # package overrides
 
 git_OVERRIDE = TRUE
+git_VERSION = 1.7.7.5-apple
+
+blas_OVERRIDE = TRUE
+blas_VERSION = 10.7.4-apple
+blas_LDFLAGS = $(APPLE_LDFLAGS)
 
 gettext_OVERRIDE = TRUE
-gettext_VERSION = 0.18.1.1
+gettext_VERSION = 0.18.1.1-macports
 gettext_CPPFLAGS = -I/ports/include
 gettext_LDFLAGS = -L/ports/lib
 
-#python_OVERRIDE = TRUE
-#python_PREFIX = /ports
-#python_VERSION = 2.7.3
+python_OVERRIDE = TRUE
+python_PREFIX = /ports
+python_VERSION = 2.7.3-macports
 
-#boost_OVERRIDE = TRUE
-#boost_PREFIX = /ports
-#boost_VERSION = 1.49-macports
-#boost_CPPFLAGS = -I/ports/include
-#boost_LDFLAGS = -L/ports/lib
+boost_OVERRIDE = TRUE
+boost_PREFIX = /ports
+boost_VERSION = 1.50-macports
+boost_CPPFLAGS = -I/ports/include
+boost_LDFLAGS = -L/ports/lib
+
+zlib_OVERRIDE = TRUE
+zlib_PREFIX = /ports
+zlib_VERSION = 1.2.7-macports
+zlib_CPPFLAGS = -I/ports/include
+zlib_LDFLAGS = -L/ports/lib
+
+bzip2_OVERRIDE = TRUE
+bzip2_PREFIX = /ports
+bzip2_VERSION = 1.0.6-macports
+bzip2_CPPFLAGS = -I/ports/include
+bzip2_LDFLAGS = -L/ports/lib
+
+sqlite_OVERRIDE = TRUE
+sqlite_PREFIX = /ports
+sqlite_VERSION = 3.7.13-macports
+sqlite_CPPFLAGS = -I/ports/include
+sqlite_LDFLAGS = -L/ports/lib
+
+expat_OVERRIDE = TRUE
+expat_PREFIX = /ports
+expat_VERSION = 2.1.0-macports
+expat_CPPFLAGS = -I/ports/include
+expat_LDFLAGS = -L/ports/lib
+
+libtool_OVERRIDE = TRUE
+libtool_PREFIX = /ports
+libtool_VERSION = 2.4.2-macports
+libtool_CPPFLAGS = -I/ports/include
+libtool_LDFLAGS = -L/ports/lib
+
+automake_OVERRIDE = TRUE
+automake_PREFIX = /ports
+automake_VERSION = 1.12.2-macports
+automake_CPPFLAGS = -I/ports/include
+automake_LDFLAGS = -L/ports/lib
+
+autoconf_OVERRIDE = TRUE
+autoconf_PREFIX = /ports
+autoconf_VERSION = 2.69-macports
+autoconf_CPPFLAGS = -I/ports/include
+autoconf_LDFLAGS = -L/ports/lib
+
+m4_OVERRIDE = TRUE
+m4_PREFIX = /ports
+m4_VERSION = 1.4.16-macports
+m4_CPPFLAGS = -I/ports/include
+m4_LDFLAGS = -L/ports/lib
+
+openssl_OVERRIDE = TRUE
+openssl_VERSION = 1.0.1c-macports
+openssl_PREFIX = /ports
+
+nose_OVERRIDE = TRUE
+nose_VERSION = 1.1.2-macports
+
+numpy_OVERRIDE = TRUE
+numpy_VERSION = 1.6.2-macports
+
+fftw_OVERRIDE = TRUE
+fftw_PREFIX = /ports
+fftw_VERSION = 3.3.2-macports
+fftw_CPPFLAGS = -I/ports/include
+fftw_LDFLAGS = -L/ports/lib
+fftw_LIBS_CC = -lfftw3_threads -lfftw3
+fftw_LIBS_CXX = -lfftw3_threads -lfftw3
+fftw_LIBS_F77 = -lfftw3_threads -lfftw3
+fftw_LIBS_FC = -lfftw3_threads -lfftw3
 
