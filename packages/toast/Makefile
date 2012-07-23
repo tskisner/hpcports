@@ -49,7 +49,7 @@ pkg-configure :
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \
 	--with-expat=$(expat_PREFIX) \
-	--with-sqlite=$(sqlite_PREFIX) \
+	--with-sqlite3=$(sqlite_PREFIX) \
 	--with-getdata=$(getdata_PREFIX) \
 	--with-cfitsio-cpp=$(cfitsio_CPPFLAGS) \
 	--with-cfitsio-libs="$(cfitsio_LDFLAGS)$(cfitsio_LIBS_CXX)" \
