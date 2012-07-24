@@ -21,7 +21,7 @@ PKG_SRCDIR = boost-numeric-bindings
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_makefile.patch
 
 
 # rules for this package
@@ -42,7 +42,7 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/include/boost-numeric-bindings; \
 	$(MAKE) install
 
 
