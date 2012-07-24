@@ -5,7 +5,7 @@ endif
 
 # OS environment version
 
-HPCP_ENV = gcc447
+HPCP_ENV = gcc463
 
 # software download location
 
@@ -71,21 +71,38 @@ APPLE_LIBS_FC =
 
 # package overrides
 
-git_OVERRIDE = TRUE
-git_VERSION = 1.7.7.5-apple
+gitgit_OVERRIDE = TRUE
+gitgit_VERSION = 1.7.7.5-apple
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 10.7.4-apple
 blas_LDFLAGS = $(APPLE_LDFLAGS)
+
+lapack_OVERRIDE = TRUE
+lapack_VERSION = 10.7.4-apple
+lapack_LDFLAGS = $(APPLE_LDFLAGS)
 
 gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.18.1.1-macports
 gettext_CPPFLAGS = -I/ports/include
 gettext_LDFLAGS = -L/ports/lib
 
+readline_OVERRIDE = TRUE
+readline_VERSION = 6.2.2-macports
+readline_CPPFLAGS = -I/ports/include
+readline_LDFLAGS = -L/ports/lib
+
+curl_OVERRIDE = TRUE
+curl_PREFIX = /ports
+curl_VERSION = 7.26.0-macports
+
 python_OVERRIDE = TRUE
 python_PREFIX = /ports
 python_VERSION = 2.7.3-macports
+
+ipython_OVERRIDE = TRUE
+ipython_PREFIX = /ports
+ipython_VERSION = 0.13-macports
 
 boost_OVERRIDE = TRUE
 boost_PREFIX = /ports
@@ -148,6 +165,12 @@ openssl_PREFIX = /ports
 nose_OVERRIDE = TRUE
 nose_VERSION = 1.1.2-macports
 
+matplotlib_OVERRIDE = TRUE
+matplotlib_VERSION = 1.1.0-macports
+
+gzip_OVERRIDE = TRUE
+gzip_VERSION = 1.4-macports
+
 numpy_OVERRIDE = TRUE
 numpy_VERSION = 1.6.2-macports
 
@@ -160,4 +183,14 @@ fftw_LIBS_CC = -lfftw3_threads -lfftw3
 fftw_LIBS_CXX = -lfftw3_threads -lfftw3
 fftw_LIBS_F77 = -lfftw3_threads -lfftw3
 fftw_LIBS_FC = -lfftw3_threads -lfftw3
+
+cfitsio_OVERRIDE = TRUE
+cfitsio_PREFIX = /ports
+cfitsio_VERSION = 3.3.0-macports
+cfitsio_CPPFLAGS = -I/ports/include
+cfitsio_LDFLAGS = -L/ports/lib
+cfitsio_LIBS_CC = -lcfitsio
+cfitsio_LIBS_CXX = -lcfitsio
+cfitsio_LIBS_F77 = -lcfitsio
+cfitsio_LIBS_FC = -lcfitsio
 
