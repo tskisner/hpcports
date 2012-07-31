@@ -117,8 +117,8 @@ process_var () {
 			echo "export ${PKG}_LIBS_MPIFC=\"${vals}\"" >> ${PKG}-${VER}.sh
 			echo "setenv ${PKG}_LIBS_MPIFC \"${vals}\"" >> ${PKG}.module
 		else
-			echo "export ${PKG}_${var}=\"${vals}\"" >> ${PKG}-${VER}.sh
-			echo "setenv ${PKG}_${var} \"${vals}\"" >> ${PKG}.module
+			echo "export ${var}=\"${vals}\"" >> ${PKG}-${VER}.sh
+			echo "setenv ${var} \"${vals}\"" >> ${PKG}.module
 		fi
 	fi
 	return 0

@@ -1,4 +1,5 @@
 
+PKG_DIR := $(shell pwd)
 
 STAGE = staging_$(HPCP_TARGET)
 
@@ -97,11 +98,11 @@ extract : fetch
 		rm -f log.*; \
 		if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
 			if [ -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
-				$(PKG_TAR_EXTRACT) $(HPCP_POOL)/$(PKG_TAR) > log.extract 2>&1; \
+				$(PKG_TAR_EXTRACT) $(HPCP_POOL)/$(PKG_TAR) > $(PKG_DIR)/$(STAGE)/log.extract 2>&1; \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xzip" ]; then \
 			if [ -e $(HPCP_POOL)/$(PKG_ZIP) ]; then \
-				$(PKG_ZIP_EXTRACT) $(PKG_SRCDIR) $(HPCP_POOL)/$(PKG_ZIP) > log.extract 2>&1; \
+				$(PKG_ZIP_EXTRACT) $(PKG_SRCDIR) $(HPCP_POOL)/$(PKG_ZIP) > $(PKG_DIR)/$(STAGE)/log.extract 2>&1; \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 			if [ -e $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
@@ -113,6 +114,7 @@ extract : fetch
 				cp -a ../$(PKG_SRCDIR) ./; \
 			fi; \
 		fi; \
+		cd $(PKG_DIR)/$(STAGE); \
 		if [ ! -e $(PKG_SRCDIR) ]; then \
 			echo "$(HPCP)    FAILED:  extracted source $(PKG_SRCDIR) was not created."; \
 		else \
