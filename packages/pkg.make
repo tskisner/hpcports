@@ -106,7 +106,7 @@ extract : fetch
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 			if [ -e $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
-				cp -a $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ./$(PKG_SRCDIR) && \
+				cp -a $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ./$(PKG_SRCDIR) \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xnone" ]; then \
 			if [ -e ../$(PKG_SRCDIR) ]; then \
