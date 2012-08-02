@@ -47,6 +47,7 @@ pkg-configure :
 		./configure \
 		$${dyn} \
 		--with-fftw-cpp=$(fftw_CPPFLAGS) \
+		--with-fftw-libs="$(fftw_LDFLAGS) $(fftw_LIBS_CXX)" \
 		--with-accelerate-cpp=$(APPLE_CPPFLAGS) \
 		--with-accelerate-libs="$(APPLE_LDFLAGS) $(APPLE_LIBS_CXX)" \
 		--with-papi-cpp=no \
@@ -98,6 +99,7 @@ pkg-configure :
 		./configure \
 		$${dyn} \
 		--with-fftw-cpp=$(fftw_CPPFLAGS) \
+		--with-fftw-libs="$(fftw_LDFLAGS) $(fftw_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--with-boost=$(boost_PREFIX) \
 		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
