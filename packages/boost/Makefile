@@ -43,8 +43,8 @@ pkg-configure :
 		boostchain="darwin"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xintel" ]; then \
-		echo "using intel : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
-		boostchain="intel"; \
+		echo "using intel-linux : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
+		boostchain="intel-linux"; \
 	fi; \
 	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 

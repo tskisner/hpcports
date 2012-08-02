@@ -36,17 +36,22 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
+	lapack="yes"; \
+	if [ "x$(lapack_LIBS_CXX)" != "x" ]; then \
+		lapack="$(lapack_LDFLAGS) $(lapack_LIBS_CXX)"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	MPICXX="$(MPICXX)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	FLIBS="$(FLIBS)" \
 	./configure \
 	$${dyn} \
 	--with-pic \
 	--with-blas="$(blas_LDFLAGS) $(blas_LIBS_CXX)" \
-	--with-lapack="$(lapack_LDFLAGS) $(lapack_LIBS_CXX)" \
+	--with-lapack="$${lapack}" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

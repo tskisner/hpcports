@@ -1,0 +1,9 @@
+  if [ is-loaded PrgEnv-gnu ] {
+  } else {
+    module unload pgi
+    module swap PrgEnv-pgi PrgEnv-gnu
+    module load intel/12.1.4.319
+    module load mkl/12.1.2.273
+    module unload xt-shmem
+    module load python/2.7.1
+  }
