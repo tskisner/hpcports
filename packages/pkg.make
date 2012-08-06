@@ -25,24 +25,24 @@ endif
 status :
 	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 		if [ -d $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
-			printf "%s%12s : (installed)\n" "$(HPCP)" "$(PKG_NAME)"; \
+			printf "%s%15s : (installed)\n" "$(HPCP)" "$(PKG_NAME)"; \
 		elif [ -d $(STAGE) ]; then \
 			if [ -e $(STAGE)/state.build ]; then \
-				printf "%s%12s : (built)\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%15s : (built)\n" "$(HPCP)" "$(PKG_NAME)"; \
 			elif [ -e $(STAGE)/state.configure ]; then \
-				printf "%s%12s : (configured)\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%15s : (configured)\n" "$(HPCP)" "$(PKG_NAME)"; \
 			elif [ -e $(STAGE)/state.patch ]; then \
-				printf "%s%12s : (patched)\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%15s : (patched)\n" "$(HPCP)" "$(PKG_NAME)"; \
 			elif [ -e $(STAGE)/state.extract ]; then \
-				printf "%s%12s : (extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%15s : (extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
 			else \
-				printf "%s%12s : (not extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%15s : (not extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
 			fi; \
 		else \
-			printf "%s%12s : (not extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
+			printf "%s%15s : (not extracted)\n" "$(HPCP)" "$(PKG_NAME)"; \
 		fi; \
 	else \
-		printf "%s%12s : (Overridden)\n" "$(HPCP)" "$(PKG_NAME)"; \
+		printf "%s%15s : (Overridden)\n" "$(HPCP)" "$(PKG_NAME)"; \
 	fi
 
 
@@ -230,8 +230,6 @@ uninstall :
 	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
 	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion ]; then \
 		mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
-	else \
-		rm -rf $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 	fi
 
 
