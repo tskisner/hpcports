@@ -1,0 +1,105 @@
+diff -urN tcsh-6.18.01_orig/ed.screen.c tcsh-6.18.01/ed.screen.c
+--- tcsh-6.18.01_orig/ed.screen.c	2011-02-26 16:14:38.000000000 -0800
++++ tcsh-6.18.01/ed.screen.c	2012-08-06 12:16:16.000000000 -0700
+@@ -47,7 +47,7 @@
+  * assumption...
+  */
+ 
+-#define TC_BUFSIZE 2048
++#define TC_BUFSIZE 4096
+ 
+ #define GoodStr(a) (tstr[a].str != NULL && tstr[a].str[0] != '\0')
+ #define Str(a) tstr[a].str
+diff -urN tcsh-6.18.01_orig/sh.h tcsh-6.18.01/sh.h
+--- tcsh-6.18.01_orig/sh.h	2011-04-14 11:25:25.000000000 -0700
++++ tcsh-6.18.01/sh.h	2012-08-06 12:16:16.000000000 -0700
+@@ -1028,7 +1028,7 @@
+ # ifdef PATH_MAX
+ #  define MAXPATHLEN PATH_MAX
+ # else
+-#  define MAXPATHLEN 2048
++#  define MAXPATHLEN 4096
+ # endif
+ #endif /* MAXPATHLEN */
+ 
+diff -urN tcsh-6.18.01_orig/sh.print.c tcsh-6.18.01/sh.print.c
+--- tcsh-6.18.01_orig/sh.print.c	2011-05-25 13:17:20.000000000 -0700
++++ tcsh-6.18.01/sh.print.c	2012-08-06 12:16:16.000000000 -0700
+@@ -106,7 +106,7 @@
+     xprintf("%u%u", i / 10, i % 10);
+ }
+ 
+-char    linbuf[2048];		/* was 128 */
++char    linbuf[4096];		/* was 128 */
+ char   *linp = linbuf;
+ int    output_raw = 0;		/* PWP */
+ int    xlate_cr   = 0;		/* HE */
+diff -urN tcsh-6.18.01_orig/tc.func.c tcsh-6.18.01/tc.func.c
+--- tcsh-6.18.01_orig/tc.func.c	2011-12-14 08:36:44.000000000 -0800
++++ tcsh-6.18.01/tc.func.c	2012-08-06 12:16:16.000000000 -0700
+@@ -2064,7 +2064,7 @@
+     /*
+      * Maximum size of a termcap record. We make it twice as large.
+      */
+-    char termcap_buffer[2048];
++    char termcap_buffer[4096];
+ 
+     USE(c);
+     /* try to find which entry we should be looking for */
+diff -urN tcsh-6.18.01_orig/tc.printf.c tcsh-6.18.01/tc.printf.c
+--- tcsh-6.18.01_orig/tc.printf.c	2006-03-02 10:46:45.000000000 -0800
++++ tcsh-6.18.01/tc.printf.c	2012-08-06 12:16:16.000000000 -0700
+@@ -390,7 +390,7 @@
+     char *buf;
+ 
+     buf = NULL;
+-    size = 2048; /* Arbitrary */
++    size = 4096; /* Arbitrary */
+     for (;;) {
+ 	va_list copy;
+ 
+diff -urN tcsh-6.18.01_orig/win32/console.c tcsh-6.18.01/win32/console.c
+--- tcsh-6.18.01_orig/win32/console.c	2006-08-26 18:13:28.000000000 -0700
++++ tcsh-6.18.01/win32/console.c	2012-08-06 12:16:27.000000000 -0700
+@@ -183,7 +183,7 @@
+ 	if(!GetConsoleScreenBufferInfo(hStdout, &scrbuf) ) {
+ 		return 0 ;
+ 	}
+-	num =2048;
++	num =4096;
+ 
+ 	savepos = scrbuf.dwCursorPosition;
+ 	if (!FillConsoleOutputCharacter(hStdout,' ',num,scrbuf.dwCursorPosition,
+diff -urN tcsh-6.18.01_orig/win32/globals.c tcsh-6.18.01/win32/globals.c
+--- tcsh-6.18.01_orig/win32/globals.c	2008-09-10 13:34:21.000000000 -0700
++++ tcsh-6.18.01/win32/globals.c	2012-08-06 12:16:27.000000000 -0700
+@@ -57,7 +57,7 @@
+ dprintf(char *format, ...)
+ {				/* } */
+ 	va_list vl;
+-	char putbuf[2048];
++	char putbuf[4096];
+ 	DWORD err;
+ 
+ 	err = GetLastError();
+diff -urN tcsh-6.18.01_orig/win32/io.c tcsh-6.18.01/win32/io.c
+--- tcsh-6.18.01_orig/win32/io.c	2006-04-12 17:59:02.000000000 -0700
++++ tcsh-6.18.01/win32/io.c	2012-08-06 12:16:27.000000000 -0700
+@@ -56,7 +56,7 @@
+ 
+ int consoleread(HANDLE , unsigned char * ,size_t ) ;
+ 
+-INPUT_RECORD girec[2048];
++INPUT_RECORD girec[4096];
+ 
+ unsigned short __nt_want_vcode=0,__nt_vcode=0;
+ HANDLE __h_con_alarm=0;
+@@ -272,7 +272,7 @@
+ 	if (howmany == 0)
+ 		howmany = 1;
+ 
+-	if (howmany > 2048){
++	if (howmany > 4096){
+ 		irec = heap_alloc(howmany*sizeof(INPUT_RECORD));
+ 		memfree=1;
+ 	}

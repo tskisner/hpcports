@@ -21,7 +21,7 @@ PKG_SRCDIR = tcsh-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_max4096.patch
 
 
 # rules for this package
