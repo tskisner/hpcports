@@ -46,6 +46,7 @@ FC = gfortran
 
 # MPI compilers
 
+openmpi_OVERRIDE = TRUE
 MPICC = mpicc
 MPICXX = mpicxx
 MPIF77 = mpif77

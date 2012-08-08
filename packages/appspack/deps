@@ -1,1 +1,1 @@
-autoconf automake libtool blas lapack
+autoconf automake libtool blas lapack openmpi
