@@ -43,6 +43,7 @@ FC = ftn
 # MPI compilers
 
 openmpi_OVERRIDE = TRUE
+openmpi_VERSION = cray.mpich2
 MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
