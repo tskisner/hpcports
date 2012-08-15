@@ -1,10 +1,17 @@
   if [ is-loaded PrgEnv-gnu ] {
   } else {
     module unload pgi
-    module swap PrgEnv-pgi PrgEnv-gnu
-    module load gcc/4.6.3
+    module swap PrgEnv-pgi PrgEnv-gnu/4.0.46
+    module unload cray-shmem
+    module swap moab moab/6.1.8
+    module load altd/1.0
+    module swap cray-mpich2 xt-mpich2/5.4.5
+    module swap cray-libsci xt-libsci/11.0.06
+    module swap atp atp/1.4.4
+    module swap xt-asyncpe xt-asyncpe/5.10
+    module swap pmi pmi/3.0.1-1.0000.8917.33.1.gem
+    module swap gcc gcc/4.6.3
     module load acml/4.4.0
-    module unload xt-shmem
     module load fftw/3.3.0.0
     module load python/2.7.1
   }
