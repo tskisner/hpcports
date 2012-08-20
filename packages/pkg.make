@@ -111,6 +111,8 @@ extract : fetch
 		elif [ "x$(PKG_FORMAT)" = "xnone" ]; then \
 			if [ -e ../$(PKG_SRCDIR) ]; then \
 				cp -a ../$(PKG_SRCDIR) ./; \
+			else \
+				mkdir -p $(PKG_SRCDIR); \
 			fi; \
 		fi; \
 		cd $(PKG_DIR)/$(STAGE); \
