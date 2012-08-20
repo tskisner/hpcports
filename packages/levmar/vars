@@ -1,0 +1,6 @@
+header = include
+ld = lib
+lib_CC = -llevmar
+lib_CXX = -llevmar
+lib_F77 = -llevmar
+lib_FC = -llevmar
