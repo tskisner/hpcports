@@ -58,7 +58,7 @@ for pkg in ${pkgs}; do
 	echo "	@if [ \"x\$(${pkg}_OVERRIDE)\" != \"xTRUE\" ]; then \\" >> packages/pkg_rules.make
 	echo "		cd packages/${pkg}; \$(MAKE) install; \\" >> packages/pkg_rules.make
 	echo "	else \\" >> packages/pkg_rules.make
-	echo "		echo \"\$(HPCP)  ${pkg}:  Installing (module for overridden package)\"; \\" >> packages/pkg_rules.make
+	echo "		printf \"%s%15s :  Installing (module for overridden package)\\\\n\" \"\$(HPCP)\" ${pkg}; \\" >> packages/pkg_rules.make
 	echo "		mkdir -p packages/overrides_\$(HPCP_TARGET); \\" >> packages/pkg_rules.make
 	echo "		cd packages/overrides_\$(HPCP_TARGET); \\" >> packages/pkg_rules.make
 	echo "		touch ${pkg}; \\" >> packages/pkg_rules.make
@@ -97,7 +97,7 @@ for pkg in ${pkgs}; do
 	echo "	@if [ \"x\$(${pkg}_OVERRIDE)\" != \"xTRUE\" ]; then \\" >> packages/pkg_rules.make
 	echo "		cd packages/${pkg}; \$(MAKE) uninstall; \\" >> packages/pkg_rules.make
 	echo "	else \\" >> packages/pkg_rules.make
-	echo "		echo \"\$(HPCP)  ${pkg}:  Uninstalling (module for overridden package)\"; \\" >> packages/pkg_rules.make
+	echo "		printf \"%s%15s :  Uninstalling (module for overridden package)\\\\n\" \"\$(HPCP)\" ${pkg}; \\" >> packages/pkg_rules.make
 	echo "		rm -f \$(HPCP_PREFIX)/env/${pkg}-\$(${pkg}_VERSION).sh; \\" >> packages/pkg_rules.make
 	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/\$(${pkg}_VERSION)-\$(HPCP_ENV); \\" >> packages/pkg_rules.make
 	echo "		rm -f \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.version; \\" >> packages/pkg_rules.make
