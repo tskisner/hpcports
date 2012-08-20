@@ -41,8 +41,6 @@ pkg-configure :
 	./configure \
 	$${dyn} \
 	--enable-threads \
-	--with-fftw="$(fftw_PREFIX)/lib" \
-	--with-fftw-incdir="$(fftw_PREFIX)/include" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

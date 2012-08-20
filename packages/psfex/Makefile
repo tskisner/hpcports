@@ -34,7 +34,7 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="--disable-shared"; \
+		dyn="--disable-shared --enable-static"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
