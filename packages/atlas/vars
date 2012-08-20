@@ -1,0 +1,6 @@
+header = include
+ld = lib
+lib_CC = -llapack -lf77blas -lcblas -latlas
+lib_CXX = -llapack -lf77blas -lcblas -latlas
+lib_F77 = -llapack -lf77blas -lcblas -latlas
+lib_FC = -llapack -lf77blas -lcblas -latlas
