@@ -34,6 +34,8 @@ include packages/pkg_rules.make
 
 status : packages/up2date.$(GITHASH)
 	@echo "$(HPCP)"; \
+	printf "%s%15s | %10s | State\n" "$(HPCP)" "Package Name" "Version"; \
+	printf "%s%15s-+-%10s-+------------\n" "$(HPCP)" "---------------" "----------"; \
 	for pkg in $(PKGS); do \
 		cd packages/$${pkg}; \
 		$(MAKE) status; \
