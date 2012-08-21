@@ -85,6 +85,9 @@ INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
 
 # package overrides
 
+cmake_OVERRIDE = TRUE
+cmake_VERSION = 2.8.2
+
 blas_OVERRIDE = TRUE
 blas_PREFIX = $(MKL_HOME)
 blas_VERSION = 10.2
