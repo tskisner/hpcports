@@ -120,6 +120,10 @@ zlib_VERSION = 1.2.7-macports
 zlib_CPPFLAGS = -I/ports/include
 zlib_LDFLAGS = -L/ports/lib
 
+libtiff_OVERRIDE = TRUE
+libtiff_PREFIX = /ports
+libtiff_VERSION = 3.9.5
+
 bzip2_OVERRIDE = TRUE
 bzip2_PREFIX = /ports
 bzip2_VERSION = 1.0.6-macports
