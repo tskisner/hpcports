@@ -142,6 +142,18 @@ expat_VERSION = 2.1.0-macports
 expat_CPPFLAGS = -I/ports/include
 expat_LDFLAGS = -L/ports/lib
 
+tcl_OVERRIDE = TRUE
+tcl_PREFIX = /ports
+tcl_VERSION = 8.5.12-macports
+tcl_CPPFLAGS = -I/ports/include
+tcl_LDFLAGS = -L/ports/lib
+
+tk_OVERRIDE = TRUE
+tk_PREFIX = /ports
+tk_VERSION = 8.5.12-macports
+tk_CPPFLAGS = -I/ports/include
+tk_LDFLAGS = -L/ports/lib
+
 libtool_OVERRIDE = TRUE
 libtool_PREFIX = /ports
 libtool_VERSION = 2.4.2-macports

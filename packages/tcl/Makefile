@@ -50,7 +50,8 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR)/unix; \
-	$(MAKE) install
+	$(MAKE) install; \
+	$(MAKE) install-private-headers
 
 
 pkg-clean :

@@ -88,6 +88,12 @@ INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.2
 
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.4.13
+
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.4.13
+
 blas_OVERRIDE = TRUE
 blas_PREFIX = $(MKL_HOME)
 blas_VERSION = 10.2
