@@ -1,35 +1,11 @@
   if [ is-loaded PrgEnv-gnu ] {
   } else {
+    module swap PrgEnv-pgi PrgEnv-gnu
     module unload pgi
-    module swap PrgEnv-pgi PrgEnv-gnu/4.0.46
     module unload cray-shmem
-    module unload moab
-    module load moab/6.1.8
-    module unload torque
-    module load torque/2.5.9
-    module unload eswrap
-    module load eswrap/1.0.10
-    module unload xpmem
-    module load xpmem/0.1-2.0400.31280.3.1.gem
-    module unload gni-headers
-    module load gni-headers/2.1-1.0400.4351.3.1.gem
-    module unload dmapp
-    module load dmapp/3.2.1-1.0400.4255.2.159.gem
-    module unload pmi
-    module load pmi/3.0.1-1.0000.8917.33.1.gem
-    module unload ugni
-    module load ugni/2.3-1.0400.4374.4.88.gem
-    module unload udreg
-    module load udreg/2.3.1-1.0400.4264.3.1.gem
-    module load altd/1.0
-    module unload cray-mpich2
-    module load xt-mpich2/5.4.5
-    module unload cray-libsci
-    module load xt-libsci/11.0.06
-    module swap atp atp/1.4.4
-    module swap xt-asyncpe xt-asyncpe/5.10
-    module unload gcc
-    module load gcc/4.6.3
+    module swap gcc gcc/4.7.1
+    module swap cray-libsci cray-libsci/11.1.00
+    module swap cray-mpich2 cray-mpich2/5.5.2
     module load acml/4.4.0
     module load fftw/3.3.0.0
     module load python/2.7.1

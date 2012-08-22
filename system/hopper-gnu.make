@@ -11,9 +11,10 @@
 # here:
 #
 # 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5, fftw 3.3.0.0, python 2.7.1
+# 2.0 : gcc-4.7.1, ACML 4.4.0, cray-mpich2 5.5.2, fftw 3.3.0.0, python 2.7.1
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -67,24 +68,24 @@ OMPFLAGS = -fopenmp
 
 # Fortran mixing
 
-FLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.6.3/snos/lib64/libgfortran.a
+FLIBS = /opt/gcc/4.7.1/snos/lib64/libgfortran.a
+FCLIBS = /opt/gcc/4.7.1/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
 # Linking
 
-LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # vendor math libraries
 
 VENDOR = amd
 AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
 AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
-AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.6.3/snos/lib64/libgfortran.a /opt/gcc/4.6.3/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # package overrides
 
@@ -162,8 +163,8 @@ blas_LIBS_FC = $(AMD_LIBS_FC)
 blas_LIBS_F77 = $(AMD_LIBS_F77)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 11.0.06
+lapack_VERSION = 11.1.00
 
 scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 11.0.06
+scalapack_VERSION = 11.1.00
 
