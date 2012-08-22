@@ -1,0 +1,8 @@
+path = bin
+man = share/man
+header = include
+ld = lib
+lib_CC = -ltiff
+lib_CXX = -ltiffxx -ltiff
+lib_F77 = -ltiff
+lib_FC = -ltiff
