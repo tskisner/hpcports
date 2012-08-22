@@ -1,0 +1,20 @@
+diff -urN tcl8.5.12.orig/unix/Makefile.in tcl8.5.12/unix/Makefile.in
+--- tcl8.5.12.orig/unix/Makefile.in	2012-07-25 09:45:05.000000000 -0700
++++ tcl8.5.12/unix/Makefile.in	2012-08-22 10:52:35.000000000 -0700
+@@ -80,7 +80,7 @@
+ HTML_INSTALL_DIR	= $(INSTALL_ROOT)$(HTML_DIR)
+ 
+ # Directory in which to install the configuration file tclConfig.sh
+-CONFIG_INSTALL_DIR	= $(INSTALL_ROOT)$(libdir)
++CONFIG_INSTALL_DIR	= $(INSTALL_ROOT)$(bindir)
+ 
+ # Package search path.
+ TCL_PACKAGE_PATH	= @TCL_PACKAGE_PATH@
+@@ -727,6 +727,7 @@
+ 	@$(INSTALL_PROGRAM) ${TCL_EXE} "$(BIN_INSTALL_DIR)"/tclsh$(VERSION)@EXEEXT@
+ 	@echo "Installing tclConfig.sh to $(CONFIG_INSTALL_DIR)/"
+ 	@$(INSTALL_DATA) tclConfig.sh "$(CONFIG_INSTALL_DIR)"/tclConfig.sh
++	@chmod +x "$(CONFIG_INSTALL_DIR)"/tclConfig.sh
+ 	@if test "$(STUB_LIB_FILE)" != "" ; then \
+ 	    echo "Installing $(STUB_LIB_FILE) to $(LIB_INSTALL_DIR)/"; \
+ 	    @INSTALL_STUB_LIB@ ; \
