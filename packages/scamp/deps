@@ -1,1 +1,1 @@
-autoconf automake libtool atlas plplot fftw cdsclient
+autoconf automake libtool atlas plplot sfftw cdsclient

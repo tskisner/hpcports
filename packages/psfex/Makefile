@@ -38,6 +38,7 @@ pkg-configure :
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	CPPFLAGS="-I$(atlas_PREFIX)/include -I$(sfftw_PREFIX)/include -I$(plplot_PREFIX)/include" \
 	./configure \
 	$${dyn} \
 	--enable-threads \
@@ -45,8 +46,8 @@ pkg-configure :
 	--with-atlas-incdir="$(atlas_PREFIX)/include" \
 	--with-plplot="$(plplot_PREFIX)/lib" \
 	--with-plplot-incdir="$(plplot_PREFIX)/include" \
-	--with-fftw="$(fftw_PREFIX)/lib" \
-	--with-fftw-incdir="$(fftw_PREFIX)/include" \
+	--with-fftw="$(sfftw_PREFIX)/lib" \
+	--with-fftw-incdir="$(sfftw_PREFIX)/include" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

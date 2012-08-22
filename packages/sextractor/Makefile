@@ -38,6 +38,7 @@ pkg-configure :
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	CPPFLAGS="-I$(atlas_PREFIX)/include -I$(fftw_PREFIX)/include" \
 	./configure \
 	$${dyn} \
 	--enable-threads \

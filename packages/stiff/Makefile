@@ -40,11 +40,14 @@ pkg-configure :
 	if [ "x$(zlib_OVERRIDE)" != "xTRUE" ]; then \
 		zl="--with-z-libdir=$(zlib_PREFIX)/lib"; \
 	fi; \
+	tf=""; \
+	if [ "x$(libtiff_OVERRIDE)" != "xTRUE" ]; then \
+		tf="--with-tiff-incdir=$(libtiff_PREFIX)/include --with-tiff-libdir=$(libtiff_PREFIX)/lib"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure \
-	$${dyn} \
-	$${zl} \
+	$${dyn} $${zl} $${tf} \
 	--enable-threads \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 

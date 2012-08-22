@@ -13,9 +13,9 @@ PKG_VERSION := $(shell head -n 1 version)
 PKG_NAME = plplot
 
 PKG_FORMAT = tar
-PKG_TAR = plplot-$(PKG_VERSION).tar.bz2
+PKG_TAR = plplot-$(PKG_VERSION).tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/plplot/files/plplot/$(PKG_VERSION)%20Source/plplot-$(PKG_VERSION).tar.gz/download
-PKG_TAR_EXTRACT = $(BXTAR)
+PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = plplot-$(PKG_VERSION)
 

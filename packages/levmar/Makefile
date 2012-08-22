@@ -46,7 +46,7 @@ pkg-configure :
 	fi; \
 	CC="$(CC) $(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
-	LIBS="$(LIBS)" \
+	LIBS="$(LIBS) -lm" \
 	CXX="$(CXX) $(CXXFLAGS)" \
 	FC="$(F77) $(FFLAGS)" \
 	cmake \
@@ -55,7 +55,7 @@ pkg-configure :
 	-DNEED_F2C:BOOL=OFF \
 	-DINSTALL_LIBS=ON \
 	-DLAPACKBLAS_DIR="$${blasld};$${lapackld}" \
-	-DLAPACKBLAS_LIB_NAMES="$${lapacklib};$${blaslib}" \
+	-DLAPACKBLAS_LIB_NAMES="$${lapacklib};$${blaslib};pthread;m" \
 	-DCMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
 	..
 

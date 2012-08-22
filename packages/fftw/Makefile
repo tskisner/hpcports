@@ -40,7 +40,6 @@ pkg-configure :
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	MPICC="$(MPICC)" \
 	./configure \
-	--enable-single \
 	--enable-threads --enable-mpi $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 

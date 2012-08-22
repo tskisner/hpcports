@@ -38,10 +38,12 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn="--dylibs"; \
 	fi; \
-	../configure \
-	$${dyn} \
-	--cc="$(CC)" \
-	--cflags="$(CFLAGS)" \
+	../configure $${dyn} \
+	-C ic "$(CC)" \
+	-F ic "$(CFLAGS)" \
+	-C if "$(F77)" \
+	-F if "$(FFLAGS)" \
+	-D c -DWALL \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
