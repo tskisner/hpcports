@@ -1,0 +1,9 @@
+  if [ is-loaded PrgEnv-gnu ] {
+  } else {
+    module unload pgi
+    module swap PrgEnv-pgi PrgEnv-gnu
+    module load gcc/4.6.2
+    module load acml/4.4.0
+    module unload xt-shmem
+    module load fftw/3.2.2.1
+  }
