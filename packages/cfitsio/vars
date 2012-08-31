@@ -1,5 +1,4 @@
-path =
-man =
+path = bin
 header = include
 ld = lib
 lib_CC = -lcfitsio

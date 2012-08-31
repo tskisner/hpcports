@@ -41,12 +41,16 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE)
+	$(MAKE); \
+	$(MAKE) fpack; \
+	$(MAKE) funpack
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	$(MAKE) install; \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin; \
+	cp fpack funpack $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin/
 
 
 pkg-clean :
