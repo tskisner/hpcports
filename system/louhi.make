@@ -45,6 +45,7 @@ FC = ftn
 # MPI compilers
 
 openmpi_OVERRIDE = TRUE
+openmpi_VERSION = louhi-mpich2
 MPICC = cc
 MPICXX = CC
 MPIF77 = ftn

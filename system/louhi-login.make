@@ -23,7 +23,7 @@ HPCP_POOL = /wrk/pr2f5035/hpcports_pool
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = gnu
-BUILD_DYNAMIC = FALSE
+BUILD_DYNAMIC = TRUE
 
 # UNIX tools
 
@@ -57,22 +57,22 @@ OMPFLAGS = -fopenmp
 
 FLIBS = -lgfortran
 FCLIBS = -lgfortran
-MPIFCLIBS =
+MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # Linking
 
-LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
+LIBS = -lm
+LDFLAGS =
 
 # vendor math libraries
 
 VENDOR = amd
 AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
 AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
-AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.5.2/snos/lib64/libgfortran.a /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.5.2/snos/lib64/libgfortran.a /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.5.2/snos/lib64/libgfortran.a /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.5.2/snos/lib64/libgfortran.a /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_CC = -lacml_mp -lacml_mv
+AMD_LIBS_CXX = -lacml_mp -lacml_mv
+AMD_LIBS_F77 = -lacml_mp -lacml_mv
+AMD_LIBS_FC = -lacml_mp -lacml_mv
 
 # package overrides
 
@@ -101,7 +101,7 @@ fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = $(FFTW_VERSION)
 
-# we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
+# we get BLAS from ACML
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 4.4.0
