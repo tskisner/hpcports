@@ -18,7 +18,7 @@ MOD_SUFFIX = -hpcp
 
 # software download location
 
-HPCP_POOL = /wrk/pr2f5035/hpcports_pool
+HPCP_POOL = /fs/local/users/pr2f5035/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
@@ -85,21 +85,21 @@ gzip_VERSON = louhi
 gettext_OVERRIDE = TRUE
 gettext_VERSION = louhi
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.7.7.2
-
 zlib_OVERRIDE = TRUE
 zlib_VERSION = louhi
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = louhi
 
-curl_OVERRIDE = TRUE
-curl_VERSION = louhi
-
 fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = $(FFTW_VERSION)
+fftw_CPPFLAGS = -I$(fftw_PREFIX)/include
+fftw_LDFLAGS = -L$(fftw_PREFIX)/lib
+fftw_LIBS_CC = -lfftw3_threads -lfftw3
+fftw_LIBS_CC = -lfftw3_threads -lfftw3
+fftw_LIBS_F77 = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
+fftw_LIBS_FC = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
 
 # we get BLAS from ACML
 

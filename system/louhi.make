@@ -18,7 +18,7 @@ MOD_SUFFIX = -hpcp
 
 # software download location
 
-HPCP_POOL = /wrk/pr2f5035/hpcports_pool
+HPCP_POOL = /fs/local/users/pr2f5035/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 

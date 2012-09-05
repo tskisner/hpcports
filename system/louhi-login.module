@@ -6,5 +6,6 @@
     module load acml/4.4.0
     module unload xt-shmem
     module load fftw/3.2.2.1
-    module load git/1.7.7.2
   }
+
+  prepend-path LD_LIBRARY_PATH "\$\{ACML_DIR\}/gfortran64_mp/lib"

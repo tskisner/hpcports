@@ -1,5 +1,15 @@
 path = bin
+header = include lib
+ld = lib
 MPICC = mpicc
 MPICXX = mpicxx
 MPIF77 = mpif77
 MPIFC = mpif90
+MPIFLIBS = -lmpi_f77
+MPIFCLIBS = -lmpi_f90 -lmpi_f77
+HPCP_MPICC = mpicc
+HPCP_MPICXX = mpicxx
+HPCP_MPIF77 = mpif77
+HPCP_MPIFC = mpif90
+HPCP_MPIFLIBS = -lmpi_f77
+HPCP_MPIFCLIBS = -lmpi_f90 -lmpi_f77
