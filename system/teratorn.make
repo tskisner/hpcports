@@ -194,15 +194,15 @@ gzip_VERSION = 1.4-macports
 numpy_OVERRIDE = TRUE
 numpy_VERSION = 1.6.2-macports
 
-fftw_OVERRIDE = TRUE
-fftw_PREFIX = /ports
-fftw_VERSION = 3.3.2-macports
-fftw_CPPFLAGS = -I/ports/include
-fftw_LDFLAGS = -L/ports/lib
-fftw_LIBS_CC = -lfftw3_threads -lfftw3
-fftw_LIBS_CXX = -lfftw3_threads -lfftw3
-fftw_LIBS_F77 = -lfftw3_threads -lfftw3
-fftw_LIBS_FC = -lfftw3_threads -lfftw3
+#fftw_OVERRIDE = TRUE
+#fftw_PREFIX = /ports
+#fftw_VERSION = 3.3.2-macports
+#fftw_CPPFLAGS = -I/ports/include
+#fftw_LDFLAGS = -L/ports/lib
+#fftw_LIBS_CC = -lfftw3_threads -lfftw3
+#fftw_LIBS_CXX = -lfftw3_threads -lfftw3
+#fftw_LIBS_F77 = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
+#fftw_LIBS_FC = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
 
 cfitsio_OVERRIDE = TRUE
 cfitsio_PREFIX = /ports
