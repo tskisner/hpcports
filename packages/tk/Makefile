@@ -37,13 +37,17 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
-	tc=""; \
+	tcinc=""; \
 	if [ "x$(tcl_OVERRIDE)" != "xTRUE" ]; then \
-		tc="-I$(tcl_PREFIX)/include"; \
+		tcinc="-I$(tcl_PREFIX)/include"; \
+	fi; \
+	tclink=""; \
+	if [ "x$(tcl_OVERRIDE)" != "xTRUE" ]; then \
+		tclink="-L$(tcl_PREFIX)/lib"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CPPFLAGS="$${tc}" \
-	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	CPPFLAGS="$${tcinc}" \
+	LDFLAGS="$(LDFLAGS) $${tclink}" LIBS="$(LIBS)" \
 	./configure $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 

@@ -75,7 +75,7 @@ MPIFCLIBS =
 # Linking
 
 LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = -L/usr/lib64 /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # vendor math libraries
 
@@ -101,6 +101,9 @@ gettext_VERSION = 0.17.0
 gitgit_OVERRIDE = TRUE
 gitgit_VERSION = 1.7.7.4
 
+cmake_OVERRIDE = TRUE
+cmake_VERSION = 2.8.2
+
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.3
 
@@ -119,37 +122,43 @@ fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = 3.3.0.0
 
 nose_OVERRIDE = TRUE
-nose_VERSION = 2.7.1
+nose_VERSION = NA
+
+astropy_OVERRIDE = TRUE
+astropy_VERSION = NA
+
+pyraf_OVERRIDE = TRUE
+pyraf_VERSION = NA
 
 numpy_OVERRIDE = TRUE
-numpy_VERSION = 2.7.1
+numpy_VERSION = NA
 
 scipy_OVERRIDE = TRUE
-scipy_VERSION = 2.7.1
+scipy_VERSION = NA
 
 pyfits_OVERRIDE = TRUE
-pyfits_VERSION = 2.7.1
+pyfits_VERSION = NA
 
 ipython_OVERRIDE = TRUE
-ipython_VERSION = 2.7.1
+ipython_VERSION = NA
 
 matplotlib_OVERRIDE = TRUE
-matplotlib_VERSION = 2.7.1
+matplotlib_VERSION = NA
 
 mpi4py_OVERRIDE = TRUE
-mpi4py_VERSION = 2.7.1
+mpi4py_VERSION = NA
 
 pyslalib_OVERRIDE = TRUE
-pyslalib_VERSION = 2.7.1
+pyslalib_VERSION = NA
 
 scientific_OVERRIDE = TRUE
-scientific_VERSION = 2.7.1
+scientific_VERSION = NA
 
 healpy_OVERRIDE = TRUE
-healpy_VERSION = 2.7.1
+healpy_VERSION = NA
 
 numexpr_OVERRIDE = TRUE
-numexpr_VERSION = 2.7.1
+numexpr_VERSION = NA
 
 # we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
 
