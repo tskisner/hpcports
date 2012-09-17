@@ -1,0 +1,8 @@
+path = bin
+header = include
+man = share/man
+ld = lib
+lib_CC = -lwcs
+lib_CXX = -lwcs
+lib_F77 = -lwcs
+lib_FC = -lwcs
