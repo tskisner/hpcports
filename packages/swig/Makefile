@@ -40,6 +40,8 @@ pkg-configure :
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
+	--with-pcre-prefix=$(pcre_PREFIX) \
+	--with-boost=$(boost_PREFIX) \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
