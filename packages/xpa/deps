@@ -1,1 +1,1 @@
-autoconf libtool
+autoconf automake libtool
