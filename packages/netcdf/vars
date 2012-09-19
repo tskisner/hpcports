@@ -1,0 +1,8 @@
+path = bin
+man = share/man
+header = include
+ld = lib
+lib_CC = -lnetcdf
+lib_CXX = -lnetcdf
+lib_F77 = -lnetcdf
+lib_FC = -lnetcdf
