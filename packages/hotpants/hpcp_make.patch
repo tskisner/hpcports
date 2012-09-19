@@ -1,0 +1,101 @@
+diff -urN hotpants_v5.1.10b.orig/Makefile hotpants_v5.1.10b/Makefile
+--- hotpants_v5.1.10b.orig/Makefile	2005-07-21 12:15:36.000000000 -0700
++++ hotpants_v5.1.10b/Makefile	2012-09-19 13:12:04.000000000 -0700
+@@ -1,76 +1,46 @@
+-#############################################################
+-# TO BE CHANGED BY EACH USER TO POINT TO include/ AND lib/ 
+-# DIRS HOLDING CFITSIO *.h AND libcfitsio IF THEY ARE NOT IN 
+-# THE STANDARD PLACES
+-# 
+-
+-CFITSIOINCDIR =  ../../include/cfitsio
+-LIBDIR        =  ../../lib/$(ARCH)
+-
+-#
+-#
+-#############################################################
+-# COMPILATION OPTIONS BELOW
+-# 
+-
+-# another good memory checker is valgrind : http://valgrind.kde.org/index.html
+-# valgrind --tool=memcheck hotpants
+-
+-# for memory checking with libefence
+-# LIBS  = -L$(LIBDIR) -lm -lcfitsio -lefence
+-
+-# for profiling with gprof
+-# COPTS = -pg -fprofile-arcs -funroll-loops -O3 -ansi -pedantic-errors -Wall -I$(CFITSIOINCDIR) 
+-
+-# for gdbugging
+-#COPTS = -g3 -funroll-loops -O3 -ansi -pedantic-errors -Wall -I$(CFITSIOINCDIR) 
+-
+-# standard usage
+-COPTS = -funroll-loops -O3 -ansi -pedantic-errors -Wall -I$(CFITSIOINCDIR)
+-LIBS  = -L$(LIBDIR) -lm -lcfitsio
+-
+-# compiler
+-CC    = gcc 
+-
+-#
+-#
+-############################################################# 
+-# BELOW SHOULD BE OK, UNLESS YOU WANT TO COPY THE EXECUTABLES
+-# SOMEPLACE AFTER THEY ARE BUILT eg. hotpants
+-#
++
++# modified to work the the HPCPorts build system.  -Ted Kisner
++
++include hpcp.make
++
++COMP = $(CFLAGS) $(cfitsio_CPPFLAGS)
++LINK  = $(cfitsio_LDFLAGS) $(cfitsio_LIBS_CC) $(LDFLAGS) $(LIBS)
+ 
+ STDH  = functions.h globals.h defaults.h
+ ALL   = main.o vargs.o alard.o functions.o 
+ 
+-all:	hotpants extractkern maskim
++all: hotpants extractkern maskim
++
++install: all
++	mkdir -p $(PREFIX)/bin
++	cp hotpants extractkern maskim $(PREFIX)/bin/
+ 
+ hotpants: $(ALL)
+-	$(CC) $(ALL) -o hotpants $(LIBS) $(COPTS)
+-#	cp hotpants ../../bin/$(ARCH)
++	$(CC) -o hotpants $(ALL) $(LINK)
+ 
+ main.o: $(STDH) main.c
+-	$(CC) $(COPTS)  -c main.c
++	$(CC) $(COMP) -c main.c
+ 
+ alard.o: $(STDH) alard.c
+-	$(CC) $(COPTS)  -c alard.c
++	$(CC) $(COMP) -c alard.c
+ 
+ functions.o: $(STDH) functions.c
+-	$(CC) $(COPTS)  -c functions.c
++	$(CC) $(COMP) -c functions.c
+ 
+ vargs.o: $(STDH) vargs.c
+-	$(CC) $(COPTS)  -c vargs.c
++	$(CC) $(COMP) -c vargs.c
+ 
+ extractkern : extractkern.o 
+-	$(CC) extractkern.o -o extractkern $(LIBS) $(COPTS)
++	$(CC) -o extractkern extractkern.o $(LINK)
+ 
+ extractkern.o : $(STDH) extractkern.c
+-	$(CC) $(COPTS)  -c extractkern.c
++	$(CC) $(COMP) -c extractkern.c
+ 
+ maskim : maskim.o
+-	$(CC) maskim.o -o maskim $(LIBS) $(COPTS)
++	$(CC) -o maskim maskim.o $(LINK)
+ 
+ maskim.o: $(STDH) maskim.c
+-	$(CC) $(COPTS)  -c maskim.c
++	$(CC) $(COMP) -c maskim.c
+ 
+ clean :
+ 	rm -f *.o
