@@ -35,6 +35,8 @@ pkg-prefetch :
 	echo "setenv HPCP_MPIFC \"$(MPIFC)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_CFLAGS \"$(CFLAGS)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_CXXFLAGS \"$(CXXFLAGS)\"" >> $(STAGE)/base.module; \
+	echo "setenv HPCP_LDFLAGS \"$(LDFLAGS)\"" >> $(STAGE)/base.module; \
+	echo "setenv HPCP_LIBS \"$(LIBS)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_FFLAGS \"$(FFLAGS)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_FCFLAGS \"$(FCFLAGS)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_OMPFLAGS \"$(OMPFLAGS)\"" >> $(STAGE)/base.module; \
