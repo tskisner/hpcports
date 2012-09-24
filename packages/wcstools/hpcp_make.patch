@@ -1,6 +1,6 @@
 diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 --- wcstools-3.8.6.orig/Makefile	2011-09-15 12:04:39.000000000 -0700
-+++ wcstools-3.8.6/Makefile	2012-09-24 16:42:07.000000000 -0700
++++ wcstools-3.8.6/Makefile	2012-09-24 16:46:49.000000000 -0700
 @@ -1,207 +1,42 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
@@ -243,7 +243,7 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 \ No newline at end of file
 diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
 --- wcstools-3.8.6.orig/libned/Makefile	2008-07-31 10:24:39.000000000 -0700
-+++ wcstools-3.8.6/libned/Makefile	2012-09-24 16:40:14.000000000 -0700
++++ wcstools-3.8.6/libned/Makefile	2012-09-24 16:46:49.000000000 -0700
 @@ -4,9 +4,7 @@
  # you need to define _NO_PROTO when you compile them
  # you need to link your object files with -lsocket and -lnsl to make executable.
@@ -257,11 +257,24 @@ diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
  OBJ = ned_cli.o ned_cif.o ned_err.o ned_sk.o
 diff -urN wcstools-3.8.6.orig/libwcs/Makefile wcstools-3.8.6/libwcs/Makefile
 --- wcstools-3.8.6.orig/libwcs/Makefile	2011-09-15 12:05:05.000000000 -0700
-+++ wcstools-3.8.6/libwcs/Makefile	2012-09-24 16:40:14.000000000 -0700
-@@ -1,5 +1,4 @@
++++ wcstools-3.8.6/libwcs/Makefile	2012-09-24 16:49:09.000000000 -0700
+@@ -1,5 +1,7 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
 +include ../hpcp.make
++
++COMP = $(CFLAGS)
++LINK = $(LDFLAGS) $(LIBS)
  
  OBJS =	imsetwcs.o imgetwcs.o matchstar.o findstar.o daoread.o wcscon.o \
  	fitswcs.o wcsinit.o wcs.o ty2read.o webread.o tmcread.o \
+@@ -15,6 +17,9 @@
+ 	ar rv $@ $?
+ 	ranlib $@
+ 
++%.o : %.c
++	$(CC) $(COMP) -o $@ -c $<
++
+ actread.o:	fitsfile.h wcscat.h wcs.h fitshead.h wcslib.h
+ binread.o:	wcscat.h wcs.h fitshead.h wcslib.h
+ ctgread.o:	wcscat.h wcs.h fitshead.h wcslib.h
