@@ -35,12 +35,8 @@ pkg-configure :
 	echo "PREFIX = $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)" > hpcp.make; \
 	echo "CC = $(CC)" >> hpcp.make; \
 	echo "CFLAGS = $(CFLAGS)" >> hpcp.make; \
-	echo "cfitsio_CPPFLAGS = $(cfitsio_CPPFLAGS)" >> hpcp.make; \
-	echo "cfitsio_LDFLAGS = $(cfitsio_LDFLAGS)" >> hpcp.make; \
-	echo "cfitsio_LIBS_CC = $(cfitsio_LIBS_CC)" >> hpcp.make; \
-	echo "wcslib_CPPFLAGS = $(wcslib_CPPFLAGS)" >> hpcp.make; \
-	echo "wcslib_LDFLAGS = $(wcslib_LDFLAGS)" >> hpcp.make; \
-	echo "wcslib_LIBS_CC = $(wcslib_LIBS_CC)" >> hpcp.make
+	echo "LDFLAGS = $(LDFLAGS)" >> hpcp.make; \
+	echo "LIBS = $(LIBS)" >> hpcp.make
 
 
 pkg-build :
