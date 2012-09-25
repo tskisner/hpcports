@@ -1,7 +1,7 @@
 diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 --- wcstools-3.8.6.orig/Makefile	2011-09-15 12:04:39.000000000 -0700
-+++ wcstools-3.8.6/Makefile	2012-09-24 16:46:49.000000000 -0700
-@@ -1,207 +1,42 @@
++++ wcstools-3.8.6/Makefile	2012-09-25 10:35:17.000000000 -0700
+@@ -1,207 +1,46 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
 -LIBWCS = libwcs/libwcs.a
@@ -16,7 +16,7 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 -	$(CC) -c $(CFLAGS) $(DEFS) $<
 +LIBWCS = libwcs/libwcs.a
 +
-+COMP = $(CFLAGS)
++COMP = $(CFLAGS) -I. -I./libned -I./libwcs
 +LINK = $(LIBNED) $(LIBWCS) $(LDFLAGS) $(LIBS)
 +
  
@@ -118,7 +118,8 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
  
 -imstack: imstack.c $(LIBWCS) libwcs/fitsfile.h
 -	$(CC) $(CFLAGS) -o $(BIN)/imstack imstack.c $(LIBS)
--
++$(LIBNED) : $(LIBWCS)
+ 
 -imextract: imextract.c $(LIBWCS) libwcs/fitsfile.h libwcs/wcscat.h
 -	$(CC) $(CFLAGS) -o $(BIN)/imextract imextract.c $(LIBS)
 -
@@ -228,7 +229,9 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 +
 +install : all
 +	@mkdir -p $(PREFIX)/bin; \
-+	cp $(PROGS) $(PREFIX)/bin
++	cp $(PROGS) $(PREFIX)/bin; \
++	cd libned; \
++	$(MAKE) install
  
  clean:
 -	make objclean; make binclean
@@ -243,27 +246,128 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 \ No newline at end of file
 diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
 --- wcstools-3.8.6.orig/libned/Makefile	2008-07-31 10:24:39.000000000 -0700
-+++ wcstools-3.8.6/libned/Makefile	2012-09-24 16:46:49.000000000 -0700
-@@ -4,9 +4,7 @@
++++ wcstools-3.8.6/libned/Makefile	2012-09-25 10:38:06.000000000 -0700
+@@ -4,45 +4,32 @@
  # you need to define _NO_PROTO when you compile them
  # you need to link your object files with -lsocket and -lnsl to make executable.
  
--
++include ../hpcp.make
+ 
 -CFLAGS = -g -D_NO_PROTO
 -CC = cc
-+include ../hpcp.make
++COMP = $(CFLAGS) -I. -I../libwcs
++LINK = ../libwcs/libwcs.a $(LDFLAGS) $(LIBS)
  
  SRC = ned_cli.c ned_cif.c ned_err.c ned_sk.c
  OBJ = ned_cli.o ned_cif.o ned_err.o ned_sk.o
+ 
+-libned.a:	$(OBJ)
+-	ar rv $@ $?
+-	ranlib $@
+-
+-all : nedname nedpos name_resolver  byname nearname nearposn iau ex_refcode ref
+-
+-nedname: libned.a nedname.o ../libwcs/libwcs.a
+-	cc -o nedname nedname.o $(OBJ) ../libwcs/libwcs.a -lsocket  -lnsl -lm
++PROGS = nedname name_resolver byname nearname nearposn iau ex_refcode ref
+ 
+-nedpos: libned.a nedpos.o ../libwcs/libwcs.a
+-	cc -o nedpos nedpos.o $(OBJ) ../libwcs/libwcs.a -lsocket  -lnsl -lm
++all : $(PROGS)
+ 
+-name_resolver: libned.a name_resolver.o
+-	cc -o name_resolver name_resolver.o libned.a -lm -lsocket  -lnsl
+-
+-byname: libned.a byname.o
+-	cc -o byname byname.o $(OBJ)  -lsocket  -lnsl -lm
+-
+-nearname: libned.a nearname.o
+-	cc -o nearname nearname.o libned.a -lm -lsocket  -lnsl
++libned.a : $(OBJ)
++	ar rv $@ $?
++	ranlib $@
+ 
+-nearposn: libned.a nearposn.o
+-	cc -o nearposn nearposn.o libned.a -lm -lsocket  -lnsl
++% : %.c libned.a
++	$(CC) $(COMP) -o $@ $< libned.a $(LINK)
+ 
+-iau: libned.a iau.o
+-	cc -o iau iau.o libned.a -lm -lsocket  -lnsl
++%.o : %.c
++	$(CC) $(COMP) -o $@ -c $<
+ 
+-ex_refcode: libned.a ex_refcode.o
+-	cc -o ex_refcode ex_refcode.o libned.a -lm -lsocket  -lnsl
++install : all
++	@mkdir -p $(PREFIX)/bin; \
++	cp $(PROGS) $(PREFIX)/bin
+ 
+-ref: libned.a ref.o
+-	cc -o ref ref.o libned.a -lm -lsocket  -lnsl
++clean :
++	rm -f $(PROGS) *.o *.a
+ 
+-clean:
+-	rm -f nedname nedpos byname ex_refcode iau name_resolver nearname nearposn ref *.o *.a
+diff -urN wcstools-3.8.6.orig/libned/nedname.c wcstools-3.8.6/libned/nedname.c
+--- wcstools-3.8.6.orig/libned/nedname.c	2004-08-23 11:05:14.000000000 -0700
++++ wcstools-3.8.6/libned/nedname.c	2012-09-25 10:35:17.000000000 -0700
+@@ -7,8 +7,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include "ned_client.h"
+-#include "../wcstools/libwcs/fitshead.h"
+-#include "../wcstools/libwcs/wcs.h"
++#include <fitshead.h>
++#include <wcs.h>
+ 
+ extern int ned_errno;
+ static void usage();
+diff -urN wcstools-3.8.6.orig/libned/nedpos.c wcstools-3.8.6/libned/nedpos.c
+--- wcstools-3.8.6.orig/libned/nedpos.c	2007-09-14 13:39:45.000000000 -0700
++++ wcstools-3.8.6/libned/nedpos.c	2012-09-25 10:37:09.000000000 -0700
+@@ -7,19 +7,15 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include "ned_client.h"
+-#include "../libwcs/fitshead.h"
+-#include "../libwcs/wcs.h"
++#include <fitshead.h>
++#include <wcs.h>
+ 
+ static char *RevMsg = "WCSTools 3.7.0, 30 August 2007, Doug Mink SAO";
+ 
+ extern int ned_errno;
+ static void usage();
+ 
+-int
+-main (ac, av)
+-
+-int  ac;
+-char *av[];
++int main ( int ac, char * av[] )
+ {
+    
+     int    st;
+@@ -32,7 +28,7 @@
+     char magnitude[32];
+     char velocity[32];
+     char zstring[32];
+-    char str[32];
++    /*char str[32];*/
+     CrossID *cp, *tmpcp;
+     ObjInfo *op, *tmpop;
+     MoreData     *mdatap;
 diff -urN wcstools-3.8.6.orig/libwcs/Makefile wcstools-3.8.6/libwcs/Makefile
 --- wcstools-3.8.6.orig/libwcs/Makefile	2011-09-15 12:05:05.000000000 -0700
-+++ wcstools-3.8.6/libwcs/Makefile	2012-09-24 16:49:09.000000000 -0700
++++ wcstools-3.8.6/libwcs/Makefile	2012-09-25 10:35:17.000000000 -0700
 @@ -1,5 +1,7 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
 +include ../hpcp.make
 +
-+COMP = $(CFLAGS)
++COMP = $(CFLAGS) -I.
 +LINK = $(LDFLAGS) $(LIBS)
  
  OBJS =	imsetwcs.o imgetwcs.o matchstar.o findstar.o daoread.o wcscon.o \
