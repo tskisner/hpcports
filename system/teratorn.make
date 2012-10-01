@@ -66,10 +66,10 @@ LDFLAGS = -L/ports/lib
 VENDOR = apple
 APPLE_CPPFLAGS =
 APPLE_LDFLAGS = 
-APPLE_LIBS_CC = -Wl,-framework,Accelerate -Wl,-framework,vecLib
-APPLE_LIBS_CXX = -Wl,-framework,Accelerate -Wl,-framework,vecLib
-APPLE_LIBS_F77 = -Wl,-framework,Accelerate -Wl,-framework,vecLib
-APPLE_LIBS_FC = -Wl,-framework,Accelerate -Wl,-framework,vecLib
+APPLE_LIBS_CC = -Wl,-framework,Accelerate 
+APPLE_LIBS_CXX = -Wl,-framework,Accelerate
+APPLE_LIBS_F77 = -Wl,-framework,Accelerate
+APPLE_LIBS_FC = -Wl,-framework,Accelerate
 
 # package overrides
 
@@ -78,13 +78,10 @@ gitgit_VERSION = 1.7.7.5-apple
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 10.7.4-apple
-
-lapack_OVERRIDE = TRUE
-lapack_VERSION = 10.7.4-apple
-lapack_LIBS_CC = $(APPLE_LIBS_CC)
-lapack_LIBS_CXX = $(APPLE_LIBS_CXX)
-lapack_LIBS_F77 = $(APPLE_LIBS_F77)
-lapack_LIBS_FC = $(APPLE_LIBS_FC)
+blas_LIBS_CC = -Wl,-framework,vecLib
+blas_LIBS_CXX = -Wl,-framework,vecLib
+blas_LIBS_F77 = -Wl,-framework,vecLib
+blas_LIBS_FC = -Wl,-framework,vecLib
 
 gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.18.1.1-macports
