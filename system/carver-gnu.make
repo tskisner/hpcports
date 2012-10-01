@@ -78,15 +78,12 @@ LIBS = -lm -lpthread
 VENDOR = intel
 INTEL_CPPFLAGS = -I$(MKL_INC)
 INTEL_LDFLAGS = -L$(MKL_HOME)/lib/em64t
-INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
-INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
-INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
-INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5 -lpthread
+INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5 -lpthread
+INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5 -lpthread
+INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lmkl_mc3 -liomp5 -lpthread
 
 # package overrides
-
-cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.2
 
 tcl_OVERRIDE = TRUE
 tcl_VERSION = 8.4.13
