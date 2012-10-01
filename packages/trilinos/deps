@@ -1,0 +1,1 @@
+cmake lapack scalapack boost netcdf python numpy scipy swig mpi4py
