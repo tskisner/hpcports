@@ -66,10 +66,10 @@ LDFLAGS = -L/ports/lib
 VENDOR = apple
 APPLE_CPPFLAGS =
 APPLE_LDFLAGS = 
-APPLE_LIBS_CC = -Wl,-framework,Accelerate
-APPLE_LIBS_CXX = -Wl,-framework,Accelerate
-APPLE_LIBS_F77 = -Wl,-framework,Accelerate
-APPLE_LIBS_FC = -Wl,-framework,Accelerate
+APPLE_LIBS_CC = -Wl,-framework,Accelerate -Wl,-framework,vecLib
+APPLE_LIBS_CXX = -Wl,-framework,Accelerate -Wl,-framework,vecLib
+APPLE_LIBS_F77 = -Wl,-framework,Accelerate -Wl,-framework,vecLib
+APPLE_LIBS_FC = -Wl,-framework,Accelerate -Wl,-framework,vecLib
 
 # package overrides
 
