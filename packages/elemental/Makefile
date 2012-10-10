@@ -38,7 +38,7 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="-D BUILD_SHARED_LIBS:BOOL=OFF"; \
 	fi; \
-	math=`echo "$(lapack_LDFLAGS) $(lapack_LIBS_CXX) $(blas_LDFLAGS) $(blas_LIBS_CXX) $(FCLIBS)" | sed -e "s# #;#g"`; \
+	math=`echo "$(lapack_LDFLAGS) $(lapack_LIBS_CXX) $(blas_LDFLAGS) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s# #;#g"`; \
 	cmake $${dyn} \
 	-D CMAKE_C_COMPILER="$(CC)" \
 	-D CMAKE_CXX_COMPILER="$(CXX)" \

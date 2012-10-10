@@ -101,9 +101,6 @@ gettext_VERSION = 0.17.0
 gitgit_OVERRIDE = TRUE
 gitgit_VERSION = 1.7.7.4
 
-cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.2
-
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.3
 
@@ -169,16 +166,16 @@ healpy_VERSION = NA
 numexpr_OVERRIDE = TRUE
 numexpr_VERSION = NA
 
-# we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
+# we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 4.4.0
-blas_CPPFLAGS = $(AMD_CPPFLAGS)
-blas_LDFLAGS = $(AMD_LDFLAGS)
-blas_LIBS_CC = $(AMD_LIBS_CC)
-blas_LIBS_CXX = $(AMD_LIBS_CXX)
-blas_LIBS_FC = $(AMD_LIBS_FC)
-blas_LIBS_F77 = $(AMD_LIBS_F77)
+blas_VERSION = 11.1.00
+blas_CPPFLAGS = -I$(CRAY_LIBSCI_PREFIX_DIR)/include
+blas_LDFLAGS =
+blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
+blas_LIBS_CXX = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
+blas_LIBS_FC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
+blas_LIBS_F77 = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
 
 lapack_OVERRIDE = TRUE
 lapack_VERSION = 11.1.00
