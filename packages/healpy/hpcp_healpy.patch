@@ -1,6 +1,6 @@
-diff -urN healpy_orig/hpbeta/config/config.HPCP healpy/hpbeta/config/config.HPCP
---- healpy_orig/hpbeta/config/config.HPCP	1969-12-31 16:00:00.000000000 -0800
-+++ healpy/hpbeta/config/config.HPCP	2012-07-23 21:32:37.000000000 -0700
+diff -urN healpy.orig/hpbeta/config/config.HPCP healpy/hpbeta/config/config.HPCP
+--- healpy.orig/hpbeta/config/config.HPCP	1969-12-31 16:00:00.000000000 -0800
++++ healpy/hpbeta/config/config.HPCP	2012-10-23 09:06:27.000000000 -0700
 @@ -0,0 +1,16 @@
 +
 +EXTERNAL_CFITSIO = yes
@@ -18,11 +18,22 @@ diff -urN healpy_orig/hpbeta/config/config.HPCP healpy/hpbeta/config/config.HPCP
 +CXXLFLAGS = -L. -L$(LIBDIR) $(OMPFLAGS) $(LDFLAGS) $(LIBS)
 +
 +ARCREATE= ar cr
-diff -urN healpy_orig/setup.py healpy/setup.py
---- healpy_orig/setup.py	2012-07-23 17:00:47.000000000 -0700
-+++ healpy/setup.py	2012-07-23 21:30:41.000000000 -0700
-@@ -20,13 +20,13 @@
-     return re.search('clang', cc_output) is not None
+diff -urN healpy.orig/setup.py healpy/setup.py
+--- healpy.orig/setup.py	2012-07-23 17:00:47.000000000 -0700
++++ healpy/setup.py	2012-10-23 09:05:57.000000000 -0700
+@@ -10,23 +10,16 @@
+     """
+     import subprocess
+     import re
+-
+-    try:
+-        cc_output = subprocess.check_output(['cc', '--version'],
+-                                            stderr = subprocess.STDOUT)
+-    except:
+-        return False
+-
+-    return re.search('clang', cc_output) is not None
++    return False
  
  TARGET_DICT = {
 -    'linux': 'healpy',
