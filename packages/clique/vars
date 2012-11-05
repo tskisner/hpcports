@@ -1,4 +1,4 @@
 header = include
 ld = lib
-lib_CXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis
-lib_MPICXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis
+lib_CXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis -lelemental -lplcg -lpmrrr -lelem-dummy-lib
+lib_MPICXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis -lelemental -lplcg -lpmrrr -lelem-dummy-lib

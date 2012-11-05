@@ -34,10 +34,7 @@ pkg-configure :
 	@cd $(STAGE); \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	dyn="-D BUILD_SHARED_LIBS:BOOL=ON"; \
-	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="-D BUILD_SHARED_LIBS:BOOL=OFF"; \
-	fi; \
+	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
 	math=`echo "$(lapack_LDFLAGS) $(lapack_LIBS_CXX) $(blas_LDFLAGS) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s# #;#g"`; \
 	cmake $${dyn} \
 	-D CMAKE_C_COMPILER="$(CC)" \

@@ -34,15 +34,12 @@ pkg-configure :
 	@cd $(STAGE); \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	dyn="-D BUILD_SHARED_LIBS:BOOL=ON"; \
-	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="-D BUILD_SHARED_LIBS:BOOL=OFF"; \
-	fi; \
-	math=`echo "$(elemental_LDFLAGS) $(elemental_LIBS_MPICXX) $(lapack_LDFLAGS) $(lapack_LIBS_CXX) $(blas_LDFLAGS) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s# #;#g"`; \
+	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
+	math=`echo "$(lapack_LDFLAGS) $(lapack_LIBS_CXX) $(blas_LDFLAGS) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s# #;#g"`; \
 	cmake $${dyn} \
-	-D CMAKE_C_COMPILER="$(CC)" \
-	-D CMAKE_CXX_COMPILER="$(CXX)" \
-	-D CMAKE_Fortran_COMPILER="$(FC)" \
+	-D CMAKE_C_COMPILER="$(MPICC)" \
+	-D CMAKE_CXX_COMPILER="$(MPICXX)" \
+	-D CMAKE_Fortran_COMPILER="$(MPIFC)" \
 	-D CMAKE_BUILD_TYPE=HybridRelease \
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
 	-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
