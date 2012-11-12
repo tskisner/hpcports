@@ -35,15 +35,15 @@ pkg-configure :
 	pyopt="--with-python=python"; \
 	boostchain=""; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
-		echo "using gcc : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
+		echo "using gcc : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
 		boostchain="gcc"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xdarwin" ]; then \
-		echo "using darwin : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
+		echo "using darwin : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
 		boostchain="darwin"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xintel" ]; then \
-		echo "using intel-linux : : $(CXX) : cflags=\"$(CFLAGS)\" cxxflags=\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
+		echo "using intel-linux : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
 		boostchain="intel-linux"; \
 	fi; \
 	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
