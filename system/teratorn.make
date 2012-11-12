@@ -73,6 +73,9 @@ APPLE_LIBS_FC = -Wl,-framework,Accelerate
 
 # package overrides
 
+gdb_OVERRIDE = TRUE
+gdb_VERSION = 6.3.50
+
 gitgit_OVERRIDE = TRUE
 gitgit_VERSION = 1.7.7.5-apple
 
@@ -105,9 +108,13 @@ ipython_OVERRIDE = TRUE
 ipython_PREFIX = /ports
 ipython_VERSION = 0.13-macports
 
+pyfits_OVERRIDE = TRUE
+pyfits_PREFIX = /ports
+pyfits_VERSION = 3.0.7-macports
+
 boost_OVERRIDE = TRUE
 boost_PREFIX = /ports
-boost_VERSION = 1.50-macports
+boost_VERSION = 1.52-macports
 boost_CPPFLAGS = -I/ports/include
 boost_LDFLAGS = -L/ports/lib
 
