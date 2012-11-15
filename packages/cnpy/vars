@@ -1,0 +1,5 @@
+path = bin
+header = include
+ld = lib
+lib_CXX = -lcnpy
+lib_MPICXX = -lcnpy
