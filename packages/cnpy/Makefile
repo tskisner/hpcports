@@ -20,7 +20,7 @@ PKG_SRCDIR = cnpy
 
 PKG_BUILDDIR = build
 
-PKG_PATCHES = 
+PKG_PATCHES = hpcp_rpath.patch
 
 
 # rules for this package
@@ -33,7 +33,10 @@ pkg-configure :
 	@cd $(STAGE); \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
+	dyn="-DBUILD_SHARED_LIBS:BOOL=ON -DENABLE_STATIC:BOOL=OFF"; \
+	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
+		dyn="-DBUILD_SHARED_LIBS:BOOL=OFF -DENABLE_STATIC:BOOL=ON"; \
+	fi; \
 	cmake $${dyn} \
 	-D CMAKE_C_COMPILER="$(CC)" \
 	-D CMAKE_CXX_COMPILER="$(CXX)" \

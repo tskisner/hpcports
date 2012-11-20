@@ -1,0 +1,12 @@
+diff -urN cnpy.orig/CMakeLists.txt cnpy/CMakeLists.txt
+--- cnpy.orig/CMakeLists.txt	2012-11-15 11:15:16.000000000 -0800
++++ cnpy/CMakeLists.txt	2012-11-19 13:59:01.000000000 -0800
+@@ -7,6 +7,8 @@
+ 
+ option(ENABLE_STATIC "Build static (.a) library" ON)
+ 
++SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++
+ add_library(cnpy SHARED "cnpy.cpp")
+ target_link_libraries(cnpy z)
+ install(TARGETS "cnpy" LIBRARY DESTINATION lib PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
