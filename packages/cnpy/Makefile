@@ -33,10 +33,7 @@ pkg-configure :
 	@cd $(STAGE); \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	dyn="-DBUILD_SHARED_LIBS:BOOL=ON -DENABLE_STATIC:BOOL=OFF"; \
-	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="-DBUILD_SHARED_LIBS:BOOL=OFF -DENABLE_STATIC:BOOL=ON"; \
-	fi; \
+	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D ENABLE_STATIC:BOOL=ON"; \
 	cmake $${dyn} \
 	-D CMAKE_C_COMPILER="$(CC)" \
 	-D CMAKE_CXX_COMPILER="$(CXX)" \
