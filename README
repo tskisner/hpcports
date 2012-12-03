@@ -11,8 +11,8 @@ Requirements
 -------------
 
 HPCPorts itself requires a full featured "make" (such as GNU make) and a
-Bourne compatible shell.  It also assumes that you have serial and MPI
-compilers for C, C++, F77, and F03.  The compiler toolchains supported are:
+Bourne compatible shell.  It also assumes that you have serial compilers
+for C, C++, F77, and F03.  The compiler toolchains supported are:
 GCC, Darwin-GCC, Intel, and IBM (FIXME: test this last one).  Also, HPCPorts 
 requires that you have the modules environment:
 
