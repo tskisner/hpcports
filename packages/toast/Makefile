@@ -38,6 +38,10 @@ pkg-configure :
 		dyn=""; \
 		pyopt="--enable-python"; \
 	fi; \
+	mp=""; \
+	if [ "x$(VENDOR)" = "xapple" ]; then \
+		mp="--disable-openmp"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	PYTHON="$(PYTHON)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
@@ -46,7 +50,7 @@ pkg-configure :
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
 	LDFLAGS="$(python_LDFLAGS) $(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} $${pyopt} \
+	./configure $${dyn} $${pyopt} $${mp} \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \
 	--with-expat=$(expat_PREFIX) \

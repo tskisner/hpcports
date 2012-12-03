@@ -54,6 +54,8 @@ pkg-configure :
 		--with-accelerate-cpp=$(APPLE_CPPFLAGS) \
 		--with-accelerate-libs="$(APPLE_LDFLAGS) $(APPLE_LIBS_CXX)" \
 		--with-papi-cpp=no \
+		--disable-doxygen \
+		--disable-openmp \
 		--with-boost=$(boost_PREFIX) \
 		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
@@ -74,6 +76,7 @@ pkg-configure :
 		--with-acml-cpp=$(AMD_CPPFLAGS) \
 		--with-acml-libs="$(AMD_LDFLAGS) $(AMD_LIBS_CXX)" \
 		--with-papi-cpp=no \
+		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
 		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
@@ -94,6 +97,7 @@ pkg-configure :
 		--with-mkl-cpp=$(INTEL_CPPFLAGS) \
 		--with-mkl-libs="$(INTEL_LDFLAGS) $(INTEL_LIBS_CXX)" \
 		--with-papi-cpp=no \
+		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
 		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi; \
@@ -113,6 +117,7 @@ pkg-configure :
 		--with-fftw-cpp=$(fftw_CPPFLAGS) \
 		--with-fftw-libs="$(fftw_LDFLAGS) $(fftw_LIBS_CXX)" \
 		--with-papi-cpp=no \
+		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
 		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
 	fi
