@@ -47,8 +47,8 @@ diff -urN hotpants_v5.1.10b.orig/Makefile hotpants_v5.1.10b/Makefile
 +
 +include hpcp.make
 +
-+COMP = $(CFLAGS) $(cfitsio_CPPFLAGS)
-+LINK  = $(cfitsio_LDFLAGS) $(cfitsio_LIBS_CC) $(LDFLAGS) $(LIBS)
++COMP = $(CFLAGS)
++LINK  = $(cfitsio_LIBS_CC) $(LDFLAGS) $(LIBS)
  
  STDH  = functions.h globals.h defaults.h
  ALL   = main.o vargs.o alard.o functions.o 

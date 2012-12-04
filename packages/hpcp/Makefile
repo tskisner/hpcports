@@ -50,24 +50,42 @@ pkg-prefetch :
 	echo "setenv HPCP_VENDOR \"$(VENDOR)\"" >> $(STAGE)/base.module; \
 	echo "setenv HPCP_DYNAMIC \"$(BUILD_DYNAMIC)\"" >> $(STAGE)/base.module; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
-		echo "setenv HPCP_VENDOR_CPPFLAGS \"$(APPLE_CPPFLAGS)\"" >> $(STAGE)/base.module; \
-		echo "setenv HPCP_VENDOR_LDFLAGS \"$(APPLE_LDFLAGS)\"" >> $(STAGE)/base.module; \
+		for val in $(APPLE_INCLUDE); do \
+			echo "prepend-path C_INCLUDE_PATH \"$${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path CPLUS_INCLUDE_PATH \"${val}\"" >> $(STAGE)/base.module; \
+		done; \
+		for val in $(APPLE_LIBDIR); do \
+			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path LD_LIBRARY_PATH \"${val}\"" >> $(STAGE)/base.module; \
+		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(APPLE_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_CXX \"$(APPLE_LIBS_CXX)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_F77 \"$(APPLE_LIBS_F77)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_FC \"$(APPLE_LIBS_FC)\"" >> $(STAGE)/base.module; \
 	fi; \
 	if [ "x$(VENDOR)" = "xamd" ]; then \
-		echo "setenv HPCP_VENDOR_CPPFLAGS \"$(AMD_CPPFLAGS)\"" >> $(STAGE)/base.module; \
-		echo "setenv HPCP_VENDOR_LDFLAGS \"$(AMD_LDFLAGS)\"" >> $(STAGE)/base.module; \
+		for val in $(AMD_INCLUDE); do \
+			echo "prepend-path C_INCLUDE_PATH \"$${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path CPLUS_INCLUDE_PATH \"${val}\"" >> $(STAGE)/base.module; \
+		done; \
+		for val in $(AMD_LIBDIR); do \
+			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path LD_LIBRARY_PATH \"${val}\"" >> $(STAGE)/base.module; \
+		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(AMD_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_CXX \"$(AMD_LIBS_CXX)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_F77 \"$(AMD_LIBS_F77)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_FC \"$(AMD_LIBS_FC)\"" >> $(STAGE)/base.module; \
 	fi; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
-		echo "setenv HPCP_VENDOR_CPPFLAGS \"$(INTEL_CPPFLAGS)\"" >> $(STAGE)/base.module; \
-		echo "setenv HPCP_VENDOR_LDFLAGS \"$(INTEL_LDFLAGS)\"" >> $(STAGE)/base.module; \
+		for val in $(INTEL_INCLUDE); do \
+			echo "prepend-path C_INCLUDE_PATH \"$${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path CPLUS_INCLUDE_PATH \"${val}\"" >> $(STAGE)/base.module; \
+		done; \
+		for val in $(INTEL_LIBDIR); do \
+			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path LD_LIBRARY_PATH \"${val}\"" >> $(STAGE)/base.module; \
+		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(INTEL_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_CXX \"$(INTEL_LIBS_CXX)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_F77 \"$(INTEL_LIBS_F77)\"" >> $(STAGE)/base.module; \

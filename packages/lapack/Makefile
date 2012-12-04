@@ -47,7 +47,7 @@ pkg-configure :
 	echo "RANLIB = ranlib" >> make.inc; \
 	echo "USEXBLAS = No" >> make.inc; \
 	echo "XBLASLIB = " >> make.inc; \
-	echo "BLASLIB = $(blas_LDFLAGS) $(blas_LIBS_F77)" >> make.inc; \
+	echo "BLASLIB = $(blas_LIBS_F77)" >> make.inc; \
 	echo "LAPACKLIB = liblapack.a" >> make.inc; \
 	echo "TMGLIB = libtmglib.a" >> make.inc; \
 	echo "LAPACKELIB = liblapacke.a" >> make.inc; \

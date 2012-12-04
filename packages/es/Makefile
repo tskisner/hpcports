@@ -38,7 +38,7 @@ pkg-configure :
 	fi; \
 	lapack="yes"; \
 	if [ "x$(lapack_LIBS_CXX)" != "x" ]; then \
-		lapack="$(lapack_LDFLAGS) $(lapack_LIBS_CXX)"; \
+		lapack="$(lapack_LIBS_CXX)"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
@@ -50,12 +50,10 @@ pkg-configure :
 	./configure \
 	$${dyn} \
 	--with-pic \
-	--with-blas="$(blas_LDFLAGS) $(blas_LIBS_CXX)" \
+	--with-blas="$(blas_LIBS_CXX)" \
 	--with-lapack="$${lapack}" \
-	--with-cfitsio-cpp="$(cfitsio_CPPFLAGS)" \
-	--with-cfitsio-libs="$(cfitsio_LDFLAGS) $(cfitsio_LIBS_CXX)" \
-	--with-appspack-cpp="$(appspack_CPPFLAGS)" \
-	--with-appspack-libs="$(appspack_LDFLAGS) $(appspack_LIBS_CXX)" \
+	--with-cfitsio-libs="$(cfitsio_LIBS_CXX)" \
+	--with-appspack-libs="$(appspack_LIBS_CXX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 

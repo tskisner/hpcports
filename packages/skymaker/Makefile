@@ -38,7 +38,6 @@ pkg-configure :
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	CPPFLAGS="-I$(sfftw_PREFIX)/include" \
 	./configure \
 	$${dyn} \
 	--enable-threads \

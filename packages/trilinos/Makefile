@@ -45,20 +45,14 @@ pkg-configure :
 	fi; \
 	lapblas=""; \
 	if [ "x$(VENDOR)" != "xapple" ]; then \
-		blasinc=`echo $(blas_CPPFLAGS) | sed -e "s#-I##g"`; \
-		blasld=`echo $(blas_LDFLAGS) | sed -e "s#-L##g"`; \
 		blaslib=`echo $(blas_LIBS_CXX) | sed -e "s#-l##g" -e "s# #;#g"`; \
-		lapackinc=`echo $(lapack_CPPFLAGS) | sed -e "s#-I##g"`; \
-		lapackld=`echo $(lapack_LDFLAGS) | sed -e "s#-L##g"`; \
 		lapacklib=`echo $(lapack_LIBS_CXX) | sed -e "s#-l##g" -e "s# #;#g"`; \
-		lapblas="-D BLAS_INCLUDE_DIRS:PATH=$${blasinc} -D BLAS_LIBRARY_DIRS:PATH=$${blasld} -D BLAS_LIBRARY_NAMES:STRING=$${blaslib} -D LAPACK_INCLUDE_DIRS:PATH=$${lapackinc} -D LAPACK_LIBRARY_DIRS:PATH=$${lapackld} -D LAPACK_LIBRARY_NAMES:STRING=$${lapacklib}"; \
+		lapblas="-D BLAS_LIBRARY_NAMES:STRING=$${blaslib} -D LAPACK_LIBRARY_NAMES:STRING=$${lapacklib}"; \
 	fi; \
 	scal=""; \
 	if [ "x$(scalapack_LIBS_MPICXX)" != "x" ]; then \
-		scalapackinc=`echo $(scalapack_CPPFLAGS) | sed -e "s#-I##g"`; \
-		scalapackld=`echo $(scalapack_LDFLAGS) | sed -e "s#-L##g"`; \
 		scalapacklib=`echo $(scalapack_LIBS_MPICXX) | sed -e "s#-l##g" -e "s# #;#g"`; \
-		scal="-D SCALAPACK_INCLUDE_DIRS:PATH=$${scalapackinc} -D SCALAPACK_LIBRARY_DIRS:PATH=$${scalapackld} -D SCALAPACK_LIBRARY_NAMES:STRING=$${scalapacklib}"; \
+		scal="-D SCALAPACK_LIBRARY_NAMES:STRING=$${scalapacklib}"; \
 	fi; \
 	cmake $${dyn} \
 	-D Trilinos_VERBOSE_CONFIGURE:BOOL=ON \

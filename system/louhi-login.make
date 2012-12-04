@@ -67,8 +67,8 @@ LDFLAGS =
 # vendor math libraries
 
 VENDOR = amd
-AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
-AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
+AMD_INCLUDE = $(ACML_DIR)/gfortran64_mp/include
+AMD_LIBDIR = $(ACML_DIR)/gfortran64_mp/lib
 AMD_LIBS_CC = -lacml_mp -lacml_mv
 AMD_LIBS_CXX = -lacml_mp -lacml_mv
 AMD_LIBS_F77 = -lacml_mp -lacml_mv
@@ -94,8 +94,6 @@ openssl_VERSION = louhi
 fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = $(FFTW_VERSION)
-fftw_CPPFLAGS = -I$(fftw_PREFIX)/include
-fftw_LDFLAGS = -L$(fftw_PREFIX)/lib
 fftw_LIBS_CC = -lfftw3_threads -lfftw3
 fftw_LIBS_CC = -lfftw3_threads -lfftw3
 fftw_LIBS_F77 = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
@@ -105,8 +103,6 @@ fftw_LIBS_FC = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 4.4.0
-blas_CPPFLAGS = $(AMD_CPPFLAGS)
-blas_LDFLAGS = $(AMD_LDFLAGS)
 blas_LIBS_CC = $(AMD_LIBS_CC)
 blas_LIBS_CXX = $(AMD_LIBS_CXX)
 blas_LIBS_FC = $(AMD_LIBS_FC)

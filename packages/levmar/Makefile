@@ -34,11 +34,7 @@ pkg-configure :
 	@cd $(STAGE); \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	blascpp=`echo $(blas_CPPFLAGS) | sed -e "s#-I##g"`; \
-	blasld=`echo $(blas_LDFLAGS) | sed -e "s#-L##g"`; \
 	blaslib=`echo $(blas_LIBS_CC) | sed -e "s#-l##g" -e "s# #;#g"`; \
-	lapackcpp=`echo $(lapack_CPPFLAGS) | sed -e "s#-I##g"`; \
-	lapackld=`echo $(lapack_LDFLAGS) | sed -e "s#-L##g"`; \
 	lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #;#g"`; \
 	dyn="-DBUILD_SHARED_LIBS:BOOL=ON"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
@@ -54,7 +50,6 @@ pkg-configure :
 	-DHAVE_LAPACK:BOOL=ON \
 	-DNEED_F2C:BOOL=OFF \
 	-DINSTALL_LIBS=ON \
-	-DLAPACKBLAS_DIR="$${blasld};$${lapackld}" \
 	-DLAPACKBLAS_LIB_NAMES="$${lapacklib};$${blaslib};pthread;m" \
 	-DCMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
 	..

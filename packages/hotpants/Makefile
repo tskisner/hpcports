@@ -40,8 +40,6 @@ pkg-configure :
 	fi; \
 	echo "LDFLAGS = $(LDFLAGS)" >> hpcp.make; \
 	echo "LIBS = $(LIBS)" >> hpcp.make; \
-	echo "cfitsio_CPPFLAGS = $(cfitsio_CPPFLAGS)" >> hpcp.make; \
-	echo "cfitsio_LDFLAGS = $(cfitsio_LDFLAGS)" >> hpcp.make; \
 	echo "cfitsio_LIBS_CC = $(cfitsio_LIBS_CC)" >> hpcp.make; \
 	echo "PREFIX = $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)" >> hpcp.make
 

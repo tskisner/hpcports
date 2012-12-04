@@ -77,8 +77,8 @@ LDFLAGS =
 # vendor math libraries
 
 VENDOR = amd
-AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64/include
-AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64/lib
+AMD_INCLUDE = $(ACML_DIR)/gfortran64/include
+AMD_LIBDIR = $(ACML_DIR)/gfortran64/lib
 AMD_LIBS_CC = -lacml -lacml_mv
 AMD_LIBS_CXX = -lacml -lacml_mv
 AMD_LIBS_F77 = -lacml -lacml_mv
@@ -88,8 +88,6 @@ AMD_LIBS_FC = -lacml -lacml_mv
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 4.4.0
-blas_CPPFLAGS = $(AMD_CPPFLAGS)
-blas_LDFLAGS = $(AMD_LDFLAGS)
 blas_LIBS_CC = $(AMD_LIBS_CC)
 blas_LIBS_CXX = $(AMD_LIBS_CXX)
 blas_LIBS_FC = $(AMD_LIBS_FC)

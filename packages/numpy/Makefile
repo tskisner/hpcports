@@ -41,10 +41,6 @@ pkg-configure :
 	echo "" >> site.cfg; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
 		echo "[mkl]" >> site.cfg; \
-		intelcpp=`echo $(INTEL_CPPFLAGS) | sed -e "s#-I##g"`; \
-		echo "include_dirs = $${intelcpp}" >> site.cfg; \
-		intelld=`echo $(INTEL_LDFLAGS) | sed -e "s#-L##g"`; \
-		echo "library_dirs = $${intelld}" >> site.cfg; \
 		intellib=`echo $(INTEL_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "mkl_libs = $${intellib}" >> site.cfg; \
 		lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
@@ -53,28 +49,16 @@ pkg-configure :
 	else \
 		echo "[blas]" >> site.cfg; \
 		echo "language = f77" >> site.cfg; \
-		blascpp=`echo $(blas_CPPFLAGS) | sed -e "s#-I##g"`; \
-		echo "include_dirs = $${blascpp}" >> site.cfg; \
-		blasld=`echo $(blas_LDFLAGS) | sed -e "s#-L##g"`; \
-		echo "library_dirs = $${blasld}" >> site.cfg; \
 		blaslib=`echo $(blas_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "blas_libs = $${blaslib}" >> site.cfg; \
 		echo "" >> site.cfg; \
 		echo "[lapack]" >> site.cfg; \
 		echo "language = f77" >> site.cfg; \
-		lapackcpp=`echo $(lapack_CPPFLAGS) | sed -e "s#-I##g"`; \
-		echo "include_dirs = $${lapackcpp}" >> site.cfg; \
-		lapackld=`echo $(lapack_LDFLAGS) | sed -e "s#-L##g"`; \
-		echo "library_dirs = $${lapackld}" >> site.cfg; \
 		lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "lapack_libs = $${lapacklib}" >> site.cfg; \
 		echo "" >> site.cfg; \
 	fi; \
 	echo "[fftw]" >> site.cfg; \
-	fftwcpp=`echo $(fftw_CPPFLAGS) | sed -e "s#-I##g"`; \
-	echo "include_dirs = $${fftwcpp}" >> site.cfg; \
-	fftwld=`echo $(fftw_LDFLAGS) | sed -e "s#-L##g"`; \
-	echo "library_dirs = $${fftwld}" >> site.cfg; \
 	fftwlib=`echo $(fftw_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 	echo "fftw_libs = $${fftwlib}" >> site.cfg; \
 	echo "" >> site.cfg

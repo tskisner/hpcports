@@ -49,10 +49,8 @@ pkg-configure :
 		MPICXX="$(MPICXX)" \
 		./configure \
 		$${dyn} \
-		--with-fftw-cpp=$(fftw_CPPFLAGS) \
 		--with-fftw-libs="$(fftw_LDFLAGS) $(fftw_LIBS_CXX)" \
-		--with-accelerate-cpp=$(APPLE_CPPFLAGS) \
-		--with-accelerate-libs="$(APPLE_LDFLAGS) $(APPLE_LIBS_CXX)" \
+		--with-accelerate-libs="$(APPLE_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--disable-doxygen \
 		--disable-openmp \
@@ -73,8 +71,7 @@ pkg-configure :
 		./configure \
 		$${dyn} \
 		--with-fftw-cpp=no \
-		--with-acml-cpp=$(AMD_CPPFLAGS) \
-		--with-acml-libs="$(AMD_LDFLAGS) $(AMD_LIBS_CXX)" \
+		--with-acml-libs="$(AMD_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
@@ -94,8 +91,7 @@ pkg-configure :
 		./configure \
 		$${dyn} \
 		--with-fftw-cpp=no \
-		--with-mkl-cpp=$(INTEL_CPPFLAGS) \
-		--with-mkl-libs="$(INTEL_LDFLAGS) $(INTEL_LIBS_CXX)" \
+		--with-mkl-libs="$(INTEL_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
@@ -114,8 +110,7 @@ pkg-configure :
 		MPICXX="$(MPICXX)" \
 		./configure \
 		$${dyn} \
-		--with-fftw-cpp=$(fftw_CPPFLAGS) \
-		--with-fftw-libs="$(fftw_LDFLAGS) $(fftw_LIBS_CXX)" \
+		--with-fftw-libs="$(fftw_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \

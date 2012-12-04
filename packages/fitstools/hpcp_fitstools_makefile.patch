@@ -22,10 +22,10 @@ diff -urN cexamples_orig/Makefile cexamples/Makefile
 +all : $(PROGS)
 +
 +$(PROGS) : % : %.o
-+	$(CC) -o $@ $< $(cfitsio_LDFLAGS) $(cfitsio_LIBS_CC) $(LDFLAGS) $(LIBS)
++	$(CC) -o $@ $< $(cfitsio_LIBS_CC) $(LDFLAGS) $(LIBS)
 +
 +%.o : %.c
-+	$(CC) $(CFLAGS) $(cfitsio_CPPFLAGS) -o $@ -c $<
++	$(CC) $(CFLAGS) -o $@ -c $<
 +
 +clean :
 +	@rm -f $(PROGS) *.o

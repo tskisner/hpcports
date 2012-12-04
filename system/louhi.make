@@ -76,8 +76,8 @@ LDFLAGS = /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 # vendor math libraries
 
 VENDOR = amd
-AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
-AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
+AMD_INCLUDE = $(ACML_DIR)/gfortran64_mp/include
+AMD_LIBDIR = $(ACML_DIR)/gfortran64_mp/lib
 AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.5.2/snos/lib64/libgfortran.a /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.5.2/snos/lib64/libgfortran.a /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.5.2/snos/lib64/libgfortran.a /opt/gcc/4.5.2/snos/lib64/libgomp.a /usr/lib64/librt.a
@@ -151,8 +151,6 @@ numexpr_VERSION = louhi
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 4.4.0
-blas_CPPFLAGS = $(AMD_CPPFLAGS)
-blas_LDFLAGS = $(AMD_LDFLAGS)
 blas_LIBS_CC = $(AMD_LIBS_CC)
 blas_LIBS_CXX = $(AMD_LIBS_CXX)
 blas_LIBS_FC = $(AMD_LIBS_FC)

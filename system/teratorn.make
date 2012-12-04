@@ -64,8 +64,8 @@ LDFLAGS = -L/ports/lib
 # vendor math libraries
 
 VENDOR = apple
-APPLE_CPPFLAGS =
-APPLE_LDFLAGS = 
+APPLE_INCLUDE =
+APPLE_LIBDIR = 
 APPLE_LIBS_CC = -Wl,-framework,Accelerate 
 APPLE_LIBS_CXX = -Wl,-framework,Accelerate
 APPLE_LIBS_F77 = -Wl,-framework,Accelerate
@@ -105,8 +105,6 @@ python_VERSION = 2.7.1-apple
 boost_OVERRIDE = TRUE
 boost_PREFIX = /usr/local
 boost_VERSION = 1.52-brew
-boost_CPPFLAGS = -I/usr/local/include
-boost_LDFLAGS = -L/usr/local/lib
 
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 10.7.5-apple
@@ -121,14 +119,10 @@ bzip2_VERSION = 10.7.5-apple
 sqlite_OVERRIDE = TRUE
 sqlite_PREFIX = /usr/local
 sqlite_VERSION = 3.7.14-brew
-sqlite_CPPFLAGS = -I/usr/local/include
-sqlite_LDFLAGS = -L/usr/local/lib
 
 expat_OVERRIDE = TRUE
 expat_PREFIX = /usr/local
 expat_VERSION = 2.1.0-brew
-expat_CPPFLAGS = -I/usr/local/include
-expat_LDFLAGS = -L/usr/local/lib
 
 tcl_OVERRIDE = TRUE
 tcl_VERSION = 10.7.5-apple
@@ -139,8 +133,6 @@ tk_VERSION = 10.7.5-apple
 libtool_OVERRIDE = TRUE
 libtool_PREFIX = /usr/local
 libtool_VERSION = 2.4.2-brew
-libtool_CPPFLAGS = -I/usr/local/include
-libtool_LDFLAGS = -L/usr/local/lib
 
 automake_OVERRIDE = TRUE
 automake_VERSION = 1.12.5-brew
@@ -160,8 +152,6 @@ gzip_VERSION = 10.7.5-apple
 cfitsio_OVERRIDE = TRUE
 cfitsio_PREFIX = /usr/local
 cfitsio_VERSION = 3.3.0-brew
-cfitsio_CPPFLAGS = -I/usr/local/include
-cfitsio_LDFLAGS = -L/usr/local/lib
 cfitsio_LIBS_CC = -lcfitsio
 cfitsio_LIBS_CXX = -lcfitsio
 cfitsio_LIBS_F77 = -lcfitsio

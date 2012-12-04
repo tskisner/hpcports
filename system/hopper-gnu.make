@@ -80,8 +80,8 @@ LDFLAGS = -L/usr/lib64 /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 # vendor math libraries
 
 VENDOR = amd
-AMD_CPPFLAGS = -I$(ACML_DIR)/gfortran64_mp/include
-AMD_LDFLAGS = -L$(ACML_DIR)/gfortran64_mp/lib
+AMD_INCLUDE = $(ACML_DIR)/gfortran64_mp/include
+AMD_LIBDIR = $(ACML_DIR)/gfortran64_mp/lib
 AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
@@ -170,8 +170,6 @@ numexpr_VERSION = NA
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 11.1.00
-blas_CPPFLAGS = -I$(CRAY_LIBSCI_PREFIX_DIR)/include
-blas_LDFLAGS =
 blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
 blas_LIBS_CXX = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
 blas_LIBS_FC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a

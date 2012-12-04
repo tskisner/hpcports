@@ -40,7 +40,7 @@ pkg-configure :
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
-	LDFLAGS="$(LDFLAGS) $(python_LDFLAGS)" LIBS="$(LIBS)" \
+	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure \
 	$${dyn} \
 	--with-pic \

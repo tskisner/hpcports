@@ -58,40 +58,36 @@ process_var () {
 	if [ ! "x${vals}" = "x" ]; then
 		if [ "x${var}" = "xpath" ]; then
 			for val in ${vals}; do
-				echo "export PATH=${PREFIX}/${PKG}-${VER}/${val}:\$PATH" >> ${PKG}-${VER}.sh
-				echo "prepend-path PATH ${PREFIX}/${PKG}-${VER}/${val}" >> ${PKG}.module
+				echo "export PATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${PATH}\"" >> ${PKG}-${VER}.sh
+				echo "prepend-path PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
 			done
 		elif [ "x${var}" = "xman" ]; then
 			for val in ${vals}; do
-				echo "export MANPATH=${PREFIX}/${PKG}-${VER}/${val}:\$MANPATH" >> ${PKG}-${VER}.sh
-				echo "prepend-path MANPATH ${PREFIX}/${PKG}-${VER}/${val}" >> ${PKG}.module
+				echo "export MANPATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${MANPATH}\"" >> ${PKG}-${VER}.sh
+				echo "prepend-path MANPATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
 			done
 		elif [ "x${var}" = "xpython" ]; then
 			for val in ${vals}; do
-				echo "export PYTHONPATH=${PREFIX}/${PKG}-${VER}/${val}/${PYSITE}/site-packages:\$PYTHONPATH" >> ${PKG}-${VER}.sh
-				echo "prepend-path PYTHONPATH ${PREFIX}/${PKG}-${VER}/${val}/${PYSITE}/site-packages" >> ${PKG}.module
+				echo "export PYTHONPATH=\"${PREFIX}/${PKG}-${VER}/${val}/${PYSITE}/site-packages:\${PYTHONPATH}\"" >> ${PKG}-${VER}.sh
+				echo "prepend-path PYTHONPATH \"${PREFIX}/${PKG}-${VER}/${val}/${PYSITE}/site-packages\"" >> ${PKG}.module
 			done
 		elif [ "x${var}" = "xheader" ]; then
-			OUT=""
 			for val in ${vals}; do
-				OUT="${OUT}-I${PREFIX}/${PKG}-${VER}/${val} "
+				echo "export C_INCLUDE_PATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${C_INCLUDE_PATH}\"" >> ${PKG}-${VER}.sh
+				echo "prepend-path C_INCLUDE_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
+				echo "export CPLUS_INCLUDE_PATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${CPLUS_INCLUDE_PATH}\"" >> ${PKG}-${VER}.sh
+				echo "prepend-path CPLUS_INCLUDE_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
 			done
-			echo "export ${PKG}_CPPFLAGS=\"${OUT}\"" >> ${PKG}-${VER}.sh
-			echo "setenv ${PKG}_CPPFLAGS \"${OUT}\"" >> ${PKG}.module
 		elif [ "x${var}" = "xdata" ]; then
 			echo "export ${PKG}_DATA=\"${vals}\"" >> ${PKG}-${VER}.sh
 			echo "setenv ${PKG}_DATA \"${vals}\"" >> ${PKG}.module
 		elif [ "x${var}" = "xld" ]; then
-			OUT=""
-			LD=""
 			for val in ${vals}; do
-				OUT="${OUT}${PREFIX}/${PKG}-${VER}/${val}:"
-				LD="${LD}-L${PREFIX}/${PKG}-${VER}/${val} "
+				echo "export LIBRARY_PATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${LIBRARY_PATH}\"" >> ${PKG}-${VER}.sh
+				echo "export LD_LIBRARY_PATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${LD_LIBRARY_PATH}\"" >> ${PKG}-${VER}.sh
+				echo "prepend-path LIBRARY_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
 				echo "prepend-path LD_LIBRARY_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
 			done
-			echo "export LD_LIBRARY_PATH=${OUT}\$LD_LIBRARY_PATH" >> ${PKG}-${VER}.sh
-			echo "export ${PKG}_LDFLAGS=\"${LD}\"" >> ${PKG}-${VER}.sh
-			echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
 		elif [ "x${var}" = "xlib_CC" ]; then
 			echo "export ${PKG}_LIBS_CC=\"${vals}\"" >> ${PKG}-${VER}.sh
 			echo "setenv ${PKG}_LIBS_CC \"${vals}\"" >> ${PKG}.module
