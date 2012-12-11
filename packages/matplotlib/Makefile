@@ -36,7 +36,7 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	env DISPLAY= python setup.py build
+	python setup.py build
 
 
 pkg-install :

@@ -46,6 +46,8 @@ pkg-configure :
 		lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "lapack_libs = $${lapacklib}" >> site.cfg; \
 		echo "" >> site.cfg; \
+	else if [ "x$(VENDOR)" = "xapple" ]; then \
+		echo "" >> site.cfg; \
 	else \
 		echo "[blas]" >> site.cfg; \
 		echo "language = f77" >> site.cfg; \
@@ -57,6 +59,7 @@ pkg-configure :
 		lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "lapack_libs = $${lapacklib}" >> site.cfg; \
 		echo "" >> site.cfg; \
+	fi; \
 	fi; \
 	echo "[fftw]" >> site.cfg; \
 	fftwlib=`echo $(fftw_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \

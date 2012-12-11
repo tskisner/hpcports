@@ -73,10 +73,8 @@ process_var () {
 			done
 		elif [ "x${var}" = "xheader" ]; then
 			for val in ${vals}; do
-				echo "export C_INCLUDE_PATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${C_INCLUDE_PATH}\"" >> ${PKG}-${VER}.sh
-				echo "prepend-path C_INCLUDE_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
-				echo "export CPLUS_INCLUDE_PATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${CPLUS_INCLUDE_PATH}\"" >> ${PKG}-${VER}.sh
-				echo "prepend-path CPLUS_INCLUDE_PATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
+				echo "export CPATH=\"${PREFIX}/${PKG}-${VER}/${val}:\${CPATH}\"" >> ${PKG}-${VER}.sh
+				echo "prepend-path CPATH \"${PREFIX}/${PKG}-${VER}/${val}\"" >> ${PKG}.module
 			done
 		elif [ "x${var}" = "xdata" ]; then
 			echo "export ${PKG}_DATA=\"${vals}\"" >> ${PKG}-${VER}.sh

@@ -1,6 +1,6 @@
 diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 --- wcstools-3.8.6.orig/Makefile	2011-09-15 12:04:39.000000000 -0700
-+++ wcstools-3.8.6/Makefile	2012-09-25 10:35:17.000000000 -0700
++++ wcstools-3.8.6/Makefile	2012-12-10 15:58:53.000000000 -0800
 @@ -1,207 +1,46 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
@@ -246,7 +246,7 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 \ No newline at end of file
 diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
 --- wcstools-3.8.6.orig/libned/Makefile	2008-07-31 10:24:39.000000000 -0700
-+++ wcstools-3.8.6/libned/Makefile	2012-09-25 10:38:06.000000000 -0700
++++ wcstools-3.8.6/libned/Makefile	2012-12-10 15:58:53.000000000 -0800
 @@ -4,45 +4,32 @@
  # you need to define _NO_PROTO when you compile them
  # you need to link your object files with -lsocket and -lnsl to make executable.
@@ -312,7 +312,7 @@ diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
 -	rm -f nedname nedpos byname ex_refcode iau name_resolver nearname nearposn ref *.o *.a
 diff -urN wcstools-3.8.6.orig/libned/nedname.c wcstools-3.8.6/libned/nedname.c
 --- wcstools-3.8.6.orig/libned/nedname.c	2004-08-23 11:05:14.000000000 -0700
-+++ wcstools-3.8.6/libned/nedname.c	2012-09-25 10:35:17.000000000 -0700
++++ wcstools-3.8.6/libned/nedname.c	2012-12-10 15:58:53.000000000 -0800
 @@ -7,8 +7,8 @@
  #include <stdio.h>
  #include <string.h>
@@ -326,7 +326,7 @@ diff -urN wcstools-3.8.6.orig/libned/nedname.c wcstools-3.8.6/libned/nedname.c
  static void usage();
 diff -urN wcstools-3.8.6.orig/libned/nedpos.c wcstools-3.8.6/libned/nedpos.c
 --- wcstools-3.8.6.orig/libned/nedpos.c	2007-09-14 13:39:45.000000000 -0700
-+++ wcstools-3.8.6/libned/nedpos.c	2012-09-25 10:37:09.000000000 -0700
++++ wcstools-3.8.6/libned/nedpos.c	2012-12-10 15:58:53.000000000 -0800
 @@ -7,19 +7,15 @@
  #include <stdio.h>
  #include <string.h>
@@ -361,7 +361,7 @@ diff -urN wcstools-3.8.6.orig/libned/nedpos.c wcstools-3.8.6/libned/nedpos.c
      MoreData     *mdatap;
 diff -urN wcstools-3.8.6.orig/libwcs/Makefile wcstools-3.8.6/libwcs/Makefile
 --- wcstools-3.8.6.orig/libwcs/Makefile	2011-09-15 12:05:05.000000000 -0700
-+++ wcstools-3.8.6/libwcs/Makefile	2012-09-25 10:35:17.000000000 -0700
++++ wcstools-3.8.6/libwcs/Makefile	2012-12-10 15:58:53.000000000 -0800
 @@ -1,5 +1,7 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
@@ -382,3 +382,91 @@ diff -urN wcstools-3.8.6.orig/libwcs/Makefile wcstools-3.8.6/libwcs/Makefile
  actread.o:	fitsfile.h wcscat.h wcs.h fitshead.h wcslib.h
  binread.o:	wcscat.h wcs.h fitshead.h wcslib.h
  ctgread.o:	wcscat.h wcs.h fitshead.h wcslib.h
+diff -urN wcstools-3.8.6.orig/libwcs/imsetwcs.c wcstools-3.8.6/libwcs/imsetwcs.c
+--- wcstools-3.8.6.orig/libwcs/imsetwcs.c	2012-05-01 15:18:36.000000000 -0700
++++ wcstools-3.8.6/libwcs/imsetwcs.c	2012-12-10 15:58:13.000000000 -0800
+@@ -235,18 +235,18 @@
+ 	hputi4 (header, "WCSMATCH", nbin);
+ 	hputi4 (header, "WCSNREF", nbin);
+ 	if (!(gnum = (double *) calloc (nbin, sizeof(double))))
+-	    fprintf (stderr, "Could not calloc %d bytes for gnum\n",
++	    fprintf (stderr, "Could not calloc %lu bytes for gnum\n",
+ 		     nbin*sizeof(double));
+ 	for (is = 0; is < nbin; is++)
+ 	    gnum[is] = (double)(is + 1);
+ 	if (!(gx = (double *) calloc (nbin, sizeof(double))))
+-	    fprintf (stderr, "Could not calloc %d bytes for gx\n",
++	    fprintf (stderr, "Could not calloc %lu bytes for gx\n",
+ 		     nbin*sizeof(double));
+ 	if (!(gy = (double *) calloc (nbin, sizeof(double))))
+-	    fprintf (stderr, "Could not calloc %d bytes for gy\n",
++	    fprintf (stderr, "Could not calloc %lu bytes for gy\n",
+ 		     nbin*sizeof(double));
+ 	if (!(goff = (int *) calloc (nbin, sizeof(int))))
+-	    fprintf (stderr, "Could not calloc %d bytes for goff\n",
++	    fprintf (stderr, "Could not calloc %lu bytes for goff\n",
+ 		     nbin*sizeof(double));
+ 
+ 	SetFITSWCS (header, wcs);
+@@ -309,35 +309,35 @@
+ 	ngmax = (int) ((double) ngmax * imfrac * imfrac);
+     nbytes = ngmax * sizeof (double);
+     if (!(gnum = (double *) calloc (ngmax, sizeof(double))))
+-	fprintf (stderr, "Could not calloc %d bytes for gnum\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gnum\n",
+ 		 ngmax*sizeof(double));
+     if (!(gra = (double *) calloc (ngmax, sizeof(double))))
+-	fprintf (stderr, "Could not calloc %d bytes for gra\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gra\n",
+ 		 ngmax*sizeof(double));
+     if (!(gdec = (double *) calloc (ngmax, sizeof(double))))
+-	fprintf (stderr, "Could not calloc %d bytes for gdec\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gdec\n",
+ 		 ngmax*sizeof(double));
+     if (!(gpra = (double *) calloc (ngmax, sizeof(double))))
+-	fprintf (stderr, "Could not calloc %d bytes for gpra\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gpra\n",
+ 		 ngmax*sizeof(double));
+     if (!(gpdec = (double *) calloc (ngmax, sizeof(double))))
+-	fprintf (stderr, "Could not calloc %d bytes for gpdec\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gpdec\n",
+ 		 ngmax*sizeof(double));
+     if (!(gm = (double **) calloc (nmagmax, sizeof(double *))))
+-	fprintf (stderr, "Could not calloc %d bytes for gm\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gm\n",
+ 		 nmagmax*sizeof(double *));
+     else {
+ 	for (imag = 0; imag < nmagmax; imag++) {
+ 	    if (!(gm[imag] = (double *) calloc (ngmax, sizeof(double))))
+-		fprintf (stderr, "Could not calloc %d bytes for gm\n",
++		fprintf (stderr, "Could not calloc %lu bytes for gm\n",
+ 		    ngmax*sizeof(double));
+ 	    }
+ 	}
+     if (!(gc = (int *) calloc (ngmax, sizeof(int))))
+-	fprintf (stderr, "Could not calloc %d bytes for gc\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gc\n",
+ 		 ngmax*sizeof(int));
+     if (!(gobj = (char **) calloc (ngmax, sizeof(char *))))
+-	fprintf (stderr, "Could not calloc %d bytes for obj\n",
++	fprintf (stderr, "Could not calloc %lu bytes for obj\n",
+ 		 ngmax*sizeof(char *));
+     else {
+ 	for (i = 0; i < ngmax; i++)
+@@ -374,13 +374,13 @@
+ 
+     /* Project the reference stars into pixels on a plane at ra0/dec0 */
+     if (!(gx = (double *) calloc (ngmax, sizeof(double))))
+-	fprintf (stderr, "Could not calloc %d bytes for gx\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gx\n",
+ 		 ngmax*sizeof(double));
+     if (!(gy = (double *) calloc (ngmax, sizeof(double))))
+-	fprintf (stderr, "Could not calloc %d bytes for gy\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gy\n",
+ 		 ngmax*sizeof(double));
+     if (!(goff = (int *) calloc (ngmax, sizeof(int))))
+-	fprintf (stderr, "Could not calloc %d bytes for gy\n",
++	fprintf (stderr, "Could not calloc %lu bytes for gy\n",
+ 		 ngmax*sizeof(double));
+     if (!gx || !gy || !goff) {
+ 	ret = 0;

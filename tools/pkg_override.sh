@@ -6,23 +6,19 @@ ENV=${2}
 
 PREFIX=${3}
 VER=${4}
-CPP=${5}
-LD=${6}
-DATA=${7}
-LIB_CC=${8}
-LIB_CXX=${9}
-LIB_F77=${10}
-LIB_FC=${11}
-LIB_MPICC=${12}
-LIB_MPICXX=${13}
-LIB_MPIF77=${14}
-LIB_MPIFC=${15}
-MOD=${16}
+DATA=${5}
+LIB_CC=${6}
+LIB_CXX=${7}
+LIB_F77=${8}
+LIB_FC=${9}
+LIB_MPICC=${10}
+LIB_MPICXX=${11}
+LIB_MPIF77=${12}
+LIB_MPIFC=${13}
+MOD=${14}
 
 PREFIX=`echo ${PREFIX} | sed -e 's#^x##'`
 VER=`echo ${VER} | sed -e 's#^x##'`
-CPP=`echo ${CPP} | sed -e 's#^x##'`
-LD=`echo ${LD} | sed -e 's#^x##'`
 DATA=`echo ${DATA} | sed -e 's#^x##'`
 LIB_CC=`echo ${LIB_CC} | sed -e 's#^x##'`
 LIB_CXX=`echo ${LIB_CXX} | sed -e 's#^x##'`
@@ -33,6 +29,12 @@ LIB_MPICXX=`echo ${LIB_MPICXX} | sed -e 's#^x##'`
 LIB_MPIF77=`echo ${LIB_MPIF77} | sed -e 's#^x##'`
 LIB_MPIFC=`echo ${LIB_MPIFC} | sed -e 's#^x##'`
 MOD=`echo ${MOD} | sed -e 's#^x##'`
+
+# cannot have an empty version string
+
+if [ "x${VER}" = x ]; then
+	VER="override"
+fi
 
 # File headers
 
@@ -73,12 +75,6 @@ echo "" >> ${PKG}.module
 
 if [ "x${PREFIX}" != x ]; then
 	echo "setenv ${PKG}_PREFIX \"${PREFIX}\"" >> ${PKG}.module
-fi
-if [ "x${CPP}" != x ]; then
-	echo "setenv ${PKG}_CPPFLAGS \"${CPP}\"" >> ${PKG}.module
-fi
-if [ "x${LD}" != x ]; then
-	echo "setenv ${PKG}_LDFLAGS \"${LD}\"" >> ${PKG}.module
 fi
 if [ "x${DATA}" != x ]; then
 	echo "setenv ${PKG}_DATA \"${DATA}\"" >> ${PKG}.module

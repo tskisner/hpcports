@@ -59,7 +59,7 @@ MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # Linking
 
-LDFLAGS = -L/ports/lib
+LDFLAGS = 
 
 # vendor math libraries
 
