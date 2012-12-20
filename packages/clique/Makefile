@@ -12,12 +12,11 @@ PKG_VERSION := $(shell head -n 1 version)
 
 PKG_NAME = clique
 
-PKG_FORMAT = tar
-PKG_TAR = clique-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://bitbucket.org/poulson/clique/get/default.tar.bz2
-PKG_TAR_EXTRACT = $(BXTAR)
+PKG_FORMAT = git
+PKG_GIT_CLONE = git clone git://github.com/poulson/Clique.git
+PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
-PKG_SRCDIR = poulson-clique-$(PKG_VERSION)
+PKG_SRCDIR = Clique
 
 PKG_BUILDDIR = build
 

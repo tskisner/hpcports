@@ -13,11 +13,11 @@ PKG_VERSION := $(shell head -n 1 version)
 PKG_NAME = sqlite
 
 PKG_FORMAT = tar
-PKG_TAR = sqlite-autoconf-3071300.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.sqlite.org/sqlite-autoconf-3071300.tar.gz
+PKG_TAR = sqlite-autoconf-3071501.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.sqlite.org/sqlite-autoconf-3071501.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = sqlite-autoconf-3071300
+PKG_SRCDIR = sqlite-autoconf-3071501
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 

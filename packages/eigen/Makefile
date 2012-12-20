@@ -17,7 +17,7 @@ PKG_TAR = eigen-$(PKG_VERSION).tar.bz2
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://bitbucket.org/eigen/eigen/get/$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = eigen-eigen-43d9075b23ef
+PKG_SRCDIR = eigen-eigen-5097c01bcdc4
 
 PKG_BUILDDIR = eigen_build
 
