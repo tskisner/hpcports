@@ -14,7 +14,7 @@ PKG_NAME = gdb
 
 PKG_FORMAT = tar
 PKG_TAR = gdb-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/gdb/gdb-7.5.tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/gdb/gdb-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = gdb-$(PKG_VERSION)
