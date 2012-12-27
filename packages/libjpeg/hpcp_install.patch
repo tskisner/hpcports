@@ -1,0 +1,14 @@
+diff -urN jpeg-6b.orig/makefile.cfg jpeg-6b/makefile.cfg
+--- jpeg-6b.orig/makefile.cfg	1998-03-21 11:08:57.000000000 -0800
++++ jpeg-6b/makefile.cfg	2012-12-26 23:44:46.000000000 -0800
+@@ -191,6 +191,10 @@
+ # Installation rules:
+ 
+ install: cjpeg djpeg jpegtran rdjpgcom wrjpgcom @FORCE_INSTALL_LIB@
++	$(MKDIR) -p $(bindir)/$(binprefix)
++	$(MKDIR) -p $(mandir)/$(manprefix)
++	$(MKDIR) -p $(includedir)
++	$(MKDIR) -p $(libdir)/$(binprefix)
+ 	$(INSTALL_PROGRAM) cjpeg $(bindir)/$(binprefix)cjpeg
+ 	$(INSTALL_PROGRAM) djpeg $(bindir)/$(binprefix)djpeg
+ 	$(INSTALL_PROGRAM) jpegtran $(bindir)/$(binprefix)jpegtran
