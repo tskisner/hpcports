@@ -40,11 +40,14 @@ pkg-configure :
 	if [ "x$(zlib_OVERRIDE)" != "xTRUE" ]; then \
 		zl="--with-zlib-include-dir=$(zlib_PREFIX)/include --with-zlib-lib-dir=$(zlib_PREFIX)/lib"; \
 	fi; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	osx=""; \
+	if [ "x$(VENDOR)" = "xapple" ]; then \
+		osx="-DHAVE_APPLE_OPENGL_FRAMEWORK"; \
+	fi; \
+	CC="$(CC)" CFLAGS="$(CFLAGS) $${osx}" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	./configure \
-	$${dyn} $${zl} \
+	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS) $${osx}" \
+	./configure $${dyn} $${zl} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
