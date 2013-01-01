@@ -34,8 +34,8 @@ pkg-configure :
 	@cd $(STAGE); \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	blaslib=`echo $(blas_LIBS_CC) | sed -e "s#-l##g" -e "s# #;#g"`; \
-	lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #;#g"`; \
+	blaslib=`echo "$(blas_LIBS_CC) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s|-l||g" -e "s| |;|g"`; \
+	lapacklib=`echo "$(lapack_LIBS_CC)" | sed -e "s|-l||g" -e "s| |;|g"`; \
 	dyn="-DBUILD_SHARED_LIBS:BOOL=ON"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="-DBUILD_SHARED_LIBS:BOOL=OFF"; \
