@@ -1,12 +1,30 @@
-diff -urN readline-6.2_orig/support/shobj-conf readline-6.2/support/shobj-conf
---- readline-6.2_orig/support/shobj-conf	2009-10-28 06:20:21.000000000 -0700
-+++ readline-6.2/support/shobj-conf	2012-07-03 11:17:16.000000000 -0700
-@@ -190,7 +190,7 @@
- 			SHLIB_XLDFLAGS='-dynamiclib -arch_only `/usr/bin/arch` -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
+diff -urN readline-6.2.orig/support/shobj-conf readline-6.2/support/shobj-conf
+--- readline-6.2.orig/support/shobj-conf	2009-10-28 06:20:21.000000000 -0700
++++ readline-6.2/support/shobj-conf	2013-01-02 00:51:33.000000000 -0800
+@@ -168,10 +168,10 @@
+ 	SHLIB_LIBVERSION='$(SHLIB_MAJOR)$(SHLIB_MINOR).$(SHLIB_LIBSUFF)'
+ 	SHLIB_LIBSUFF='dylib'
+ 
+-	SHOBJ_LDFLAGS='-dynamiclib -dynamic -undefined dynamic_lookup -arch_only `/usr/bin/arch`'
+-	SHLIB_XLDFLAGS='-dynamiclib -arch_only `/usr/bin/arch` -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
++	SHOBJ_LDFLAGS='-dynamiclib -dynamic -undefined dynamic_lookup'
++	SHLIB_XLDFLAGS='-dynamiclib -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
+ 
+-	SHLIB_LIBS='-lncurses'	# see if -lcurses works on MacOS X 10.1 
++	SHLIB_LIBS='-lncurses'	# see if -lcurses works on Mac X 10.1 
+ 	;;
+ 
+ darwin*|macosx*)
+@@ -187,10 +187,10 @@
+ 
+ 	case "${host_os}" in
+ 	darwin[789]*|darwin10*)	SHOBJ_LDFLAGS=''
+-			SHLIB_XLDFLAGS='-dynamiclib -arch_only `/usr/bin/arch` -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
++			SHLIB_XLDFLAGS='-dynamiclib -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
  			;;
  	*)		SHOBJ_LDFLAGS='-dynamic'
 -			SHLIB_XLDFLAGS='-arch_only `/usr/bin/arch` -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
-+			SHLIB_XLDFLAGS='-dynamiclib -arch_only `/usr/bin/arch` -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
++			SHLIB_XLDFLAGS='-dynamiclib -install_name $(libdir)/$@ -current_version $(SHLIB_MAJOR)$(SHLIB_MINOR) -compatibility_version $(SHLIB_MAJOR) -v'
  			;;
  	esac
  
