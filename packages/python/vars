@@ -2,6 +2,7 @@ path = bin
 man = share/man
 header = include
 ld = lib
+python = lib
 lib_CC = -lpython2.7
 lib_CXX = -lpython2.7
 lib_F77 = -lpython2.7
