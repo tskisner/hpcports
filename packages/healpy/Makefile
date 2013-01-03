@@ -12,11 +12,12 @@ PKG_VERSION := $(shell head -n 1 version)
 
 PKG_NAME = healpy
 
-PKG_FORMAT = git
-PKG_GIT_CLONE = git clone http://github.com/healpy/healpy.git
-PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
+PKG_FORMAT = tar
+PKG_TAR = healpy-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://github.com/healpy/healpy/archive/1.4.1.tar.gz
+PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = healpy
+PKG_SRCDIR = healpy-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
