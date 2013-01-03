@@ -157,57 +157,9 @@ fi
 
 inc=""
 
-if [ $incl = true ]; then
-	if [ $dotoast = true ]; then
-		inc="${toast_CPPFLAGS} ${expat_CPPFLAGS} ${sqlite_CPPFLAGS} ${inc}"
-	fi
-	if [ $domoat = true ]; then
-		inc="${moat_CPPFLAGS} ${inc}"
-	fi
-	if [ $dohealpix = true ]; then
-		inc="${healpix_CPPFLAGS} ${inc}"
-	fi
-	if [ $dochealpix = true ]; then
-		inc="${healpix_CPPFLAGS} ${inc}"
-	fi
-	if [ $docxxhealpix = true ]; then
-		inc="${healpix_CPPFLAGS} ${inc}"
-	fi
-	if [ $dofftw = true ]; then
-		inc="${fftw_CPPFLAGS} ${inc}"
-	fi
-	if [ $docfitsio = true ]; then
-		inc="${cfitsio_CPPFLAGS} ${inc}"
-	fi
-fi
-
 total="${total}${inc} "
 
 ld=""
-
-if [ $lflags = true ]; then
-	if [ $dotoast = true ]; then
-		ld="${toast_LDFLAGS} ${expat_LDFLAGS} ${sqlite_LDFLAGS} ${ld}"
-	fi
-	if [ $domoat = true ]; then
-		ld="${moat_LDFLAGS} ${ld}"
-	fi
-	if [ $dohealpix = true ]; then
-		ld="${healpix_LDFLAGS} ${ld}"
-	fi
-	if [ $dochealpix = true ]; then
-		ld="${healpix_LDFLAGS} ${ld}"
-	fi
-	if [ $docxxhealpix = true ]; then
-		ld="${healpix_LDFLAGS} ${ld}"
-	fi
-	if [ $dofftw = true ]; then
-		ld="${fftw_LDFLAGS} ${ld}"
-	fi
-	if [ $docfitsio = true ]; then
-		ld="${cfitsio_LDFLAGS} ${ld}"
-	fi
-fi
 
 total="${total}${ld} "
 
