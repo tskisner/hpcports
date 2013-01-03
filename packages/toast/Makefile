@@ -53,6 +53,8 @@ pkg-configure :
 	./configure $${dyn} $${pyopt} $${mp} \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \
+	--with-lapack="$(lapack_LIBS_CXX)" \
+	--with-blas="$(blas_LIBS_CXX)" \
 	--with-expat=$(expat_PREFIX) \
 	--with-cnpy=$(cnpy_PREFIX) \
 	--with-sqlite3=$(sqlite_PREFIX) \
