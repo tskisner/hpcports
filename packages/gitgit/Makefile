@@ -31,7 +31,7 @@ pkg-prefetch :
 
 
 pkg-configure :
-	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	@cd $(STAGE)/$(PKG_BUILDDIR)/git-1.8.0.2; \
 	$(MAKE) configure; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CPPFLAGS="$(gettext_CPPFLAGS)" \
@@ -46,17 +46,17 @@ pkg-configure :
 
 
 pkg-build :
-	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	@cd $(STAGE)/$(PKG_BUILDDIR)/git-1.8.0.2; \
 	$(MAKE)
 
 
 pkg-install :
-	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	@cd $(STAGE)/$(PKG_BUILDDIR)/git-1.8.0.2; \
 	$(MAKE) install
 
 
 pkg-clean :
-	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	@cd $(STAGE)/$(PKG_BUILDDIR)/git-1.8.0.2; \
 	$(MAKE) clean
 
 
