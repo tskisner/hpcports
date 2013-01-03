@@ -51,8 +51,7 @@ pkg-prefetch :
 	echo "setenv HPCP_DYNAMIC \"$(BUILD_DYNAMIC)\"" >> $(STAGE)/base.module; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
 		for val in $(APPLE_INCLUDE); do \
-			echo "prepend-path C_INCLUDE_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "prepend-path CPLUS_INCLUDE_PATH \"${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
 		done; \
 		for val in $(APPLE_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
@@ -65,8 +64,7 @@ pkg-prefetch :
 	fi; \
 	if [ "x$(VENDOR)" = "xamd" ]; then \
 		for val in $(AMD_INCLUDE); do \
-			echo "prepend-path C_INCLUDE_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "prepend-path CPLUS_INCLUDE_PATH \"${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
 		done; \
 		for val in $(AMD_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
@@ -79,8 +77,7 @@ pkg-prefetch :
 	fi; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
 		for val in $(INTEL_INCLUDE); do \
-			echo "prepend-path C_INCLUDE_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "prepend-path CPLUS_INCLUDE_PATH \"${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
 		done; \
 		for val in $(INTEL_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
