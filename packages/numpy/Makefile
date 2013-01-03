@@ -41,6 +41,8 @@ pkg-configure :
 	echo "" >> site.cfg; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
 		echo "[mkl]" >> site.cfg; \
+		inteldir=`echo $(INTEL_LIBDIR)`; \
+		echo "library_dirs = $${inteldir}" >> site.cfg; \
 		intellib=`echo $(INTEL_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "mkl_libs = $${intellib}" >> site.cfg; \
 		lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
