@@ -12,9 +12,10 @@
 #
 # 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5, fftw 3.3.0.0, python 2.7.1
 # 2.0 : gcc-4.7.1, ACML 4.4.0, cray-mpich2 5.5.2, fftw 3.3.0.0, python 2.7.1
+# 3.0 : gcc-4.7.2, ACML 4.4.0, cray-mpich2 5.5.5, fftw 3.3.0.1, python 2.7.3
 #
 
-HPCP_ENV = 2.0
+HPCP_ENV = 3.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -68,24 +69,24 @@ OMPFLAGS = -fopenmp
 
 # Fortran mixing
 
-FLIBS = /opt/gcc/4.7.1/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.7.1/snos/lib64/libgfortran.a
+FLIBS = /opt/gcc/4.7.2/snos/lib64/libgfortran.a
+FCLIBS = /opt/gcc/4.7.2/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
 # Linking
 
-LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = -L/usr/lib64 /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = -L/usr/lib64 /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # vendor math libraries
 
 VENDOR = amd
 AMD_INCLUDE = $(ACML_DIR)/gfortran64_mp/include
 AMD_LIBDIR = $(ACML_DIR)/gfortran64_mp/lib
-AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
+AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # package overrides
 
@@ -125,7 +126,7 @@ python_VERSION = 2.7.1
 
 fftw_OVERRIDE = TRUE
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
-fftw_VERSION = 3.3.0.0
+fftw_VERSION = 3.3.0.1
 
 nose_OVERRIDE = TRUE
 nose_VERSION = NA
@@ -169,15 +170,15 @@ numexpr_VERSION = NA
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 11.1.00
-blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
-blas_LIBS_CXX = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
-blas_LIBS_FC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
-blas_LIBS_F77 = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.1/snos/lib64/libgfortran.a /opt/gcc/4.7.1/snos/lib64/libgomp.a
+blas_VERSION = 11.1.01
+blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
+blas_LIBS_CXX = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
+blas_LIBS_FC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
+blas_LIBS_F77 = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 11.1.00
+lapack_VERSION = 11.1.01
 
 scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 11.1.00
+scalapack_VERSION = 11.1.01
 
