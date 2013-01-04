@@ -1,0 +1,24 @@
+diff -ur a/gettext-tools/gnulib-lib/stpcpy.c b/gettext-tools/gnulib-lib/stpcpy.c
+--- a/gettext-tools/gnulib-lib/stpcpy.c	2010-05-24 11:42:47.000000000 +0200
++++ b/gettext-tools/gnulib-lib/stpcpy.c	2011-06-12 13:17:56.000000000 +0200
+@@ -28,7 +28,7 @@
+ #endif
+ 
+ #ifndef weak_alias
+-# define __stpcpy stpcpy
++//# define __stpcpy stpcpy
+ #endif
+ 
+ /* Copy SRC to DEST, returning the address of the terminating '\0' in DEST.  */
+diff -ur a/gettext-tools/gnulib-lib/stpncpy.c b/gettext-tools/gnulib-lib/stpncpy.c
+--- a/gettext-tools/gnulib-lib/stpncpy.c	2010-05-24 11:42:47.000000000 +0200
++++ b/gettext-tools/gnulib-lib/stpncpy.c	2011-06-12 13:17:56.000000000 +0200
+@@ -25,7 +25,7 @@
+ #include <string.h>
+ 
+ #ifndef weak_alias
+-# define __stpncpy stpncpy
++//# define __stpncpy stpncpy
+ #endif
+ 
+ /* Copy no more than N bytes of SRC to DST, returning a pointer past the

@@ -21,7 +21,7 @@ PKG_SRCDIR = gettext-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_osx.patch
 
 
 # rules for this package
@@ -42,11 +42,16 @@ pkg-configure :
 	./configure \
 	$${dyn} \
 	--with-pic \
+	--disable-csharp \
 	--disable-java \
 	--disable-native-java \
 	--without-git \
 	--without-emacs \
 	--without-cvs \
+	--with-included-gettext \
+	--with-included-glib \
+	--with-included-libcroco \
+	--with-included-libxml \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 
 
