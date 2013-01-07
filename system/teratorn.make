@@ -83,4 +83,10 @@ blas_LIBS_CXX = -Wl,-framework,vecLib
 blas_LIBS_F77 = -Wl,-framework,vecLib
 blas_LIBS_FC = -Wl,-framework,vecLib
 
+# override broken matplotlib
+
+matplotlib_OVERRIDE = TRUE
+matplotlib_VERSION = NA
+
+
 
