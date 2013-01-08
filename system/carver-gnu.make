@@ -107,3 +107,6 @@ lapack_LIBS_CXX = -lmkl_lapack
 lapack_LIBS_F77 = -lmkl_lapack
 lapack_LIBS_FC = -lmkl_lapack
 
+gitgit_OVERRIDE = TRUE
+gitgit_VERSION = 1.7.8.3
+
