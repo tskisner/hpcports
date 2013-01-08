@@ -63,9 +63,6 @@ install-common :
 fetch : packages/up2date.$(GITHASH)
 
 
-uninstall : packages/up2date.$(GITHASH)
-
-
 clean : packages/up2date.$(GITHASH)
 	rm -rf packages/overrides_$(HPCP_TARGET)
 
