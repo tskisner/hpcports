@@ -79,6 +79,11 @@ for pkg in ${pkgs}; do
 
 
 	echo "" >> packages/pkg_rules.make
+	echo "${pkg}-reinstall :" >> packages/pkg_rules.make
+	echo "	make ${pkg}-uninstall; make ${pkg}" >> packages/pkg_rules.make
+
+
+	echo "" >> packages/pkg_rules.make
 	echo "${pkg}-clean :" >> packages/pkg_rules.make
 	echo "	@if [ \"x\$(${pkg}_OVERRIDE)\" != \"xTRUE\" ]; then \\" >> packages/pkg_rules.make
 	echo "		cd packages/${pkg}; \$(MAKE) clean; \\" >> packages/pkg_rules.make
