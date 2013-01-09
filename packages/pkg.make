@@ -166,10 +166,11 @@ build : configure
 	fi
 
 
-install : build
+install : 
 	@if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
 		printf "%s%15s :  Already installed\n" "$(HPCP)" "$(PKG_NAME)"; \
 	else \
+		$(MAKE) build; \
 		if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 			if [ -e $(STAGE)/state.build ]; then \
 				printf "%s%15s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
