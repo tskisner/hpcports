@@ -6,19 +6,23 @@ ENV=${2}
 
 PREFIX=${3}
 VER=${4}
-DATA=${5}
-LIB_CC=${6}
-LIB_CXX=${7}
-LIB_F77=${8}
-LIB_FC=${9}
-LIB_MPICC=${10}
-LIB_MPICXX=${11}
-LIB_MPIF77=${12}
-LIB_MPIFC=${13}
-MOD=${14}
+INCLUDE=${5}
+LIBDIR=${6}
+DATA=${7}
+LIB_CC=${8}
+LIB_CXX=${9}
+LIB_F77=${10}
+LIB_FC=${11}
+LIB_MPICC=${12}
+LIB_MPICXX=${13}
+LIB_MPIF77=${14}
+LIB_MPIFC=${15}
+MOD=${16}
 
 PREFIX=`echo ${PREFIX} | sed -e 's#^x##'`
 VER=`echo ${VER} | sed -e 's#^x##'`
+INCLUDE=`echo ${INCLUDE} | sed -e 's#^x##'`
+LIBDIR=`echo ${LIBDIR} | sed -e 's#^x##'`
 DATA=`echo ${DATA} | sed -e 's#^x##'`
 LIB_CC=`echo ${LIB_CC} | sed -e 's#^x##'`
 LIB_CXX=`echo ${LIB_CXX} | sed -e 's#^x##'`
@@ -78,6 +82,13 @@ if [ "x${PREFIX}" != x ]; then
 fi
 if [ "x${DATA}" != x ]; then
 	echo "setenv ${PKG}_DATA \"${DATA}\"" >> ${PKG}.module
+fi
+if [ "x${INCLUDE}" != x ]; then
+	echo "prepend-path CPATH \"${INCLUDE}\"" >> ${PKG}.module
+fi
+if [ "x${LIBDIR}" != x ]; then
+	echo "prepend-path LIBRARY_PATH \"${LIBDIR}\"" >> ${PKG}.module
+	echo "prepend-path LD_LIBRARY_PATH \"${LIBDIR}\"" >> ${PKG}.module
 fi
 if [ "x${LIB_CC}" != x ]; then
 	echo "setenv ${PKG}_LIBS_CC \"${LIB_CC}\"" >> ${PKG}.module
