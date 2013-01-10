@@ -80,7 +80,7 @@ for pkg in ${pkgs}; do
 
 	echo "" >> packages/pkg_rules.make
 	echo "${pkg}-reinstall :" >> packages/pkg_rules.make
-	echo "	make ${pkg}-uninstall; make ${pkg}" >> packages/pkg_rules.make
+	echo "	@\$(MAKE) ${pkg}-uninstall; \$(MAKE) ${pkg}" >> packages/pkg_rules.make
 
 
 	echo "" >> packages/pkg_rules.make
