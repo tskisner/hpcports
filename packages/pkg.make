@@ -230,11 +230,14 @@ uninstall :
 	else \
 		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_VERSION)-$(HPCP_ENV); \
 	fi; \
-	rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
-	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion ]; then \
-		mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
-	else \
-		rm -rf $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
+	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version ]; then \
+		cur=`cat $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version | grep ModulesVersion | sed -e 's#.*\"\(.*\)\".*#\1#'`; \
+		if [ $${cur} = "$(PKG_VERSION)-$(HPCP_ENV)" ]; then \
+			rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
+			if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion ]; then \
+				mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
+			fi; \
+		fi; \
 	fi
 
 
