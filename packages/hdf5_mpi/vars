@@ -1,0 +1,11 @@
+path = bin
+header = include
+ld = lib
+lib_CC = -lhdf5_hl -lhdf5 -lz -lm
+lib_CXX = -lhdf5_hl -lhdf5 -lz -lm
+lib_F77 = -lhdf5hl_fortran -lhdf5_hl -lhdf5_fortran -lhdf5 -lz -lm
+lib_FC = -lhdf5hl_fortran -lhdf5_hl -lhdf5_fortran -lhdf5 -lz -lm
+lib_MPICC = -lhdf5_hl -lhdf5 -lz -lm
+lib_MPICXX = -lhdf5_hl -lhdf5 -lz -lm
+lib_MPIF77 = -lhdf5hl_fortran -lhdf5_hl -lhdf5_fortran -lhdf5 -lz -lm
+lib_MPIFC = -lhdf5hl_fortran -lhdf5_hl -lhdf5_fortran -lhdf5 -lz -lm
