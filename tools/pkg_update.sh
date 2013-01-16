@@ -68,6 +68,9 @@ for pkg in ${pkgs}; do
 	echo "		cp ${pkg}.version \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}/.version; \\" >> packages/pkg_rules.make
 	echo "		chgrp -R \$(INST_GRP) \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}; \\" >> packages/pkg_rules.make
 	echo "		chmod -R \$(INST_PERM) \$(HPCP_PREFIX)/env/modulefiles/${pkg}${SUFFIX}; \\" >> packages/pkg_rules.make
+	echo "		cp ${pkg}.sh \$(HPCP_PREFIX)/env/${pkg}-\$(${pkg}_VERSION).sh; \\" >> packages/pkg_rules.make
+	echo "		chgrp -R \$(INST_GRP) \$(HPCP_PREFIX)/env/${pkg}-\$(${pkg}_VERSION).sh; \\" >> packages/pkg_rules.make
+	echo "		chmod -R \$(INST_PERM) \$(HPCP_PREFIX)/env/${pkg}-\$(${pkg}_VERSION).sh; \\" >> packages/pkg_rules.make
 	echo "	fi" >> packages/pkg_rules.make
 
 
