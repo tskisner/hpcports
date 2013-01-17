@@ -1,4 +1,4 @@
 header = include
 ld = lib
-lib_CXX = -lelemental -lplcg -lpmrrr -llapack-addons -lcmake-dummy-lib
-lib_MPICXX = -lelemental -lplcg -lpmrrr -llapack-addons -lcmake-dummy-lib
+lib_CXX = -lelemental -lplcg -lpmrrr -llapack-addons -lelem-dummy-lib
+lib_MPICXX = -lelemental -lplcg -lpmrrr -llapack-addons -lelem-dummy-lib
