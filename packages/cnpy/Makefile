@@ -20,7 +20,7 @@ PKG_SRCDIR = cnpy
 
 PKG_BUILDDIR = build
 
-PKG_PATCHES = hpcp_rpath.patch
+PKG_PATCHES = hpcp_rpath.patch loadrow.patch
 
 
 # rules for this package

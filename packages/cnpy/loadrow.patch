@@ -1,0 +1,66 @@
+diff --git a/cnpy.cpp b/cnpy.cpp
+index f3ee267..4112c4f 100644
+--- a/cnpy.cpp
++++ b/cnpy.cpp
+@@ -133,6 +133,30 @@ cnpy::NpyArray load_the_npy_file(FILE* fp) {
+     return arr;
+ }
+ 
++cnpy::NpyArray load_the_npy_file_row(FILE* fp,const unsigned int row) {
++	// Only load one row from a numpy file
++    unsigned int* shape;
++    unsigned int ndims, word_size;
++    cnpy::parse_npy_header(fp,word_size,shape,ndims);
++    unsigned long long size = 1; //long long so no overflow when multiplying by word_size
++
++	if(ndims < 1) {
++		printf("Error, tried to read a row from a scalar file!\n");
++		abort();
++	}
++
++    for(int i = 1;i < ndims;i++) size *= shape[i];
++	unsigned long long offset = size * row;
++
++    cnpy::NpyArray arr;
++    arr.word_size = word_size;
++    arr.shape = std::vector<unsigned int>(shape+1,shape+ndims);
++    arr.data = new char[size*word_size];    
++	fseek(fp,offset*word_size,SEEK_CUR);
++    int nread = fread(arr.data,word_size,size,fp);
++    return arr;
++}
++
+ cnpy::npz_t cnpy::npz_load(std::string fname) {
+     FILE* fp = fopen(fname.c_str(),"rb");
+ 
+@@ -227,5 +251,18 @@ cnpy::NpyArray cnpy::npy_load(std::string fname) {
+     return arr;
+ }
+ 
++cnpy::NpyArray cnpy::npy_load_row(std::string fname,const unsigned int row) {
++
++    FILE* fp = fopen(fname.c_str(), "rb");
++
++    if(!fp) {
++        printf("npy_load: Error! Unable to open file %s!\n",fname.c_str());
++        abort();  
++    }
++
++    NpyArray arr = load_the_npy_file_row(fp,row);
+ 
++    fclose(fp);
++    return arr;
++}
+ 
+diff --git a/cnpy.h b/cnpy.h
+index 8229b46..2fd8e2d 100644
+--- a/cnpy.h
++++ b/cnpy.h
+@@ -41,6 +41,7 @@ namespace cnpy {
+     npz_t npz_load(std::string fname);
+     NpyArray npz_load(std::string fname, std::string varname);
+     NpyArray npy_load(std::string fname);
++    NpyArray npy_load_row(std::string fname,const unsigned int row);
+ 
+     template<typename T> std::vector<char>& operator+=(std::vector<char>& lhs, const T rhs) {
+         //write in little endian
