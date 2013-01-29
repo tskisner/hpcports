@@ -55,7 +55,7 @@ pkg-prefetch :
 		done; \
 		for val in $(APPLE_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "prepend-path LD_LIBRARY_PATH \"${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path LD_LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
 		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(APPLE_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_CXX \"$(APPLE_LIBS_CXX)\"" >> $(STAGE)/base.module; \
@@ -68,7 +68,7 @@ pkg-prefetch :
 		done; \
 		for val in $(AMD_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "prepend-path LD_LIBRARY_PATH \"${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path LD_LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
 		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(AMD_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_CXX \"$(AMD_LIBS_CXX)\"" >> $(STAGE)/base.module; \
@@ -81,7 +81,7 @@ pkg-prefetch :
 		done; \
 		for val in $(INTEL_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "prepend-path LD_LIBRARY_PATH \"${val}\"" >> $(STAGE)/base.module; \
+			echo "prepend-path LD_LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
 		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(INTEL_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "setenv HPCP_VENDOR_LIBS_CXX \"$(INTEL_LIBS_CXX)\"" >> $(STAGE)/base.module; \
