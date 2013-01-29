@@ -43,10 +43,10 @@ FC = gfortran
 
 # compile flags
 
-CFLAGS = -O2 -m64 -g -fPIC
-CXXFLAGS = -O2 -m64 -g -fPIC
-FFLAGS = -O2 -m64 -g -fPIC
-FCFLAGS = -O2 -m64 -g -fPIC
+CFLAGS = -O2 -m64 -g -fPIC -DNDEBUG
+CXXFLAGS = -O2 -m64 -g -fPIC -DNDEBUG
+FFLAGS = -O2 -m64 -g -fPIC -DNDEBUG
+FCFLAGS = -O2 -m64 -g -fPIC -DNDEBUG
 
 # OpenMP flags
 
