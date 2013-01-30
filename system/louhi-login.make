@@ -99,13 +99,5 @@ fftw_LIBS_CC = -lfftw3_threads -lfftw3
 fftw_LIBS_F77 = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
 fftw_LIBS_FC = -lfftw3f_threads -lfftw3_threads -lfftw3f -lfftw3
 
-# we get BLAS from ACML
-
-blas_OVERRIDE = TRUE
-blas_VERSION = 4.4.0
-blas_LIBS_CC = $(AMD_LIBS_CC)
-blas_LIBS_CXX = $(AMD_LIBS_CXX)
-blas_LIBS_FC = $(AMD_LIBS_FC)
-blas_LIBS_F77 = $(AMD_LIBS_F77)
 
 
