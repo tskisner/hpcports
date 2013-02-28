@@ -54,10 +54,10 @@ MPIFC = ftn
 
 # compile flags
 
-CFLAGS = -O3 -no-prec-div -xHost -static -fPIC -DNDEBUG
-CXXFLAGS = -O3 -no-prec-div -xHost -static -fPIC -DNDEBUG
-FFLAGS = -O3 -no-prec-div -xHost -static -fPIC -DNDEBUG -save-temps
-FCFLAGS = -O3 -no-prec-div -xHost -static -fPIC -DNDEBUG -save-temps
+CFLAGS = -O3 -static -fPIC -DNDEBUG
+CXXFLAGS = -O3 -static -fPIC -DNDEBUG
+FFLAGS = -O3 -static -fPIC -DNDEBUG -save-temps
+FCFLAGS = -O3 -static -fPIC -DNDEBUG -save-temps -free
 
 # OpenMP flags
 
