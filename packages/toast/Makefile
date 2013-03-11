@@ -42,10 +42,14 @@ pkg-configure :
 	if [ "x$(VENDOR)" = "xapple" ]; then \
 		mp="--disable-openmp"; \
 	fi; \
+	FFF="$(FCFLAGS)"; \
+	if [ "x$(TOOLCHAIN)" = "xintel" ]; then \
+		FFF="$${FFF} -save-temps"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	PYTHON="$(PYTHON)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
+	FC="$(FC)" FCFLAGS="$${FFF}" \
 	OPENMP_CXXFLAGS=${OMPFLAGS} \
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
