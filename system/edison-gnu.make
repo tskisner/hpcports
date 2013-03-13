@@ -2,8 +2,7 @@
 # use this prefix (set from the command line) to update the 
 # live hpcports install used by many people
 #
-#export HPCP_PREFIX=/project/projectdirs/cmb/modules/hopper/hpcports_intel
-export HPCP_PREFIX = /scratch1/scratchdirs/colliera/DX9/modules/hpcports_gnu
+#export HPCP_PREFIX=/project/projectdirs/cmb/modules/edison/hpcports_gnu
 
 # OS environment version
 #
@@ -11,7 +10,7 @@ export HPCP_PREFIX = /scratch1/scratchdirs/colliera/DX9/modules/hpcports_gnu
 # the minor version when upgrading MPI or vendor libs.  Document configuration
 # here:
 #
-# 1.0 :  gnu 4.7.2, cray-mpich2 5.6.1, fftw 3.3.0.1, python 2.7.3
+# 1.0 :  gnu 4.7.2, cray-mpich2 5.6.1, cray-libsci 12.0.00, fftw 3.3.0.1, python 2.7.3
 #
 
 HPCP_ENV = 1.0
@@ -22,8 +21,7 @@ MOD_SUFFIX = -hpcp
 
 # software download location
 
-#HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
-HPCP_POOL = /scratch1/scratchdirs/colliera/DX9/modules/hpcports_pool
+HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
@@ -77,14 +75,9 @@ MPIFCLIBS =
 LIBS =
 LDFLAGS =
 
-# vendor math libraries
+# vendor math libraries (MKL not supported with gnu toolchain)
 
 VENDOR = 
-#INTEL_INCLUDE = $(MKL_INC)
-#INTEL_LIBS_C = -mkl=cluster
-#INTEL_LIBS_CXX = -mkl=cluster
-#INTEL_LIBS_F77 = -mkl=cluster
-#INTEL_LIBS_FC = -mkl=cluster
 
 # package overrides
 
@@ -106,14 +99,12 @@ zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.7
 
 # module load bzip2/1.0.6
+
 bzip2_OVERRIDE = TRUE
 bzip2_VERSION = 1.0.6
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = 0.9.8
-
-#cnpy_OVERRIDE = TRUE
-#cnpy_VERSION = NA
 
 # module load curl/7.28.1
 
@@ -127,8 +118,8 @@ python_SITE = python2.7
 python_VERSION = 2.7.3
 
 fftw_OVERRIDE = TRUE
+fftw_VERSION = $(FFTW_VERSION)
 fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
-fftw_VERSION = 3.3.0.1
 
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
