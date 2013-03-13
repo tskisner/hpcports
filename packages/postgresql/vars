@@ -1,0 +1,7 @@
+path = bin
+header = include
+ld = lib
+lib_CC = -lpq
+lib_CXX = -lpq
+lib_F77 = -lpq
+lib_FC = -lpq
