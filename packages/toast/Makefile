@@ -63,6 +63,7 @@ pkg-configure :
 	--with-cnpy=$(cnpy_PREFIX) \
 	--with-sqlite3=$(sqlite_PREFIX) \
 	--with-getdata=$(getdata_PREFIX) \
+	--with-hdf5=$(hdf5_PREFIX)/bin/h5cc \
 	--with-cfitsio-libs="$(cfitsio_LIBS_CXX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
 

@@ -1,1 +1,1 @@
-autoconf automake libtool cfitsio expat sqlite python numpy getdata cnpy moat lapack gitgit
+autoconf automake libtool cfitsio expat sqlite python numpy getdata cnpy moat lapack gitgit hdf5 elemental
