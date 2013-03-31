@@ -36,13 +36,18 @@ pkg-configure :
 	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
 	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s# #;#g"`; \
 	cmake $${dyn} \
+	-D MANUAL_ELEMENTAL:BOOL=ON \
+	-D ELEMENTAL_INCLUDE_DIR="${elemental_PREFIX}/include" \
+	-D ELEM_LIBS="elemental plcg pmrrr lapack-addons elem-dummy-lib" \
 	-D CMAKE_C_COMPILER="$(MPICC)" \
 	-D CMAKE_CXX_COMPILER="$(MPICXX)" \
 	-D CMAKE_Fortran_COMPILER="$(MPIFC)" \
 	-D CMAKE_BUILD_TYPE=PureRelease \
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
+	-D C_PURE_RELEASE_FLAGS="$(CFLAGS)" \
 	-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
 	-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+	-D CXX_PURE_RELEASE_FLAGS="$(CXXFLAGS)" \
 	-D CXX_HYBRID_RELEASE_FLAGS="$(CXXFLAGS)" \
 	-D CMAKE_Fortran_FLAGS="$(FCFLAGS)" \
 	-D MPI_C_COMPILER="$(MPICC)" \
