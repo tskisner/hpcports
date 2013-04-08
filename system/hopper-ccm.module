@@ -1,0 +1,11 @@
+  if [ is-loaded PrgEnv-gnu ] {
+  } else {
+    module swap PrgEnv-pgi PrgEnv-gnu
+    module unload pgi
+    module unload cray-shmem
+    module swap gcc gcc/4.7.2
+    module swap xt-asyncpe xt-asyncpe/5.16
+    module swap cray-libsci cray-libsci/12.0.00
+    module unload cray-mpich2
+    module load openmpi-ccm/1.6.3
+  }

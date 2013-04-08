@@ -1,0 +1,2 @@
+  prepend-path CPATH "/opt/local/include"
+  prepend-path LIBRARY_PATH "/opt/local/lib"
