@@ -12,6 +12,7 @@ pkgs=""
 pkg_fetch=""
 pkg_clean=""
 pkg_purge=""
+pkg_reinstall=""
 
 for entry in `ls packages`; do
 	if [ -d packages/${entry} ]; then
@@ -21,6 +22,7 @@ for entry in `ls packages`; do
 			pkg_fetch="${pkg_fetch} ${entry}-fetch"
 			pkg_clean="${pkg_clean} ${entry}-clean"
 			pkg_purge="${pkg_purge} ${entry}-purge"
+			pkg_reinstall="${pkg_reinstall} ${entry}-reinstall"
 		fi
 	fi
 done
@@ -36,6 +38,7 @@ echo "" >> packages/pkg_rules.make
 echo "fetch : ${pkg_fetch}" >> packages/pkg_rules.make
 echo "clean : ${pkg_clean}" >> packages/pkg_rules.make
 echo "purge : ${pkg_purge}" >> packages/pkg_rules.make
+echo "reinstall : ${pkg_reinstall}" >> packages/pkg_rules.make
 
 for pkg in ${pkgs}; do
 
