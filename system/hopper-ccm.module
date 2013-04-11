@@ -1,3 +1,5 @@
+  setenv CRAY_ROOTFS DSL
+
   if [ is-loaded PrgEnv-gnu ] {
   } else {
     module swap PrgEnv-pgi PrgEnv-gnu
