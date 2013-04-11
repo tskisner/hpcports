@@ -37,7 +37,7 @@ pkg-configure :
 		dyn="--disable-shared"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS) -lm" \
 	./configure $${dyn} \
 	--with-pic \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)

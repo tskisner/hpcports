@@ -1,57 +1,44 @@
-diff -urN elemental-0.76.orig/CMakeLists.txt elemental-0.76/CMakeLists.txt
---- elemental-0.76.orig/CMakeLists.txt	2012-08-06 22:26:25.000000000 -0700
-+++ elemental-0.76/CMakeLists.txt	2012-10-01 15:15:44.000000000 -0700
-@@ -446,28 +446,28 @@
- # We currently only handle whether or not there is an underscore appended.
- include(CheckFunctionExists)
+diff -urN elemental-0.78-p1_orig/CMakeLists.txt elemental-0.78-p1/CMakeLists.txt
+--- elemental-0.78-p1_orig/CMakeLists.txt	2013-03-27 11:57:05.000000000 -0700
++++ elemental-0.78-p1/CMakeLists.txt	2013-04-10 13:44:10.860199726 -0700
+@@ -271,23 +271,23 @@
  set(CMAKE_REQUIRED_LIBRARIES ${MATH_LIBS})
--check_function_exists(daxpy HAVE_DAXPY)
+ check_function_exists(daxpy  HAVE_DAXPY)
+ check_function_exists(daxpy_ HAVE_DAXPY_POST)
 -if(HAVE_DAXPY)
 -  set(BLAS_POST FALSE)
 -  set(BLAS_DEFS "")
-+check_function_exists(daxpy_ HAVE_DAXPY_POST)
+-elseif(HAVE_DAXPY_POST)
 +if(HAVE_DAXPY_POST)
-+  set(BLAS_POST TRUE)
-+  set(BLAS_DEFS "-DBLAS_POST")
+   set(BLAS_POST TRUE)
+   set(BLAS_DEFS "-DBLAS_POST")
++elseif(HAVE_DAXPY)
++  set(BLAS_POST FALSE)
++  set(BLAS_DEFS "")
  else()
--  check_function_exists(daxpy_ HAVE_DAXPY_POST)
--  if(HAVE_DAXPY_POST)
--    set(BLAS_POST TRUE)
--    set(BLAS_DEFS "-DBLAS_POST")
-+  check_function_exists(daxpy HAVE_DAXPY)
-+  if(HAVE_DAXPY)
-+    set(BLAS_POST FALSE)
-+    set(BLAS_DEFS "")
-   else()
-     message(FATAL_ERROR "Could not determine BLAS format.")
-   endif()
+   message(FATAL_ERROR "Could not determine BLAS format.")
  endif()
--check_function_exists(dpotrf HAVE_DPOTRF)
+ check_function_exists(dpotrf  HAVE_DPOTRF)
+ check_function_exists(dpotrf_ HAVE_DPOTRF_POST)
 -if(HAVE_DPOTRF)
 -  set(LAPACK_POST FALSE)
 -  set(LAPACK_DEFS "")
-+check_function_exists(dpotrf_ HAVE_DPOTRF_POST)
+-elseif(HAVE_DPOTRF_POST)
 +if(HAVE_DPOTRF_POST)
-+  set(LAPACK_POST TRUE)
-+  set(LAPACK_DEFS "-DLAPACK_POST")
+   set(LAPACK_POST TRUE)
+   set(LAPACK_DEFS "-DLAPACK_POST")
++elseif(HAVE_DPOTRF)
++  set(LAPACK_POST FALSE)
++  set(LAPACK_DEFS "")
  else()
--  check_function_exists(dpotrf_ HAVE_DPOTRF_POST)
--  if(HAVE_DPOTRF_POST)
--    set(LAPACK_POST TRUE)
--    set(LAPACK_DEFS "-DLAPACK_POST")
-+  check_function_exists(dpotrf HAVE_DPOTRF)
-+  if(HAVE_DPOTRF)
-+    set(LAPACK_POST FALSE)
-+    set(LAPACK_DEFS "")
-   else()
-     message(FATAL_ERROR "Could not determine LAPACK format.")
-   endif()
-diff -urN elemental-0.76.orig/external/pmrrr/CMakeLists.txt elemental-0.76/external/pmrrr/CMakeLists.txt
---- elemental-0.76.orig/external/pmrrr/CMakeLists.txt	2012-08-06 22:21:45.000000000 -0700
-+++ elemental-0.76/external/pmrrr/CMakeLists.txt	2012-10-01 15:13:04.000000000 -0700
-@@ -74,12 +74,12 @@
+   message(FATAL_ERROR "Could not determine LAPACK format.")
+ endif()
+diff -urN elemental-0.78-p1_orig/external/pmrrr/CMakeLists.txt elemental-0.78-p1/external/pmrrr/CMakeLists.txt
+--- elemental-0.78-p1_orig/external/pmrrr/CMakeLists.txt	2013-03-27 11:43:16.000000000 -0700
++++ elemental-0.78-p1/external/pmrrr/CMakeLists.txt	2013-04-10 13:48:12.927182185 -0700
+@@ -37,12 +37,12 @@
+ # Unfortunately, these checks are not sufficient for MKL.
  include(CheckFunctionExists)
- 
  set(CMAKE_REQUIRED_LIBRARIES ${MATH_LIBS})
 -if(HAVE_DPOTRF)
 -  check_function_exists(claqr0 LAPACK_3_1)
@@ -64,5 +51,5 @@ diff -urN elemental-0.76.orig/external/pmrrr/CMakeLists.txt elemental-0.76/exter
 +  check_function_exists(claqr0 LAPACK_3_1)
 +  check_function_exists(cuncsd LAPACK_3_3)
  endif()
- 
- set(CMAKE_REQUIRED_FLAGS "${MPI_C_COMPILE_FLAGS} ${MPI_C_LINK_FLAGS}")
+ # Attempt to detect whether or not we have MKL
+ check_function_exists(mkl_set_num_threads MATH_HAS_MKL)

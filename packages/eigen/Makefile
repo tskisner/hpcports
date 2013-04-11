@@ -31,9 +31,20 @@ pkg-prefetch :
 
 
 pkg-configure :
-	@mkdir -p $(STAGE)/$(PKG_BUILDDIR); \
-	cd $(STAGE)/$(PKG_BUILDDIR); \
-	cmake -DCMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ../$(PKG_SRCDIR)
+	@cd $(STAGE); \
+	mkdir -p $(PKG_BUILDDIR); \
+	cd $(PKG_BUILDDIR); \
+	dyn=""; \
+	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
+		dyn="--disable-shared --disable-python --disable-perl"; \
+	fi; \
+	cmake $${dyn} \
+	-D CMAKE_C_COMPILER="$(CC)" \
+	-D CMAKE_CXX_COMPILER="$(CXX)" \
+	-D CMAKE_C_FLAGS="$(CFLAGS)" \
+	-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
+	../$(PKG_SRCDIR)
 
 
 pkg-build :

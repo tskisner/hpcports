@@ -45,6 +45,7 @@ pkg-configure :
 	$${dyn} \
 	--with-pic \
 	--disable-legacy-api \
+	--disable-perl \
 	--with-libbz2="$(bzip2_PREFIX)" \
 	--with-libz="$(zlib_PREFIX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)

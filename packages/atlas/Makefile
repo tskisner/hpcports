@@ -21,7 +21,7 @@ PKG_SRCDIR = ATLAS
 
 PKG_BUILDDIR = $(PKG_SRCDIR)/build
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp-throttle.patch
 
 
 # rules for this package

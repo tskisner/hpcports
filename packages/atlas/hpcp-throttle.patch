@@ -1,0 +1,14 @@
+diff -urN ATLAS_orig/CONFIG/src/config.c ATLAS/CONFIG/src/config.c
+--- ATLAS_orig/CONFIG/src/config.c	2012-07-10 12:22:50.000000000 -0700
++++ ATLAS/CONFIG/src/config.c	2013-04-09 11:22:21.522303518 -0700
+@@ -721,7 +721,9 @@
+    free(ln);
+    if (iret) printf("CPU Throttling apparently enabled!\n");
+    else printf("Cannot detect CPU throttling.\n");
+-   return(iret);
++   /* Always allow the build to proceed */
++   return(0);
++   /*return(iret);*/
+ }
+ 
+ char *NewAppendedString_SFLAG(char *old, char *flag, char *str)

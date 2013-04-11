@@ -43,9 +43,11 @@ pkg-configure :
 	LIBS="$(LIBS)" \
 	CXX="$(CXX) $(CXXFLAGS)" \
 	FC="$(F77) $(FFLAGS)" \
+	CMAKE_INCLUDE_PATH="$(tcl_PREFIX)/include:$(tk_PREFIX)/include" \
+	CMAKE_LIBRARY_PATH="$(tcl_PREFIX)/lib:$(tk_PREFIX)/lib" \
 	cmake \
 	$${dyn} \
-	-DCMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
+	-D CMAKE_INSTALL_PREFIX="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)" \
 	..
 
 

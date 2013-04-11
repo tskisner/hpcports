@@ -68,17 +68,23 @@ OMPFLAGS = -fopenmp
 # Fortran mixing
 
 FLIBS = -lgfortran
-FCLIBS = -lgfortran.a
+FCLIBS = -lgfortran
 MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # Linking
 
-LIBS =
-LDFLAGS =
+LIBS = -lgomp
+LDFLAGS = -L/opt/gcc/4.7.2/snos/lib64
 
 # vendor math libraries
 
-VENDOR = cray
+VENDOR = amd
+AMD_INCLUDE = $(ACML_DIR)/gfortran64_mp/include
+AMD_LIBDIR = $(ACML_DIR)/gfortran64_mp/lib
+AMD_LIBS_CC = -lacml_mp
+AMD_LIBS_CXX = -lacml_mp
+AMD_LIBS_F77 = -lacml_mp
+AMD_LIBS_FC = -lacml_mp
 
 # package overrides
 
@@ -115,17 +121,15 @@ curl_VERSION = 7.19.0
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 12.0.00
-blas_INCLUDE = $(CRAY_LIBSCI_PREFIX_DIR)/include
-blas_LIBDIR = $(CRAY_LIBSCI_PREFIX_DIR)/lib
-blas_LIBS_CC = -lsci_gnu_mp.a
-blas_LIBS_CXX = -lsci_gnu_mp.a
-blas_LIBS_FC = -lsci_gnu_mp.a
-blas_LIBS_F77 = -lsci_gnu_mp.a
+blas_VERSION = 5.1.0
+blas_PREFIX = $(ACML_DIR)/gfortran64_mp
+blas_INCLUDE = $(AMD_INCLUDE)
+blas_LIBDIR = $(AMD_LIBDIR)
+blas_LIBS_CC = $(AMD_LIBS_CC)
+blas_LIBS_CXX = $(AMD_LIBS_CXX)
+blas_LIBS_FC = $(AMD_LIBS_FC)
+blas_LIBS_F77 = $(AMD_LIBS_F77)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 12.0.00
-
-scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 12.0.00
+lapack_VERSION = 5.1.0
 

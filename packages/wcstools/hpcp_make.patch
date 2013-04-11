@@ -17,7 +17,7 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 +LIBWCS = libwcs/libwcs.a
 +
 +COMP = $(CFLAGS) -I. -I./libned -I./libwcs
-+LINK = $(LIBNED) $(LIBWCS) $(LDFLAGS) $(LIBS)
++LINK = $(LIBNED) $(LIBWCS) -lm $(LDFLAGS) $(LIBS)
 +
  
 -all:	cphead delwcs delhead edhead fixpix gethead i2f imcat imhead immatch \
@@ -256,7 +256,7 @@ diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
 -CFLAGS = -g -D_NO_PROTO
 -CC = cc
 +COMP = $(CFLAGS) -I. -I../libwcs
-+LINK = ../libwcs/libwcs.a $(LDFLAGS) $(LIBS)
++LINK = ../libwcs/libwcs.a -lm $(LDFLAGS) $(LIBS)
  
  SRC = ned_cli.c ned_cif.c ned_err.c ned_sk.c
  OBJ = ned_cli.o ned_cif.o ned_err.o ned_sk.o
