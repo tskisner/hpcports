@@ -10,7 +10,7 @@
 # the minor version when upgrading MPI or vendor libs.  Document configuration
 # here:
 #
-# 1.0 : gcc-4.7.2, ACML 5.1.0, OpenMPI 1.6.3
+# 1.0 : gcc-4.7.2, ACML 5.1.0
 #
 
 HPCP_ENV = 1.0
@@ -47,12 +47,12 @@ FC = gfortran
 
 # MPI compilers
 
-openmpi_OVERRIDE = TRUE
-openmpi_VERSION = 1.6.3
-MPICC = mpicc
-MPICXX = mpicxx
-MPIF77 = mpif77
-MPIFC = mpif90
+#openmpi_OVERRIDE = TRUE
+#openmpi_VERSION = 1.7.1
+#MPICC = mpicc
+#MPICXX = mpicxx
+#MPIF77 = mpifort
+#MPIFC = mpifort
 
 # compile flags
 
@@ -69,7 +69,7 @@ OMPFLAGS = -fopenmp
 
 FLIBS = -lgfortran
 FCLIBS = -lgfortran
-MPIFCLIBS = -lmpi_f90 -lmpi_f77
+MPIFCLIBS = -lmpi_usempi -lmpi_mpifh -lmpi
 
 # Linking
 

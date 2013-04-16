@@ -14,7 +14,7 @@ PKG_NAME = openmpi
 
 PKG_FORMAT = tar
 PKG_TAR = openmpi-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.open-mpi.org/software/ompi/v1.7/downloads/openmpi-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = openmpi-$(PKG_VERSION)

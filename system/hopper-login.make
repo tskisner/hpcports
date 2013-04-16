@@ -47,10 +47,10 @@ FC =
 
 # MPI compilers
 
-MPICC =
-MPICXX =
-MPIF77 =
-MPIFC =
+#MPICC =
+#MPICXX =
+#MPIF77 =
+#MPIFC =
 
 # compile flags
 
@@ -65,9 +65,9 @@ OMPFLAGS =
 
 # Fortran mixing
 
-FLIBS =
-FCLIBS =
-MPIFCLIBS =
+FLIBS = -lgfortran
+FCLIBS = -lgfortran
+MPIFCLIBS = -lmpi_usempi -lmpi_mpifh -lmpi
 
 # Linking
 
