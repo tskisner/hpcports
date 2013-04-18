@@ -12,12 +12,12 @@ PKG_VERSION := $(shell head -n 1 version)
 
 PKG_NAME = gitgit
 
-PKG_FORMAT = zip
-PKG_ZIP = git-$(PKG_VERSION).zip
-PKG_ZIP_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_ZIP) https://github.com/git/git/archive/v1.8.0.2.zip
-PKG_ZIP_EXTRACT = $(UZIP)
+PKG_FORMAT = tar
+PKG_TAR = git-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/git/git/archive/v1.8.2.1.tar.gz
+PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = git-git-d636c48
+PKG_SRCDIR = git-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
