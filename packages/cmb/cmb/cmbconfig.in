@@ -157,6 +157,24 @@ fi
 
 inc=""
 
+if [ $incl = true ]; then
+	if [ $dotoast = true ]; then
+		if [ $lang = "F90" ] || [ $lang = "MPIF90" ]; then
+			inc="${inc}-I${toast_PREFIX}/include "
+		fi
+	fi
+	if [ $dohealpix = true ]; then
+		if [ $lang = "F90" ] || [ $lang = "MPIF90" ]; then
+			inc="${inc}-I${healpix_PREFIX}/include "
+		fi
+	fi
+	if [ $dofftw = true ]; then
+		if [ $lang = "F90" ] || [ $lang = "MPIF90" ]; then
+			inc="${inc}-I${fftw_PREFIX}/include "
+		fi
+	fi
+fi
+
 total="${total}${inc} "
 
 ld=""
