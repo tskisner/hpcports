@@ -72,7 +72,3 @@ ifndef ZIP
 	export ZIP = zip -r
 endif
 
-ifndef MPIFCLIBS
-	export MPIFCLIBS = -lmpi_usempi -lmpi_mpifh -lmpi
-endif
-
