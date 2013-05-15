@@ -1,5 +1,5 @@
 
-# This computes the cmb package version based on a checksum
+# This computes the astromatic package version based on a checksum
 # of the versions of the dependencies.
 
 MD5=$1
