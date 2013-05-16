@@ -1,0 +1,35 @@
+#!/usr/bin/env perl -w
+
+use strict;
+
+use Storable;
+
+my $pkgdir = "packages";
+
+
+my $ARGC = @ARGV;
+
+my $command = "";
+my $subcommand = "";
+
+if ( $ARGC > 0 ) {
+	$command = $ARGV[0];
+} else {
+	print "Usage...\n";
+	exit(0);
+}
+
+if ( $ARGC > 1 ) {
+	$subcommand = $ARGV[1];
+}
+
+if ( $command eq "update" ) {
+	system ( "./tools/compute_deps.pl" );
+}
+
+my $pkgtree = retrieve ( "packages/deps.db" );
+
+if ( $command eq "status" ) {
+	
+}
+
