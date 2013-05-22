@@ -40,13 +40,13 @@ pkg-configure :
 		dyn="shared zlib-dynamic"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
-		./config $${dyn} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		./config $${dyn} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xdarwin" ]; then \
-		./Configure $${dyn} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) darwin64-x86_64-cc; \
+		./Configure $${dyn} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) darwin64-x86_64-cc; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xintel" ]; then \
-		./config $${dyn} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		./config $${dyn} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	fi
 
 

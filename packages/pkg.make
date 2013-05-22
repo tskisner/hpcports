@@ -1,10 +1,4 @@
 
-PKG_DIR := $(shell pwd)
-
-STAGE = staging_$(HPCP_TARGET)
-
-PKG_OVERRIDE = $($(PKG_NAME)_OVERRIDE)
-
 ifndef PKG_TAR_FETCH
 	PKG_TAR_FETCH = echo "NA"
 endif
@@ -24,25 +18,25 @@ endif
 
 status :
 	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
-		if [ -d $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
-			printf "%s%15s | %10s | (installed)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+		if [ -d $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) ]; then \
+			printf "%s%15s | %10s | (installed)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 		elif [ -d $(STAGE) ]; then \
 			if [ -e $(STAGE)/state.build ]; then \
-				printf "%s%15s | %10s | (built)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+				printf "%s%15s | %10s | (built)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 			elif [ -e $(STAGE)/state.configure ]; then \
-				printf "%s%15s | %10s | (configured)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+				printf "%s%15s | %10s | (configured)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 			elif [ -e $(STAGE)/state.patch ]; then \
-				printf "%s%15s | %10s | (patched)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+				printf "%s%15s | %10s | (patched)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 			elif [ -e $(STAGE)/state.extract ]; then \
-				printf "%s%15s | %10s | (extracted)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+				printf "%s%15s | %10s | (extracted)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 			else \
-				printf "%s%15s | %10s | (not extracted)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+				printf "%s%15s | %10s | (not extracted)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 			fi; \
 		else \
-			printf "%s%15s | %10s | (not extracted)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+			printf "%s%15s | %10s | (not extracted)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 		fi; \
 	else \
-		printf "%s%15s | %10s | (Overridden)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_VERSION)"; \
+		printf "%s%15s | %10s | (Overridden)\n" "$(HPCP)" "$(PKG_NAME)" "$(PKG_FULLVERSION)"; \
 	fi
 
 
@@ -167,7 +161,7 @@ build : configure
 
 
 install : 
-	@if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
+	@if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) ]; then \
 		printf "%s%15s :  Already installed\n" "$(HPCP)" "$(PKG_NAME)"; \
 	else \
 		$(MAKE) build; \
@@ -176,20 +170,20 @@ install :
 				printf "%s%15s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
 				source $(STAGE)/dep_env.sh; \
 				$(MAKE) pkg-install > $(STAGE)/log.install 2>&1; \
-				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-				cp $(STAGE)/$(PKG_NAME)-$(PKG_VERSION).sh $(HPCP_PREFIX)/env/; \
-				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
-				chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
+				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+				cp $(STAGE)/$(PKG_NAME)-$(PKG_FULLVERSION).sh $(HPCP_PREFIX)/env/; \
+				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_FULLVERSION).sh; \
+				chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_FULLVERSION).sh; \
 				suffix="$(MOD_SUFFIX)"; \
 				if [ $(PKG_NAME) = "hpcp" ]; then \
 					suffix=""; \
 				fi; \
 				mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 				if [ $(PKG_NAME) = "hpcp" ]; then \
-					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_VERSION); \
+					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_FULLVERSION); \
 				else \
-					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_VERSION)-$(HPCP_ENV); \
+					cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_FULLVERSION); \
 				fi; \
 				if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version ]; then \
 					cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion; \
@@ -221,18 +215,18 @@ clean :
 uninstall :
 	@printf "%s%15s :  Uninstalling\n" "$(HPCP)" "$(PKG_NAME)"; \
 	rm -f $(STAGE)/log.install; \
-	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
-	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_VERSION).sh; \
+	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)-$(PKG_FULLVERSION).sh; \
 	suffix="$(MOD_SUFFIX)"; \
 	if [ $(PKG_NAME) = "hpcp" ]; then \
 		suffix=""; \
-		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_VERSION); \
+		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)/$(PKG_FULLVERSION); \
 	else \
-		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_VERSION)-$(HPCP_ENV); \
+		rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_FULLVERSION); \
 	fi; \
 	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version ]; then \
 		cur=`cat $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version | grep ModulesVersion | sed -e 's#.*\"\(.*\)\".*#\1#'`; \
-		if [ $${cur} = "$(PKG_VERSION)-$(HPCP_ENV)" ]; then \
+		if [ $${cur} = "$(PKG_FULLVERSION)" ]; then \
 			rm -f $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
 			if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion ]; then \
 				mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \

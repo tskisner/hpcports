@@ -45,7 +45,7 @@ pkg-configure :
 	./configure \
 	$${dyn} \
 	--with-cfitsio-libs="$(cfitsio_LIBS_CC)" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

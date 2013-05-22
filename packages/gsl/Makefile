@@ -40,7 +40,7 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS) -lm" \
 	./configure $${dyn} \
 	--with-pic \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

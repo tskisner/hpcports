@@ -49,7 +49,7 @@ pkg-configure :
 	./configure \
 	$${dyn} $${zl} $${tf} \
 	--enable-threads \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

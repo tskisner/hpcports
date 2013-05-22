@@ -52,7 +52,7 @@ pkg-configure :
 	--with-included-glib \
 	--with-included-libcroco \
 	--with-included-libxml \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

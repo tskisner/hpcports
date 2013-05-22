@@ -48,7 +48,7 @@ pkg-configure :
 	--disable-perl \
 	--with-libbz2="$(bzip2_PREFIX)" \
 	--with-libz="$(zlib_PREFIX)" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

@@ -52,7 +52,7 @@ pkg-configure :
 	--with-pic \
 	--with-blas="$(blas_LIBS_CXX)" \
 	--with-lapack="$${lapack}" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

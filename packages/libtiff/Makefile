@@ -48,7 +48,7 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS) $${osx}" \
 	./configure $${dyn} $${zl} \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

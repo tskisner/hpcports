@@ -42,7 +42,7 @@ pkg-configure :
 	if [ "x$(TOOLCHAIN)" = "xdarwin" ]; then \
 		echo "using darwin : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
 		echo "" >> tools/build/v2/user-config.jam; \
-		sed -i "" -E "s|-install_name \"|-install_name \"$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/|" tools/build/v2/tools/darwin.jam; \
+		sed -i "" -E "s|-install_name \"|-install_name \"$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/|" tools/build/v2/tools/darwin.jam; \
 		boostchain="darwin"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xintel" ]; then \
@@ -50,7 +50,7 @@ pkg-configure :
 		echo "" >> tools/build/v2/user-config.jam; \
 		boostchain="intel-linux"; \
 	fi; \
-	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

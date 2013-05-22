@@ -38,7 +38,7 @@ pkg-configure :
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	./configure \
 	--with-mpicc="$(MPICC)" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

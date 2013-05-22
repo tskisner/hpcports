@@ -44,7 +44,7 @@ pkg-configure :
 	-C if "$(F77)" \
 	-F if "$(FFLAGS)" \
 	-D c -DWALL \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

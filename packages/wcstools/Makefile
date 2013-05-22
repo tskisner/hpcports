@@ -32,7 +32,7 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	echo "PREFIX = $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)" > hpcp.make; \
+	echo "PREFIX = $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)" > hpcp.make; \
 	echo "CC = $(CC)" >> hpcp.make; \
 	echo "CFLAGS = $(CFLAGS)" >> hpcp.make; \
 	echo "LDFLAGS = $(LDFLAGS)" >> hpcp.make; \

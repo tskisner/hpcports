@@ -54,8 +54,8 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib; \
-	cp libblas.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib; \
+	cp libblas.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/
 
 
 pkg-clean :

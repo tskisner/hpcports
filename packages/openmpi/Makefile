@@ -42,7 +42,7 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
 	--disable-vt \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :
@@ -53,8 +53,8 @@ pkg-build :
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) install; \
-	if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/mpi.mod ]; then \
-		cp $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/mpi.mod $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/include/mpi.mod; \
+	if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod ]; then \
+		cp $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/include/mpi.mod; \
 	fi
 
 

@@ -99,8 +99,8 @@ pkg-build :
 
 
 pkg-install :
-	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin; \
-	cp hpcp/hpcpenv $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin/
+	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin; \
+	cp hpcp/hpcpenv $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin/
 
 
 pkg-clean :

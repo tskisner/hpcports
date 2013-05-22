@@ -43,7 +43,7 @@ pkg-configure :
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	--without-aqua $${dyn} \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

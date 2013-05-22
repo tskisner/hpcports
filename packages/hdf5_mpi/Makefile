@@ -44,7 +44,7 @@ pkg-configure :
 	--enable-parallel --disable-threadsafe \
 	--enable-fortran --enable-fortran2003 \
 	--with-zlib="$(zlib_PREFIX)" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

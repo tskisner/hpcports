@@ -1,11 +1,38 @@
 #!/usr/bin/env perl -w
 
 use strict;
-
 use Storable;
+use FindBin;
 
-my $pkgdir = "packages";
+use lib "$FindBin::Bin/tools";
+use HPCPorts;
 
+sub install {
+	my ( $pdb, $pname, $root, $env ) = @_;
+	my $dep;
+	foreach $dep ( @{$pdb->{ $pname }->{ "deps" }} ) {
+		install ( $pdb, $dep, $root, $env );
+	}
+	my $fullversion = $pdb->{ $pname }->{ "version" };
+	$fullversion .= "-".$env;
+	system ( "export PKG_FULLVERSION=${fullversion}; cd ${root}/packages/${pname}; make install" );
+	return;
+}
+
+my $hpcp_root = $FindBin::Bin;
+my $pkgdir = $hpcp_root."/packages";
+my $dbfile = $pkgdir."/pkg.db";
+
+my $pre = "---> ";
+
+# check system definition
+
+my $system = $ENV{ "HPCP_HOST" };
+if ( ! defined ( $system ) ) {
+	die ( "\nYou must have the \"HPCP_HOST\" environment variable defined\n\n" );
+}
+
+# Parse commands
 
 my $ARGC = @ARGV;
 
@@ -23,13 +50,155 @@ if ( $ARGC > 1 ) {
 	$subcommand = $ARGV[1];
 }
 
+# Update package DB
+
 if ( $command eq "update" ) {
-	system ( "./tools/compute_deps.pl" );
+	my $pkgdb = HPCPorts::package_db ( $pkgdir );
+	store ( $pkgdb, $dbfile );
+	exit(0);
 }
 
-my $pkgtree = retrieve ( "packages/deps.db" );
+my $pkgdb = retrieve ( $dbfile );
+
+my ( $env, $suffix, $prefix, $overrides ) = HPCPorts::config_vars ( "${hpcp_root}/system/${system}.make" );
+
+#use Data::Dumper;
+#print Dumper ( $pkgdb );
+
+# Execute command
 
 if ( $command eq "status" ) {
+
+	my $out = $pre."---------------------------------------------------------\n";
+	print $out;
+	$out = $pre."System = \"".$system."\", Toolchain Version = \"".$env."\"\n";
+	print $out;
+	$out = $pre."---------------------------------------------------------\n";
+	print $out;
+	$out = $pre."\n";
+	print $out;
+
+	my $key;
+	my $value;
+
+	foreach $key ( sort keys %{$pkgdb} ) {
+		$value = $pkgdb->{ $key };
+
+		my $status = "broken";
+		if ( defined ( $overrides->{ $key } ) ) {
+			$status = "overridden";
+		} else {
+			$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $prefix );
+		}
+		$out = sprintf ( "%s%16s | %20s |  %s\n", $pre, $key, $value->{ "version" }, $status );
+		print $out;
+	}
 	
+} elsif ( $command eq "purge" ) {
+
+	if ( $subcommand eq "" ) {
+		die ( "\nUsage:  $0 purge <package name or ALL>\n\n" );
+	}
+
+	if ( $subcommand eq "ALL" ) {
+
+		my $key;
+		my $value;
+
+		while ( ($key, $value) = each %{$pkgdb} ) {
+			my $fullversion = $pkgdb->{ $key }->{ "version" };
+			$fullversion .= "-".$env;
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make purge" );
+		}
+
+	} else {
+		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
+		$fullversion .= "-".$env;
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make purge" );
+	}
+
+} elsif ( $command eq "install" ) {
+
+	if ( $subcommand eq "" ) {
+		die ( "\nUsage:  $0 install <package name>\n\n" );
+	}
+
+	# recursively install all dependencies and the package
+
+	system ( "export PKG_FULLVERSION=${env}; cd ${hpcp_root}/packages/hpcp; make install" );
+
+	install ( $pkgdb, $subcommand, $hpcp_root, $env );
+
+} elsif ( $command eq "uninstall" ) {
+
+	if ( $subcommand eq "" ) {
+		die ( "\nUsage:  $0 uninstall <package name or ALL>\n\n" );
+	}
+
+	if ( $subcommand eq "ALL" ) {
+
+		my $key;
+		my $value;
+
+		while ( ($key, $value) = each %{$pkgdb} ) {
+			my $fullversion = $pkgdb->{ $key }->{ "version" };
+			$fullversion .= "-".$env;
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make uninstall" );
+		}
+
+	} else {
+		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
+		$fullversion .= "-".$env;
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make uninstall" );
+	}
+
+} elsif ( $command eq "fetch" ) {
+
+	if ( $subcommand eq "" ) {
+		die ( "\nUsage:  $0 fetch <package name or ALL>\n\n" );
+	}
+
+	if ( $subcommand eq "ALL" ) {
+
+		my $key;
+		my $value;
+
+		while ( ($key, $value) = each %{$pkgdb} ) {
+			my $fullversion = $pkgdb->{ $key }->{ "version" };
+			$fullversion .= "-".$env;
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make fetch" );
+		}
+
+	} else {
+		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
+		$fullversion .= "-".$env;
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make fetch" );
+	}
+
+} elsif ( $command eq "clean" ) {
+
+	if ( $subcommand eq "" ) {
+		die ( "\nUsage:  $0 clean <package name or ALL>\n\n" );
+	}
+
+	if ( $subcommand eq "ALL" ) {
+
+		my $key;
+		my $value;
+
+		while ( ($key, $value) = each %{$pkgdb} ) {
+			my $fullversion = $pkgdb->{ $key }->{ "version" };
+			$fullversion .= "-".$env;
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make clean" );
+		}
+
+	} else {
+		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
+		$fullversion .= "-".$env;
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make clean" );
+	}
+
+} else {
+	die ( "\nUnknown command \"$command\"\n\n" );
 }
 

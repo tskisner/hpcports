@@ -36,7 +36,7 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(F77)" FFLAGS="$(FFLAGS)" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :
@@ -50,8 +50,8 @@ pkg-build :
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) install; \
-	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin; \
-	cp fpack funpack $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin/
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin; \
+	cp fpack funpack $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin/
 
 
 pkg-clean :

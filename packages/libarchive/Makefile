@@ -41,7 +41,7 @@ pkg-configure :
 	./configure $${dyn} \
 	--without-lzo2 \
 	--without-lzma \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

@@ -47,7 +47,7 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	INSTALL_DIR="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)" \
+	INSTALL_DIR="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)" \
 	$(MAKE) install
 
 
