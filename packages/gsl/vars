@@ -1,8 +1,8 @@
-path = bin
-header = include
-ld = lib
-man = share/man
-lib_CC = -lgsl -lgslcblas
-lib_CXX = -lgsl -lgslcblas
-lib_F77 = -lgsl -lgslcblas
-lib_FC = -lgsl -lgslcblas
+BIN = bin
+INCLUDE = include
+LIB = lib
+MAN = share/man
+LIBS_CC = -lgsl -lgslcblas
+LIBS_CXX = -lgsl -lgslcblas
+LIBS_F77 = -lgsl -lgslcblas
+LIBS_FC = -lgsl -lgslcblas

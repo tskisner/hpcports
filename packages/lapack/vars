@@ -1,5 +1,5 @@
-ld = lib
-lib_CC = -llapack
-lib_CXX = -llapack
-lib_F77 = -llapack
-lib_FC = -llapack
+LIB = lib
+LIBS_CC = -llapack
+LIBS_CXX = -llapack
+LIBS_F77 = -llapack
+LIBS_FC = -llapack

@@ -1,6 +1,6 @@
-header = include
-ld = lib
-lib_CC = -lMinuit2
-lib_CXX = -lMinuit2
-lib_F77 = -lMinuit2
-lib_FC = -lMinuit2
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lMinuit2
+LIBS_CXX = -lMinuit2
+LIBS_F77 = -lMinuit2
+LIBS_FC = -lMinuit2

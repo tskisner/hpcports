@@ -1,8 +1,8 @@
-path = bin
-man = ssl/man
-header = include
-ld = lib
-lib_CC = -lssl -lcrypto
-lib_CXX = -lssl -lcrypto
-lib_F77 = -lssl -lcrypto
-lib_FC = -lssl -lcrypto
+BIN = bin
+MAN = ssl/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lssl -lcrypto
+LIBS_CXX = -lssl -lcrypto
+LIBS_F77 = -lssl -lcrypto
+LIBS_FC = -lssl -lcrypto

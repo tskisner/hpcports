@@ -1,4 +1,4 @@
-path = bin
-man = share/man
-header = include
-ld = lib
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib

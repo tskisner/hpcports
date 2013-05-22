@@ -1,2 +1,2 @@
-path = bin
-man = share/man
+BIN = bin
+MAN = share/man

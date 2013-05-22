@@ -661,8 +661,6 @@ sub shell_file {
 sub dep_file {
 	my ( $outfile, $pdb, $pname, $hpcpenv, $modsuffix, $prefix, $overrides ) = @_;
 
-	my $fullversion = package_fullversion ( $pdb, $pname, $hpcpenv, $overrides );
-
 	open ( OUT, ">$outfile" ) || die ( "\nCannot open output dep file $outfile\n\n" );
 
 	print OUT "# This file is auto-generated\n\n";
@@ -678,17 +676,9 @@ sub dep_file {
 
 		my $dep;
 		foreach $dep ( @{ $pdb->{ $pname }->{ "deps" } } ) {
-			my $depmod = $dep.$modsuffix;
-			my $depver;
+			my $fullversion = package_fullversion ( $pdb, $dep, $hpcpenv, $overrides );
 
-			if ( defined $overrides->{ $dep } ) {
-				$depver = $overrides->{ $dep }->{ "VERSION" };
-			} else {
-				$depver = $pdb->{ $pname }->{ "vdeps" }->{ $dep };
-			}
-			$depver .= "-".$hpcpenv;
-
-			print OUT "source ${prefix}/env/${depmod}_${depver}.sh\n";
+			print OUT "source ${prefix}/env/${dep}_${fullversion}.sh\n";
 		}
 
 	}

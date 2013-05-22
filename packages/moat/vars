@@ -1,5 +1,5 @@
-path = bin
-header = include
-ld = lib
-lib_CXX = -lmoat
-lib_MPICXX = -lmoat-mpi
+BIN = bin
+INCLUDE = include
+LIB = lib
+LIBS_CXX = -lmoat
+LIBS_MPICXX = -lmoat-mpi

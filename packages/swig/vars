@@ -1,8 +1,8 @@
-path = bin
-man = man
-header = include
-ld = lib
-lib_CC = -lxpa
-lib_CXX = -lxpa
-lib_F77 = -lxpa
-lib_FC = -lxpa
+BIN = bin
+MAN = man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lxpa
+LIBS_CXX = -lxpa
+LIBS_F77 = -lxpa
+LIBS_FC = -lxpa

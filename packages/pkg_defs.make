@@ -10,7 +10,4 @@ PKG_VERSION := $(shell head -n 1 version)
 
 PKG_DIR := $(shell pwd)
 
-STAGE = staging_$(HPCP_TARGET)
-
-PKG_OVERRIDE = $($(PKG_NAME)_OVERRIDE)
-
+STAGE = staging_$(HPCP_HOST)

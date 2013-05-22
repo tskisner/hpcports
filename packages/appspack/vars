@@ -1,7 +1,7 @@
-path = bin
-header = include
-ld = lib
-lib_CC = -lappspack
-lib_CXX = -lappspack
-lib_F77 = -lappspack
-lib_FC = -lappspack
+BIN = bin
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lappspack
+LIBS_CXX = -lappspack
+LIBS_F77 = -lappspack
+LIBS_FC = -lappspack

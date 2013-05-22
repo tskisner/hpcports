@@ -1,7 +1,7 @@
-path = bin
-header = include
-ld = lib
-lib_CC = -lcfitsio
-lib_CXX = -lcfitsio
-lib_F77 = -lcfitsio
-lib_FC = -lcfitsio
+BIN = bin
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lcfitsio
+LIBS_CXX = -lcfitsio
+LIBS_F77 = -lcfitsio
+LIBS_FC = -lcfitsio

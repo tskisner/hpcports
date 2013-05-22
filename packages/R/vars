@@ -1,2 +1,2 @@
-path = R.framework/Versions/Current/Resources/bin
-ld = lib
+BIN = R.framework/Versions/Current/Resources/bin
+LIB = lib

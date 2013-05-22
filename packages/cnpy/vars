@@ -1,5 +1,5 @@
-path = bin
-header = include
-ld = lib
-lib_CXX = -lcnpy
-lib_MPICXX = -lcnpy
+BIN = bin
+INCLUDE = include
+LIB = lib
+LIBS_CXX = -lcnpy
+LIBS_MPICXX = -lcnpy

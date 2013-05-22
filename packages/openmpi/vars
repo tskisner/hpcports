@@ -1,6 +1,6 @@
-path = bin
-header = include lib
-ld = lib
+BIN = bin
+INCLUDE = include lib
+LIB = lib
 MPICC = mpicc
 MPICXX = mpicxx
 MPIF77 = mpifort
