@@ -14,7 +14,10 @@ HPCPorts consists entirely of interpreted code, so there is nothing to "install"
 
 	$> ./hpcp status
 
-but that is not always so convenient.  Suppose that you ran the clone command above in your home directory, and that you now have the folder /home/user/hpcports.  You can add that directory to your shell's PATH variable.  For example, put the following lines in ~/.bashrc::
+Convenience
+----------------
+
+Running the hpcp command from within the git checkout is not always so convenient.  Suppose that you ran the clone command above in your home directory, and that you now have the folder /home/user/hpcports.  You can add that directory to your shell's PATH variable.  For example, put the following lines in ~/.bashrc::
 
 	# for access to the hpcp command
 	export PATH=${PATH}:/home/user/hpcports
