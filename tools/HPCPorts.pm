@@ -192,22 +192,28 @@ sub package_db {
 	my $value;
 
 	# Recursively expand dependency tree for each package to
-	# include the full set of low-level packages.
+	# include the full set of low-level packages.  The order
+	# here is important, since we must install packages lower
+	# in the dependency tree first.
 
 	while ( ($key, $value) = each %{$tree} ) {
 		$pname = $key;
 
 		all_deps ( $tree, $pname, $pname );
 
-		my %unique;
+		my @unique;
 		my $dup;
+		my %seen;
 		foreach $dup ( @{ $tree->{ $pname }->{ "deps" } } ) {
 			if ( $dup ne $pname ) {
-				$unique { $dup } = "1";
+				unless ( $seen { $dup } ) {
+					push ( @unique, $dup );
+					$seen { $dup } = 1;
+				}
 			}
 		}
 
-		@{ $tree->{ $pname }->{ "deps" } } = keys ( %unique );
+		@{ $tree->{ $pname }->{ "deps" } } = @unique;
 	}
 
 	# Generate package versions based on dependencies.
