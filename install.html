@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation and Setup &mdash; HPCPorts pre-1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'pre-1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="HPCPorts pre-1.0 documentation" href="index.html" />
+    <link rel="next" title="Available Commands" href="command.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>HPCPorts pre-1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Installation and Setup</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="intro.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="command.html">Available Commands</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="installation-and-setup">
+<span id="install"></span><h1>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permalink to this headline">¶</a></h1>
+<p>HPCPorts consists entirely of interpreted code, so there is nothing to &#8220;install&#8221;.  Essentially you just clone the git repository and then optionally update your shell path so that you can run the hpcp command from anywhere.  You must also set up a config file for your system.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Before using HPCPorts, you should install the Environment Modules software package (<a class="reference external" href="http://modules.sourceforge.net">http://modules.sourceforge.net</a>).  There are other requirements that should be available on most systems:</p>
+<ul class="simple">
+<li>A working &#8220;wget&#8221; executable.</li>
+<li>Perl.</li>
+<li>Bash.</li>
+<li>GNU make.</li>
+</ul>
+</div>
+<div class="section" id="get-the-source">
+<h2>Get the Source<a class="headerlink" href="#get-the-source" title="Permalink to this headline">¶</a></h2>
+<p>The first step is to clone the repo:</p>
+<div class="highlight-python"><pre>$&gt; git clone git://github.com/tskisner/hpcports.git</pre>
+</div>
+<p>Alternatively, you can download a zip file from github if you do not have git installed yet.</p>
+</div>
+<div class="section" id="system-configuration">
+<h2>System Configuration<a class="headerlink" href="#system-configuration" title="Permalink to this headline">¶</a></h2>
+<p>After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let&#8217;s say that your machine is named &#8220;blah&#8221;.  Copy the example files to a new set for your machine:</p>
+<div class="highlight-python"><pre>$&gt; cp example.make blah.make
+$&gt; cp example.module blah.module
+$&gt; cp example.sh blah.sh</pre>
+</div>
+<p>The .module and .sh files contain any setup commands that need to be run before using any software installed by HPCPorts.  They are empty by default, but you can look at the other files for examples of their contents.  The main .make file is what you should edit.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The HPCP_PREFIX and HPCP_POOL directories should be separate, stand-alone places that only contain files managed by HPCPorts.  DO NOT use places like /usr for these.  If you want to install in a system-wide location outside your home directory, I recommend setting HPCP_PREFIX to /usr/local/hpcports and HPCP_POOL to /usr/local/hpcports_pool.</p>
+</div>
+</div>
+<div class="section" id="vendor-math-libraries">
+<h2>Vendor Math Libraries<a class="headerlink" href="#vendor-math-libraries" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="overriding-packages">
+<h2>Overriding Packages<a class="headerlink" href="#overriding-packages" title="Permalink to this headline">¶</a></h2>
+<p>In some cases, you only want to install certain packages from HPCPorts and you would like to use software already installed on the system to meet any dependencies.  This functionality is provided by &#8220;Overriding&#8221; certain packages in the system .make file.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You should only do this if you are certain that the external software is compatible with the compiler you are using with HPCPorts.  In particular, if you are overriding OpenMPI or Python, these external packages need to be built with exactly the same compiler you are using for HPCPorts.</p>
+</div>
+<p>When overriding a package, you should at the very least specify a version for the external package.  This will ensure correct generation of the module files used to represent this external package in the dependency chain.  For example, let&#8217;s say you want to override the &#8220;cmake&#8221; package to point the already-installed version on your linux box.  In your system .make file, you might put:</p>
+<div class="highlight-python"><pre>cmake_OVERRIDE = TRUE
+cmake_VERSION = 2.8.8</pre>
+</div>
+<p>This is all you need, since this package just provides an executable, and it is already installed in your default path.  Let&#8217;s look at a more complicated example.  Suppose that you have installed your own copy of the Healpix package in /home/user/healpix and you want to use this in place of the HPCPorts version.  Since this package has C, C++, and Fortran libraries and is installed to a non-standard location, we have to give more information:</p>
+<div class="highlight-python"><pre>healpix_OVERRIDE = TRUE
+healpix_VERSION = 3.0
+healpix_PREFIX = /home/user/healpix
+healpix_BIN = bin
+healpix_INCLUDE = include
+healpix_LIB = lib
+healpix_DATA = share/healpix
+healpix_LIBS_CC = -lchealpix
+healpix_LIBS_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
+healpix_LIBS_FC = -lhealpix
+healpix_LIBS_MPIFC = -lhealpix-mpi</pre>
+</div>
+<p>The module file that HPCPorts creates for this overridden healpix package will now contain all the needed information for packages that depend on it.  Loading this generated healpix module will correctly modify PATH, CPATH, LIBRARY_PATH, LD_LIBRARY_PATH, and set other variables containing the library linking commands.  There are two &#8220;special cases&#8221; of package overrides:  openmpi and python.  In the case of openmpi, you can actually override this with ANY MPI implementation.  The critical variables to define are MPI compiler wrappers and any language mixing flags:</p>
+<div class="highlight-python"><pre>openmpi_OVERRIDE = TRUE
+openmpi_VERSION = 1.4.5
+MPICC = mpicc
+MPICXX = mpicxx
+MPIF77 = mpif77
+MPIFC = mpif90
+MPIFCLIBS = -lmpi_f90 -lmpi_f77</pre>
+</div>
+<p>Another example, this time on a Cray system where we are using the Cray-provided compiler wrappers which use their modified version of MPICH2:</p>
+<div class="highlight-python"><pre>openmpi_OVERRIDE = TRUE
+openmpi_VERSION = cray.mpich2
+MPICC = cc
+MPICXX = CC
+MPIF77 = ftn
+MPIFC = ftn
+MPIFCLIBS =</pre>
+</div>
+<p>When overriding python, you must specify the string to use for the site packages subdirectory.  For example:</p>
+<div class="highlight-python"><pre>python_OVERRIDE = TRUE
+python_VERSION = 2.7.1
+python_SITE = python2.7</pre>
+</div>
+</div>
+<div class="section" id="using-the-tools">
+<h2>Using the Tools<a class="headerlink" href="#using-the-tools" title="Permalink to this headline">¶</a></h2>
+<p>There is one final step to before being able to manage packages and also to use the installed modules created by HPCPorts.  Edit your ~/.bashrc file and add the location of the git checkout to your PATH and also append the installed module location to your module search path.  Obviously change the lines below to match the location of your git checkout and HPCP_PREFIX:</p>
+<div class="highlight-python"><pre># For access to the hpcp command
+export PATH=${PATH}:/home/user/git/hpcports
+
+# To use HPCPorts installed modules
+module use /home/user/hpcports/env/modulefiles</pre>
+</div>
+<p>After making these changes, from a new shell, you can now do:</p>
+<div class="highlight-python"><pre>$&gt; hpcp status</pre>
+</div>
+<p>Once you have installed some packages, typing &#8220;module avail&#8221; should show all the modules installed by HPCPorts.</p>
+</div>
+<div class="section" id="uninstalling">
+<h2>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this headline">¶</a></h2>
+<p>Uninstalling HPCPorts is easy.  First, comment out or remove the modifications to ~/.bashrc that you made in the previous section.  Next completely remove the HPCP_PREFIX and HPCP_POOL directories.  Finally, remove the hpcports git repo.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="intro.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="command.html">Available Commands</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Theodore Kisner.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

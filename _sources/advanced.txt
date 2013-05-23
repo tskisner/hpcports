@@ -1,0 +1,31 @@
+
+.. _advanced:
+
+Advanced Topics
+==================================
+
+Sometimes you need to know the details, and sometimes bad things happen to your installed software location.  Here is some information that may help your efforts.
+
+Module Naming Collisions
+----------------------------
+
+
+
+Reproducing Old Versions
+----------------------------
+
+If you continuously update your HPCPorts git repo and install new versions of packages, the old versions are not uninstalled, but the latest version of all packages is the default.  Anyone using an old version can simply manually load the old version of a package and it should load all of the correct versions of its dependencies.
+
+However, what if you accidentally wiped all those old versions or you need to install those older versions on a new machine?  The solution in this case is to checkout the correct git version of HPCPorts when those old packages were the default, and install as usual.
+
+.. todo:: What about module versions?  Need a way to install old versions without making them the default...
+
+
+Cross Compilation
+--------------------
+
+
+Running Without Modules
+---------------------------
+
+
