@@ -1,18 +1,19 @@
 
-# if you are only ever installing to one place, you can set the 
-# prefix here.  otherwise, you can set it from the shell.
-#
-# HPCP_PREFIX = /home/user/hpcports
+# Where to install outputs
 
-# OS environment version : this should be some kind of identifier
-# which maps to the unique compiler and other system libraries used
-#
+HPCP_PREFIX = $(HOME)/hpcports
 
-HPCP_ENV = gcc470
+# Where to stage downloaded package source
 
-# software download location
+HPCP_POOL = $(HOME)/hpcports_pool
 
-HPCP_POOL = /home/user/hpcports_pool
+# Optional Environment version- if you are installing with multiple
+# toolchain versions.
+#HPCP_ENV = 1.0
+
+# Optional module file suffix- to avoid name collisions on systems
+# which already have modules installed.
+#HPCP_MOD_SUFFIX = -hpcp
 
 # toolchain (gnu, darwin, intel, ibm)
 
@@ -34,7 +35,8 @@ TOOLCHAIN = gnu
 # permissions on installed files. these permissions will
 # be applied to both the POOL directory and the install prefix.
 
-INST_GRP = user
+MY_DEFAULT_GROUP := $(shell groups | awk {'print $1'})
+INST_GRP = $(MY_DEFAULT_GROUP)
 INST_PERM = g+rwX,o+rX
 
 # serial compilers
@@ -43,13 +45,6 @@ CC = gcc
 CXX = g++
 F77 = gfortran
 FC = gfortran
-
-# MPI compilers
-
-MPICC = mpicc
-MPICXX = mpicxx
-MPIF77 = mpif77
-MPIFC = mpif90
 
 # compile flags
 
@@ -66,7 +61,6 @@ OMPFLAGS = -fopenmp
 
 FLIBS = -lgfortran
 FCLIBS = -lgfortran
-MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # Linking.  These are passed to all linking operations, and can
 # be used as a catch-all to link to special system libraries.

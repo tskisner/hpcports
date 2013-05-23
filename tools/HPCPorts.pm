@@ -576,11 +576,13 @@ sub module_file {
 
 		print OUT "if [ module-info mode load ] {\n";
 
-		open ( SYS, "$sysmod" ) || die ( "\nCannot open system module initialization $sysmod\n\n" );
-		while ( <SYS> ) {
-			print OUT "\t",$_;
+		if ( -e $sysmod ) {
+			open ( SYS, "$sysmod" ) || die ( "\nCannot open system module initialization $sysmod\n\n" );
+			while ( <SYS> ) {
+				print OUT "\t",$_;
+			}
+			close ( SYS );
 		}
-		close ( SYS );
 
 		print OUT "}\n";
 		print OUT "\n";
@@ -643,11 +645,13 @@ sub shell_file {
 	if ( $pname eq "hpcp" ) {
 		# special handling of hpcp package
 
-		open ( SYS, "$syssh" ) || die ( "\nCannot open system shell initialization $syssh\n\n" );
-		while ( <SYS> ) {
-			print OUT $_;
+		if ( -e $syssh ) {
+			open ( SYS, "$syssh" ) || die ( "\nCannot open system shell initialization $syssh\n\n" );
+			while ( <SYS> ) {
+				print OUT $_;
+			}
+			close ( SYS );
 		}
-		close ( SYS );
 
 		print OUT "\n";
 
