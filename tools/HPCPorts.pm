@@ -54,7 +54,7 @@ sub standard_vars {
 sub hpcp_version {
 	my ( $root ) = @_;
 	my $gitexec = `which git`;
-	my $version;
+	my $version = "unknown";
 	if ( $gitexec ne "" ) {
 		open ( GIT, "cd ${root}; git rev-parse --short HEAD | " ) || die ( "\nCould not use git command ${gitexec}\n\n");
 		$version = <GIT>;
@@ -62,8 +62,6 @@ sub hpcp_version {
 		close ( GIT );
 	} elsif ( -e "${root}/VERSION" ) {
 		$version = `head -1 ${root}/VERSION`;
-	} else {
-		die ( "\nPath \"$root\" is not a git checkout or a distributed source tree\n\n" );
 	}
 	return $version;
 }

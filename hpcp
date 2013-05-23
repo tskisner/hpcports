@@ -42,6 +42,7 @@ sub purge_stale {
 my $hpcp_root = $FindBin::Bin;
 my $pkgdir = $hpcp_root."/packages";
 my $dbfile = $pkgdir."/pkg.db";
+my $dbversion = $dbfile.".version";
 
 my $pre = "---> ";
 
@@ -59,19 +60,20 @@ my $ARGC = @ARGV;
 my $command = "";
 my $subcommand = "";
 
-if ( $ARGC > 0 ) {
+if ( ( $ARGC > 0 ) && ( $ARGV[0] ne "help" ) ) {
 	$command = $ARGV[0];
 } else {
-	print "\nUsage:  $0 <command> <option>\n\n";
-	print "Where valid commands and options are:\n";
-	print "   update\n";
-	print "   status\n";
-	print "   info <package name>\n";
-	print "   purge <package name or ALL>\n";
-	print "   install <package name>\n";
-	print "   uninstall <package name or ALL>\n";
-	print "   fetch <package name or ALL>\n";
-	print "   clean <package name or ALL>\n";
+	print "\n   Usage:  $0 <command> <option>\n\n";
+	print "   Where valid commands and options are:\n";
+	print "      help                             : show this screen\n";
+	print "      update                           : update package DB\n";
+	print "      status                           : status of all packages\n";
+	print "      info <package>                   : detailed package info\n";
+	print "      purge <package or ALL>           : purge extracted source\n";
+	print "      install <package>                : install package(s)\n";
+	print "      uninstall <package or ALL>       : uninstall package(s)\n";
+	print "      fetch <package or ALL>           : fetch package source\n";
+	print "      clean <package or ALL>           : clean extracted source\n";
 	print "\n";
 	exit(0);
 }
@@ -80,11 +82,37 @@ if ( $ARGC > 1 ) {
 	$subcommand = $ARGV[1];
 }
 
-# Update package DB
+# Get current version
 
-if ( $command eq "update" ) {
+my $hpcpver = HPCPorts::hpcp_version ( $hpcp_root );
+
+# Compare with DB version
+
+my $dbver = "";
+if ( -e $dbversion ) {
+	open ( DB, "$dbversion" ) || die ( "\nCannot open DB version file $dbversion\n\n" );
+	$dbver = <DB>;
+	close ( DB );
+	chomp ( $dbver );
+}
+
+my $needupdate = 0;
+if ( ( $dbver ne $hpcpver ) || ( $command eq "update" ) ) {
+	$needupdate = 1;
+}
+
+# Update package DB if needed
+
+if ( $needupdate ) {
 	my $pkgdb = HPCPorts::package_db ( $pkgdir );
 	store ( $pkgdb, $dbfile );
+	open ( DB, ">$dbversion" ) || die ( "\nCannot open DB version file $dbversion\n\n" );
+	print DB $hpcpver,"\n";
+	close ( DB );
+}
+
+if ( $command eq "update" ) {
+	# we are done...
 	exit(0);
 }
 
