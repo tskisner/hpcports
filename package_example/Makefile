@@ -1,15 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version.  This can be a simple static string like
-# below, stored in the "version" file, or it can be generated 
-# from an arbitrary shell command.  See the cmb package for 
-# an example.
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -22,34 +12,44 @@ PKG_NAME = example
 
 PKG_FORMAT = tar
 
-# the name of the package after download
-PKG_TAR = curl-$(PKG_VERSION).tar.bz2
+# The name of the package after download.  The PKG_VERSION
+# variable has the contents of the "version" text file in
+# the package directory.
 
-# the command to download the package to the HPCP_POOL directory
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://curl.haxx.se/download/curl-$(PKG_VERSION).tar.bz2
+PKG_TAR = example-$(PKG_VERSION).tar.bz2
 
-# the command to run to extract the tarball.  defined in
-# system/defaults.make or $HPCP_TARGET.make.
+# The command to download the package to the HPCP_POOL directory
+
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://mypackages.com/download/example-$(PKG_VERSION).tar.bz2
+
+# The command to run to extract the tarball.  defined in
+# system/defaults.make or $HPCP_HOST.make.
+
 PKG_TAR_EXTRACT = $(BXTAR)
 
-# the name of the extracted source directory
-PKG_SRCDIR = curl-$(PKG_VERSION)
+# The name of the extracted source directory
 
-# the directory to build in.
+PKG_SRCDIR = example-$(PKG_VERSION)
+
+# The directory to build in.
+
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-# a list of patch files to be applied with "patch -p1 < (file)"
+# A list of patch files to be applied with "patch -p1 < (file)"
+
 PKG_PATCHES =
 
 
 # Custom rules for this package
 
-# commands to run before fetching the source
+# Commands to run before fetching the source
+
 pkg-prefetch :
 	@echo "" > /dev/null
 
-# run arbitrary configuration commands so that the source tree
+# Run arbitrary configuration commands so that the source tree
 # is prepared to support the "make" and "make install" commands.
+
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	dyn=""; \
@@ -57,20 +57,22 @@ pkg-configure :
 		dyn="--disable-shared"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
+	LDFLAGS="$(LDFLAGS)" \
 	./configure \
 	$${dyn} \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
-# commands to run before installation
+# Commands to run before installation
+
 pkg-preinstall :
 	@echo "" > /dev/null
 
-# commands to clean the build directory of any built files
+# Commands to clean the build directory of any built files
 # that were created by running "make"
+
 pkg-clean :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) clean
