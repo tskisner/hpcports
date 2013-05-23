@@ -94,6 +94,7 @@ extract : fetch
 			fi; \
 		else \
 			printf "%s%15s :  Overriding\n" "$(HPCP)" "$(PKG_NAME)"; \
+			mkdir -p $(PKG_SRCDIR); \
 			touch state.extract; \
 		fi; \
 		../../../tools/pkg_extract.pl $(PKG_NAME) $(python_SITE); \
@@ -111,9 +112,10 @@ patch : extract
 				for pfile in $(PKG_PATCHES); do \
 					$(PATCH) -p1 < ../../$${pfile} >> ../log.patch 2>&1; \
 				done; \
+				cd ../..; \
 			fi; \
-			touch ../state.patch && \
-			rm ../state.extract; \
+			touch $(STAGE)/state.patch && \
+			rm $(STAGE)/state.extract; \
 		fi; \
 	fi
 
@@ -157,15 +159,16 @@ install :
 	@if [ ! -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) ]; then \
 		$(MAKE) build; \
 		if [ -e $(STAGE)/state.build ]; then \
+			mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				printf "%s%15s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
 				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-install > $(STAGE)/log.install 2>&1; \
-				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
-				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			else \
 				printf "%s%15s :  Installing Override\n" "$(HPCP)" "$(PKG_NAME)"; \
 			fi; \
+			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+			chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			suffix="$(MOD_SUFFIX)"; \
 			if [ $(PKG_NAME) = "hpcp" ]; then \
 				suffix=""; \
@@ -205,11 +208,11 @@ clean :
 uninstall :
 	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 		printf "%s%15s :  Uninstalling\n" "$(HPCP)" "$(PKG_NAME)"; \
-		rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 		rm -f $(STAGE)/log.install; \
 	else \
 		printf "%s%15s :  Uninstalling Override\n" "$(HPCP)" "$(PKG_NAME)"; \
 	fi; \
+	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
 	suffix="$(MOD_SUFFIX)"; \
 	if [ $(PKG_NAME) = "hpcp" ]; then \

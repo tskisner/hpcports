@@ -57,30 +57,23 @@ if ( ! defined ( $system ) ) {
 
 my $ARGC = @ARGV;
 
-my $command = "";
-my $subcommand = "";
-
-if ( ( $ARGC > 0 ) && ( $ARGV[0] ne "help" ) ) {
-	$command = $ARGV[0];
-} else {
+if ( ( $ARGC < 1 ) || ( $ARGV[0] eq "help" ) ) {
 	print "\n   Usage:  $0 <command> <option>\n\n";
 	print "   Where valid commands and options are:\n";
 	print "      help                             : show this screen\n";
 	print "      update                           : update package DB\n";
 	print "      status                           : status of all packages\n";
-	print "      info <package>                   : detailed package info\n";
-	print "      purge <package or ALL>           : purge extracted source\n";
-	print "      install <package>                : install package(s)\n";
-	print "      uninstall <package or ALL>       : uninstall package(s)\n";
-	print "      fetch <package or ALL>           : fetch package source\n";
-	print "      clean <package or ALL>           : clean extracted source\n";
+	print "      info <package(s)>                : detailed package info\n";
+	print "      purge <package(s) or ALL>        : purge extracted source\n";
+	print "      install <package(s)>             : install package(s)\n";
+	print "      uninstall <package(s) or ALL>    : uninstall package(s)\n";
+	print "      fetch <package(s) or ALL>        : fetch package source\n";
+	print "      clean <package(s) or ALL>        : clean extracted source\n";
 	print "\n";
 	exit(0);
 }
 
-if ( $ARGC > 1 ) {
-	$subcommand = $ARGV[1];
-}
+my $command = shift ( @ARGV );
 
 # Get current version
 
@@ -158,11 +151,11 @@ if ( $command eq "status" ) {
 	
 } elsif ( $command eq "purge" ) {
 
-	if ( $subcommand eq "" ) {
-		die ( "\nUsage:  $0 purge <package name or ALL>\n\n" );
+	if ( @ARGV == 0 ) {
+		die ( "\nUsage:  $0 purge <package(s) or ALL>\n\n" );
 	}
 
-	if ( $subcommand eq "ALL" ) {
+	if ( $ARGV[0] eq "ALL" ) {
 
 		my $key;
 		my $value;
@@ -177,68 +170,79 @@ if ( $command eq "status" ) {
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/hpcp; make purge" );
 
 	} else {
-		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
-		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make purge" );
+
+		my $pname;
+		foreach $pname ( @ARGV ) {
+			my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make purge" );
+		}
+
 	}
 
 } elsif ( $command eq "install" ) {
 
-	if ( $subcommand eq "" ) {
-		die ( "\nUsage:  $0 install <package name>\n\n" );
+	if ( @ARGV == 0 ) {
+		die ( "\nUsage:  $0 install <package(s)>\n\n" );
 	}
 
 	# recursively install all dependencies and the package
 
-	if ( $subcommand ne "hpcp" ) {
-		purge_stale ( $pkgdb, "hpcp", $hpcp_root, $system, $env, $prefix, $overrides );
-		system ( "export PKG_FULLVERSION=${env}; cd ${hpcp_root}/packages/hpcp; make install" );
-	}
+	my $pname;
+	foreach $pname ( @ARGV ) {
 
-	install ( $pkgdb, $subcommand, $hpcp_root, $system, $env, $prefix, $overrides );
+		if ( $pname ne "hpcp" ) {
+			purge_stale ( $pkgdb, "hpcp", $hpcp_root, $system, $env, $prefix, $overrides );
+			system ( "export PKG_FULLVERSION=${env}; cd ${hpcp_root}/packages/hpcp; make install" );
+		}
+
+		install ( $pkgdb, $pname, $hpcp_root, $system, $env, $prefix, $overrides );
+
+	}
 
 } elsif ( $command eq "info" ) {
 
-	if ( $subcommand eq "" ) {
-		die ( "\nUsage:  $0 info <package name>\n\n" );
+	if ( @ARGV == 0 ) {
+		die ( "\nUsage:  $0 info <package(s)>\n\n" );
 	}
 
-	my $key;
-	my $value;
-	my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
+	my $pname;
+	foreach $pname ( @ARGV ) {
+		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
 
-	my $status = "broken";
-	if ( defined ( $overrides->{ $subcommand } ) ) {
-		$status = "overridden";
-	} else {
-		$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${subcommand}", $system, $env, $prefix, $overrides );
-	}
+		my $status = "broken";
+		if ( defined ( $overrides->{ $pname } ) ) {
+			$status = "overridden";
+		} else {
+			$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${pname}", $system, $env, $prefix, $overrides );
+		}
 
-	print "$pre\n";
-	my $out = sprintf ( "%s%14s  %s\n", $pre, "Name:", $subcommand );
-	print $out;
-	$out = sprintf ( "%s%14s  %s\n", $pre, "Version:", $fullversion );
-	print $out;
-	$out = sprintf ( "%s%14s  %s\n", $pre, "State:", $status );
-	print $out;
-	$out = sprintf ( "%s%14s\n", $pre, "Dependencies:" );
-	print $out;
-
-	my $dep;
-	for $dep ( @{ $pkgdb->{ $subcommand }->{ "deps" } } ) {
-		my $depversion = HPCPorts::package_fullversion ( $pkgdb, $dep, $env, $overrides );
-		$out = sprintf ( "%s%20s | %s\n", $pre, $dep, $depversion );
+		print "$pre\n";
+		my $out = sprintf ( "%s%14s  %s\n", $pre, "Name:", $pname );
 		print $out;
-	}
+		$out = sprintf ( "%s%14s  %s\n", $pre, "Version:", $fullversion );
+		print $out;
+		$out = sprintf ( "%s%14s  %s\n", $pre, "State:", $status );
+		print $out;
+		$out = sprintf ( "%s%14s\n", $pre, "Dependencies:" );
+		print $out;
 
-	print "$pre\n";
+		my $dep;
+		for $dep ( @{ $pkgdb->{ $pname }->{ "deps" } } ) {
+			my $depversion = HPCPorts::package_fullversion ( $pkgdb, $dep, $env, $overrides );
+			$out = sprintf ( "%s%20s | %s\n", $pre, $dep, $depversion );
+			print $out;
+		}
+
+		print "$pre\n";
+	}
 
 } elsif ( $command eq "uninstall" ) {
 
-	if ( $subcommand eq "" ) {
-		die ( "\nUsage:  $0 uninstall <package name or ALL>\n\n" );
+	if ( @ARGV == 0 ) {
+		die ( "\nUsage:  $0 uninstall <package(s) or ALL>\n\n" );
 	}
 
-	if ( $subcommand eq "ALL" ) {
+	if ( $ARGV[0] eq "ALL" ) {
 
 		my $key;
 		my $value;
@@ -253,17 +257,21 @@ if ( $command eq "status" ) {
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/hpcp; make uninstall" );
 
 	} else {
-		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
-		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make uninstall" );
+
+		my $pname;
+		foreach $pname ( @ARGV ) {
+			my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make uninstall" );
+		}
 	}
 
 } elsif ( $command eq "fetch" ) {
 
-	if ( $subcommand eq "" ) {
-		die ( "\nUsage:  $0 fetch <package name or ALL>\n\n" );
+	if ( @ARGV == 0 ) {
+		die ( "\nUsage:  $0 fetch <package(s) or ALL>\n\n" );
 	}
 
-	if ( $subcommand eq "ALL" ) {
+	if ( $ARGV[0] eq "ALL" ) {
 
 		my $key;
 		my $value;
@@ -274,17 +282,21 @@ if ( $command eq "status" ) {
 		}
 
 	} else {
-		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
-		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make fetch" );
+
+		my $pname;
+		foreach $pname ( @ARGV ) {
+			my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make fetch" );
+		}
 	}
 
 } elsif ( $command eq "clean" ) {
 
-	if ( $subcommand eq "" ) {
-		die ( "\nUsage:  $0 clean <package name or ALL>\n\n" );
+	if ( @ARGV == 0 ) {
+		die ( "\nUsage:  $0 clean <package(s) or ALL>\n\n" );
 	}
 
-	if ( $subcommand eq "ALL" ) {
+	if ( $ARGV[0] eq "ALL" ) {
 
 		my $key;
 		my $value;
@@ -299,8 +311,12 @@ if ( $command eq "status" ) {
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/hpcp; make clean" );
 
 	} else {
-		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
-		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make clean" );
+
+		my $pname;
+		foreach $pname ( @ARGV ) {
+			my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make clean" );
+		}
 	}
 
 } else {

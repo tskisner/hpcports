@@ -103,10 +103,11 @@ When overriding python, you must specify the string to use for the site packages
 Using the Tools
 ------------------
 
-There is one final step to before being able to manage packages and also to use the installed modules created by HPCPorts.  Edit your ~/.bashrc file and add the location of the git checkout to your PATH and also append the installed module location to your module search path.  Obviously change the lines below to match the location of your git checkout and HPCP_PREFIX::
+There is one final step to do before being able to manage packages and also to use the installed modules created by HPCPorts.  Edit your ~/.bashrc file and add the location of the git checkout to your PATH and also append the installed module location to your module search path.  You should also set the HPCP_HOST environment variable to the machine name you chose previously ("blah" in our example).  Obviously change the lines below to match the location of your git checkout and HPCP_PREFIX::
 
-	# For access to the hpcp command
+	# For building packages with HPCPorts
 	export PATH=${PATH}:/home/user/git/hpcports
+	export HPCP_HOST=blah
 
 	# To use HPCPorts installed modules
 	module use /home/user/hpcports/env/modulefiles
