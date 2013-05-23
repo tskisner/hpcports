@@ -31,10 +31,8 @@ System Configuration
 After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let's say that your machine is named "blah".  Copy the example files to a new set for your machine::
 
 	$> cp example.make blah.make
-	$> cp example.module blah.module
-	$> cp example.sh blah.sh
 
-The .module and .sh files contain any setup commands that need to be run before using any software installed by HPCPorts.  They are empty by default, but you can look at the other files for examples of their contents.  The main .make file is what you should edit.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.
+The optional .module and .sh files contain any setup commands that need to be run before using any software installed by HPCPorts.  They are empty by default, but you can look at the other files for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.
 
 .. warning::
 

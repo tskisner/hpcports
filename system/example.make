@@ -8,7 +8,7 @@ HPCP_PREFIX = $(HOME)/hpcports
 HPCP_POOL = $(HOME)/hpcports_pool
 
 # Optional Environment version- if you are installing with multiple
-# toolchain versions.
+# toolchain versions.  This can be anything (e.g gcc47, 1.0, 3.2, etc).
 #HPCP_ENV = 1.0
 
 # Optional module file suffix- to avoid name collisions on systems
@@ -24,7 +24,7 @@ TOOLCHAIN = gnu
 
 # Various tools.  the defaults are below, and you
 # can uncomment and change them if necessary.
-#
+
 #SHELL = /bin/bash
 #MAKE = make -s
 #WGET = wget
@@ -32,12 +32,12 @@ TOOLCHAIN = gnu
 #PATCH = patch
 #GIT = git
 
-# permissions on installed files. these permissions will
+# Permissions on installed files. these permissions will
 # be applied to both the POOL directory and the install prefix.
+# The default is to use the user's primary group.
 
-MY_DEFAULT_GROUP := $(shell groups | awk {'print $1'})
-INST_GRP = $(MY_DEFAULT_GROUP)
-INST_PERM = g+rwX,o+rX
+#INST_GRP = user
+#INST_PERM = g+rwX,o+rX
 
 # serial compilers
 
