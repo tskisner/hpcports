@@ -152,6 +152,18 @@ sub package_info {
 # Build a dictionary of all package information, including generated versions
 # and dependencies
 
+sub all_deps {
+	my ( $pdb, $pname, $curdep ) = @_;
+
+	my $dep;
+	for $dep ( @{ $pdb->{ $curdep }->{ "rawdeps" } } ) {
+		all_deps ( $pdb, $pname, $dep );
+	}
+	push ( @{ $pdb->{ $pname }->{ "deps" } }, $curdep );
+
+	return;
+}
+
 sub package_db {
 	my ( $pdir ) = @_;
 
@@ -170,7 +182,8 @@ sub package_db {
 		( $version, $deps ) = package_info ( $path );
 		$tree->{ $pname } = {};
 		$tree->{ $pname }->{ "version" } = $version;
-		$tree->{ $pname }->{ "deps" } = $deps;
+		$tree->{ $pname }->{ "rawdeps" } = $deps;
+		$tree->{ $pname }->{ "deps" } = ();
 		$tree->{ $pname }->{ "vdeps" } = {};
 		$tree->{ $pname }->{ "rdeps" } = ();
 	}
@@ -181,9 +194,21 @@ sub package_db {
 	# Recursively expand dependency tree for each package to
 	# include the full set of low-level packages.
 
+	while ( ($key, $value) = each %{$tree} ) {
+		$pname = $key;
 
+		all_deps ( $tree, $pname, $pname );
 
+		my %unique;
+		my $dup;
+		foreach $dup ( @{ $tree->{ $pname }->{ "deps" } } ) {
+			if ( $dup ne $pname ) {
+				$unique { $dup } = "1";
+			}
+		}
 
+		@{ $tree->{ $pname }->{ "deps" } } = keys ( %unique );
+	}
 
 	# Generate package versions based on dependencies.
 
