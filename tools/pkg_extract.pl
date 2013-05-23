@@ -63,12 +63,20 @@ if ( defined ( $overrides->{ $pname } ) ) {
 
 	HPCPorts::module_file ( "${pname}.module", $pdb, $pname, $vars, $conflicts, $env, $suffix, $pysite, "${hpcp_root}/system/${system}.module", $prefix, $overrides );
 
-	HPCPorts::module_version ( "${pname}.modversion", $pname, $pdb->{ $pname }->{ "version" }, $env, $suffix );
+	if ( $pname eq "hpcp" ) {
+		HPCPorts::module_version ( "${pname}.modversion", $pname, $env, $env, $suffix );
+	} else {
+		HPCPorts::module_version ( "${pname}.modversion", $pname, $pdb->{ $pname }->{ "version" }, $env, $suffix );
+	}
 
 	HPCPorts::shell_file ( "${pname}.sh", $pdb, $pname, $vars, $conflicts, $env, $suffix, $pysite, "${hpcp_root}/system/${system}.sh", $prefix, $overrides );
 
 	open ( VER, ">${pname}.fullversion" ) || die ( "\nCannot write version file ${pname}.fullversion\n\n" );
-	print VER $pdb->{ $pname }->{ "version" }, "-", $env, "\n";
+	if ( $pname eq "hpcp" ) {
+		print VER $env, "\n";
+	} else {
+		print VER $pdb->{ $pname }->{ "version" }, "-", $env, "\n";
+	}
 	close ( VER );
 
 }

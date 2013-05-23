@@ -105,7 +105,7 @@ patch : extract
 		if [ -e $(STAGE)/state.extract ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				printf "%s%15s :  Patching\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/dep_env.sh; \
+				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				cd $(STAGE)/$(PKG_SRCDIR); \
 				rm -f ../log.patch; \
 				for pfile in $(PKG_PATCHES); do \
@@ -123,7 +123,7 @@ configure : patch
 		if [ -e $(STAGE)/state.patch ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				printf "%s%15s :  Configuring\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/dep_env.sh; \
+				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-configure > $(STAGE)/log.configure 2>&1 && \
 				touch $(STAGE)/state.configure && \
 				rm $(STAGE)/state.patch; \
@@ -141,7 +141,7 @@ build : configure
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				$(MAKE) uninstall; \
 				printf "%s%15s :  Building\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/dep_env.sh; \
+				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-build > $(STAGE)/log.build 2>&1 && \
 				touch $(STAGE)/state.build && \
 				rm $(STAGE)/state.configure; \
@@ -161,26 +161,26 @@ install :
 		if [ -e $(STAGE)/state.build ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				printf "%s%15s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/dep_env.sh; \
+				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-install > $(STAGE)/log.install 2>&1; \
 				chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 				chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			else \
 				printf "%s%15s :  Installing Override\n" "$(HPCP)" "$(PKG_NAME)"; \
 			fi; \
-			cp $(STAGE)/$(PKG_NAME).sh $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
-			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
-			chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
 			suffix="$(MOD_SUFFIX)"; \
 			if [ $(PKG_NAME) = "hpcp" ]; then \
 				suffix=""; \
 			fi; \
 			mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
+			cp $(STAGE)/$(PKG_NAME).sh $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
+			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
+			chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
 			cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_FULLVERSION); \
 			if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version ]; then \
 				cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion; \
 			fi; \
-			cp $(STAGE)/$(PKG_NAME).version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
+			cp $(STAGE)/$(PKG_NAME).modversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
 			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 			chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 		fi; \
@@ -225,6 +225,12 @@ uninstall :
 			if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion ]; then \
 				mv $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
 			fi; \
+		fi; \
+	fi; \
+	if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix} ]; then \
+		empty=`ls -A $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}`; \
+		if [ "x$${empty}" = x ]; then \
+			rm -rf $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 		fi; \
 	fi
 

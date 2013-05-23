@@ -109,7 +109,7 @@ sub package_list {
 
 	my $file;
 	foreach $file ( @listing ) {
-		if ( ( $file ne "." ) && ( $file ne ".." ) && ( $file ne "hpcp" ) && ( ! ( $file =~ /overrides.*/ ) ) ) {
+		if ( ( $file ne "." ) && ( $file ne ".." ) && ( $file ne "hpcp" ) ) {
 			my $filepath = $pdir."/".$file;
 			if ( -d $filepath ) {
 				push ( @{$pkg}, $file );
@@ -622,7 +622,7 @@ sub shell_file {
 
 		open ( SYS, "$syssh" ) || die ( "\nCannot open system shell initialization $syssh\n\n" );
 		while ( <SYS> ) {
-			print OUT "\t",$_;
+			print OUT $_;
 		}
 		close ( SYS );
 

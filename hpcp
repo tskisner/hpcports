@@ -8,14 +8,34 @@ use lib "$FindBin::Bin/tools";
 use HPCPorts;
 
 sub install {
-	my ( $pdb, $pname, $root, $env ) = @_;
+	my ( $pdb, $pname, $root, $system, $env, $prefix, $overrides ) = @_;
 	my $dep;
 	foreach $dep ( @{$pdb->{ $pname }->{ "deps" }} ) {
-		install ( $pdb, $dep, $root, $env );
+		install ( $pdb, $dep, $root, $env, $overrides );
 	}
-	my $fullversion = $pdb->{ $pname }->{ "version" };
-	$fullversion .= "-".$env;
+	purge_stale ( $pdb, $pname, $root, $system, $env, $prefix, $overrides );
+	my $fullversion = HPCPorts::package_fullversion ( $pdb, $pname, $env, $overrides );
 	system ( "export PKG_FULLVERSION=${fullversion}; cd ${root}/packages/${pname}; make install" );
+	return;
+}
+
+sub purge_stale {
+	my ( $pdb, $pname, $root, $system, $env, $prefix, $overrides ) = @_;
+
+	my $pkgdir = "${root}/packages/${pname}";
+
+	my $status;
+	if ( defined ( $overrides->{ $pname } ) ) {
+		$status = "overridden";
+	} else {
+		$status = HPCPorts::package_state ( $pdb, "${pkgdir}", $system, $env, $prefix, $overrides );
+	}
+
+	if ( $status eq "stale" ) {
+		my $fullversion = HPCPorts::package_fullversion ( $pdb, $pname, $env, $overrides );
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${pkgdir}; make purge" );
+	}
+
 	return;
 }
 
@@ -81,6 +101,10 @@ if ( $command eq "status" ) {
 	my $key;
 	my $value;
 
+	my $hpcpstat = HPCPorts::package_state ( $pkgdb, "${pkgdir}/hpcp", $system, $env, $prefix, $overrides );
+	$out = sprintf ( "%s%16s | %20s |  %s\n", $pre, "hpcp", $env, $hpcpstat );
+	print $out;
+
 	foreach $key ( sort keys %{$pkgdb} ) {
 		$value = $pkgdb->{ $key };
 
@@ -88,7 +112,7 @@ if ( $command eq "status" ) {
 		if ( defined ( $overrides->{ $key } ) ) {
 			$status = "overridden";
 		} else {
-			$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $prefix );
+			$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $env, $prefix, $overrides );
 		}
 		$out = sprintf ( "%s%16s | %20s |  %s\n", $pre, $key, $value->{ "version" }, $status );
 		print $out;
@@ -104,16 +128,18 @@ if ( $command eq "status" ) {
 
 		my $key;
 		my $value;
+		my $fullversion;
 
 		while ( ($key, $value) = each %{$pkgdb} ) {
-			my $fullversion = $pkgdb->{ $key }->{ "version" };
-			$fullversion .= "-".$env;
+			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make purge" );
 		}
 
+		$fullversion = HPCPorts::package_fullversion ( $pkgdb, "hpcp", $env, $overrides );
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/hpcp; make purge" );
+
 	} else {
-		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
-		$fullversion .= "-".$env;
+		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make purge" );
 	}
 
@@ -125,9 +151,12 @@ if ( $command eq "status" ) {
 
 	# recursively install all dependencies and the package
 
-	system ( "export PKG_FULLVERSION=${env}; cd ${hpcp_root}/packages/hpcp; make install" );
+	if ( $subcommand ne "hpcp" ) {
+		purge_stale ( $pkgdb, "hpcp", $hpcp_root, $system, $env, $prefix, $overrides );
+		system ( "export PKG_FULLVERSION=${env}; cd ${hpcp_root}/packages/hpcp; make install" );
+	}
 
-	install ( $pkgdb, $subcommand, $hpcp_root, $env );
+	install ( $pkgdb, $subcommand, $hpcp_root, $system, $env, $prefix, $overrides );
 
 } elsif ( $command eq "uninstall" ) {
 
@@ -139,16 +168,18 @@ if ( $command eq "status" ) {
 
 		my $key;
 		my $value;
+		my $fullversion;
 
 		while ( ($key, $value) = each %{$pkgdb} ) {
-			my $fullversion = $pkgdb->{ $key }->{ "version" };
-			$fullversion .= "-".$env;
+			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make uninstall" );
 		}
 
+		$fullversion = HPCPorts::package_fullversion ( $pkgdb, "hpcp", $env, $overrides );
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/hpcp; make uninstall" );
+
 	} else {
-		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
-		$fullversion .= "-".$env;
+		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make uninstall" );
 	}
 
@@ -164,14 +195,12 @@ if ( $command eq "status" ) {
 		my $value;
 
 		while ( ($key, $value) = each %{$pkgdb} ) {
-			my $fullversion = $pkgdb->{ $key }->{ "version" };
-			$fullversion .= "-".$env;
+			my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make fetch" );
 		}
 
 	} else {
-		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
-		$fullversion .= "-".$env;
+		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make fetch" );
 	}
 
@@ -185,16 +214,18 @@ if ( $command eq "status" ) {
 
 		my $key;
 		my $value;
+		my $fullversion;
 
 		while ( ($key, $value) = each %{$pkgdb} ) {
-			my $fullversion = $pkgdb->{ $key }->{ "version" };
-			$fullversion .= "-".$env;
+			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make clean" );
 		}
 
+		$fullversion = HPCPorts::package_fullversion ( $pkgdb, "hpcp", $env, $overrides );
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/hpcp; make clean" );
+
 	} else {
-		my $fullversion = $pkgdb->{ $subcommand }->{ "version" };
-		$fullversion .= "-".$env;
+		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${subcommand}; make clean" );
 	}
 
