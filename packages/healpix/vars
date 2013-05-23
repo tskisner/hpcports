@@ -1,7 +1,7 @@
 BIN = bin
 INCLUDE = include
 LIB = lib
-data = share/healpix
+DATA = share/healpix
 LIBS_CC = -lchealpix
 LIBS_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
 LIBS_FC = -lhealpix

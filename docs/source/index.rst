@@ -15,6 +15,7 @@ Contents:
    install
    command
    pkgdev
+   advanced
 
 
 Indices and tables
