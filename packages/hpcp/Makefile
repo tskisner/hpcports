@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION = $(HPCP_ENV)
+include ../pkg_defs.make
 
 # Package parameters
 
