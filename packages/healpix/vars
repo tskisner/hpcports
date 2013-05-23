@@ -1,5 +1,4 @@
 BIN = bin
-MAN =
 INCLUDE = include
 LIB = lib
 data = share/healpix

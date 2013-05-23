@@ -154,9 +154,7 @@ build : configure
 
 
 install : 
-	@if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) ]; then \
-		printf "%s%15s :  Already installed\n" "$(HPCP)" "$(PKG_NAME)"; \
-	else \
+	@if [ ! -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) ]; then \
 		$(MAKE) build; \
 		if [ -e $(STAGE)/state.build ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
