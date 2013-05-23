@@ -322,7 +322,7 @@ sub package_fullversion {
 	my $full;
 
 	if ( defined ( $overrides->{ $pname } ) ) {
-		$full = $overrides->{ $pname }->{ "version" };
+		$full = $overrides->{ $pname }->{ "${pname}_VERSION" };
 		$full .= "-".$env;
 	} else {
 		if ( $pname eq "hpcp" ) {
@@ -420,6 +420,7 @@ sub config_vars {
 				my $value;
 				while ( ($key, $value) = each %{$overrides} ) {
 					if ( /^${key}_(.*)/ ) {
+						#print "Found $F[0] = $F[2]\n";
 						$value->{ $F[0] } = $F[2];
 					}
 				}
@@ -571,7 +572,7 @@ sub module_file {
 			my $depver;
 
 			if ( defined $overrides->{ $dep } ) {
-				$depver = $overrides->{ $dep }->{ "VERSION" };
+				$depver = $overrides->{ $dep }->{ "${dep}_VERSION" };
 			} else {
 				$depver = $pdb->{ $pname }->{ "vdeps" }->{ $dep };
 			}
