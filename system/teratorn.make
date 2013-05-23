@@ -14,7 +14,7 @@ endif
 
 # OS environment version
 
-HPCP_ENV = gcc472
+HPCP_ENV = gcc473
 
 # software download location
 
@@ -55,7 +55,6 @@ OMPFLAGS = -fopenmp
 # Fortran mixing
 
 FCLIBS = -lgfortran
-MPIFCLIBS = -lmpi_usempi -lmpi_mpifh -lmpi
 
 # Linking
 

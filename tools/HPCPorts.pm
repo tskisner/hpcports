@@ -165,16 +165,9 @@ sub package_db {
 	my $pname;
 	foreach $pname ( @{$pkgs} ) {
 		my $path = $pdir."/".$pname;
-		print "querying $path\n";
 		my $version;
 		my $deps;
 		( $version, $deps ) = package_info ( $path );
-		print "  $version : ";
-		my $dbg;
-		foreach $dbg (@{$deps}) {
-			print "$dbg ";
-		}
-		print "\n";
 		$tree->{ $pname } = {};
 		$tree->{ $pname }->{ "version" } = $version;
 		$tree->{ $pname }->{ "deps" } = $deps;

@@ -62,7 +62,17 @@ my $subcommand = "";
 if ( $ARGC > 0 ) {
 	$command = $ARGV[0];
 } else {
-	print "Usage...\n";
+	print "\nUsage:  $0 <command> <option>\n\n";
+	print "Where valid commands and options are:\n";
+	print "   update\n";
+	print "   status\n";
+	print "   info <package name>\n";
+	print "   purge <package name or ALL>\n";
+	print "   install <package name>\n";
+	print "   uninstall <package name or ALL>\n";
+	print "   fetch <package name or ALL>\n";
+	print "   clean <package name or ALL>\n";
+	print "\n";
 	exit(0);
 }
 
@@ -157,6 +167,42 @@ if ( $command eq "status" ) {
 	}
 
 	install ( $pkgdb, $subcommand, $hpcp_root, $system, $env, $prefix, $overrides );
+
+} elsif ( $command eq "info" ) {
+
+	if ( $subcommand eq "" ) {
+		die ( "\nUsage:  $0 info <package name>\n\n" );
+	}
+
+	my $key;
+	my $value;
+	my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $subcommand, $env, $overrides );
+
+	my $status = "broken";
+	if ( defined ( $overrides->{ $subcommand } ) ) {
+		$status = "overridden";
+	} else {
+		$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${subcommand}", $system, $env, $prefix, $overrides );
+	}
+
+	print "$pre\n";
+	my $out = sprintf ( "%s%14s  %s\n", $pre, "Name:", $subcommand );
+	print $out;
+	$out = sprintf ( "%s%14s  %s\n", $pre, "Version:", $fullversion );
+	print $out;
+	$out = sprintf ( "%s%14s  %s\n", $pre, "State:", $status );
+	print $out;
+	$out = sprintf ( "%s%14s\n", $pre, "Dependencies:" );
+	print $out;
+
+	my $dep;
+	for $dep ( @{ $pkgdb->{ $subcommand }->{ "deps" } } ) {
+		my $depversion = HPCPorts::package_fullversion ( $pkgdb, $dep, $env, $overrides );
+		$out = sprintf ( "%s%20s | %s\n", $pre, $dep, $depversion );
+		print $out;
+	}
+
+	print "$pre\n";
 
 } elsif ( $command eq "uninstall" ) {
 
