@@ -47,7 +47,7 @@ pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) install; \
 	if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod ]; then \
-		cp $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/include/mpi.mod; \
+		cp $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/include/mpi.mod; \
 	fi
 
 
