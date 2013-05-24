@@ -10,7 +10,7 @@ THISSHELL=`echo $SHELL | sed -e 's/.*\/\(.*\)$/\1/'`
 
 if [ $NERSC_HOST == "datatran" ]
 then
-  #. /usr/share/Modules/init/${THISSHELL}
+  . /usr/share/Modules/init/${THISSHELL}
 
 fi
 
