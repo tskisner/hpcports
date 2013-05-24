@@ -1,2 +1,2 @@
 BIN = bin
-python = lib
+PYTHON = lib

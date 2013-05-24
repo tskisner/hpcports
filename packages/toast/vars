@@ -1,7 +1,7 @@
 BIN = bin
 INCLUDE = include
 LIB = lib
-python = lib
+PYTHON = lib
 LIBS_CC = -ltoast
 LIBS_CXX = -ltoast
 LIBS_FC = -lftoast -ltoast

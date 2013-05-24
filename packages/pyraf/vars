@@ -1,4 +1,4 @@
 BIN = bin
-python = lib
+PYTHON = lib
 PYRAF_NO_IRAF = 1
 iraf = /bin/false
