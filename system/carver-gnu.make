@@ -11,9 +11,10 @@
 # here:
 #
 # 1.0 : gcc-4.7.0, MKL 10.2, OpenMPI 1.4.5
+# 2.0 : same as 1.0, but with new package versioning
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
