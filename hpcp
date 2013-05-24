@@ -7,17 +7,6 @@ use FindBin;
 use lib "$FindBin::Bin/tools";
 use HPCPorts;
 
-sub install {
-	my ( $pdb, $pname, $root, $system, $env, $prefix, $overrides ) = @_;
-	my $dep;
-	foreach $dep ( @{$pdb->{ $pname }->{ "deps" }} ) {
-		install ( $pdb, $dep, $root, $system, $env, $prefix, $overrides );
-	}
-	purge_stale ( $pdb, $pname, $root, $system, $env, $prefix, $overrides );
-	my $fullversion = HPCPorts::package_fullversion ( $pdb, $pname, $env, $overrides );
-	system ( "export PKG_FULLVERSION=${fullversion}; cd ${root}/packages/${pname}; make install" );
-	return;
-}
 
 sub purge_stale {
 	my ( $pdb, $pname, $root, $system, $env, $prefix, $overrides ) = @_;
@@ -197,7 +186,18 @@ if ( $command eq "status" ) {
 			system ( "export PKG_FULLVERSION=${env}; cd ${hpcp_root}/packages/hpcp; make install" );
 		}
 
-		install ( $pkgdb, $pname, $hpcp_root, $system, $env, $prefix, $overrides );
+		my $dep;
+		my $fullversion;
+
+		foreach $dep ( @{$pkgdb->{ $pname }->{ "deps" }} ) {
+			purge_stale ( $pkgdb, $dep, $hpcp_root, $system, $env, $prefix, $overrides );
+			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $dep, $env, $overrides );
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${dep}; make install" );
+		}
+
+		purge_stale ( $pkgdb, $pname, $hpcp_root, $system, $env, $prefix, $overrides );
+		$fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make install" );
 
 	}
 
