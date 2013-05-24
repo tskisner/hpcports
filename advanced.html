@@ -53,6 +53,35 @@
 <div class="section" id="module-naming-collisions">
 <h2>Module Naming Collisions<a class="headerlink" href="#module-naming-collisions" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="special-considerations-for-os-x">
+<h2>Special Considerations for OS X<a class="headerlink" href="#special-considerations-for-os-x" title="Permalink to this headline">¶</a></h2>
+<p>The current compiler situation (old versions, lack of Fortran support) on OS X leads to some particularly challenging problems for anyone who wants to build software using non-Apple-supported compilers.  One challenge in particular is that any packages that link to Apple system libraries generally need to be built with the Apple compilers.  One such package is matplotlib.  Here are several possible scenarios depending on what you want to do:</p>
+<div class="section" id="scenario-1">
+<h3>Scenario 1<a class="headerlink" href="#scenario-1" title="Permalink to this headline">¶</a></h3>
+<p>You only want a few packages from HPCPorts, and in particular you do not need any of the python packages.</p>
+<ol class="arabic simple">
+<li>Use Macports to install a newer version of gcc / g++ / gfortran.  For example, version 4.7.3.</li>
+<li>Use Macports to install python, matplotlib, numpy, etc.</li>
+<li>Configure HPCPorts to use the newer compilers.  Simply do not build any packages that depend on python.</li>
+</ol>
+</div>
+<div class="section" id="scenario-2">
+<h3>Scenario 2<a class="headerlink" href="#scenario-2" title="Permalink to this headline">¶</a></h3>
+<p>You want to use packages in HPCPorts that link to libpython or otherwise depend on / interact with python.</p>
+<ol class="arabic">
+<li><p class="first">Use Macports to install a newer version of gcc / g++ / gfortran.  For example, version 4.7.3.</p>
+</li>
+<li><p class="first">Configure HPCPorts to use the newer compilers.  Build any packages you like, including python.  The only package that will not build is matplotlib, since it tries to link to system GUI libraries which are incompatible with the newer compilers.  You must put in a fake Override for matplotlib in your system .make file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">matplotlib_OVERRIDE</span> <span class="o">=</span> <span class="n">TRUE</span>
+<span class="n">matplotlib_VERSION</span> <span class="o">=</span> <span class="n">NA</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you still want to use matplotlib, you will have to install a full python stack from Macports.  You can switch between the two python installations by loading / unloading the relevant HPCPorts modules.</p>
+</li>
+</ol>
+</div>
+</div>
 <div class="section" id="reproducing-old-versions">
 <h2>Reproducing Old Versions<a class="headerlink" href="#reproducing-old-versions" title="Permalink to this headline">¶</a></h2>
 <p>If you continuously update your HPCPorts git repo and install new versions of packages, the old versions are not uninstalled, but the latest version of all packages is the default.  Anyone using an old version can simply manually load the old version of a package and it should load all of the correct versions of its dependencies.</p>

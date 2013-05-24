@@ -61,6 +61,7 @@
 <li>Perl.</li>
 <li>Bash.</li>
 <li>GNU make.</li>
+<li>Serial compilers for C, C++, and Fortran.</li>
 </ul>
 </div>
 <div class="section" id="get-the-source">
@@ -73,11 +74,9 @@
 <div class="section" id="system-configuration">
 <h2>System Configuration<a class="headerlink" href="#system-configuration" title="Permalink to this headline">¶</a></h2>
 <p>After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let&#8217;s say that your machine is named &#8220;blah&#8221;.  Copy the example files to a new set for your machine:</p>
-<div class="highlight-python"><pre>$&gt; cp example.make blah.make
-$&gt; cp example.module blah.module
-$&gt; cp example.sh blah.sh</pre>
+<div class="highlight-python"><pre>$&gt; cp example.make blah.make</pre>
 </div>
-<p>The .module and .sh files contain any setup commands that need to be run before using any software installed by HPCPorts.  They are empty by default, but you can look at the other files for examples of their contents.  The main .make file is what you should edit.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.</p>
+<p>The optional .module and .sh files contain any setup commands that need to be run before using any software installed by HPCPorts.  They are empty by default, but you can look at the other files for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">The HPCP_PREFIX and HPCP_POOL directories should be separate, stand-alone places that only contain files managed by HPCPorts.  DO NOT use places like /usr for these.  If you want to install in a system-wide location outside your home directory, I recommend setting HPCP_PREFIX to /usr/local/hpcports and HPCP_POOL to /usr/local/hpcports_pool.</p>
@@ -136,9 +135,10 @@ python_SITE = python2.7</pre>
 </div>
 <div class="section" id="using-the-tools">
 <h2>Using the Tools<a class="headerlink" href="#using-the-tools" title="Permalink to this headline">¶</a></h2>
-<p>There is one final step to before being able to manage packages and also to use the installed modules created by HPCPorts.  Edit your ~/.bashrc file and add the location of the git checkout to your PATH and also append the installed module location to your module search path.  Obviously change the lines below to match the location of your git checkout and HPCP_PREFIX:</p>
-<div class="highlight-python"><pre># For access to the hpcp command
+<p>There is one final step to do before being able to manage packages and also to use the installed modules created by HPCPorts.  Edit your ~/.bashrc file and add the location of the git checkout to your PATH and also append the installed module location to your module search path.  You should also set the HPCP_HOST environment variable to the machine name you chose previously (&#8220;blah&#8221; in our example).  Obviously change the lines below to match the location of your git checkout and HPCP_PREFIX:</p>
+<div class="highlight-python"><pre># For building packages with HPCPorts
 export PATH=${PATH}:/home/user/git/hpcports
+export HPCP_HOST=blah
 
 # To use HPCPorts installed modules
 module use /home/user/hpcports/env/modulefiles</pre>
