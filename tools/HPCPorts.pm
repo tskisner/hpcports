@@ -539,7 +539,7 @@ sub module_file {
 			print OUT "prepend-path LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
 			print OUT "prepend-path LD_LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
 		} else {
-			print OUT "setenv ${pname}_${key} \"${value}\"\n";
+			print OUT "setenv ${key} \"${value}\"\n";
 		}
 	}
 
@@ -672,7 +672,7 @@ sub shell_file {
 				print OUT "export LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LIBRARY_PATH\"\n";
 				print OUT "export LD_LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LD_LIBRARY_PATH\"\n";
 			} else {
-				print OUT "export ${pname}_${key}=\"${value}\"\n";
+				print OUT "export ${key}=\"${value}\"\n";
 			}
 		}
 	}

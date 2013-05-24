@@ -15,6 +15,7 @@ Before using HPCPorts, you should install the Environment Modules software packa
 * Perl.
 * Bash.
 * GNU make.
+* Serial compilers for C, C++, and Fortran.
 
 Get the Source
 ------------------

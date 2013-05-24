@@ -122,11 +122,13 @@ if ( $command eq "status" ) {
 
 	my $out = $pre."---------------------------------------------------------\n";
 	print $out;
-	$out = $pre."System = \"".$system."\", Toolchain Version = \"".$env."\"\n";
+	$out = $pre."HPCP_HOST = \"".$system."\", HPCP_ENV = \"".$env."\"\n";
 	print $out;
 	$out = $pre."---------------------------------------------------------\n";
 	print $out;
-	$out = $pre."\n";
+	$out = sprintf ( "%s%16s | %20s |  %s\n", $pre, "Package", "Version", "State" );
+	print $out;
+	$out = $pre."---------------------------------------------------------\n";
 	print $out;
 
 	my $key;
