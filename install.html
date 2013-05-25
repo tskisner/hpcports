@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation and Setup &mdash; HPCPorts pre-1.0 documentation</title>
+    <title>Installation and Setup &mdash; HPCPorts Pre-1.0 (fe422a7) documentation</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     'pre-1.0',
+        VERSION:     'Pre-1.0 (fe422a7)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,13 +27,13 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="HPCPorts pre-1.0 documentation" href="index.html" />
-    <link rel="next" title="Available Commands" href="command.html" />
+    <link rel="top" title="HPCPorts Pre-1.0 (fe422a7) documentation" href="index.html" />
+    <link rel="next" title="Command Reference" href="command.html" />
     <link rel="prev" title="Introduction" href="intro.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="index.html">
-          <span>HPCPorts pre-1.0 documentation</span></a></h1>
+          <span>HPCPorts Pre-1.0 (fe422a7) documentation</span></a></h1>
         <h2 class="heading"><span>Installation and Setup</span></h2>
       </div>
       <div class="topnav">
@@ -43,7 +43,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="command.html">Available Commands</a>&#160;&#160;»
+        <a href="command.html">Command Reference</a>&#160;&#160;»
         </p>
 
       </div>
@@ -52,7 +52,7 @@
         
   <div class="section" id="installation-and-setup">
 <span id="install"></span><h1>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permalink to this headline">¶</a></h1>
-<p>HPCPorts consists entirely of interpreted code, so there is nothing to &#8220;install&#8221;.  Essentially you just clone the git repository and then optionally update your shell path so that you can run the hpcp command from anywhere.  You must also set up a config file for your system.</p>
+<p>HPCPorts is written using Perl, Bash and Makefiles, so no compilation is needed.  Essentially you just clone the git repository and then set up a config file for your system.</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <p>Before using HPCPorts, you should install the Environment Modules software package (<a class="reference external" href="http://modules.sourceforge.net">http://modules.sourceforge.net</a>).  There are other requirements that should be available on most systems:</p>
@@ -73,14 +73,18 @@
 </div>
 <div class="section" id="system-configuration">
 <h2>System Configuration<a class="headerlink" href="#system-configuration" title="Permalink to this headline">¶</a></h2>
-<p>After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let&#8217;s say that your machine is named &#8220;blah&#8221;.  Copy the example files to a new set for your machine:</p>
+<p>After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let&#8217;s say that your machine is named &#8220;blah&#8221;.  Copy the example file to a new one for your machine:</p>
 <div class="highlight-python"><pre>$&gt; cp example.make blah.make</pre>
 </div>
-<p>The optional .module and .sh files contain any setup commands that need to be run before using any software installed by HPCPorts.  They are empty by default, but you can look at the other files for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.</p>
+<p>The optional .module and .sh files contain any setup commands that need to be run to load the environment you which to use with HPCPorts (for example, loading modules for other compilers).  These are empty by default, but you can look at the files for other systems for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">The HPCP_PREFIX and HPCP_POOL directories should be separate, stand-alone places that only contain files managed by HPCPorts.  DO NOT use places like /usr for these.  If you want to install in a system-wide location outside your home directory, I recommend setting HPCP_PREFIX to /usr/local/hpcports and HPCP_POOL to /usr/local/hpcports_pool.</p>
 </div>
+</div>
+<div class="section" id="example-config-files">
+<h2>Example Config Files<a class="headerlink" href="#example-config-files" title="Permalink to this headline">¶</a></h2>
+<p>The system directory contains example files for Ubuntu GNU/Linux that handle two scenarios...  There is also an example file for OS X, but you should read the notes HERE first.</p>
 </div>
 <div class="section" id="vendor-math-libraries">
 <h2>Vendor Math Libraries<a class="headerlink" href="#vendor-math-libraries" title="Permalink to this headline">¶</a></h2>
@@ -163,7 +167,7 @@ module use /home/user/hpcports/env/modulefiles</pre>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="command.html">Available Commands</a>&#160;&#160;»
+        <a href="command.html">Command Reference</a>&#160;&#160;»
         </p>
 
       </div>

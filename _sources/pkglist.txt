@@ -1,0 +1,1982 @@
+.. _pkglist:
+
+Current Packages
+==================================
+
+At the time of the last documentation update (git revision fe422a7), the list of availabe packages is found below
+
+Package List
+-------------------------
+
+* :ref:`R <pkg_R>`
+* :ref:`appspack <pkg_appspack>`
+* :ref:`astromatic <pkg_astromatic>`
+* :ref:`astrometry <pkg_astrometry>`
+* :ref:`astropy <pkg_astropy>`
+* :ref:`atlas <pkg_atlas>`
+* :ref:`autoconf <pkg_autoconf>`
+* :ref:`automake <pkg_automake>`
+* :ref:`blas <pkg_blas>`
+* :ref:`boost <pkg_boost>`
+* :ref:`bzip2 <pkg_bzip2>`
+* :ref:`cdsclient <pkg_cdsclient>`
+* :ref:`cfitsio <pkg_cfitsio>`
+* :ref:`clique <pkg_clique>`
+* :ref:`cmake <pkg_cmake>`
+* :ref:`cmb <pkg_cmb>`
+* :ref:`cnpy <pkg_cnpy>`
+* :ref:`curl <pkg_curl>`
+* :ref:`cython <pkg_cython>`
+* :ref:`eigen <pkg_eigen>`
+* :ref:`elemental <pkg_elemental>`
+* :ref:`es <pkg_es>`
+* :ref:`expat <pkg_expat>`
+* :ref:`eye <pkg_eye>`
+* :ref:`fftw <pkg_fftw>`
+* :ref:`fitsio <pkg_fitsio>`
+* :ref:`fitstools <pkg_fitstools>`
+* :ref:`gdb <pkg_gdb>`
+* :ref:`getdata <pkg_getdata>`
+* :ref:`gettext <pkg_gettext>`
+* :ref:`gitgit <pkg_gitgit>`
+* :ref:`gsl <pkg_gsl>`
+* :ref:`gzip <pkg_gzip>`
+* :ref:`h5py <pkg_h5py>`
+* :ref:`hdf5 <pkg_hdf5>`
+* :ref:`hdf5_mpi <pkg_hdf5_mpi>`
+* :ref:`healpix <pkg_healpix>`
+* :ref:`healpy <pkg_healpy>`
+* :ref:`hotpants <pkg_hotpants>`
+* :ref:`ipython <pkg_ipython>`
+* :ref:`lapack <pkg_lapack>`
+* :ref:`levmar <pkg_levmar>`
+* :ref:`libarchive <pkg_libarchive>`
+* :ref:`libjpeg <pkg_libjpeg>`
+* :ref:`libtiff <pkg_libtiff>`
+* :ref:`libtool <pkg_libtool>`
+* :ref:`m4 <pkg_m4>`
+* :ref:`matplotlib <pkg_matplotlib>`
+* :ref:`minuit2 <pkg_minuit2>`
+* :ref:`missfits <pkg_missfits>`
+* :ref:`moat <pkg_moat>`
+* :ref:`mpi4py <pkg_mpi4py>`
+* :ref:`mpibatch <pkg_mpibatch>`
+* :ref:`mysql_client <pkg_mysql_client>`
+* :ref:`mysql_python <pkg_mysql_python>`
+* :ref:`netcdf <pkg_netcdf>`
+* :ref:`nose <pkg_nose>`
+* :ref:`numexpr <pkg_numexpr>`
+* :ref:`numpy <pkg_numpy>`
+* :ref:`openmpi <pkg_openmpi>`
+* :ref:`openssl <pkg_openssl>`
+* :ref:`pcre <pkg_pcre>`
+* :ref:`petsc <pkg_petsc>`
+* :ref:`plplot <pkg_plplot>`
+* :ref:`postgresql <pkg_postgresql>`
+* :ref:`psfex <pkg_psfex>`
+* :ref:`psycopg2 <pkg_psycopg2>`
+* :ref:`pyephem <pkg_pyephem>`
+* :ref:`pyfits <pkg_pyfits>`
+* :ref:`pyraf <pkg_pyraf>`
+* :ref:`pyslalib <pkg_pyslalib>`
+* :ref:`python <pkg_python>`
+* :ref:`readline <pkg_readline>`
+* :ref:`rpy2 <pkg_rpy2>`
+* :ref:`scalapack <pkg_scalapack>`
+* :ref:`scamp <pkg_scamp>`
+* :ref:`scientific <pkg_scientific>`
+* :ref:`scipy <pkg_scipy>`
+* :ref:`scons <pkg_scons>`
+* :ref:`screen <pkg_screen>`
+* :ref:`setuptools <pkg_setuptools>`
+* :ref:`sextractor <pkg_sextractor>`
+* :ref:`sfftw <pkg_sfftw>`
+* :ref:`skymaker <pkg_skymaker>`
+* :ref:`sqlite <pkg_sqlite>`
+* :ref:`stiff <pkg_stiff>`
+* :ref:`stuff <pkg_stuff>`
+* :ref:`swarp <pkg_swarp>`
+* :ref:`swig <pkg_swig>`
+* :ref:`tcl <pkg_tcl>`
+* :ref:`tcsh <pkg_tcsh>`
+* :ref:`tk <pkg_tk>`
+* :ref:`toast <pkg_toast>`
+* :ref:`trilinos <pkg_trilinos>`
+* :ref:`urwid <pkg_urwid>`
+* :ref:`valgrind <pkg_valgrind>`
+* :ref:`wcslib <pkg_wcslib>`
+* :ref:`wcstools <pkg_wcstools>`
+* :ref:`weightwatcher <pkg_weightwatcher>`
+* :ref:`xpa <pkg_xpa>`
+* :ref:`zlib <pkg_zlib>`
+
+
+Package Details
+-------------------------
+
+.. _pkg_R:
+
+R
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.15.3_77663f64-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   libjpeg  (6b_30f147e3-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   libtiff  (4.0.2_db4dac44-gcc473)
+ |   bzip2  (1.0.6-gcc473)
+ |   pcre  (8.31_f577707c-gcc473)
+
+.. _pkg_appspack:
+
+appspack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 5.0.1-C3_39026d4e-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_astromatic:
+
+astromatic
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 92f2ae4b-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   eye  (1.4.1_3eac2187-gcc473)
+ |   missfits  (2.4.0_3eac2187-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   sfftw  (3.3.3_852f3906-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   tcl  (8.5.12_f577707c-gcc473)
+ |   tk  (8.5.12_16354a06-gcc473)
+ |   plplot  (5.9.9_9a71b8a7-gcc473)
+ |   atlas  (3.10.0-gcc473)
+ |   psfex  (3.9.1_7c98ced8-gcc473)
+ |   cdsclient  (3.71-gcc473)
+ |   scamp  (1.7.0_28b67fb3-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   sextractor  (2.8.6_426c671d-gcc473)
+ |   skymaker  (3.3.3_426c671d-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   libtiff  (4.0.2_db4dac44-gcc473)
+ |   libjpeg  (6b_30f147e3-gcc473)
+ |   stiff  (2.1.3_3e7fe744-gcc473)
+ |   stuff  (1.19_f577707c-gcc473)
+ |   swarp  (2.19.1_f577707c-gcc473)
+ |   weightwatcher  (1.8.10_f577707c-gcc473)
+
+.. _pkg_astrometry:
+
+astrometry
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.38_28509589-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libjpeg  (6b_30f147e3-gcc473)
+ |   wcslib  (4.16_3eac2187-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   setuptools  (0.6c11_486320a2-gcc473)
+ |   pyfits  (3.1_d2907020-gcc473)
+ |   gsl  (1.15_0d99d93f-gcc473)
+
+.. _pkg_astropy:
+
+astropy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 09eafa7dc3_7c91ed1b-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   cython  (0.17.3_e9d77df0-gcc473)
+
+.. _pkg_atlas:
+
+atlas
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.10.0-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_autoconf:
+
+autoconf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.69_cb56a547-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+
+.. _pkg_automake:
+
+automake
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.12.6_b9d0ae94-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+
+.. _pkg_blas:
+
+blas
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 10.7.5-apple-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_boost:
+
+boost
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.52.0_2e272961-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_bzip2:
+
+bzip2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.0.6-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_cdsclient:
+
+cdsclient
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.71-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_cfitsio:
+
+cfitsio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.31_b9d0ae94-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+
+.. _pkg_clique:
+
+clique
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 7199280_165b31b6-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   elemental  (0.78-p1_2468a50b-gcc473)
+
+.. _pkg_cmake:
+
+cmake
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.8.10.2-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_cmb:
+
+cmb
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 27813e68-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   scalapack  (2.0.2_b293802d-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   boost  (1.52.0_2e272961-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   fitstools  (latest_f46da9b6-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   bzip2  (1.0.6-gcc473)
+ |   mpibatch  (20120627_852f3906-gcc473)
+ |   scipy  (0.10.1_d2024227-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+ |   gitgit  (1.7.10.2-apple-gcc473)
+ |   moat  (031ebea_334136a3-gcc473)
+ |   getdata  (0.8.2_b820de36-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   cnpy  (58b7ca8_982ee192-gcc473)
+ |   hdf5  (1.8.10_db4dac44-gcc473)
+ |   elemental  (0.78-p1_2468a50b-gcc473)
+ |   toast  (8e18fe1_6b0b2af4-gcc473)
+ |   healpix  (2.15a_1328a71d-gcc473)
+ |   setuptools  (0.6c11_486320a2-gcc473)
+ |   pyfits  (3.1_d2907020-gcc473)
+ |   matplotlib  (NA-gcc473)
+ |   cython  (0.17.3_e9d77df0-gcc473)
+ |   healpy  (1.6.0_e150296d-gcc473)
+ |   ipython  (0.13_d90e87ae-gcc473)
+ |   mpi4py  (1.3_9155397f-gcc473)
+ |   pyslalib  (6663ead2eb_cdf59e20-gcc473)
+ |   scientific  (2.9.2_e858a931-gcc473)
+ |   numexpr  (2.0.1_e6715007-gcc473)
+
+.. _pkg_cnpy:
+
+cnpy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 58b7ca8_982ee192-gcc473
+
+| Dependencies : 
+
+ |   cmake  (2.8.10.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+
+.. _pkg_curl:
+
+curl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 7.28.1_efad05af-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+
+.. _pkg_cython:
+
+cython
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.17.3_e9d77df0-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_eigen:
+
+eigen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.1.2_3dc22df6-gcc473
+
+| Dependencies : 
+
+ |   cmake  (2.8.10.2-gcc473)
+
+.. _pkg_elemental:
+
+elemental
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.78-p1_2468a50b-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+
+.. _pkg_es:
+
+es
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : f592848_78ca381b-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   appspack  (5.0.1-C3_39026d4e-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+ |   gitgit  (1.7.10.2-apple-gcc473)
+
+.. _pkg_expat:
+
+expat
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.1.0_4f2c7b0d-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_eye:
+
+eye
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.4.1_3eac2187-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+
+.. _pkg_fftw:
+
+fftw
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.3.3_852f3906-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_fitsio:
+
+fitsio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3c3585332c_726e46e9-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+ |   gitgit  (1.7.10.2-apple-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+
+.. _pkg_fitstools:
+
+fitstools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : latest_f46da9b6-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+
+.. _pkg_gdb:
+
+gdb
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 7.5.1_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_getdata:
+
+getdata
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.8.2_b820de36-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   bzip2  (1.0.6-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_gettext:
+
+gettext
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.18.1.1_7e434f99-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+
+.. _pkg_gitgit:
+
+gitgit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.7.10.2-apple-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+
+.. _pkg_gsl:
+
+gsl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.15_0d99d93f-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_gzip:
+
+gzip
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.5_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_h5py:
+
+h5py
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.1.2_e820a754-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   hdf5  (1.8.10_db4dac44-gcc473)
+
+.. _pkg_hdf5:
+
+hdf5
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.8.10_db4dac44-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   zlib  (1.2.7-gcc473)
+
+.. _pkg_hdf5_mpi:
+
+hdf5_mpi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.8.10_b52c8984-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_healpix:
+
+healpix
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.15a_1328a71d-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_healpy:
+
+healpy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.6.0_e150296d-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   matplotlib  (NA-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   setuptools  (0.6c11_486320a2-gcc473)
+ |   pyfits  (3.1_d2907020-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+ |   gitgit  (1.7.10.2-apple-gcc473)
+ |   cython  (0.17.3_e9d77df0-gcc473)
+
+.. _pkg_hotpants:
+
+hotpants
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 5.1.10_f46da9b6-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+
+.. _pkg_ipython:
+
+ipython
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.13_d90e87ae-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_lapack:
+
+lapack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.4.1_524a882f-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+
+.. _pkg_levmar:
+
+levmar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.6_af13f8f3-gcc473
+
+| Dependencies : 
+
+ |   cmake  (2.8.10.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+
+.. _pkg_libarchive:
+
+libarchive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.1.2_1193c281-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   bzip2  (1.0.6-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+
+.. _pkg_libjpeg:
+
+libjpeg
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 6b_30f147e3-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+
+.. _pkg_libtiff:
+
+libtiff
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 4.0.2_db4dac44-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   zlib  (1.2.7-gcc473)
+
+.. _pkg_libtool:
+
+libtool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.4.2-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_m4:
+
+m4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.4.16-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_matplotlib:
+
+matplotlib
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : NA-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_minuit2:
+
+minuit2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 5.28.00_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_missfits:
+
+missfits
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.4.0_3eac2187-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+
+.. _pkg_moat:
+
+moat
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 031ebea_334136a3-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   boost  (1.52.0_2e272961-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+ |   gitgit  (1.7.10.2-apple-gcc473)
+
+.. _pkg_mpi4py:
+
+mpi4py
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.3_9155397f-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   scipy  (0.10.1_d2024227-gcc473)
+ |   cython  (0.17.3_e9d77df0-gcc473)
+
+.. _pkg_mpibatch:
+
+mpibatch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 20120627_852f3906-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_mysql_client:
+
+mysql_client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 6.0.2_c240e015-gcc473
+
+| Dependencies : 
+
+ |   cmake  (2.8.10.2-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+
+.. _pkg_mysql_python:
+
+mysql_python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.2.3_3bedc4e5-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   setuptools  (0.6c11_486320a2-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   mysql_client  (6.0.2_c240e015-gcc473)
+
+.. _pkg_netcdf:
+
+netcdf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 4.2.1.1_ba12a35e-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+
+.. _pkg_nose:
+
+nose
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.1.2_4ea20b2e-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+
+.. _pkg_numexpr:
+
+numexpr
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.0.1_e6715007-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_numpy:
+
+numpy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.6.2_fccbe115-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+
+.. _pkg_openmpi:
+
+openmpi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.7.1_0d99d93f-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_openssl:
+
+openssl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.0.1c_5e89489b-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+
+.. _pkg_pcre:
+
+pcre
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 8.31_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_petsc:
+
+petsc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.3-p3_c8c9bcf2-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   scipy  (0.10.1_d2024227-gcc473)
+ |   cython  (0.17.3_e9d77df0-gcc473)
+ |   mpi4py  (1.3_9155397f-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   scalapack  (2.0.2_b293802d-gcc473)
+ |   boost  (1.52.0_2e272961-gcc473)
+
+.. _pkg_plplot:
+
+plplot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 5.9.9_9a71b8a7-gcc473
+
+| Dependencies : 
+
+ |   cmake  (2.8.10.2-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   tcl  (8.5.12_f577707c-gcc473)
+ |   tk  (8.5.12_16354a06-gcc473)
+
+.. _pkg_postgresql:
+
+postgresql
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 9.1.8_51cdef98-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+
+.. _pkg_psfex:
+
+psfex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.9.1_7c98ced8-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   sfftw  (3.3.3_852f3906-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   tcl  (8.5.12_f577707c-gcc473)
+ |   tk  (8.5.12_16354a06-gcc473)
+ |   plplot  (5.9.9_9a71b8a7-gcc473)
+ |   atlas  (3.10.0-gcc473)
+
+.. _pkg_psycopg2:
+
+psycopg2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.4.6_8e12e9a6-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   postgresql  (9.1.8_51cdef98-gcc473)
+
+.. _pkg_pyephem:
+
+pyephem
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.7.5.1_44b9b905-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   setuptools  (0.6c11_486320a2-gcc473)
+
+.. _pkg_pyfits:
+
+pyfits
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.1_d2907020-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   setuptools  (0.6c11_486320a2-gcc473)
+
+.. _pkg_pyraf:
+
+pyraf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.0_155c7711-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   matplotlib  (NA-gcc473)
+ |   ipython  (0.13_d90e87ae-gcc473)
+ |   urwid  (1.0.2_efba2f22-gcc473)
+
+.. _pkg_pyslalib:
+
+pyslalib
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 6663ead2eb_cdf59e20-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+ |   gitgit  (1.7.10.2-apple-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_python:
+
+python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.7.3_14cc07f1-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+
+.. _pkg_readline:
+
+readline
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 6.2_4f2c7b0d-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_rpy2:
+
+rpy2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.3.3_64caa17d-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   libjpeg  (6b_30f147e3-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   libtiff  (4.0.2_db4dac44-gcc473)
+ |   bzip2  (1.0.6-gcc473)
+ |   pcre  (8.31_f577707c-gcc473)
+ |   R  (2.15.3_77663f64-gcc473)
+
+.. _pkg_scalapack:
+
+scalapack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.0.2_b293802d-gcc473
+
+| Dependencies : 
+
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_scamp:
+
+scamp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.7.0_28b67fb3-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   atlas  (3.10.0-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   tcl  (8.5.12_f577707c-gcc473)
+ |   tk  (8.5.12_16354a06-gcc473)
+ |   plplot  (5.9.9_9a71b8a7-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   sfftw  (3.3.3_852f3906-gcc473)
+ |   cdsclient  (3.71-gcc473)
+
+.. _pkg_scientific:
+
+scientific
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.9.2_e858a931-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_scipy:
+
+scipy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.10.1_d2024227-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+
+.. _pkg_scons:
+
+scons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.2.0_4ea20b2e-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+
+.. _pkg_screen:
+
+screen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : c64f800_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_setuptools:
+
+setuptools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.6c11_486320a2-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+
+.. _pkg_sextractor:
+
+sextractor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.8.6_426c671d-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   atlas  (3.10.0-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+
+.. _pkg_sfftw:
+
+sfftw
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.3.3_852f3906-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_skymaker:
+
+skymaker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.3.3_426c671d-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   atlas  (3.10.0-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   sfftw  (3.3.3_852f3906-gcc473)
+
+.. _pkg_sqlite:
+
+sqlite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.7.15.1_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_stiff:
+
+stiff
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.1.3_3e7fe744-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   libtiff  (4.0.2_db4dac44-gcc473)
+ |   libjpeg  (6b_30f147e3-gcc473)
+
+.. _pkg_stuff:
+
+stuff
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.19_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_swarp:
+
+swarp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.19.1_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_swig:
+
+swig
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.0.8_c5fb5d00-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   pcre  (8.31_f577707c-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   boost  (1.52.0_2e272961-gcc473)
+
+.. _pkg_tcl:
+
+tcl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 8.5.12_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_tcsh:
+
+tcsh
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 6.18.01_0d99d93f-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_tk:
+
+tk
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 8.5.12_16354a06-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   tcl  (8.5.12_f577707c-gcc473)
+
+.. _pkg_toast:
+
+toast
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 8e18fe1_6b0b2af4-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+ |   expat  (2.1.0_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   bzip2  (1.0.6-gcc473)
+ |   getdata  (0.8.2_b820de36-gcc473)
+ |   cmake  (2.8.10.2-gcc473)
+ |   cnpy  (58b7ca8_982ee192-gcc473)
+ |   boost  (1.52.0_2e272961-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   gettext  (0.18.1.1_7e434f99-gcc473)
+ |   gitgit  (1.7.10.2-apple-gcc473)
+ |   moat  (031ebea_334136a3-gcc473)
+ |   hdf5  (1.8.10_db4dac44-gcc473)
+ |   elemental  (0.78-p1_2468a50b-gcc473)
+
+.. _pkg_trilinos:
+
+trilinos
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 10.12.2_4b35e0b3-gcc473
+
+| Dependencies : 
+
+ |   cmake  (2.8.10.2-gcc473)
+ |   blas  (10.7.5-apple-gcc473)
+ |   lapack  (3.4.1_524a882f-gcc473)
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+ |   scalapack  (2.0.2_b293802d-gcc473)
+ |   fftw  (3.3.3_852f3906-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+ |   nose  (1.1.2_4ea20b2e-gcc473)
+ |   numpy  (1.6.2_fccbe115-gcc473)
+ |   boost  (1.52.0_2e272961-gcc473)
+ |   zlib  (1.2.7-gcc473)
+ |   openssl  (1.0.1c_5e89489b-gcc473)
+ |   curl  (7.28.1_efad05af-gcc473)
+ |   netcdf  (4.2.1.1_ba12a35e-gcc473)
+ |   scipy  (0.10.1_d2024227-gcc473)
+ |   pcre  (8.31_f577707c-gcc473)
+ |   swig  (2.0.8_c5fb5d00-gcc473)
+ |   cython  (0.17.3_e9d77df0-gcc473)
+ |   mpi4py  (1.3_9155397f-gcc473)
+
+.. _pkg_urwid:
+
+urwid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.0.2_efba2f22-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   readline  (6.2_4f2c7b0d-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   sqlite  (3.7.15.1_f577707c-gcc473)
+ |   python  (2.7.3_14cc07f1-gcc473)
+
+.. _pkg_valgrind:
+
+valgrind
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.8.1_852f3906-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   openmpi  (1.7.1_0d99d93f-gcc473)
+
+.. _pkg_wcslib:
+
+wcslib
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 4.16_3eac2187-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+ |   cfitsio  (3.31_b9d0ae94-gcc473)
+
+.. _pkg_wcstools:
+
+wcstools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.8.6-gcc473
+
+| Dependencies : 
+
+
+.. _pkg_weightwatcher:
+
+weightwatcher
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.8.10_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_xpa:
+
+xpa
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.1.14_f577707c-gcc473
+
+| Dependencies : 
+
+ |   m4  (1.4.16-gcc473)
+ |   autoconf  (2.69_cb56a547-gcc473)
+ |   automake  (1.12.6_b9d0ae94-gcc473)
+ |   libtool  (2.4.2-gcc473)
+
+.. _pkg_zlib:
+
+zlib
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.2.7-gcc473
+
+| Dependencies : 
+
+

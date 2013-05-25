@@ -4,7 +4,7 @@
 Introduction
 ===============
 
-This set of tools is "inspired" by the FreeBSD Ports and Macports systems and is intended to provide an easy way to install packages on High Performance Computing (HPC) systems.  Porting software to an HPC environment can be much more challenging than installation on a personal computer for several reasons:
+This set of tools is "inspired" by the FreeBSD Ports and Macports package managers and is intended to provide an easy way to install packages on High Performance Computing (HPC) systems.  Porting software to an HPC environment can be much more challenging than installation on a personal computer for several reasons:
 
 * Lack of root access to these systems.
 * Many HPC systems have heavily customized userspace tools and compiler toolchains.

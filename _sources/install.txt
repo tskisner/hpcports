@@ -4,7 +4,7 @@
 Installation and Setup
 ==================================
 
-HPCPorts consists entirely of interpreted code, so there is nothing to "install".  Essentially you just clone the git repository and then optionally update your shell path so that you can run the hpcp command from anywhere.  You must also set up a config file for your system.
+HPCPorts is written using Perl, Bash and Makefiles, so no compilation is needed.  Essentially you just clone the git repository and then set up a config file for your system.
 
 Prerequisites
 -----------------
@@ -29,15 +29,22 @@ Alternatively, you can download a zip file from github if you do not have git in
 System Configuration
 ------------------------
 
-After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let's say that your machine is named "blah".  Copy the example files to a new set for your machine::
+After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let's say that your machine is named "blah".  Copy the example file to a new one for your machine::
 
 	$> cp example.make blah.make
 
-The optional .module and .sh files contain any setup commands that need to be run before using any software installed by HPCPorts.  They are empty by default, but you can look at the other files for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.
+The optional .module and .sh files contain any setup commands that need to be run to load the environment you which to use with HPCPorts (for example, loading modules for other compilers).  These are empty by default, but you can look at the files for other systems for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.
 
 .. warning::
 
 	The HPCP_PREFIX and HPCP_POOL directories should be separate, stand-alone places that only contain files managed by HPCPorts.  DO NOT use places like /usr for these.  If you want to install in a system-wide location outside your home directory, I recommend setting HPCP_PREFIX to /usr/local/hpcports and HPCP_POOL to /usr/local/hpcports_pool.
+
+
+Example Config Files
+------------------------
+
+The system directory contains example files for Ubuntu GNU/Linux that handle two scenarios...  There is also an example file for OS X, but you should read the notes HERE first.
+
 
 Vendor Math Libraries
 -------------------------

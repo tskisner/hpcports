@@ -1,0 +1,2319 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Current Packages &mdash; HPCPorts Pre-1.0 (fe422a7) documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'Pre-1.0 (fe422a7)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="HPCPorts Pre-1.0 (fe422a7) documentation" href="index.html" />
+    <link rel="next" title="Package Developer Reference" href="pkgdev.html" />
+    <link rel="prev" title="Command Reference" href="command.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>HPCPorts Pre-1.0 (fe422a7) documentation</span></a></h1>
+        <h2 class="heading"><span>Current Packages</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="command.html">Command Reference</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pkgdev.html">Package Developer Reference</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="current-packages">
+<span id="pkglist"></span><h1>Current Packages<a class="headerlink" href="#current-packages" title="Permalink to this headline">¶</a></h1>
+<p>At the time of the last documentation update (git revision fe422a7), the list of availabe packages is found below</p>
+<div class="section" id="package-list">
+<h2>Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="#pkg-r"><em>R</em></a></li>
+<li><a class="reference internal" href="#pkg-appspack"><em>appspack</em></a></li>
+<li><a class="reference internal" href="#pkg-astromatic"><em>astromatic</em></a></li>
+<li><a class="reference internal" href="#pkg-astrometry"><em>astrometry</em></a></li>
+<li><a class="reference internal" href="#pkg-astropy"><em>astropy</em></a></li>
+<li><a class="reference internal" href="#pkg-atlas"><em>atlas</em></a></li>
+<li><a class="reference internal" href="#pkg-autoconf"><em>autoconf</em></a></li>
+<li><a class="reference internal" href="#pkg-automake"><em>automake</em></a></li>
+<li><a class="reference internal" href="#pkg-blas"><em>blas</em></a></li>
+<li><a class="reference internal" href="#pkg-boost"><em>boost</em></a></li>
+<li><a class="reference internal" href="#pkg-bzip2"><em>bzip2</em></a></li>
+<li><a class="reference internal" href="#pkg-cdsclient"><em>cdsclient</em></a></li>
+<li><a class="reference internal" href="#pkg-cfitsio"><em>cfitsio</em></a></li>
+<li><a class="reference internal" href="#pkg-clique"><em>clique</em></a></li>
+<li><a class="reference internal" href="#pkg-cmake"><em>cmake</em></a></li>
+<li><a class="reference internal" href="#pkg-cmb"><em>cmb</em></a></li>
+<li><a class="reference internal" href="#pkg-cnpy"><em>cnpy</em></a></li>
+<li><a class="reference internal" href="#pkg-curl"><em>curl</em></a></li>
+<li><a class="reference internal" href="#pkg-cython"><em>cython</em></a></li>
+<li><a class="reference internal" href="#pkg-eigen"><em>eigen</em></a></li>
+<li><a class="reference internal" href="#pkg-elemental"><em>elemental</em></a></li>
+<li><a class="reference internal" href="#pkg-es"><em>es</em></a></li>
+<li><a class="reference internal" href="#pkg-expat"><em>expat</em></a></li>
+<li><a class="reference internal" href="#pkg-eye"><em>eye</em></a></li>
+<li><a class="reference internal" href="#pkg-fftw"><em>fftw</em></a></li>
+<li><a class="reference internal" href="#pkg-fitsio"><em>fitsio</em></a></li>
+<li><a class="reference internal" href="#pkg-fitstools"><em>fitstools</em></a></li>
+<li><a class="reference internal" href="#pkg-gdb"><em>gdb</em></a></li>
+<li><a class="reference internal" href="#pkg-getdata"><em>getdata</em></a></li>
+<li><a class="reference internal" href="#pkg-gettext"><em>gettext</em></a></li>
+<li><a class="reference internal" href="#pkg-gitgit"><em>gitgit</em></a></li>
+<li><a class="reference internal" href="#pkg-gsl"><em>gsl</em></a></li>
+<li><a class="reference internal" href="#pkg-gzip"><em>gzip</em></a></li>
+<li><a class="reference internal" href="#pkg-h5py"><em>h5py</em></a></li>
+<li><a class="reference internal" href="#pkg-hdf5"><em>hdf5</em></a></li>
+<li><a class="reference internal" href="#pkg-hdf5-mpi"><em>hdf5_mpi</em></a></li>
+<li><a class="reference internal" href="#pkg-healpix"><em>healpix</em></a></li>
+<li><a class="reference internal" href="#pkg-healpy"><em>healpy</em></a></li>
+<li><a class="reference internal" href="#pkg-hotpants"><em>hotpants</em></a></li>
+<li><a class="reference internal" href="#pkg-ipython"><em>ipython</em></a></li>
+<li><a class="reference internal" href="#pkg-lapack"><em>lapack</em></a></li>
+<li><a class="reference internal" href="#pkg-levmar"><em>levmar</em></a></li>
+<li><a class="reference internal" href="#pkg-libarchive"><em>libarchive</em></a></li>
+<li><a class="reference internal" href="#pkg-libjpeg"><em>libjpeg</em></a></li>
+<li><a class="reference internal" href="#pkg-libtiff"><em>libtiff</em></a></li>
+<li><a class="reference internal" href="#pkg-libtool"><em>libtool</em></a></li>
+<li><a class="reference internal" href="#pkg-m4"><em>m4</em></a></li>
+<li><a class="reference internal" href="#pkg-matplotlib"><em>matplotlib</em></a></li>
+<li><a class="reference internal" href="#pkg-minuit2"><em>minuit2</em></a></li>
+<li><a class="reference internal" href="#pkg-missfits"><em>missfits</em></a></li>
+<li><a class="reference internal" href="#pkg-moat"><em>moat</em></a></li>
+<li><a class="reference internal" href="#pkg-mpi4py"><em>mpi4py</em></a></li>
+<li><a class="reference internal" href="#pkg-mpibatch"><em>mpibatch</em></a></li>
+<li><a class="reference internal" href="#pkg-mysql-client"><em>mysql_client</em></a></li>
+<li><a class="reference internal" href="#pkg-mysql-python"><em>mysql_python</em></a></li>
+<li><a class="reference internal" href="#pkg-netcdf"><em>netcdf</em></a></li>
+<li><a class="reference internal" href="#pkg-nose"><em>nose</em></a></li>
+<li><a class="reference internal" href="#pkg-numexpr"><em>numexpr</em></a></li>
+<li><a class="reference internal" href="#pkg-numpy"><em>numpy</em></a></li>
+<li><a class="reference internal" href="#pkg-openmpi"><em>openmpi</em></a></li>
+<li><a class="reference internal" href="#pkg-openssl"><em>openssl</em></a></li>
+<li><a class="reference internal" href="#pkg-pcre"><em>pcre</em></a></li>
+<li><a class="reference internal" href="#pkg-petsc"><em>petsc</em></a></li>
+<li><a class="reference internal" href="#pkg-plplot"><em>plplot</em></a></li>
+<li><a class="reference internal" href="#pkg-postgresql"><em>postgresql</em></a></li>
+<li><a class="reference internal" href="#pkg-psfex"><em>psfex</em></a></li>
+<li><a class="reference internal" href="#pkg-psycopg2"><em>psycopg2</em></a></li>
+<li><a class="reference internal" href="#pkg-pyephem"><em>pyephem</em></a></li>
+<li><a class="reference internal" href="#pkg-pyfits"><em>pyfits</em></a></li>
+<li><a class="reference internal" href="#pkg-pyraf"><em>pyraf</em></a></li>
+<li><a class="reference internal" href="#pkg-pyslalib"><em>pyslalib</em></a></li>
+<li><a class="reference internal" href="#pkg-python"><em>python</em></a></li>
+<li><a class="reference internal" href="#pkg-readline"><em>readline</em></a></li>
+<li><a class="reference internal" href="#pkg-rpy2"><em>rpy2</em></a></li>
+<li><a class="reference internal" href="#pkg-scalapack"><em>scalapack</em></a></li>
+<li><a class="reference internal" href="#pkg-scamp"><em>scamp</em></a></li>
+<li><a class="reference internal" href="#pkg-scientific"><em>scientific</em></a></li>
+<li><a class="reference internal" href="#pkg-scipy"><em>scipy</em></a></li>
+<li><a class="reference internal" href="#pkg-scons"><em>scons</em></a></li>
+<li><a class="reference internal" href="#pkg-screen"><em>screen</em></a></li>
+<li><a class="reference internal" href="#pkg-setuptools"><em>setuptools</em></a></li>
+<li><a class="reference internal" href="#pkg-sextractor"><em>sextractor</em></a></li>
+<li><a class="reference internal" href="#pkg-sfftw"><em>sfftw</em></a></li>
+<li><a class="reference internal" href="#pkg-skymaker"><em>skymaker</em></a></li>
+<li><a class="reference internal" href="#pkg-sqlite"><em>sqlite</em></a></li>
+<li><a class="reference internal" href="#pkg-stiff"><em>stiff</em></a></li>
+<li><a class="reference internal" href="#pkg-stuff"><em>stuff</em></a></li>
+<li><a class="reference internal" href="#pkg-swarp"><em>swarp</em></a></li>
+<li><a class="reference internal" href="#pkg-swig"><em>swig</em></a></li>
+<li><a class="reference internal" href="#pkg-tcl"><em>tcl</em></a></li>
+<li><a class="reference internal" href="#pkg-tcsh"><em>tcsh</em></a></li>
+<li><a class="reference internal" href="#pkg-tk"><em>tk</em></a></li>
+<li><a class="reference internal" href="#pkg-toast"><em>toast</em></a></li>
+<li><a class="reference internal" href="#pkg-trilinos"><em>trilinos</em></a></li>
+<li><a class="reference internal" href="#pkg-urwid"><em>urwid</em></a></li>
+<li><a class="reference internal" href="#pkg-valgrind"><em>valgrind</em></a></li>
+<li><a class="reference internal" href="#pkg-wcslib"><em>wcslib</em></a></li>
+<li><a class="reference internal" href="#pkg-wcstools"><em>wcstools</em></a></li>
+<li><a class="reference internal" href="#pkg-weightwatcher"><em>weightwatcher</em></a></li>
+<li><a class="reference internal" href="#pkg-xpa"><em>xpa</em></a></li>
+<li><a class="reference internal" href="#pkg-zlib"><em>zlib</em></a></li>
+</ul>
+</div>
+<div class="section" id="package-details">
+<h2>Package Details<a class="headerlink" href="#package-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="r">
+<span id="pkg-r"></span><h3>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.15.3_77663f64-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">libjpeg  (6b_30f147e3-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">libtiff  (4.0.2_db4dac44-gcc473)</div>
+<div class="line">bzip2  (1.0.6-gcc473)</div>
+<div class="line">pcre  (8.31_f577707c-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="appspack">
+<span id="pkg-appspack"></span><h3>appspack<a class="headerlink" href="#appspack" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 5.0.1-C3_39026d4e-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="astromatic">
+<span id="pkg-astromatic"></span><h3>astromatic<a class="headerlink" href="#astromatic" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 92f2ae4b-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">eye  (1.4.1_3eac2187-gcc473)</div>
+<div class="line">missfits  (2.4.0_3eac2187-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">sfftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">tcl  (8.5.12_f577707c-gcc473)</div>
+<div class="line">tk  (8.5.12_16354a06-gcc473)</div>
+<div class="line">plplot  (5.9.9_9a71b8a7-gcc473)</div>
+<div class="line">atlas  (3.10.0-gcc473)</div>
+<div class="line">psfex  (3.9.1_7c98ced8-gcc473)</div>
+<div class="line">cdsclient  (3.71-gcc473)</div>
+<div class="line">scamp  (1.7.0_28b67fb3-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">sextractor  (2.8.6_426c671d-gcc473)</div>
+<div class="line">skymaker  (3.3.3_426c671d-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">libtiff  (4.0.2_db4dac44-gcc473)</div>
+<div class="line">libjpeg  (6b_30f147e3-gcc473)</div>
+<div class="line">stiff  (2.1.3_3e7fe744-gcc473)</div>
+<div class="line">stuff  (1.19_f577707c-gcc473)</div>
+<div class="line">swarp  (2.19.1_f577707c-gcc473)</div>
+<div class="line">weightwatcher  (1.8.10_f577707c-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="astrometry">
+<span id="pkg-astrometry"></span><h3>astrometry<a class="headerlink" href="#astrometry" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.38_28509589-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libjpeg  (6b_30f147e3-gcc473)</div>
+<div class="line">wcslib  (4.16_3eac2187-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">setuptools  (0.6c11_486320a2-gcc473)</div>
+<div class="line">pyfits  (3.1_d2907020-gcc473)</div>
+<div class="line">gsl  (1.15_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="astropy">
+<span id="pkg-astropy"></span><h3>astropy<a class="headerlink" href="#astropy" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 09eafa7dc3_7c91ed1b-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">cython  (0.17.3_e9d77df0-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="atlas">
+<span id="pkg-atlas"></span><h3>atlas<a class="headerlink" href="#atlas" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.10.0-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="autoconf">
+<span id="pkg-autoconf"></span><h3>autoconf<a class="headerlink" href="#autoconf" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.69_cb56a547-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="automake">
+<span id="pkg-automake"></span><h3>automake<a class="headerlink" href="#automake" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.12.6_b9d0ae94-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="blas">
+<span id="pkg-blas"></span><h3>blas<a class="headerlink" href="#blas" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 10.7.5-apple-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="boost">
+<span id="pkg-boost"></span><h3>boost<a class="headerlink" href="#boost" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.52.0_2e272961-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="bzip2">
+<span id="pkg-bzip2"></span><h3>bzip2<a class="headerlink" href="#bzip2" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.0.6-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="cdsclient">
+<span id="pkg-cdsclient"></span><h3>cdsclient<a class="headerlink" href="#cdsclient" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.71-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="cfitsio">
+<span id="pkg-cfitsio"></span><h3>cfitsio<a class="headerlink" href="#cfitsio" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.31_b9d0ae94-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="clique">
+<span id="pkg-clique"></span><h3>clique<a class="headerlink" href="#clique" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 7199280_165b31b6-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">elemental  (0.78-p1_2468a50b-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cmake">
+<span id="pkg-cmake"></span><h3>cmake<a class="headerlink" href="#cmake" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.8.10.2-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="cmb">
+<span id="pkg-cmb"></span><h3>cmb<a class="headerlink" href="#cmb" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 27813e68-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">scalapack  (2.0.2_b293802d-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">boost  (1.52.0_2e272961-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">fitstools  (latest_f46da9b6-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">bzip2  (1.0.6-gcc473)</div>
+<div class="line">mpibatch  (20120627_852f3906-gcc473)</div>
+<div class="line">scipy  (0.10.1_d2024227-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+<div class="line">gitgit  (1.7.10.2-apple-gcc473)</div>
+<div class="line">moat  (031ebea_334136a3-gcc473)</div>
+<div class="line">getdata  (0.8.2_b820de36-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">cnpy  (58b7ca8_982ee192-gcc473)</div>
+<div class="line">hdf5  (1.8.10_db4dac44-gcc473)</div>
+<div class="line">elemental  (0.78-p1_2468a50b-gcc473)</div>
+<div class="line">toast  (8e18fe1_6b0b2af4-gcc473)</div>
+<div class="line">healpix  (2.15a_1328a71d-gcc473)</div>
+<div class="line">setuptools  (0.6c11_486320a2-gcc473)</div>
+<div class="line">pyfits  (3.1_d2907020-gcc473)</div>
+<div class="line">matplotlib  (NA-gcc473)</div>
+<div class="line">cython  (0.17.3_e9d77df0-gcc473)</div>
+<div class="line">healpy  (1.6.0_e150296d-gcc473)</div>
+<div class="line">ipython  (0.13_d90e87ae-gcc473)</div>
+<div class="line">mpi4py  (1.3_9155397f-gcc473)</div>
+<div class="line">pyslalib  (6663ead2eb_cdf59e20-gcc473)</div>
+<div class="line">scientific  (2.9.2_e858a931-gcc473)</div>
+<div class="line">numexpr  (2.0.1_e6715007-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cnpy">
+<span id="pkg-cnpy"></span><h3>cnpy<a class="headerlink" href="#cnpy" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 58b7ca8_982ee192-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="curl">
+<span id="pkg-curl"></span><h3>curl<a class="headerlink" href="#curl" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 7.28.1_efad05af-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cython">
+<span id="pkg-cython"></span><h3>cython<a class="headerlink" href="#cython" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.17.3_e9d77df0-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="eigen">
+<span id="pkg-eigen"></span><h3>eigen<a class="headerlink" href="#eigen" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.1.2_3dc22df6-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="elemental">
+<span id="pkg-elemental"></span><h3>elemental<a class="headerlink" href="#elemental" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.78-p1_2468a50b-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="es">
+<span id="pkg-es"></span><h3>es<a class="headerlink" href="#es" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : f592848_78ca381b-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">appspack  (5.0.1-C3_39026d4e-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+<div class="line">gitgit  (1.7.10.2-apple-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="expat">
+<span id="pkg-expat"></span><h3>expat<a class="headerlink" href="#expat" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.1.0_4f2c7b0d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="eye">
+<span id="pkg-eye"></span><h3>eye<a class="headerlink" href="#eye" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.4.1_3eac2187-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="fftw">
+<span id="pkg-fftw"></span><h3>fftw<a class="headerlink" href="#fftw" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.3.3_852f3906-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="fitsio">
+<span id="pkg-fitsio"></span><h3>fitsio<a class="headerlink" href="#fitsio" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3c3585332c_726e46e9-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+<div class="line">gitgit  (1.7.10.2-apple-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="fitstools">
+<span id="pkg-fitstools"></span><h3>fitstools<a class="headerlink" href="#fitstools" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : latest_f46da9b6-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gdb">
+<span id="pkg-gdb"></span><h3>gdb<a class="headerlink" href="#gdb" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 7.5.1_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="getdata">
+<span id="pkg-getdata"></span><h3>getdata<a class="headerlink" href="#getdata" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.8.2_b820de36-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">bzip2  (1.0.6-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gettext">
+<span id="pkg-gettext"></span><h3>gettext<a class="headerlink" href="#gettext" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.18.1.1_7e434f99-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gitgit">
+<span id="pkg-gitgit"></span><h3>gitgit<a class="headerlink" href="#gitgit" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.7.10.2-apple-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gsl">
+<span id="pkg-gsl"></span><h3>gsl<a class="headerlink" href="#gsl" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.15_0d99d93f-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gzip">
+<span id="pkg-gzip"></span><h3>gzip<a class="headerlink" href="#gzip" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.5_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="h5py">
+<span id="pkg-h5py"></span><h3>h5py<a class="headerlink" href="#h5py" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.1.2_e820a754-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">hdf5  (1.8.10_db4dac44-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="hdf5">
+<span id="pkg-hdf5"></span><h3>hdf5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.8.10_db4dac44-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="hdf5-mpi">
+<span id="pkg-hdf5-mpi"></span><h3>hdf5_mpi<a class="headerlink" href="#hdf5-mpi" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.8.10_b52c8984-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="healpix">
+<span id="pkg-healpix"></span><h3>healpix<a class="headerlink" href="#healpix" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.15a_1328a71d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="healpy">
+<span id="pkg-healpy"></span><h3>healpy<a class="headerlink" href="#healpy" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.6.0_e150296d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">matplotlib  (NA-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">setuptools  (0.6c11_486320a2-gcc473)</div>
+<div class="line">pyfits  (3.1_d2907020-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+<div class="line">gitgit  (1.7.10.2-apple-gcc473)</div>
+<div class="line">cython  (0.17.3_e9d77df0-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="hotpants">
+<span id="pkg-hotpants"></span><h3>hotpants<a class="headerlink" href="#hotpants" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 5.1.10_f46da9b6-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ipython">
+<span id="pkg-ipython"></span><h3>ipython<a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.13_d90e87ae-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="lapack">
+<span id="pkg-lapack"></span><h3>lapack<a class="headerlink" href="#lapack" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.4.1_524a882f-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="levmar">
+<span id="pkg-levmar"></span><h3>levmar<a class="headerlink" href="#levmar" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.6_af13f8f3-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="libarchive">
+<span id="pkg-libarchive"></span><h3>libarchive<a class="headerlink" href="#libarchive" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.1.2_1193c281-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">bzip2  (1.0.6-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="libjpeg">
+<span id="pkg-libjpeg"></span><h3>libjpeg<a class="headerlink" href="#libjpeg" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 6b_30f147e3-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="libtiff">
+<span id="pkg-libtiff"></span><h3>libtiff<a class="headerlink" href="#libtiff" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 4.0.2_db4dac44-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="libtool">
+<span id="pkg-libtool"></span><h3>libtool<a class="headerlink" href="#libtool" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.4.2-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="m4">
+<span id="pkg-m4"></span><h3>m4<a class="headerlink" href="#m4" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.4.16-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="matplotlib">
+<span id="pkg-matplotlib"></span><h3>matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : NA-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="minuit2">
+<span id="pkg-minuit2"></span><h3>minuit2<a class="headerlink" href="#minuit2" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 5.28.00_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="missfits">
+<span id="pkg-missfits"></span><h3>missfits<a class="headerlink" href="#missfits" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.4.0_3eac2187-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="moat">
+<span id="pkg-moat"></span><h3>moat<a class="headerlink" href="#moat" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 031ebea_334136a3-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">boost  (1.52.0_2e272961-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+<div class="line">gitgit  (1.7.10.2-apple-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mpi4py">
+<span id="pkg-mpi4py"></span><h3>mpi4py<a class="headerlink" href="#mpi4py" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.3_9155397f-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">scipy  (0.10.1_d2024227-gcc473)</div>
+<div class="line">cython  (0.17.3_e9d77df0-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mpibatch">
+<span id="pkg-mpibatch"></span><h3>mpibatch<a class="headerlink" href="#mpibatch" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 20120627_852f3906-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mysql-client">
+<span id="pkg-mysql-client"></span><h3>mysql_client<a class="headerlink" href="#mysql-client" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 6.0.2_c240e015-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mysql-python">
+<span id="pkg-mysql-python"></span><h3>mysql_python<a class="headerlink" href="#mysql-python" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.2.3_3bedc4e5-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">setuptools  (0.6c11_486320a2-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">mysql_client  (6.0.2_c240e015-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="netcdf">
+<span id="pkg-netcdf"></span><h3>netcdf<a class="headerlink" href="#netcdf" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 4.2.1.1_ba12a35e-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="nose">
+<span id="pkg-nose"></span><h3>nose<a class="headerlink" href="#nose" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.1.2_4ea20b2e-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="numexpr">
+<span id="pkg-numexpr"></span><h3>numexpr<a class="headerlink" href="#numexpr" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.0.1_e6715007-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="numpy">
+<span id="pkg-numpy"></span><h3>numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.6.2_fccbe115-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="openmpi">
+<span id="pkg-openmpi"></span><h3>openmpi<a class="headerlink" href="#openmpi" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.7.1_0d99d93f-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="openssl">
+<span id="pkg-openssl"></span><h3>openssl<a class="headerlink" href="#openssl" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.0.1c_5e89489b-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pcre">
+<span id="pkg-pcre"></span><h3>pcre<a class="headerlink" href="#pcre" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 8.31_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="petsc">
+<span id="pkg-petsc"></span><h3>petsc<a class="headerlink" href="#petsc" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.3-p3_c8c9bcf2-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">scipy  (0.10.1_d2024227-gcc473)</div>
+<div class="line">cython  (0.17.3_e9d77df0-gcc473)</div>
+<div class="line">mpi4py  (1.3_9155397f-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">scalapack  (2.0.2_b293802d-gcc473)</div>
+<div class="line">boost  (1.52.0_2e272961-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="plplot">
+<span id="pkg-plplot"></span><h3>plplot<a class="headerlink" href="#plplot" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 5.9.9_9a71b8a7-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">tcl  (8.5.12_f577707c-gcc473)</div>
+<div class="line">tk  (8.5.12_16354a06-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="postgresql">
+<span id="pkg-postgresql"></span><h3>postgresql<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 9.1.8_51cdef98-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="psfex">
+<span id="pkg-psfex"></span><h3>psfex<a class="headerlink" href="#psfex" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.9.1_7c98ced8-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">sfftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">tcl  (8.5.12_f577707c-gcc473)</div>
+<div class="line">tk  (8.5.12_16354a06-gcc473)</div>
+<div class="line">plplot  (5.9.9_9a71b8a7-gcc473)</div>
+<div class="line">atlas  (3.10.0-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="psycopg2">
+<span id="pkg-psycopg2"></span><h3>psycopg2<a class="headerlink" href="#psycopg2" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.4.6_8e12e9a6-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">postgresql  (9.1.8_51cdef98-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pyephem">
+<span id="pkg-pyephem"></span><h3>pyephem<a class="headerlink" href="#pyephem" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.7.5.1_44b9b905-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">setuptools  (0.6c11_486320a2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pyfits">
+<span id="pkg-pyfits"></span><h3>pyfits<a class="headerlink" href="#pyfits" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.1_d2907020-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">setuptools  (0.6c11_486320a2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pyraf">
+<span id="pkg-pyraf"></span><h3>pyraf<a class="headerlink" href="#pyraf" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.0_155c7711-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">matplotlib  (NA-gcc473)</div>
+<div class="line">ipython  (0.13_d90e87ae-gcc473)</div>
+<div class="line">urwid  (1.0.2_efba2f22-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pyslalib">
+<span id="pkg-pyslalib"></span><h3>pyslalib<a class="headerlink" href="#pyslalib" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 6663ead2eb_cdf59e20-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+<div class="line">gitgit  (1.7.10.2-apple-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="python">
+<span id="pkg-python"></span><h3>python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.7.3_14cc07f1-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="readline">
+<span id="pkg-readline"></span><h3>readline<a class="headerlink" href="#readline" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 6.2_4f2c7b0d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rpy2">
+<span id="pkg-rpy2"></span><h3>rpy2<a class="headerlink" href="#rpy2" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.3.3_64caa17d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">libjpeg  (6b_30f147e3-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">libtiff  (4.0.2_db4dac44-gcc473)</div>
+<div class="line">bzip2  (1.0.6-gcc473)</div>
+<div class="line">pcre  (8.31_f577707c-gcc473)</div>
+<div class="line">R  (2.15.3_77663f64-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="scalapack">
+<span id="pkg-scalapack"></span><h3>scalapack<a class="headerlink" href="#scalapack" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.0.2_b293802d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="scamp">
+<span id="pkg-scamp"></span><h3>scamp<a class="headerlink" href="#scamp" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.7.0_28b67fb3-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">atlas  (3.10.0-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">tcl  (8.5.12_f577707c-gcc473)</div>
+<div class="line">tk  (8.5.12_16354a06-gcc473)</div>
+<div class="line">plplot  (5.9.9_9a71b8a7-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">sfftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">cdsclient  (3.71-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="scientific">
+<span id="pkg-scientific"></span><h3>scientific<a class="headerlink" href="#scientific" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.9.2_e858a931-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="scipy">
+<span id="pkg-scipy"></span><h3>scipy<a class="headerlink" href="#scipy" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.10.1_d2024227-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="scons">
+<span id="pkg-scons"></span><h3>scons<a class="headerlink" href="#scons" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.2.0_4ea20b2e-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="screen">
+<span id="pkg-screen"></span><h3>screen<a class="headerlink" href="#screen" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : c64f800_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="setuptools">
+<span id="pkg-setuptools"></span><h3>setuptools<a class="headerlink" href="#setuptools" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 0.6c11_486320a2-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sextractor">
+<span id="pkg-sextractor"></span><h3>sextractor<a class="headerlink" href="#sextractor" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.8.6_426c671d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">atlas  (3.10.0-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sfftw">
+<span id="pkg-sfftw"></span><h3>sfftw<a class="headerlink" href="#sfftw" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.3.3_852f3906-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="skymaker">
+<span id="pkg-skymaker"></span><h3>skymaker<a class="headerlink" href="#skymaker" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.3.3_426c671d-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">atlas  (3.10.0-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">sfftw  (3.3.3_852f3906-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sqlite">
+<span id="pkg-sqlite"></span><h3>sqlite<a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.7.15.1_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="stiff">
+<span id="pkg-stiff"></span><h3>stiff<a class="headerlink" href="#stiff" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.1.3_3e7fe744-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">libtiff  (4.0.2_db4dac44-gcc473)</div>
+<div class="line">libjpeg  (6b_30f147e3-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="stuff">
+<span id="pkg-stuff"></span><h3>stuff<a class="headerlink" href="#stuff" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.19_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="swarp">
+<span id="pkg-swarp"></span><h3>swarp<a class="headerlink" href="#swarp" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.19.1_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="swig">
+<span id="pkg-swig"></span><h3>swig<a class="headerlink" href="#swig" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.0.8_c5fb5d00-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">pcre  (8.31_f577707c-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">boost  (1.52.0_2e272961-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="tcl">
+<span id="pkg-tcl"></span><h3>tcl<a class="headerlink" href="#tcl" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 8.5.12_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="tcsh">
+<span id="pkg-tcsh"></span><h3>tcsh<a class="headerlink" href="#tcsh" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 6.18.01_0d99d93f-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="tk">
+<span id="pkg-tk"></span><h3>tk<a class="headerlink" href="#tk" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 8.5.12_16354a06-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">tcl  (8.5.12_f577707c-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="toast">
+<span id="pkg-toast"></span><h3>toast<a class="headerlink" href="#toast" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 8e18fe1_6b0b2af4-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+<div class="line">expat  (2.1.0_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">bzip2  (1.0.6-gcc473)</div>
+<div class="line">getdata  (0.8.2_b820de36-gcc473)</div>
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">cnpy  (58b7ca8_982ee192-gcc473)</div>
+<div class="line">boost  (1.52.0_2e272961-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">gettext  (0.18.1.1_7e434f99-gcc473)</div>
+<div class="line">gitgit  (1.7.10.2-apple-gcc473)</div>
+<div class="line">moat  (031ebea_334136a3-gcc473)</div>
+<div class="line">hdf5  (1.8.10_db4dac44-gcc473)</div>
+<div class="line">elemental  (0.78-p1_2468a50b-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="trilinos">
+<span id="pkg-trilinos"></span><h3>trilinos<a class="headerlink" href="#trilinos" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 10.12.2_4b35e0b3-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">cmake  (2.8.10.2-gcc473)</div>
+<div class="line">blas  (10.7.5-apple-gcc473)</div>
+<div class="line">lapack  (3.4.1_524a882f-gcc473)</div>
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+<div class="line">scalapack  (2.0.2_b293802d-gcc473)</div>
+<div class="line">fftw  (3.3.3_852f3906-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+<div class="line">nose  (1.1.2_4ea20b2e-gcc473)</div>
+<div class="line">numpy  (1.6.2_fccbe115-gcc473)</div>
+<div class="line">boost  (1.52.0_2e272961-gcc473)</div>
+<div class="line">zlib  (1.2.7-gcc473)</div>
+<div class="line">openssl  (1.0.1c_5e89489b-gcc473)</div>
+<div class="line">curl  (7.28.1_efad05af-gcc473)</div>
+<div class="line">netcdf  (4.2.1.1_ba12a35e-gcc473)</div>
+<div class="line">scipy  (0.10.1_d2024227-gcc473)</div>
+<div class="line">pcre  (8.31_f577707c-gcc473)</div>
+<div class="line">swig  (2.0.8_c5fb5d00-gcc473)</div>
+<div class="line">cython  (0.17.3_e9d77df0-gcc473)</div>
+<div class="line">mpi4py  (1.3_9155397f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="urwid">
+<span id="pkg-urwid"></span><h3>urwid<a class="headerlink" href="#urwid" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.0.2_efba2f22-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">readline  (6.2_4f2c7b0d-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">sqlite  (3.7.15.1_f577707c-gcc473)</div>
+<div class="line">python  (2.7.3_14cc07f1-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="valgrind">
+<span id="pkg-valgrind"></span><h3>valgrind<a class="headerlink" href="#valgrind" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.8.1_852f3906-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">openmpi  (1.7.1_0d99d93f-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="wcslib">
+<span id="pkg-wcslib"></span><h3>wcslib<a class="headerlink" href="#wcslib" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 4.16_3eac2187-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+<div class="line">cfitsio  (3.31_b9d0ae94-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="wcstools">
+<span id="pkg-wcstools"></span><h3>wcstools<a class="headerlink" href="#wcstools" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 3.8.6-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+<div class="section" id="weightwatcher">
+<span id="pkg-weightwatcher"></span><h3>weightwatcher<a class="headerlink" href="#weightwatcher" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.8.10_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="xpa">
+<span id="pkg-xpa"></span><h3>xpa<a class="headerlink" href="#xpa" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 2.1.14_f577707c-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">m4  (1.4.16-gcc473)</div>
+<div class="line">autoconf  (2.69_cb56a547-gcc473)</div>
+<div class="line">automake  (1.12.6_b9d0ae94-gcc473)</div>
+<div class="line">libtool  (2.4.2-gcc473)</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="zlib">
+<span id="pkg-zlib"></span><h3>zlib<a class="headerlink" href="#zlib" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Version      : 1.2.7-gcc473</div>
+</div>
+<div class="line-block">
+<div class="line">Dependencies :</div>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="command.html">Command Reference</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pkgdev.html">Package Developer Reference</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Theodore Kisner.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
