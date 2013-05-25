@@ -14,6 +14,7 @@ Contents:
    intro
    install
    command
+   pkglist
    pkgdev
    advanced
 

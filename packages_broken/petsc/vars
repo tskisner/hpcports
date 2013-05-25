@@ -1,0 +1,7 @@
+INCLUDE = include
+PYTHON = lib
+LIB = lib
+LIBS_CC = -lgetdata
+LIBS_CXX = -lgetdata++ -lgetdata
+LIBS_F77 = -lfgetdata -lgetdata
+LIBS_FC = -lf95getdata -lgetdata

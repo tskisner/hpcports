@@ -1,7 +1,7 @@
 
 .. _command:
 
-Available Commands
+Command Reference
 ==================================
 
 Standard software management operations consist of installing and removing packages, updating packages to new versions, and querying packages for the versions, dependencies, and installation state.  Here is how to perform these operations with HPCPorts.
@@ -98,7 +98,7 @@ Uninstall the specified packages.  The state of the extracted source trees are n
 Fetch
 ----------
 
-Download the source trees for the specified packages.  This is useful if you want to download many packages to the pool location while connected to the network and then install them later while offline::
+Download the source trees for the specified packages.  This is useful if you want to download many packages to the HPCP_POOL location while connected to the network and then install them later while offline::
 
 	$> hpcp fetch lapack blas
 	--->         lapack :  Fetching tarball
