@@ -75,17 +75,17 @@ print OUT "-------------------------\n\n";
 foreach $key ( sort keys %{$pdb} ) {
 	$value = $pdb->{ $key };
 
-	my $fullversion = HPCPorts::package_fullversion ( $pdb, $key, $env, $overrides );
+	my $version = $pdb->{ $key }->{ "version" };
 
 	print OUT ".. _pkg_${key}:\n\n";
 	print OUT "${key}\n";
 	print OUT "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n";
-	print OUT "| Version      : ${fullversion}\n\n";
+	print OUT "| Version      : ${version}\n\n";
 	print OUT "| Dependencies : \n\n";
 
 	my $dep;
 	for $dep ( @{ $pdb->{ $key }->{ "deps" } } ) {
-		my $depversion = HPCPorts::package_fullversion ( $pdb, $dep, $env, $overrides );
+		my $depversion = $pdb->{ $dep }->{ "version" };
 		print OUT " |   ${dep}  (${depversion})\n";
 	}
 
