@@ -701,6 +701,8 @@ sub dep_file {
 
 	} else {
 
+		print OUT "source ${prefix}/env/hpcp_${hpcpenv}.sh\n";
+
 		my $dep;
 		foreach $dep ( @{ $pdb->{ $pname }->{ "deps" } } ) {
 			my $fullversion = package_fullversion ( $pdb, $dep, $hpcpenv, $overrides );
