@@ -49,7 +49,6 @@ system ( "perl -i -p -e 's/^release =.*/release = \"$docver ($hpcpver)\"/;' ${hp
 
 open ( OUT, ">${hpcp_root}/docs/source/pkglist.rst" ) || die;
 
-
 print OUT ".. _pkglist:\n\n";
 print OUT "Current Packages\n";
 print OUT "==================================\n\n";
@@ -57,6 +56,14 @@ print OUT "At the time of the last documentation update (git revision $hpcpver),
 
 print OUT "Package List\n";
 print OUT "-------------------------\n\n";
+
+# write DOT header
+
+open ( DOT, ">${hpcp_root}/docs/source/deps.dot") || die;
+
+print DOT "digraph HPCPorts {\n";
+
+
 
 # print package list
 
@@ -83,6 +90,8 @@ foreach $key ( sort keys %{$pdb} ) {
 	print OUT "| Version      : ${version}\n\n";
 	print OUT "| Dependencies : \n\n";
 
+	print DOT "${key} [label=\"${key} ${version}\", shape=box];\n";
+
 	my $dep;
 	for $dep ( @{ $pdb->{ $key }->{ "deps" } } ) {
 		my $depversion = $pdb->{ $dep }->{ "version" };
@@ -93,3 +102,16 @@ foreach $key ( sort keys %{$pdb} ) {
 }
 
 close ( OUT );
+
+foreach $key ( sort keys %{$pdb} ) {
+	$value = $pdb->{ $key };
+
+	print DOT "${key}";
+
+	my $dep;
+	for $dep ( @{ $pdb->{ $key }->{ "deps" } } ) {
+		print DOT " -> ${dep}";
+	}
+	print DOT "\n";
+}
+
