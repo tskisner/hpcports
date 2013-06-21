@@ -3,6 +3,7 @@
 # live hpcports install used by many people
 #
 # export HPCP_PREFIX=/project/projectdirs/cmb/modules/hopper/hpcports_gnu
+export HPCP_PREFIX=/global/scratch/sd/colliera/PROFILING/modules/hopper/hpcports_gnu
 
 # OS environment version
 #
@@ -23,7 +24,8 @@ MOD_SUFFIX = -hpcp
 
 # software download location
 
-HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
+#HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
+HPCP_POOL = /global/scratch/sd/colliera/PROFILING/modules/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
@@ -75,7 +77,7 @@ MPIFCLIBS =
 
 # Linking
 
-LIBS = -L/opt/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
+LIBS = -L/usr/common/usg/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 LDFLAGS = -L/usr/lib64 /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # vendor math libraries
