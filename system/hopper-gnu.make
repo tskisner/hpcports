@@ -3,7 +3,6 @@
 # live hpcports install used by many people
 #
 # export HPCP_PREFIX=/project/projectdirs/cmb/modules/hopper/hpcports_gnu
-export HPCP_PREFIX=/global/scratch/sd/colliera/PROFILING/modules/hopper/hpcports_gnu
 
 # OS environment version
 #
@@ -24,8 +23,7 @@ MOD_SUFFIX = -hpcp
 
 # software download location
 
-#HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
-HPCP_POOL = /global/scratch/sd/colliera/PROFILING/modules/hpcports_pool
+HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
