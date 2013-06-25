@@ -311,7 +311,12 @@ sub package_vars {
 	open ( IN, "$varfile" ) || die ( "\nCannot open package variables file $varfile\n\n" );
 	while ( <IN> ) {
 		my @F = split;
-		$vars->{ $F[0] } = $F[2];
+		my $n = @F;
+		my @vals = ();
+		for ( my $v = 2; $v < $n; $v++ ) {
+			push ( @vals, $F[$v] );
+		}
+		$vars->{ $F[0] } = join ( " ", @vals );
 	}
 	close ( IN );
 
@@ -351,7 +356,7 @@ sub package_fullversion {
 	my $full;
 
 	if ( defined ( $overrides->{ $pname } ) ) {
-		$full = $overrides->{ $pname }->{ "${pname}_VERSION" };
+		$full = $overrides->{ $pname }->{ "VERSION" };
 		$full .= "-".$env;
 	} else {
 		if ( $pname eq "hpcp" ) {
@@ -448,9 +453,13 @@ sub config_vars {
 				my $key;
 				my $value;
 				while ( ($key, $value) = each %{$overrides} ) {
-					if ( /^${key}_(.*)/ ) {
-						#print "Found $F[0] = $F[2]\n";
-						$value->{ $F[0] } = $F[2];
+					if ( $F[0] =~ /${key}_(.*)/ ) {
+						my $n = @F;
+						my @vals = ();
+						for ( my $v = 2; $v < $n; $v++ ) {
+							push ( @vals, $F[$v] );
+						}
+						$value->{ $1 } = join ( " ", @vals );
 					}
 				}
 			}
@@ -470,6 +479,9 @@ sub config_vars {
 			$prefix = $ENV{ "HPCP_PREFIX" };
 		}
 	}
+
+	#use Data::Dumper;
+	#print Dumper ( $overrides );
 
 	return ( $env, $suffix, $prefix, $overrides );
 }
@@ -503,6 +515,10 @@ sub module_file {
 	my ( $outfile, $pdb, $pname, $vars, $conflicts, $hpcpenv, $modsuffix, $pysite, $sysmod, $prefix, $overrides ) = @_;
 
 	my $fullversion = package_fullversion ( $pdb, $pname, $hpcpenv, $overrides );
+
+	my @stdvars = standard_vars();
+	my %stdhash;
+	@stdhash { @stdvars } = ();
 
 	open ( OUT, ">$outfile" ) || die ( "\nCannot open output module file $outfile\n\n" );
 
@@ -538,8 +554,12 @@ sub module_file {
 		} elsif ( $key eq "LIB" ) {
 			print OUT "prepend-path LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
 			print OUT "prepend-path LD_LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
+		} elsif ( exists $stdhash { $key } ) {
+			print OUT "setenv ${pname}_${key} \"${value}\"\n";
 		} else {
-			print OUT "setenv ${key} \"${value}\"\n";
+			if ( $key ne "VERSION" ) {
+				print OUT "setenv ${key} \"${value}\"\n";
+			}
 		}
 	}
 
@@ -600,14 +620,7 @@ sub module_file {
 		my $dep;
 		foreach $dep ( @{ $pdb->{ $pname }->{ "deps" } } ) {
 			my $depmod = $dep.$modsuffix;
-			my $depver;
-
-			if ( defined $overrides->{ $dep } ) {
-				$depver = $overrides->{ $dep }->{ "${dep}_VERSION" };
-			} else {
-				$depver = $pdb->{ $pname }->{ "vdeps" }->{ $dep };
-			}
-			$depver .= "-".$hpcpenv;
+			my $depver = package_fullversion ( $pdb, $dep, $hpcpenv, $overrides );
 
 			print OUT "if [ module-info mode load ] {\n";
 			print OUT "\tif [ is-loaded ${depmod} ] {\n";
@@ -632,6 +645,10 @@ sub shell_file {
 	my ( $outfile, $pdb, $pname, $vars, $conflicts, $hpcpenv, $modsuffix, $pysite, $syssh, $prefix, $overrides ) = @_;
 
 	my $fullversion = package_fullversion ( $pdb, $pname, $hpcpenv, $overrides );
+
+	my @stdvars = standard_vars();
+	my %stdhash;
+	@stdhash { @stdvars } = ();
 
 	open ( OUT, ">$outfile" ) || die ( "\nCannot open output shell file $outfile\n\n" );
 
@@ -671,8 +688,12 @@ sub shell_file {
 			} elsif ( $key eq "LIB" ) {
 				print OUT "export LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LIBRARY_PATH\"\n";
 				print OUT "export LD_LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LD_LIBRARY_PATH\"\n";
+			} elsif ( exists $stdhash { $key } ) {
+				print OUT "export ${pname}_${key}=\"${value}\"\n";
 			} else {
-				print OUT "export ${key}=\"${value}\"\n";
+				if ( $key ne "VERSION" ) {
+					print OUT "export ${key}=\"${value}\"\n";
+				}
 			}
 		}
 	}
