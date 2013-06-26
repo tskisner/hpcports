@@ -421,6 +421,24 @@ sub package_state {
 	return $state;
 }
 
+# Makefile parsing functions
+
+sub makefile_var_expand {
+	my ( $rhs, $lhs, $store ) = @_;
+	my @matches = ( $lhs =~ /\$\((.*)\)/g );
+	my $ret = $lhs;
+	my $mat;
+
+	foreach $mat ( @matches ) {
+		my $exp = ${store}->{$mat};
+		$ret =~ s/\$\(${mat}\)/${exp}/g;
+	}
+
+	$store->{$rhs} = $ret;
+
+	return $ret;
+}
+
 
 # Read machine-specific variables from the
 # Makefile config snippet.
@@ -435,18 +453,31 @@ sub config_vars {
 	my $suffix = "";
 	my $prefix = "";
 
+	my $varstore = {};
+
 	while ( <IN> ) {
 		chomp;
 		if ( ( ! /^#.*/ ) && ( $_ ne "" ) ) {
 			# (not a comment or empty line)
 			my @F = split;
+
+			# build LHS of equation
+			my $n = @F;
+			my @vals = ();
+			for ( my $v = 2; $v < $n; $v++ ) {
+				push ( @vals, $F[$v] );
+			}
+			my $lhs = join ( " ", @vals );
+			
+			my $explhs = makefile_var_expand ( $F[0], $lhs, $varstore );
+
 			if ( $F[0] eq "HPCP_ENV" ) {
-				$env = $F[2];
+				$env = $explhs;
 			} elsif ( $F[0] eq "HPCP_MOD_SUFFIX" ) {
-				$suffix = $F[2];
+				$suffix = $explhs;
 			} elsif ( $F[0] eq "HPCP_PREFIX" ) {
-				$prefix = $F[2];
-			} elsif ( /^(.*)_OVERRIDE.*/ ) {
+				$prefix = $explhs;
+			} elsif ( ( /^(.*)_OVERRIDE.*/ ) && ( $explhs eq "TRUE" ) ) {
 				$overrides->{ $1 } = {};
 			} else {
 				# scan for package variables
@@ -454,12 +485,7 @@ sub config_vars {
 				my $value;
 				while ( ($key, $value) = each %{$overrides} ) {
 					if ( $F[0] =~ /${key}_(.*)/ ) {
-						my $n = @F;
-						my @vals = ();
-						for ( my $v = 2; $v < $n; $v++ ) {
-							push ( @vals, $F[$v] );
-						}
-						$value->{ $1 } = join ( " ", @vals );
+						$value->{ $1 } = $explhs;
 					}
 				}
 			}
@@ -481,9 +507,10 @@ sub config_vars {
 	}
 
 	#use Data::Dumper;
+	#print Dumper ( $varstore );
 	#print Dumper ( $overrides );
 
-	return ( $env, $suffix, $prefix, $overrides );
+	return ( $env, $suffix, $prefix, $overrides, $varstore );
 }
 
 
