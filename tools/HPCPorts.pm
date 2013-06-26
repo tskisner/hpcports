@@ -430,7 +430,16 @@ sub makefile_var_expand {
 	my $mat;
 
 	foreach $mat ( @matches ) {
-		my $exp = ${store}->{$mat};
+		my $exp;
+		if ( defined ( ${store}->{$mat} ) ) {
+			$exp = ${store}->{$mat};
+		} elsif ( defined $ENV{$mat} ) {
+			$exp = $ENV{$mat};
+		} else {
+			my $msg = "variable \"".$mat."\" is not defined in config file or shell environment\n";
+			die ( $msg );
+		}
+ 
 		$ret =~ s/\$\(${mat}\)/${exp}/g;
 	}
 
