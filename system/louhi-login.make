@@ -92,7 +92,6 @@ openssl_OVERRIDE = TRUE
 openssl_VERSION = louhi
 
 fftw_OVERRIDE = TRUE
-fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = $(FFTW_VERSION)
 fftw_LIBS_CC = -lfftw3_threads -lfftw3
 fftw_LIBS_CC = -lfftw3_threads -lfftw3

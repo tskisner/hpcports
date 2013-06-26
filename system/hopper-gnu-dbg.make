@@ -88,7 +88,6 @@ python_SITE = python2.7
 python_VERSION = 2.7.1
 
 fftw_OVERRIDE = TRUE
-fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = 3.3.0.0
 
 nose_OVERRIDE = TRUE

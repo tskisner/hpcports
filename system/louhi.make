@@ -111,7 +111,6 @@ python_SITE = python2.6
 python_VERSION = louhi
 
 fftw_OVERRIDE = TRUE
-fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
 fftw_VERSION = $(FFTW_VERSION)
 
 nose_OVERRIDE = TRUE

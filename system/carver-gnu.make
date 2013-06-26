@@ -93,20 +93,14 @@ tk_OVERRIDE = TRUE
 tk_VERSION = 8.4.13
 
 blas_OVERRIDE = TRUE
-blas_PREFIX = $(MKL_HOME)
 blas_VERSION = 10.2
-blas_INCLUDE = $(MKL_INC)
-blas_LIBDIR = $(MKL_HOME)/lib/em64t
 blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(INTEL_LIBS_CXX)
 blas_LIBS_F77 = $(INTEL_LIBS_F77)
 blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
-lapack_PREFIX = $(MKL_HOME)
 lapack_VERSION = 10.2
-lapack_INCLUDE = $(MKL_INC)
-lapack_LIBDIR = $(MKL_HOME)/lib/em64t
 lapack_LIBS_CC = -lmkl_lapack
 lapack_LIBS_CXX = -lmkl_lapack
 lapack_LIBS_F77 = -lmkl_lapack
