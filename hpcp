@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "x${HPCP_HOST}" = x ]; then
+	echo "You must have the \"HPCP_HOST\" environment variable defined"
+	exit 1
+fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# setup environment
+. ${DIR}/system/${HPCP_HOST}.sh
+
+# call actual perl program
+${DIR}/hpcp_exec.pl "$@"
+
+exit
