@@ -171,7 +171,7 @@ install :
 			fi; \
 			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
-			suffix="$(MOD_SUFFIX)"; \
+			suffix="$(HPCP_MOD_SUFFIX)"; \
 			if [ $(PKG_NAME) = "hpcp" ]; then \
 				suffix=""; \
 			fi; \
@@ -216,7 +216,7 @@ uninstall :
 	fi; \
 	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
-	suffix="$(MOD_SUFFIX)"; \
+	suffix="$(HPCP_MOD_SUFFIX)"; \
 	if [ $(PKG_NAME) = "hpcp" ]; then \
 		suffix=""; \
 	fi; \
