@@ -20,7 +20,7 @@ HPCP_ENV = 4.0
 
 # suffix, to avoid name collisions with nersc modules
 
-MOD_SUFFIX = -hpcp
+HPCP_MOD_SUFFIX = -hpcp
 
 # software download location
 
