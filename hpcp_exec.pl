@@ -28,6 +28,39 @@ sub purge_stale {
 	return;
 }
 
+
+sub install_list {
+	my ( $pdb, $plist, $root, $system, $env, $prefix, $overrides ) = @_;
+
+	# recursively install all dependencies and the package
+
+	my $pname;
+	foreach $pname ( @{$plist} ) {
+
+		if ( $pname ne "hpcp" ) {
+			purge_stale ( $pdb, "hpcp", $root, $system, $env, $prefix, $overrides );
+			system ( "export PKG_FULLVERSION=${env}; cd ${root}/packages/hpcp; make install" );
+		}
+
+		my $dep;
+		my $fullversion;
+
+		foreach $dep ( @{$pdb->{ $pname }->{ "deps" }} ) {
+			purge_stale ( $pdb, $dep, $root, $system, $env, $prefix, $overrides );
+			$fullversion = HPCPorts::package_fullversion ( $pdb, $dep, $env, $overrides );
+			system ( "export PKG_FULLVERSION=${fullversion}; cd ${root}/packages/${dep}; make install" );
+		}
+
+		purge_stale ( $pdb, $pname, $root, $system, $env, $prefix, $overrides );
+		$fullversion = HPCPorts::package_fullversion ( $pdb, $pname, $env, $overrides );
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${root}/packages/${pname}; make install" );
+
+	}
+
+	return;
+}
+
+
 my $hpcp_root = $FindBin::Bin;
 my $pkgdir = $hpcp_root."/packages";
 my $dbfile = $pkgdir."/pkg.db";
@@ -55,6 +88,7 @@ if ( ( $ARGC < 1 ) || ( $ARGV[0] eq "help" ) ) {
 	print "      info <package(s)>                : detailed package info\n";
 	print "      purge <package(s) or ALL>        : purge extracted source\n";
 	print "      install <package(s)>             : install package(s)\n";
+	print "      upgrade <package(s) or ALL>      : recompile stale package(s)\n";
 	print "      uninstall <package(s) or ALL>    : uninstall package(s)\n";
 	print "      fetch <package(s) or ALL>        : fetch package source\n";
 	print "      clean <package(s) or ALL>        : clean extracted source\n";
@@ -178,28 +212,49 @@ if ( $command eq "status" ) {
 
 	# recursively install all dependencies and the package
 
-	my $pname;
-	foreach $pname ( @ARGV ) {
+	install_list ( $pkgdb, \@ARGV, $hpcp_root, $system, $env, $prefix, $overrides );
 
-		if ( $pname ne "hpcp" ) {
-			purge_stale ( $pkgdb, "hpcp", $hpcp_root, $system, $env, $prefix, $overrides );
-			system ( "export PKG_FULLVERSION=${env}; cd ${hpcp_root}/packages/hpcp; make install" );
+} elsif ( $command eq "upgrade" ) {
+
+	if ( @ARGV == 0 ) {
+		die ( "\nUsage:  $0 upgrade <package(s)>\n\n" );
+	}
+
+	# get a list of all stale packages
+
+	my $stale = ();
+
+	if ( $ARGV[0] eq "ALL" ) {
+
+		my $key;
+		my $value;
+
+		while ( ($key, $value) = each %{$pkgdb} ) {
+			if ( ! defined ( $overrides->{ $key } ) ) {
+				my $status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $env, $prefix, $overrides );
+				if ( $status eq "stale" ) {
+					push ( @{$stale}, $key );
+				}
+			}
 		}
 
-		my $dep;
-		my $fullversion;
+	} else {
 
-		foreach $dep ( @{$pkgdb->{ $pname }->{ "deps" }} ) {
-			purge_stale ( $pkgdb, $dep, $hpcp_root, $system, $env, $prefix, $overrides );
-			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $dep, $env, $overrides );
-			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${dep}; make install" );
+		my $pname;
+		foreach $pname ( @ARGV ) {
+			if ( ! defined ( $overrides->{ $pname } ) ) {
+				my $status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${pname}", $system, $env, $prefix, $overrides );
+				if ( $status eq "stale" ) {
+					push ( @{$stale}, $pname );
+				}
+			}
 		}
-
-		purge_stale ( $pkgdb, $pname, $hpcp_root, $system, $env, $prefix, $overrides );
-		$fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
-		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make install" );
 
 	}
+
+	# recursively install all dependencies and the packages
+
+	install_list ( $pkgdb, $stale, $hpcp_root, $system, $env, $prefix, $overrides );
 
 } elsif ( $command eq "info" ) {
 
