@@ -29,7 +29,9 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	cf=`echo "$(CFLAGS)" | sed -e "s#-D[^ ]*##g"`; \
+	cpf=`echo "$(CFLAGS)" | sed -e "s#-[^D][^ ]*##g"`; \
+	CC="$(CC)" CFLAGS="$${cf}" CPPFLAGS="$${cpf}" \
 	LDFLAGS="$(LDFLAGS)" \
 	LIBS="$(openssl_LIBS_CC) $(zlib_LIBS_CC) $(LIBS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
