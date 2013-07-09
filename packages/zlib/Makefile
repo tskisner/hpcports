@@ -7,7 +7,7 @@ PKG_NAME = zlib
 
 PKG_FORMAT = tar
 PKG_TAR = zlib-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/libpng/files/zlib/$(PKG_VERSION)/zlib-$(PKG_VERSION).tar.bz2/download
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://zlib.net/zlib-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = zlib-$(PKG_VERSION)
