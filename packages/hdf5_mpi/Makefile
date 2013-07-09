@@ -7,7 +7,7 @@ PKG_NAME = hdf5_mpi
 
 PKG_FORMAT = tar
 PKG_TAR = hdf5-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-$(PKG_VERSION)/src/hdf5-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = hdf5-$(PKG_VERSION)
