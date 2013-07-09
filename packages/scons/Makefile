@@ -7,7 +7,7 @@ PKG_NAME = scons
 
 PKG_FORMAT = tar
 PKG_TAR = scons-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/scons/files/scons/2.2.0/scons-2.2.0.tar.gz/download
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/scons/files/scons/$(PKG_VERSION)/scons-$(PKG_VERSION).tar.gz/download
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = scons-$(PKG_VERSION)
