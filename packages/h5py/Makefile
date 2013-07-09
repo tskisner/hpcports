@@ -7,7 +7,7 @@ PKG_NAME = h5py
 
 PKG_FORMAT = tar
 PKG_TAR = h5py-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://h5py.googlecode.com/files/h5py-2.1.2.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://h5py.googlecode.com/files/h5py-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = h5py-$(PKG_VERSION)
