@@ -7,7 +7,7 @@ PKG_NAME = gitgit
 
 PKG_FORMAT = tar
 PKG_TAR = git-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/git/git/archive/v1.8.2.1.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/git/git/archive/v$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = git-$(PKG_VERSION)
