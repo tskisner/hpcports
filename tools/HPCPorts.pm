@@ -8,7 +8,8 @@ $VERSION     = 1.00;
 @ISA         = qw(Exporter);
 @EXPORT      = ();
 @EXPORT_OK   = qw( 
-					standard_vars 
+					standard_vars
+					pkg_states
 					hpcp_version
 					generate_version
 					package_list
@@ -44,6 +45,22 @@ sub standard_vars {
 		"LIBS_MPICXX",
 		"LIBS_MPIF77",
 		"LIBS_MPIFC"
+	);
+	return @ret;
+}
+
+# Allowed package states
+
+sub pkg_states {
+	my @ret = (
+		"overridden",
+		"installed",
+		"purged",
+		"patched",
+		"extracted",
+		"configured",
+		"built",
+		"stale"
 	);
 	return @ret;
 }

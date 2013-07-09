@@ -8,8 +8,8 @@ use lib "$FindBin::Bin/tools";
 use HPCPorts;
 
 
-sub purge_stale {
-	my ( $pdb, $pname, $root, $system, $env, $prefix, $overrides ) = @_;
+sub purge_state {
+	my ( $pdb, $pname, $state, $root, $system, $env, $prefix, $overrides ) = @_;
 
 	my $pkgdir = "${root}/packages/${pname}";
 
@@ -20,7 +20,7 @@ sub purge_stale {
 		$status = HPCPorts::package_state ( $pdb, "${pkgdir}", $system, $env, $prefix, $overrides );
 	}
 
-	if ( $status eq "stale" ) {
+	if ( ( $status eq $state ) || ( $state eq "any" ) ) {
 		my $fullversion = HPCPorts::package_fullversion ( $pdb, $pname, $env, $overrides );
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${pkgdir}; make purge" );
 	}
@@ -38,7 +38,7 @@ sub install_list {
 	foreach $pname ( @{$plist} ) {
 
 		if ( $pname ne "hpcp" ) {
-			purge_stale ( $pdb, "hpcp", $root, $system, $env, $prefix, $overrides );
+			purge_state ( $pdb, "hpcp", "stale", $root, $system, $env, $prefix, $overrides );
 			system ( "export PKG_FULLVERSION=${env}; cd ${root}/packages/hpcp; make install" );
 		}
 
@@ -46,12 +46,12 @@ sub install_list {
 		my $fullversion;
 
 		foreach $dep ( @{$pdb->{ $pname }->{ "deps" }} ) {
-			purge_stale ( $pdb, $dep, $root, $system, $env, $prefix, $overrides );
+			purge_state ( $pdb, $dep, "stale", $root, $system, $env, $prefix, $overrides );
 			$fullversion = HPCPorts::package_fullversion ( $pdb, $dep, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${root}/packages/${dep}; make install" );
 		}
 
-		purge_stale ( $pdb, $pname, $root, $system, $env, $prefix, $overrides );
+		purge_state ( $pdb, $pname, "stale", $root, $system, $env, $prefix, $overrides );
 		$fullversion = HPCPorts::package_fullversion ( $pdb, $pname, $env, $overrides );
 		system ( "export PKG_FULLVERSION=${fullversion}; cd ${root}/packages/${pname}; make install" );
 
@@ -82,16 +82,16 @@ my $ARGC = @ARGV;
 if ( ( $ARGC < 1 ) || ( $ARGV[0] eq "help" ) ) {
 	print "\n   Usage:  $0 <command> <option>\n\n";
 	print "   Where valid commands and options are:\n";
-	print "      help                             : show this screen\n";
-	print "      update                           : update package DB\n";
-	print "      status                           : status of all packages\n";
-	print "      info <package(s)>                : detailed package info\n";
-	print "      purge <package(s) or ALL>        : purge extracted source\n";
-	print "      install <package(s)>             : install package(s)\n";
-	print "      upgrade <package(s) or ALL>      : recompile stale package(s)\n";
-	print "      uninstall <package(s) or ALL>    : uninstall package(s)\n";
-	print "      fetch <package(s) or ALL>        : fetch package source\n";
-	print "      clean <package(s) or ALL>        : clean extracted source\n";
+	print "      help                                 : show this screen\n";
+	print "      update                               : update package DB\n";
+	print "      status                               : status of all packages\n";
+	print "      info [ package(s) ]                  : detailed package info\n";
+	print "      purge [ package(s) | ALL | state ]   : purge extracted source\n";
+	print "      install [ package(s) ]               : install package(s)\n";
+	print "      upgrade [ package(s) | ALL ]         : recompile stale package(s)\n";
+	print "      uninstall [ package(s) | ALL ]       : uninstall package(s)\n";
+	print "      fetch [ package(s) | ALL ]           : fetch package source\n";
+	print "      clean [ package(s) | ALL ]           : clean extracted source\n";
 	print "\n";
 	exit(0);
 }
@@ -177,31 +177,41 @@ if ( $command eq "status" ) {
 } elsif ( $command eq "purge" ) {
 
 	if ( @ARGV == 0 ) {
-		die ( "\nUsage:  $0 purge <package(s) or ALL>\n\n" );
+		die ( "\nUsage:  $0 purge [ package(s) | ALL | state ]\n\n" );
 	}
 
-	if ( $ARGV[0] eq "ALL" ) {
+	my @pps = ();
+	my @states = ();
 
-		my $key;
-		my $value;
-		my $fullversion;
+	my @allowed = HPCPorts::pkg_states();
+	my %allowhash;
+	@allowhash { @allowed } = ();
 
-		while ( ($key, $value) = each %{$pkgdb} ) {
-			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
-			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make purge" );
+	my $arg;
+	foreach $arg ( @ARGV ) {
+		if ( $arg eq "ALL" ) {
+			push ( @states, "any" );
+		} elsif ( exists ( $allowhash{ $arg } ) ) {
+			push ( @states, $arg );
+		} else {
+			push ( @pps, $arg );
 		}
+	}
 
-		$fullversion = HPCPorts::package_fullversion ( $pkgdb, "hpcp", $env, $overrides );
-		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/hpcp; make purge" );
+	my $key;
+	my $value;
 
-	} else {
-
-		my $pname;
-		foreach $pname ( @ARGV ) {
-			my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
-			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make purge" );
+	while ( ($key, $value) = each %{$pkgdb} ) {
+		my $state;
+		foreach $state ( @states ) {
+			purge_state ( $pkgdb, $key, $state, $hpcp_root, $system, $env, $prefix, $overrides );
 		}
+	}
 
+	my $pname;
+	foreach $pname ( @pps ) {
+		my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $pname, $env, $overrides );
+		system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${pname}; make purge" );
 	}
 
 } elsif ( $command eq "install" ) {
