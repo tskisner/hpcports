@@ -5,12 +5,11 @@ include ../pkg_defs.make
 
 PKG_NAME = elemental
 
-PKG_FORMAT = tar
-PKG_TAR = elemental-$(PKG_VERSION).tgz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://elemental.googlecode.com/files/elemental-$(PKG_VERSION).tgz
-PKG_TAR_EXTRACT = $(GXTAR)
+PKG_FORMAT = git
+PKG_GIT_CLONE = git clone git://github.com/poulson/Elemental.git
+PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
-PKG_SRCDIR = elemental-$(PKG_VERSION)
+PKG_SRCDIR = Elemental
 
 PKG_BUILDDIR = build
 
