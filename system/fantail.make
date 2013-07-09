@@ -1,5 +1,5 @@
 # This assumes that macports is used, and that the following ports are installed:
-#	gcc47
+#	gcc4.8.1
 #   python27
 #   py27-numpy
 #   py27-matplotlib
@@ -14,7 +14,7 @@ endif
 
 # OS environment version
 
-HPCP_ENV = gcc473
+HPCP_ENV = gcc481
 
 # software download location
 
@@ -73,10 +73,10 @@ APPLE_LIBS_FC = -Wl,-framework,Accelerate
 # package overrides
 
 gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.7.10.2-apple
+gitgit_VERSION = 1.7.12.4-apple
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 10.7.5-apple
+blas_VERSION = 10.8-apple
 blas_LIBS_CC = -Wl,-framework,vecLib
 blas_LIBS_CXX = -Wl,-framework,vecLib
 blas_LIBS_F77 = -Wl,-framework,vecLib

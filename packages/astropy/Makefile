@@ -5,9 +5,10 @@ include ../pkg_defs.make
 
 PKG_NAME = astropy
 
-PKG_FORMAT = git
-PKG_GIT_CLONE = git clone http://github.com/astropy/astropy.git
-PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
+PKG_FORMAT = tar
+PKG_TAR = astropy-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://pypi.python.org/packages/source/a/astropy/astropy-$(PKG_VERSION).tar.gz
+PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = astropy
 
