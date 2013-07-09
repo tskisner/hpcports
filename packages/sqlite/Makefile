@@ -10,7 +10,7 @@ PKG_TAR = sqlite-autoconf-3071700.tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.sqlite.org/2013/sqlite-autoconf-3071700.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = sqlite-autoconf-30717010
+PKG_SRCDIR = sqlite-autoconf-3071700
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 

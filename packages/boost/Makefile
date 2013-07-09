@@ -27,23 +27,22 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	pyopt="--with-python=python"; \
 	boostchain=""; \
+	echo "" > tools/build/v2/user-config.jam; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
-		echo "using gcc : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
-		echo "" >> tools/build/v2/user-config.jam; \
+		echo "using gcc : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> tools/build/v2/user-config.jam; \
 		boostchain="gcc"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xdarwin" ]; then \
-		echo "using darwin : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
-		echo "" >> tools/build/v2/user-config.jam; \
+		echo "using darwin : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> tools/build/v2/user-config.jam; \
 		sed -i "" -E "s|-install_name \"|-install_name \"$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/|" tools/build/v2/tools/darwin.jam; \
 		boostchain="darwin"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xintel" ]; then \
-		echo "using intel-linux : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" " > tools/build/v2/user-config.jam; \
-		echo "" >> tools/build/v2/user-config.jam; \
+		echo "using intel-linux : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> tools/build/v2/user-config.jam; \
 		boostchain="intel-linux"; \
 	fi; \
-	echo "using mpi : $(MPICXX) ;" >> tools/build/v2/user-config.jam; \
+	echo "using mpi : \"$(MPICXX)\" ;" >> tools/build/v2/user-config.jam; \
+	echo "" >> tools/build/v2/user-config.jam; \
 	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
