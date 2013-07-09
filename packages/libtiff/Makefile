@@ -7,7 +7,7 @@ PKG_NAME = libtiff
 
 PKG_FORMAT = tar
 PKG_TAR = tiff-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.remotesensing.org/pub/libtiff/tiff-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://download.osgeo.org/libtiff/tiff-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = tiff-$(PKG_VERSION)
