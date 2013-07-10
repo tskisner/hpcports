@@ -1,4 +1,4 @@
 INCLUDE = include
 LIB = lib
-LIBS_CXX = -lelemental -lplcg -lpmrrr -lelem-dummy-lib
-LIBS_MPICXX = -lelemental -lplcg -lpmrrr -lelem-dummy-lib
+LIBS_CXX = -lelemental -lpmrrr
+LIBS_MPICXX = -lelemental -lpmrrr
