@@ -20,7 +20,7 @@ pkg-prefetch :
 	@mkdir -p $(STAGE); \
 	echo "PREFIX = $(HPCP_PREFIX)" > $(STAGE)/opts.make; \
 	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
-	echo "VERSION = $(PKG_VERSION)" >> $(STAGE)/opts.make; \
+	echo "VERSION = $(PKG_FULLVERSION)" >> $(STAGE)/opts.make; \
 	echo "MPICC = $(MPICC)" >> $(STAGE)/opts.make; \
 	echo "CC = $(CC)" >> $(STAGE)/opts.make; \
 	echo "CFLAGS = $(CFLAGS)" >> $(STAGE)/opts.make; \
