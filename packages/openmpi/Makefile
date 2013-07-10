@@ -27,14 +27,15 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="--disable-shared"; \
+		dyn="--disable-shared --enable-static --disable-dlopen"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
-	--disable-vt \
+	--disable-vt --disable-silent-rules \
+	--with-wrapper-ldflags="-Wl,-search_paths_first" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
