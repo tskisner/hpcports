@@ -14,7 +14,7 @@ PKG_SRCDIR = cfitsio
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_installname.patch
+PKG_PATCHES = 
 
 
 # rules for this package
@@ -35,7 +35,9 @@ pkg-configure :
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE); \
-	$(MAKE) shared; \
+	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
+		$(MAKE) shared; \
+	fi; \
 	$(MAKE) fpack; \
 	$(MAKE) funpack
 
