@@ -1,5 +1,5 @@
-loaded=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep openmpi-gnu`
-if [ "x${loaded}" = x ]; then
+ver=`gcc --version | head -n 1 | awk '{ print $3 }'`
+if [ "x${ver}" != "x4.7.0" ]; then
     module unload pgi
     module load gcc/4.7.0
     module unload openmpi
