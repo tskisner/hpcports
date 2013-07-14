@@ -32,7 +32,7 @@ pkg-configure :
 	-D CMAKE_C_COMPILER="$(CC)" \
 	-D CMAKE_CXX_COMPILER="$(CXX)" \
 	-D CMAKE_Fortran_COMPILER="$(FC)" \
-	-D CMAKE_BUILD_TYPE=PureRelease \
+	-D CMAKE_BUILD_TYPE=HybridRelease \
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
 	-D C_PURE_RELEASE_FLAGS="$(CFLAGS)" \
 	-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
