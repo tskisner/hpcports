@@ -25,7 +25,11 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	./configure \
+	dyn=""; \
+	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
+		dyn="--disable-shared"; \
+	fi; \
+	./configure $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

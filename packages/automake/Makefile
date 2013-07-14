@@ -25,12 +25,16 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	dyn=""; \
+	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
+		dyn="--disable-shared"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
-	./configure \
+	./configure $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
