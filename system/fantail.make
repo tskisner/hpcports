@@ -9,7 +9,7 @@
 
 
 ifndef HPCP_PREFIX
-  HPCP_PREFIX := /data/software/hpcports
+  HPCP_PREFIX := /Users/kisner/software/hpcports
 endif
 
 # OS environment version
@@ -18,7 +18,7 @@ HPCP_ENV = gcc481
 
 # software download location
 
-HPCP_POOL = /data/software/hpcports_pool
+HPCP_POOL = /Users/kisner/software/hpcports_pool
 
 # UNIX tools
 
