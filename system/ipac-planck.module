@@ -1,0 +1,4 @@
+  if [ is-loaded openmpi ] {
+  } else {
+    module load openmpi/1.5.1-gcc44
+  }
