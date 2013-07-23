@@ -5,4 +5,5 @@
     module unload openmpi
     module load openmpi-gnu/1.4.5
     module load mkl/10.2
+    module load git/1.7.8.3
   }
