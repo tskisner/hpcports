@@ -69,13 +69,13 @@ pkg-prefetch :
 	if [ "x$(VENDOR)" = "xapple" ]; then \
 		for val in $(APPLE_INCLUDE); do \
 			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export CPATH=\"$${val}:\$CPATH\"" >> $(STAGE)/base.sh; \
+			echo "export CPATH=\"$${val}:\$$CPATH\"" >> $(STAGE)/base.sh; \
 		done; \
 		for val in $(APPLE_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export LIBRARY_PATH=\"$${val}:\$LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
+			echo "export LIBRARY_PATH=\"$${val}:\$$LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
 			echo "prepend-path LD_LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export LD_LIBRARY_PATH=\"$${val}:\$LD_LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
+			echo "export LD_LIBRARY_PATH=\"$${val}:\$$LD_LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
 		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(APPLE_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "export HPCP_VENDOR_LIBS_CC=\"$(APPLE_LIBS_CC)\"" >> $(STAGE)/base.sh; \
@@ -89,13 +89,13 @@ pkg-prefetch :
 	if [ "x$(VENDOR)" = "xamd" ]; then \
 		for val in $(AMD_INCLUDE); do \
 			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export CPATH=\"$${val}:\$CPATH\"" >> $(STAGE)/base.sh; \
+			echo "export CPATH=\"$${val}:\$$CPATH\"" >> $(STAGE)/base.sh; \
 		done; \
 		for val in $(AMD_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export LIBRARY_PATH=\"$${val}:\$LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
+			echo "export LIBRARY_PATH=\"$${val}:\$$LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
 			echo "prepend-path LD_LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export LD_LIBRARY_PATH=\"$${val}:\$LD_LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
+			echo "export LD_LIBRARY_PATH=\"$${val}:\$$LD_LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
 		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(AMD_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "export HPCP_VENDOR_LIBS_CC=\"$(AMD_LIBS_CC)\"" >> $(STAGE)/base.sh; \
@@ -109,13 +109,13 @@ pkg-prefetch :
 	if [ "x$(VENDOR)" = "xintel" ]; then \
 		for val in $(INTEL_INCLUDE); do \
 			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export CPATH=\"$${val}:\$CPATH\"" >> $(STAGE)/base.sh; \
+			echo "export CPATH=\"$${val}:\$$CPATH\"" >> $(STAGE)/base.sh; \
 		done; \
 		for val in $(INTEL_LIBDIR); do \
 			echo "prepend-path LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export LIBRARY_PATH=\"$${val}:\$LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
+			echo "export LIBRARY_PATH=\"$${val}:\$$LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
 			echo "prepend-path LD_LIBRARY_PATH \"$${val}\"" >> $(STAGE)/base.module; \
-			echo "export LD_LIBRARY_PATH=\"$${val}:\$LD_LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
+			echo "export LD_LIBRARY_PATH=\"$${val}:\$$LD_LIBRARY_PATH\"" >> $(STAGE)/base.sh; \
 		done; \
 		echo "setenv HPCP_VENDOR_LIBS_CC \"$(INTEL_LIBS_CC)\"" >> $(STAGE)/base.module; \
 		echo "export HPCP_VENDOR_LIBS_CC=\"$(INTEL_LIBS_CC)\"" >> $(STAGE)/base.sh; \
