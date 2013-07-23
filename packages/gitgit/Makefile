@@ -27,8 +27,8 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR)/git-$(PKG_VERSION); \
 	$(MAKE) configure; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CPPFLAGS="$(gettext_CPPFLAGS)" \
-	LDFLAGS="$(LDFLAGS) $(gettext_LDFLAGS)" LIBS="$(gettext_LIBS_CC) $(LIBS)" \
+	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	NO_GETTEXT=1 \
 	./configure \
 	--without-python \
 	--with-openssl=$(openssl_PREFIX) \
