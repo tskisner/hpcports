@@ -1,0 +1,17 @@
+diff -urN cfitsio_orig/configure cfitsio/configure
+--- cfitsio_orig/configure	2013-06-10 12:04:56.000000000 -0700
++++ cfitsio/configure	2013-07-24 14:22:26.000000000 -0700
+@@ -4092,11 +4092,11 @@
+     CFITSIO_SHLIB_SONAME="libcfitsio.\${CFITSIO_SONAME}\${SHLIB_SUFFIX}"
+     case $host in
+         *darwin[56789]*)
+-            SHLIB_LD="$CC -dynamiclib -install_name libcfitsio.\${CFITSIO_SONAME}\${SHLIB_SUFFIX} -compatibility_version \${CFITSIO_SONAME} -current_version \${CFITSIO_SONAME}.\${CFITSIO_MAJOR}.\${CFITSIO_MINOR}"
++            SHLIB_LD="$CC -dynamiclib -install_name \${CFITSIO_LIB}/libcfitsio.\${CFITSIO_SONAME}\${SHLIB_SUFFIX} -compatibility_version \${CFITSIO_SONAME} -current_version \${CFITSIO_SONAME}.\${CFITSIO_MAJOR}.\${CFITSIO_MINOR}"
+             ;;
+         *)
+             # Build for i386 & x86_64 architectures on Darwin 10.x or newer:
+-            SHLIB_LD="$CC -dynamiclib $C_UNIV_SWITCH -install_name libcfitsio.\${CFITSIO_SONAME}\${SHLIB_SUFFIX} -compatibility_version \${CFITSIO_SONAME} -current_version \${CFITSIO_SONAME}.\${CFITSIO_MAJOR}.\${CFITSIO_MINOR}"
++            SHLIB_LD="$CC -dynamiclib $C_UNIV_SWITCH -install_name \${CFITSIO_LIB}/libcfitsio.\${CFITSIO_SONAME}\${SHLIB_SUFFIX} -compatibility_version \${CFITSIO_SONAME} -current_version \${CFITSIO_SONAME}.\${CFITSIO_MAJOR}.\${CFITSIO_MINOR}"
+             ;;
+     esac
+ 
