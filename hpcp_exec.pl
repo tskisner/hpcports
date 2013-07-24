@@ -200,12 +200,15 @@ if ( $command eq "status" ) {
 
 	my $key;
 	my $value;
+	my $state;
 
 	while ( ($key, $value) = each %{$pkgdb} ) {
-		my $state;
 		foreach $state ( @states ) {
 			purge_state ( $pkgdb, $key, $state, $hpcp_root, $system, $env, $prefix, $overrides );
 		}
+	}
+	foreach $state ( @states ) {
+		purge_state ( $pkgdb, "hpcp", $state, $hpcp_root, $system, $env, $prefix, $overrides );
 	}
 
 	my $pname;
@@ -238,14 +241,19 @@ if ( $command eq "status" ) {
 
 		my $key;
 		my $value;
+		my $status;
 
 		while ( ($key, $value) = each %{$pkgdb} ) {
 			if ( ! defined ( $overrides->{ $key } ) ) {
-				my $status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $env, $prefix, $overrides );
+				$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $env, $prefix, $overrides );
 				if ( $status eq "stale" ) {
 					push ( @{$stale}, $key );
 				}
 			}
+		}
+		$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/hpcp", $system, $env, $prefix, $overrides );
+		if ( $status eq "stale" ) {
+			push ( @{$stale}, $key );
 		}
 
 	} else {

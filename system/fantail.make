@@ -28,7 +28,6 @@ MAKE = make
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = darwin
-BUILD_DYNAMIC = FALSE
 
 # permissions on installed files
 
