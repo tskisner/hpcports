@@ -48,12 +48,12 @@ pkg-configure :
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
 	LDFLAGS="$(python_LDFLAGS) $(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} $${pyopt} $${mp} \
+	--enable-exp-all \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \
 	--with-lapack="$(lapack_LIBS_CXX)" \
 	--with-blas="$(blas_LIBS_CXX)" \
 	--with-expat=$(expat_PREFIX) \
-	--with-cnpy=$(cnpy_PREFIX) \
 	--with-sqlite3=$(sqlite_PREFIX) \
 	--with-getdata=$(getdata_PREFIX) \
 	--with-hdf5=$(hdf5_PREFIX)/bin/h5cc \
