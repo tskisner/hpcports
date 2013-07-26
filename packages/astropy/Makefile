@@ -10,7 +10,7 @@ PKG_TAR = astropy-$(PKG_VERSION).tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://pypi.python.org/packages/source/a/astropy/astropy-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = astropy
+PKG_SRCDIR = astropy-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 

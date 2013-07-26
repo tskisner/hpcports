@@ -7,10 +7,10 @@ PKG_NAME = eigen
 
 PKG_FORMAT = tar
 PKG_TAR = eigen-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://bitbucket.org/eigen/eigen/get/$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://bitbucket.org/eigen/eigen/get/3.2.0.tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = eigen-eigen-5097c01bcdc4
+PKG_SRCDIR = eigen-eigen-ffa86ffb5570
 
 PKG_BUILDDIR = eigen_build
 
