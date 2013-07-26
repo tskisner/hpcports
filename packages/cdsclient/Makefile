@@ -6,8 +6,8 @@ include ../pkg_defs.make
 PKG_NAME = cdsclient
 
 PKG_FORMAT = tar
-PKG_TAR = cdsclient.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://cdsarc.u-strasbg.fr/ftp/pub/sw/cdsclient.tar.gz
+PKG_TAR = cdsclient-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://cdsarc.u-strasbg.fr/ftp/pub/sw/cdsclient-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = cdsclient-$(PKG_VERSION)
