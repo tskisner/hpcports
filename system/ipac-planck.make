@@ -1,5 +1,5 @@
 
-export HPCP_PREFIX=/planck/tools/hpcports
+HPCP_PREFIX = /planck/tools/hpcports
 
 # OS environment version
 #
@@ -68,7 +68,7 @@ MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # general linking
 
-LIBS = -lm -lpthread
+LIBS = -lm
 
 # vendor math libraries
 
