@@ -7,7 +7,7 @@ PKG_NAME = wcslib
 
 PKG_FORMAT = tar
 PKG_TAR = wcslib-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib.tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = wcslib-$(PKG_VERSION)
