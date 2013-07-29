@@ -80,3 +80,10 @@ ifndef ZIP
 	export ZIP = zip -r
 endif
 
+# extra options passed to OpenMPI configure.  Default is nothing
+
+ifndef openmpi_EXTRA
+	export openmpi_EXTRA =
+endif
+
+
