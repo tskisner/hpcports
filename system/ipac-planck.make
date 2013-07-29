@@ -7,7 +7,7 @@ HPCP_PREFIX = /planck/tools/hpcports
 # the minor version when upgrading MKL or MPI.  Document configuration
 # here:
 #
-# 1.0 : gcc-4.4.0, MKL 10.0.3, openmpi/1.5.1-gcc44
+# 1.0 : gcc-4.8.1, MKL 10.0.3
 #
 
 HPCP_ENV = 1.0
@@ -36,19 +36,27 @@ INST_PERM = g+rwX,o+rX
 
 # serial compilers
 
-CC = gcc44
-CXX = g++44
-F77 = gfortran44
-FC = gfortran44
+CC = gcc
+CXX = g++
+F77 = gfortran
+FC = gfortran
 
-# MPI compilers
+# MPI options
 
-openmpi_OVERRIDE = TRUE
-openmpi_VERSION = 1.5.1
-MPICC = mpicc
-MPICXX = mpicxx
-MPIF77 = mpif77
-MPIFC = mpif90
+openmpi_EXTRA = \
+	--enable-static \
+	--disable-shared \
+	--with-udapl \
+      	--without-bproc \
+      	--with-tm \
+      	--with-openib \
+  	--disable-dlopen \
+	--without-xgrid \
+	--without-slurm \
+	--without-loadleveler \
+	--without-mx \
+	--without-gm \
+	--without-lsf
 
 # compile flags
 

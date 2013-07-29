@@ -1,4 +1,4 @@
-  if [ is-loaded openmpi ] {
-  } else {
-    module load openmpi/1.5.1-gcc44
-  }
+  prepend-path PATH /planck/tools/hpcports_gcc/bin
+  prepend-path LD_LIBRARY_PATH /planck/tools/hpcports_gcc/lib
+  prepend-path LD_LIBRARY_PATH /planck/tools/hpcports_gcc/lib64
+
