@@ -4,19 +4,17 @@
 
 export NERSC_HOST=`/usr/common/usg/bin/nersc_host`
 
-# What shell are we using?  Source the appropriate module setup
+# What shell are we using?
 THISSHELL=`echo $SHELL | sed -e 's/.*\/\(.*\)$/\1/'`
 
 
-if [ $NERSC_HOST == "datatran" ]
-then
+if [ $NERSC_HOST = "datatran" ]; then
   . /usr/share/Modules/init/${THISSHELL}
 
 fi
 
 
-if [ $NERSC_HOST == "hopper" ]
-then
+if [ $NERSC_HOST = "hopper" ]; then
   # Check to see if the modules init file has already been sourced
   # If not then try to source the init file for this shell.  If that
   # does not exist, source the basic "sh" file.
@@ -25,7 +23,7 @@ then
     if [ -r /opt/modules/default/init/${THISSHELL} ]; then
       . /opt/modules/default/init/${THISSHELL}
     else
-        . /opt/modules/default/init/sh
+      . /opt/modules/default/init/sh
     fi
   fi
 
@@ -70,13 +68,12 @@ then
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/hopper/ccm/modulefiles
             fi;;
-        * ) echo "usage:  hpcports [ gnu | intel | ccm ]";;
+        * ) echo "usage:  hpcports [ gnu | intel | ccm | dx9 ]";;
     esac
   }  
 fi
 
-if [ $NERSC_HOST == "edison" ]
-then
+if [ $NERSC_HOST = "edison" ]; then
   # Check to see if the modules init file has already been sourced
   # If not then try to source the init file for this shell.  If that
   # does not exist, source the basic "sh" file.
@@ -116,8 +113,7 @@ then
 fi
 
 
-if [ $NERSC_HOST == "carver" ]
-then
+if [ $NERSC_HOST = "carver" ]; then
   # Check to see if the modules init file has already been sourced
   # If not then try to source the init file for this shell.  If that
   # does not exist, source the basic "sh" file.
