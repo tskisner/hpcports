@@ -44,18 +44,13 @@ FC = gfortran
 # MPI options
 
 openmpi_EXTRA = \
-	--enable-static \
-	--disable-shared \
 	--with-udapl \
-      	--without-bproc \
       	--with-tm \
       	--with-openib \
   	--disable-dlopen \
-	--without-xgrid \
 	--without-slurm \
 	--without-loadleveler \
 	--without-mx \
-	--without-gm \
 	--without-lsf
 
 # compile flags
