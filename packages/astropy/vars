@@ -1,2 +1,2 @@
-path = bin
-python = lib
+BIN = bin
+PYTHON = lib

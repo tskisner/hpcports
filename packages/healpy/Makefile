@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -14,14 +7,14 @@ PKG_NAME = healpy
 
 PKG_FORMAT = tar
 PKG_TAR = healpy-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/healpy/healpy/archive/$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/h/healpy/healpy-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = healpy-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_healpy.patch
+PKG_PATCHES =
 
 
 # rules for this package
@@ -39,19 +32,19 @@ pkg-build :
 	export CC="$(CC)"; export CFLAGS="$(CFLAGS)"; \
 	export CXX="$(CXX)"; export CXXFLAGS="$(CXXFLAGS)"; \
 	export OMPFLAGS="$(OMPFLAGS)"; \
-	export CFITSIO_EXT_PREFIX=$(cfitsio_PREFIX); \
+	export PKG_CONFIG_PATH=$(cfitsio_PREFIX)/lib/pkgconfig:$(PKG_CONFIG_PATH); \
 	python setup.py build 
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/$(python_SITE)/site-packages; \
-	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages; \
+	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
 	export CC="$(CC)"; export CFLAGS="$(CFLAGS)"; \
 	export CXX="$(CXX)"; export CXXFLAGS="$(CXXFLAGS)"; \
 	export OMPFLAGS="$(OMPFLAGS)"; \
-	export CFITSIO_EXT_PREFIX=$(cfitsio_PREFIX); \
-	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	export PKG_CONFIG_PATH=$(cfitsio_PREFIX)/lib/pkgconfig:$(PKG_CONFIG_PATH); \
+	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-clean :

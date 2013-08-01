@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -42,7 +35,7 @@ pkg-configure :
 	-D CMAKE_C_COMPILER="$(MPICC)" \
 	-D CMAKE_CXX_COMPILER="$(MPICXX)" \
 	-D CMAKE_Fortran_COMPILER="$(MPIFC)" \
-	-D CMAKE_BUILD_TYPE=PureRelease \
+	-D CMAKE_BUILD_TYPE=HybridRelease \
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
 	-D C_PURE_RELEASE_FLAGS="$(CFLAGS)" \
 	-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
@@ -55,7 +48,7 @@ pkg-configure :
 	-D MPI_Fortran_COMPILER="$(MPIFC)" \
 	-D MPI_Fortran_LIBRARIES="$(MPIFCLIBS)" \
 	-D MATH_LIBS="$${math}" \
-	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
+	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR)
 
 

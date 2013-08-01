@@ -1,8 +1,8 @@
-path = bin
-man = share/man
-header = include
-ld = lib
-lib_CC = -lexpat
-lib_CXX = -lexpat
-lib_F77 = -lexpat
-lib_FC = -lexpat
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lexpat
+LIBS_CXX = -lexpat
+LIBS_F77 = -lexpat
+LIBS_FC = -lexpat

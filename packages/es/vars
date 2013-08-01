@@ -1,2 +1,2 @@
-path = bin
+BIN = bin
 data = share/es

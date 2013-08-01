@@ -1,4 +1,4 @@
-header = include
-ld = lib
-lib_CXX = -lelemental -lplcg -lpmrrr -lelem-dummy-lib
-lib_MPICXX = -lelemental -lplcg -lpmrrr -lelem-dummy-lib
+INCLUDE = include
+LIB = lib
+LIBS_CXX = -lelemental -lpmrrr
+LIBS_MPICXX = -lelemental -lpmrrr

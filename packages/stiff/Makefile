@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -49,7 +42,7 @@ pkg-configure :
 	./configure \
 	$${dyn} $${zl} $${tf} \
 	--enable-threads \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

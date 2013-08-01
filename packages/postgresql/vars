@@ -1,7 +1,7 @@
-path = bin
-header = include
-ld = lib
-lib_CC = -lpq
-lib_CXX = -lpq
-lib_F77 = -lpq
-lib_FC = -lpq
+BIN = bin
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lpq
+LIBS_CXX = -lpq
+LIBS_F77 = -lpq
+LIBS_FC = -lpq

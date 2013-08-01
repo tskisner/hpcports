@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -14,10 +7,10 @@ PKG_NAME = eigen
 
 PKG_FORMAT = tar
 PKG_TAR = eigen-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://bitbucket.org/eigen/eigen/get/$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://bitbucket.org/eigen/eigen/get/3.2.0.tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = eigen-eigen-5097c01bcdc4
+PKG_SRCDIR = eigen-eigen-ffa86ffb5570
 
 PKG_BUILDDIR = eigen_build
 
@@ -43,7 +36,7 @@ pkg-configure :
 	-D CMAKE_CXX_COMPILER="$(CXX)" \
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
 	-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
-	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
+	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR)
 
 

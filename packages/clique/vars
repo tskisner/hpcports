@@ -1,4 +1,4 @@
-header = include
-ld = lib
-lib_CXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis
-lib_MPICXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis
+INCLUDE = include
+LIB = lib
+LIBS_CXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis
+LIBS_MPICXX = -lclique -lparmetis-addons -lmetis-addons -lparmetis -lmetis

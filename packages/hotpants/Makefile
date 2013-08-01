@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -41,7 +34,7 @@ pkg-configure :
 	echo "LDFLAGS = $(LDFLAGS)" >> hpcp.make; \
 	echo "LIBS = $(LIBS)" >> hpcp.make; \
 	echo "cfitsio_LIBS_CC = $(cfitsio_LIBS_CC)" >> hpcp.make; \
-	echo "PREFIX = $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)" >> hpcp.make
+	echo "PREFIX = $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)" >> hpcp.make
 
 
 pkg-build :

@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -39,7 +32,7 @@ pkg-configure :
 	-D CMAKE_CXX_COMPILER="$(CXX)" \
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
 	-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
-	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
+	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR)
 
 

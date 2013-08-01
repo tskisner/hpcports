@@ -12,7 +12,7 @@ HPCP_ENV = 1.0
 
 # suffix, to avoid name collisions with nersc modules
 
-MOD_SUFFIX = -hpcp
+HPCP_MOD_SUFFIX = -hpcp
 
 # software download location
 
@@ -81,7 +81,6 @@ INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lpthread -lm
 # package overrides
 
 blas_OVERRIDE = TRUE
-blas_PREFIX = $(MKL_HOME)
 blas_VERSION = 10.2
 blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(INTEL_LIBS_CXX)
@@ -89,7 +88,6 @@ blas_LIBS_F77 = $(INTEL_LIBS_F77)
 blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
-lapack_PREFIX = $(MKL_HOME)
 lapack_VERSION = 10.2
 lapack_LIBS_CC = -lmkl_lapack
 lapack_LIBS_CXX = -lmkl_lapack

@@ -1,8 +1,8 @@
-path = bin
-man = man
-header = include
-ld = lib
-lib_CC = -ltcl8.5
-lib_CXX = -ltcl8.5
-lib_F77 = -ltcl8.5
-lib_FC = -ltcl8.5
+BIN = bin
+MAN = man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -ltcl8.5
+LIBS_CXX = -ltcl8.5
+LIBS_F77 = -ltcl8.5
+LIBS_FC = -ltcl8.5

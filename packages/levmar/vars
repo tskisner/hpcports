@@ -1,6 +1,6 @@
-header = include
-ld = lib
-lib_CC = -llevmar
-lib_CXX = -llevmar
-lib_F77 = -llevmar
-lib_FC = -llevmar
+INCLUDE = include
+LIB = lib
+LIBS_CC = -llevmar
+LIBS_CXX = -llevmar
+LIBS_F77 = -llevmar
+LIBS_FC = -llevmar

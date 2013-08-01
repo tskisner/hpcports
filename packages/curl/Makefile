@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -36,7 +29,9 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	cf=`echo "$(CFLAGS)" | sed -e "s#-D[^ ]*##g"`; \
+	cpf=`echo "$(CFLAGS)" | sed -e "s#-[^D][^ ]*##g"`; \
+	CC="$(CC)" CFLAGS="$${cf}" CPPFLAGS="$${cpf}" \
 	LDFLAGS="$(LDFLAGS)" \
 	LIBS="$(openssl_LIBS_CC) $(zlib_LIBS_CC) $(LIBS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
@@ -46,7 +41,7 @@ pkg-configure :
 	$${dyn} \
 	--with-ssl="$(openssl_PREFIX)" \
 	--with-zlib="$(zlib_PREFIX)" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

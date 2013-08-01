@@ -1,23 +1,15 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
 PKG_NAME = elemental
 
-PKG_FORMAT = tar
-PKG_TAR = elemental-$(PKG_VERSION).tgz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://elemental.googlecode.com/files/elemental-$(PKG_VERSION).tgz
-PKG_TAR_EXTRACT = $(GXTAR)
+PKG_FORMAT = git
+PKG_GIT_CLONE = git clone git://github.com/poulson/Elemental.git
+PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
-PKG_SRCDIR = elemental-$(PKG_VERSION)
+PKG_SRCDIR = Elemental
 
 PKG_BUILDDIR = build
 
@@ -40,7 +32,7 @@ pkg-configure :
 	-D CMAKE_C_COMPILER="$(CC)" \
 	-D CMAKE_CXX_COMPILER="$(CXX)" \
 	-D CMAKE_Fortran_COMPILER="$(FC)" \
-	-D CMAKE_BUILD_TYPE=PureRelease \
+	-D CMAKE_BUILD_TYPE=HybridRelease \
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
 	-D C_PURE_RELEASE_FLAGS="$(CFLAGS)" \
 	-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
@@ -53,7 +45,7 @@ pkg-configure :
 	-D MPI_Fortran_COMPILER="$(MPIFC)" \
 	-D MPI_Fortran_LIBRARIES="$(MPIFCLIBS)" \
 	-D MATH_LIBS="$${math}" \
-	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION) \
+	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR)
 
 

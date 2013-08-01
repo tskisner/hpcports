@@ -1,8 +1,8 @@
-path = bin
-man = share/man
-header = include
-ld = lib
-lib_CC = -lpcre
-lib_CXX = -lpcrecpp -lpcre
-lib_F77 = -lpcre
-lib_FC = -lpcre
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lpcre
+LIBS_CXX = -lpcrecpp -lpcre
+LIBS_F77 = -lpcre
+LIBS_FC = -lpcre

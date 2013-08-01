@@ -1,20 +1,13 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
 PKG_NAME = cfitsio
 
 PKG_FORMAT = tar
-PKG_TAR = cfitsio3310.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3310.tar.gz
+PKG_TAR = cfitsio3350.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3350.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = cfitsio
@@ -36,13 +29,15 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(F77)" FFLAGS="$(FFLAGS)" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE); \
-	$(MAKE) shared; \
+	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
+		$(MAKE) shared; \
+	fi; \
 	$(MAKE) fpack; \
 	$(MAKE) funpack
 
@@ -50,8 +45,8 @@ pkg-build :
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) install; \
-	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin; \
-	cp fpack funpack $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin/
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin; \
+	cp fpack funpack $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin/
 
 
 pkg-clean :

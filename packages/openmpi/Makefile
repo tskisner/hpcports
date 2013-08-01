@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -14,7 +7,7 @@ PKG_NAME = openmpi
 
 PKG_FORMAT = tar
 PKG_TAR = openmpi-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.open-mpi.org/software/ompi/v1.7/downloads/openmpi-$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = openmpi-$(PKG_VERSION)
@@ -34,15 +27,16 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="--disable-shared"; \
+		dyn="--disable-shared --enable-static --disable-dlopen"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} \
-	--disable-vt \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	./configure $${dyn} $(openmpi_EXTRA) \
+	--disable-vt --disable-silent-rules \
+	--with-wrapper-ldflags="-Wl,-search_paths_first" \
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :
@@ -53,8 +47,8 @@ pkg-build :
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) install; \
-	if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/mpi.mod ]; then \
-		cp $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/lib/mpi.mod $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/include/mpi.mod; \
+	if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod ]; then \
+		cp $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/include/mpi.mod; \
 	fi
 
 

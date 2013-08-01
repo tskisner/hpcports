@@ -11,8 +11,16 @@ ifndef TOOLCHAIN
 	export TOOLCHAIN = gnu
 endif
 
-ifndef MOD_SUFFIX
-	export MOD_SUFFIX =
+ifndef HPCP_MOD_SUFFIX
+	export HPCP_MOD_SUFFIX =
+endif
+
+ifndef INST_GRP
+	export INST_GRP := $(shell groups | awk {'print $1'})
+endif
+
+ifndef INST_PERM
+	export INST_PERM = g+rwX,o+rX
 endif
 
 # special case:  we need to know the python site directory.  Override this in
@@ -71,4 +79,11 @@ endif
 ifndef ZIP
 	export ZIP = zip -r
 endif
+
+# extra options passed to OpenMPI configure.  Default is nothing
+
+ifndef openmpi_EXTRA
+	export openmpi_EXTRA =
+endif
+
 

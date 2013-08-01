@@ -1,0 +1,6 @@
+  prepend-path PATH /planck/tools/hpcports_base/bin
+  prepend-path LD_LIBRARY_PATH /planck/tools/hpcports_base/lib
+  prepend-path LD_LIBRARY_PATH /planck/tools/hpcports_base/lib64
+  prepend-path LIBRARY_PATH /planck/tools/hpcports_base/lib
+  prepend-path LIBRARY_PATH /planck/tools/hpcports_base/lib64
+

@@ -1,9 +1,8 @@
-path = bin
-man =
-header = include
-ld = lib
-data = share/healpix
-lib_CC = -lchealpix
-lib_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
-lib_FC = -lhealpix
-lib_MPIFC = -lhealpix-mpi
+BIN = bin
+INCLUDE = include
+LIB = lib
+DATA = share/healpix
+LIBS_CC = -lchealpix
+LIBS_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
+LIBS_FC = -lhealpix
+LIBS_MPIFC = -lhealpix-mpi

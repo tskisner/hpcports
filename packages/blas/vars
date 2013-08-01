@@ -1,5 +1,5 @@
-ld = lib
-lib_CC = -lblas
-lib_CXX = -lblas
-lib_F77 = -lblas
-lib_FC = -lblas
+LIB = lib
+LIBS_CC = -lblas
+LIBS_CXX = -lblas
+LIBS_F77 = -lblas
+LIBS_FC = -lblas

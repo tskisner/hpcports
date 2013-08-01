@@ -1,7 +1,7 @@
-man = share/man
-header = include
-ld = lib
-lib_CC = -lz
-lib_CXX = -lz
-lib_F77 = -lz
-lib_FC = -lz
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lz
+LIBS_CXX = -lz
+LIBS_F77 = -lz
+LIBS_FC = -lz

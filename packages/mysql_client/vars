@@ -1,7 +1,7 @@
-path = bin
-header = include
-ld = lib
-lib_CC = -lmysql
-lib_CXX = -lmysql
-lib_F77 = -lmysql
-lib_FC = -lmysql
+BIN = bin
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lmysql
+LIBS_CXX = -lmysql
+LIBS_F77 = -lmysql
+LIBS_FC = -lmysql

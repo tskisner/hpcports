@@ -1,8 +1,8 @@
-path = bin
-man = share/man
-header = include
-ld = lib
-lib_CC = -lhistory -lreadline -ltermcap
-lib_CXX = -lhistory -lreadline -ltermcap
-lib_F77 = -lhistory -lreadline -ltermcap
-lib_FC = -lhistory -lreadline -ltermcap
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lhistory -lreadline -ltermcap
+LIBS_CXX = -lhistory -lreadline -ltermcap
+LIBS_F77 = -lhistory -lreadline -ltermcap
+LIBS_FC = -lhistory -lreadline -ltermcap

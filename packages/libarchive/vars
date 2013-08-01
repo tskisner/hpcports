@@ -1,8 +1,8 @@
-path = bin
-man = share/man
-header = include
-ld = lib
-lib_CC = -larchive
-lib_CXX = -larchive
-lib_F77 = -larchive
-lib_FC = -larchive
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -larchive
+LIBS_CXX = -larchive
+LIBS_F77 = -larchive
+LIBS_FC = -larchive

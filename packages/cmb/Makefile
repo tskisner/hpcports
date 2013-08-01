@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell $(SHELL) ./gen_version.sh $(MD5) $(HPCP_ENV))
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -37,8 +30,8 @@ pkg-build :
 
 
 pkg-install :
-	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin; \
-	cp $(STAGE)/$(PKG_BUILDDIR)/cmbconfig $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)/bin/
+	@mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin; \
+	cp $(STAGE)/$(PKG_BUILDDIR)/cmbconfig $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/bin/
 
 
 pkg-clean :

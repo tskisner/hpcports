@@ -17,7 +17,7 @@ HPCP_ENV = 1.0
 
 # suffix, to avoid name collisions with nersc modules
 
-MOD_SUFFIX = -hpcp
+HPCP_MOD_SUFFIX = -hpcp
 
 # software download location
 
@@ -122,9 +122,6 @@ curl_VERSION = 7.19.0
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 5.1.0
-blas_PREFIX = $(ACML_DIR)/gfortran64_mp
-blas_INCLUDE = $(AMD_INCLUDE)
-blas_LIBDIR = $(AMD_LIBDIR)
 blas_LIBS_CC = $(AMD_LIBS_CC)
 blas_LIBS_CXX = $(AMD_LIBS_CXX)
 blas_LIBS_FC = $(AMD_LIBS_FC)

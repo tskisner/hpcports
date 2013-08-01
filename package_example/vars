@@ -1,0 +1,15 @@
+BIN = bin
+MAN = share/man
+INCLUDE = include
+DATA = share/data
+LIB = lib
+LIBS_CC = -lexample
+LIBS_CXX = -lexample
+LIBS_F77 = -lexample
+LIBS_FC = -lexample
+LIBS_MPICC = -lexample
+LIBS_MPICXX = -lexample
+LIBS_MPIF77 = -lexample
+LIBS_MPIFC = -lexample
+custom1 = myvar1
+custom2 = myvar2

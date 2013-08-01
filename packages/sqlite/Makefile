@@ -1,23 +1,16 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
 PKG_NAME = sqlite
 
 PKG_FORMAT = tar
-PKG_TAR = sqlite-autoconf-3071501.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.sqlite.org/sqlite-autoconf-3071501.tar.gz
+PKG_TAR = sqlite-autoconf-3071700.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.sqlite.org/2013/sqlite-autoconf-3071700.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = sqlite-autoconf-3071501
+PKG_SRCDIR = sqlite-autoconf-3071700
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
@@ -42,7 +35,7 @@ pkg-configure :
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	./configure \
 	$${dyn} \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :

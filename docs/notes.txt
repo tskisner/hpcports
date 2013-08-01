@@ -1,0 +1,20 @@
+Overall philosopy
+
+The building of each package is independent, and assumes dependencies are built and installed.
+
+At build time, a staging directory for every HPCP_HOST is created.  A perl extraction script is called.  If the package is overridden, then only the fake module files and other things are created. For overridden packages, there are alternative rules in pkg.make
+
+Top level perl program (hpcp) manages dependencies, which are stored in a perl hash dump.  This DB is recomputed with "hpcp update" command.  Subsequent launching of the hpcp program loads this DB.  Store git hash in this DB so we can auto-update.
+
+When computing dependencies, given a list of high-level dependencies, compute the set of full low-level dependencies for each package.
+
+ALL packages have an 8 character hash appended to their intrinsic version.  This dep-hash is based on the versions of all dependencies.
+
+CHANGE:  MOD_SUFFIX --> HPCP_MOD_SUFFIX
+
+CHANGE:  HPCP_TARGET --> HPCP_HOST.
+
+CHANGE:  Add HPCP_BUILD variable which specifies that we are cross compiling and specify the name of the BUILD config.  Add HPCP_BUILD_PREFIX to specify the install location of the BUILD tools.  Add HPCP_BUILD_OVERRIDE to specify packages to override in the HPCP_HOST config and to substitude from the HPCP_BUILD install.
+
+CHANGE:  in package vars files, use new var names.
+

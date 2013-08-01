@@ -1,0 +1,18 @@
+diff -urN petsc-3.3-p3.orig/config/BuildSystem/config/setCompilers.py petsc-3.3-p3/config/BuildSystem/config/setCompilers.py
+--- petsc-3.3-p3.orig/config/BuildSystem/config/setCompilers.py	2012-05-15 09:44:53.000000000 -0700
++++ petsc-3.3-p3/config/BuildSystem/config/setCompilers.py	2012-10-01 10:31:31.000000000 -0700
+@@ -1254,10 +1254,12 @@
+       languages.append('FC')
+     for language in languages:
+       self.pushLanguage(language)
++      # expand to CC_LINKER_FLAGS or CXX_LINKER_FLAGS or FC_LINKER_FLAGS
++      linker_flag_var = langMap[language]+'_LINKER_FLAGS'
++      val = []
++      setattr(self,linker_flag_var,val)
+       for testFlag in ['-Wl,-multiply_defined,suppress', '-Wl,-multiply_defined -Wl,suppress', '-Wl,-commons,use_dylibs', '-Wl,-search_paths_first']:
+         if self.checkLinkerFlag(testFlag):
+-          # expand to CC_LINKER_FLAGS or CXX_LINKER_FLAGS or FC_LINKER_FLAGS
+-	  linker_flag_var = langMap[language]+'_LINKER_FLAGS'
+           val = getattr(self,linker_flag_var)
+ 	  val.append(testFlag)
+ 	  setattr(self,linker_flag_var,val)

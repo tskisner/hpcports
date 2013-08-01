@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -55,7 +48,7 @@ pkg-configure :
 		--disable-doxygen \
 		--disable-openmp \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "xamd" ]; then \
 		CC="$(CC)" CFLAGS="$(CFLAGS)" \
@@ -75,7 +68,7 @@ pkg-configure :
 		--with-papi-cpp=no \
 		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
 		CC="$(CC)" CFLAGS="$(CFLAGS)" \
@@ -95,7 +88,7 @@ pkg-configure :
 		--with-papi-cpp=no \
 		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	fi; \
 	if [ "x$(VENDOR)" = "x" ]; then \
 		CC="$(CC)" CFLAGS="$(CFLAGS)" \
@@ -114,7 +107,7 @@ pkg-configure :
 		--with-papi-cpp=no \
 		--disable-doxygen \
 		--with-boost=$(boost_PREFIX) \
-		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION); \
+		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	fi
 
 

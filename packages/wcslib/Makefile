@@ -1,12 +1,5 @@
 
-# System configuration
-
-include ../../system/$(HPCP_TARGET).make
-include ../../system/defaults.make
-
-# Package version
-
-PKG_VERSION := $(shell head -n 1 version)
+include ../pkg_defs.make
 
 # Package parameters
 
@@ -14,7 +7,7 @@ PKG_NAME = wcslib
 
 PKG_FORMAT = tar
 PKG_TAR = wcslib-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib.tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = wcslib-$(PKG_VERSION)
@@ -43,7 +36,7 @@ pkg-configure :
 	--with-pic \
 	--with-cfitsioinc="$(cfitsio_PREFIX)/include" \
 	--with-cfitsiolib="$(cfitsio_PREFIX)/lib" \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_VERSION)
+	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :
