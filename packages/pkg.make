@@ -169,6 +169,11 @@ install :
 			else \
 				printf "%s%15s :  Installing Override\n" "$(HPCP)" "$(PKG_NAME)"; \
 			fi; \
+			if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages ]; then \
+				for pyfile in `find $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages -name \'\*.py\'`; do \
+					python -m compileall $${pyfile}; \
+				done; \
+			fi; \
 			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			suffix="$(HPCP_MOD_SUFFIX)"; \
