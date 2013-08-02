@@ -442,7 +442,7 @@ sub package_state {
 
 sub makefile_var_expand {
 	my ( $rhs, $lhs, $store ) = @_;
-	my @matches = ( $lhs =~ /\$\((.*)\)/g );
+	my @matches = ( $lhs =~ /\$\((.*?)\)/g );
 	my $ret = $lhs;
 	my $mat;
 
