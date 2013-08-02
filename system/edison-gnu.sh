@@ -3,11 +3,11 @@ if [ "x${loaded}" = x ]; then
     module swap PrgEnv-intel PrgEnv-gnu
     module unload cray-shmem
     module swap gcc gcc/4.7.2
-    module swap craype craype/1.01
-    module swap cray-libsci cray-libsci/12.0.00
-    module swap cray-mpich2 cray-mpich2/5.6.1
+    module swap craype craype/1.05
+    module swap cray-mpich cray-mpich/6.0.0
+    module load mkl/13.0.1
     module load git/1.8.1.1
-    module load fftw/3.3.0.1
+    module load fftw/3.3.0.3
     module load python/2.7.3
     module load zlib/1.2.7
     module load curl/7.28.1

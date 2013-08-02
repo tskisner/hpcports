@@ -11,14 +11,14 @@
 # here:
 #
 # 1.0 :  gnu 4.7.2, cray-mpich2 5.6.1, cray-libsci 12.0.00, fftw 3.3.0.1, python 2.7.3
-# 2.0 :  same as 1.0, but new module versioning scheme
+# 2.0 :  gnu 4.7.2, cray-mpich 6.0.0, mkl-13.0, fftw-3.3.0.3, python-2.7.3
 #
 
 HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
-MOD_SUFFIX = -hpcp
+HPCP_MOD_SUFFIX = -hpcp
 
 # software download location
 
@@ -73,12 +73,18 @@ MPIFCLIBS =
 
 # Linking
 
-LIBS =
+LIBS = -lm
 LDFLAGS =
 
-# vendor math libraries (MKL not supported with gnu toolchain)
+# vendor math libraries
 
-VENDOR = 
+VENDOR = intel
+INTEL_INCLUDE = $(MKL_INC)
+INTEL_LIBDIR = $(MKL_LIBDIR)
+INTEL_LIBS_CC = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
+INTEL_LIBS_CXX = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
+INTEL_LIBS_F77 = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
+INTEL_LIBS_FC = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
 
 # package overrides
 
@@ -92,7 +98,7 @@ gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.17.0
 
 gitgit_OVERRIDE = TRUE
-gitgit_VERSION = NA
+gitgit_VERSION = 1.8.1.1
 
 # module load zlib/1.2.7
 
@@ -162,18 +168,19 @@ healpy_VERSION = NA
 numexpr_OVERRIDE = TRUE
 numexpr_VERSION = NA
 
-# we get BLAS, Lapack, and ScaLapack from Cray libsci
+# we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 12.0.00
-blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
-blas_LIBS_CXX = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
-blas_LIBS_FC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
-blas_LIBS_F77 = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
+blas_VERSION = 13.0.1
+blas_LIBS_CC = $(INTEL_LIBS_CC)
+blas_LIBS_CXX = $(INTEL_LIBS_CXX)
+blas_LIBS_F77 = $(INTEL_LIBS_F77)
+blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 12.0.00
-
-scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 12.0.00
+lapack_VERSION = 13.0.1
+lapack_LIBS_CC = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_CXX = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_F77 = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_FC = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
 
