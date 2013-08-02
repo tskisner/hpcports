@@ -40,6 +40,8 @@ pkg-prefetch :
 	echo "export HPCP_CXXFLAGS=\"$(CXXFLAGS)\"" >> $(STAGE)/base.sh; \
 	echo "setenv HPCP_LDFLAGS \"$(LDFLAGS)\"" >> $(STAGE)/base.module; \
 	echo "export HPCP_LDFLAGS=\"$(LDFLAGS)\"" >> $(STAGE)/base.sh; \
+	echo "setenv HPCP_LIBTOOLFLAGS \"$(LIBTOOLFLAGS)\"" >> $(STAGE)/base.module; \
+	echo "export HPCP_LIBTOOLFLAGS=\"$(LIBTOOLFLAGS)\"" >> $(STAGE)/base.sh; \
 	echo "setenv HPCP_LIBS \"$(LIBS)\"" >> $(STAGE)/base.module; \
 	echo "export HPCP_LIBS=\"$(LIBS)\"" >> $(STAGE)/base.sh; \
 	echo "setenv HPCP_FFLAGS \"$(FFLAGS)\"" >> $(STAGE)/base.module; \

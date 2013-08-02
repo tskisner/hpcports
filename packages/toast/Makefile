@@ -43,7 +43,8 @@ pkg-configure :
 	PYTHON="$(PYTHON)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$${FFF}" \
-	OPENMP_CXXFLAGS=${OMPFLAGS} \
+	OPENMP_CXXFLAGS="$(OMPFLAGS)" \
+	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
 	LDFLAGS="$(python_LDFLAGS) $(LDFLAGS)" LIBS="$(LIBS)" \
@@ -63,12 +64,12 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE)
+	$(MAKE) LIBTOOLFLAGS="$(LIBTOOLFLAGS)"
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	$(MAKE) LIBTOOLFLAGS="$(LIBTOOLFLAGS)" install
 
 
 pkg-clean :

@@ -38,6 +38,7 @@ pkg-configure :
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	MPICXX="$(MPICXX)" \
+	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	FLIBS="$(FLIBS)" \
 	./configure \
@@ -50,12 +51,12 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE)
+	$(MAKE) LIBTOOLFLAGS="$(LIBTOOLFLAGS)"
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	$(MAKE) LIBTOOLFLAGS="$(LIBTOOLFLAGS)" install
 
 
 pkg-clean :

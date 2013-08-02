@@ -75,16 +75,17 @@ MPIFCLIBS =
 
 LIBS = -lm
 LDFLAGS =
+LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries
 
 VENDOR = intel
 INTEL_INCLUDE = $(MKL_INC)
 INTEL_LIBDIR = $(MKL_LIBDIR)
-INTEL_LIBS_CC = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
-INTEL_LIBS_CXX = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
-INTEL_LIBS_F77 = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
-INTEL_LIBS_FC = -Wl,--start-group $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -Wl,--end-group -ldl -lpthread -lm
+INTEL_LIBS_CC = $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -ldl -lpthread -lm
+INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
+INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
+INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
