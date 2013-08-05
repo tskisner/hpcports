@@ -13,7 +13,7 @@
 # 1.0 : gcc-4.6.3, ACML 4.4.0, xt-mpich2 5.4.5, fftw 3.3.0.0, python 2.7.1
 # 2.0 : gcc-4.7.1, ACML 4.4.0, cray-mpich2 5.5.2, fftw 3.3.0.0, python 2.7.1
 # 3.0 : gcc-4.7.2, ACML 4.4.0, cray-mpich2 5.5.5, fftw 3.3.0.1, python 2.7.3
-# 4.0 : same as 3.0, but switch to new package versioning
+# 4.0 : gcc-4.7.2, ACML 4.4.0, xt-asyncpe 5.19, cray-mpich2 5.6.4, fftw 3.3.0.2, python 2.7.3
 #
 
 HPCP_ENV = 4.0
@@ -170,15 +170,15 @@ numexpr_VERSION = NA
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 11.1.01
+blas_VERSION = 12.0.00
 blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
 blas_LIBS_CXX = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
 blas_LIBS_FC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
 blas_LIBS_F77 = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 11.1.01
+lapack_VERSION = 12.0.00
 
 scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 11.1.01
+scalapack_VERSION = 12.0.00
 
