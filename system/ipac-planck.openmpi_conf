@@ -1,0 +1,2 @@
+pls_rsh_agent = /usr/bin/bpsh
+btl = ^udapl,openib
