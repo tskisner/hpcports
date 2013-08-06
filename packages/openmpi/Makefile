@@ -51,7 +51,7 @@ pkg-install :
 		cp $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/mpi.mod $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/include/mpi.mod; \
 	fi; \
 	if [ -e ../../../../system/$(HPCP_HOST).openmpi_conf ]; then \
-		cp ../../../../system/$(HPCP_HOST).openmpi_conf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/etc/; \
+		cat ../../../../system/$(HPCP_HOST).openmpi_conf >> $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/etc/openmpi-mca-params.conf; \
 	fi
 
 
