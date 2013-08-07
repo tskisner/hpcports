@@ -69,6 +69,8 @@ pkg-prefetch :
 	echo "setenv HPCP_DYNAMIC \"$(BUILD_DYNAMIC)\"" >> $(STAGE)/base.module; \
 	echo "export HPCP_DYNAMIC=\"$(BUILD_DYNAMIC)\"" >> $(STAGE)/base.sh; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
+		echo "setenv HPCP_VENDOR_PREFIX \"$(APPLE_PREFIX)\"" >> $(STAGE)/base.module; \
+		echo "export HPCP_VENDOR_PREFIX=\"$(APPLE_PREFIX)\"" >> $(STAGE)/base.sh; \
 		for val in $(APPLE_INCLUDE); do \
 			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
 			echo "export CPATH=\"$${val}:\$$CPATH\"" >> $(STAGE)/base.sh; \
@@ -89,6 +91,8 @@ pkg-prefetch :
 		echo "export HPCP_VENDOR_LIBS_FC=\"$(APPLE_LIBS_FC)\"" >> $(STAGE)/base.sh; \
 	fi; \
 	if [ "x$(VENDOR)" = "xamd" ]; then \
+		echo "setenv HPCP_VENDOR_PREFIX \"$(AMD_PREFIX)\"" >> $(STAGE)/base.module; \
+		echo "export HPCP_VENDOR_PREFIX=\"$(AMD_PREFIX)\"" >> $(STAGE)/base.sh; \
 		for val in $(AMD_INCLUDE); do \
 			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
 			echo "export CPATH=\"$${val}:\$$CPATH\"" >> $(STAGE)/base.sh; \
@@ -109,6 +113,8 @@ pkg-prefetch :
 		echo "export HPCP_VENDOR_LIBS_FC=\"$(AMD_LIBS_FC)\"" >> $(STAGE)/base.sh; \
 	fi; \
 	if [ "x$(VENDOR)" = "xintel" ]; then \
+		echo "setenv HPCP_VENDOR_PREFIX \"$(INTEL_PREFIX)\"" >> $(STAGE)/base.module; \
+		echo "export HPCP_VENDOR_PREFIX=\"$(INTEL_PREFIX)\"" >> $(STAGE)/base.sh; \
 		for val in $(INTEL_INCLUDE); do \
 			echo "prepend-path CPATH \"$${val}\"" >> $(STAGE)/base.module; \
 			echo "export CPATH=\"$${val}:\$$CPATH\"" >> $(STAGE)/base.sh; \
