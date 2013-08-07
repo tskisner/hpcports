@@ -511,8 +511,9 @@ sub config_vars {
 				my $value;
 				while ( ($key, $value) = each %{$overrides} ) {
 					if ( $F[0] =~ /${key}_(.*)/ ) {
-						my @lhsvals = split( /\s+/, $explhs );
-						$value->{ $1 } = @lhsvals;
+						my $lhsvals = ();
+						@{$lhsvals} = split( /\s+/, $explhs );
+						$value->{ $1 } = $lhsvals;
 					}
 				}
 			}
