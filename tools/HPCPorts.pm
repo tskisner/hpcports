@@ -511,9 +511,7 @@ sub config_vars {
 				my $value;
 				while ( ($key, $value) = each %{$overrides} ) {
 					if ( $F[0] =~ /${key}_(.*)/ ) {
-						my $lhsvals = ();
-						@{$lhsvals} = split( /\s+/, $explhs );
-						$value->{ $1 } = $lhsvals;
+						$value->{ $1 } = $explhs;
 					}
 				}
 			}
@@ -597,18 +595,30 @@ sub module_file {
 
 	my $key;
 	my $value;
+	my $val;
 	while ( ($key, $value) = each %{$vars} ) {
+		my @valsplit = split ( /\s+/, $value );
 		if ( $key eq "BIN" ) {
-			print OUT "prepend-path PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
+			for $val ( @valsplit ) {
+				print OUT "prepend-path PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
+			}
 		} elsif ( $key eq "MAN" ) {
-			print OUT "prepend-path MANPATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
+			for $val ( @valsplit ) {
+				print OUT "prepend-path MANPATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
+			}
 		} elsif ( $key eq "PYTHON" ) {
-			print OUT "prepend-path PYTHONPATH \"${prefix}/${pname}-${fullversion}/${value}/${pysite}/site-packages\"\n";
+			for $val ( @valsplit ) {
+				print OUT "prepend-path PYTHONPATH \"${prefix}/${pname}-${fullversion}/${val}/${pysite}/site-packages\"\n";
+			}
 		} elsif ( $key eq "INCLUDE" ) {
-			print OUT "prepend-path CPATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
+			for $val ( @valsplit ) {
+				print OUT "prepend-path CPATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
+			}
 		} elsif ( $key eq "LIB" ) {
-			print OUT "prepend-path LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
-			print OUT "prepend-path LD_LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
+			for $val ( @valsplit ) {
+				print OUT "prepend-path LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
+				print OUT "prepend-path LD_LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
+			}
 		} elsif ( exists $stdhash { $key } ) {
 			print OUT "setenv ${pname}_${key} \"${value}\"\n";
 		} else {
@@ -731,18 +741,30 @@ sub shell_file {
 
 		my $key;
 		my $value;
+		my $val;
 		while ( ($key, $value) = each %{$vars} ) {
+			my @valsplit = split ( /\s+/, $value );
 			if ( $key eq "BIN" ) {
-				print OUT "export PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$PATH\"\n";
+				for $val ( @valsplit ) {
+					print OUT "export PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$PATH\"\n";
+				}
 			} elsif ( $key eq "MAN" ) {
-				print OUT "export MANPATH=\"${prefix}/${pname}-${fullversion}/${value}:\$MANPATH\"\n";
+				for $val ( @valsplit ) {
+					print OUT "export MANPATH=\"${prefix}/${pname}-${fullversion}/${val}:\$MANPATH\"\n";
+				}
 			} elsif ( $key eq "PYTHON" ) {
-				print OUT "export PYTHONPATH=\"${prefix}/${pname}-${fullversion}/${value}/${pysite}/site-packages:\$PYTHONPATH\"\n";
+				for $val ( @valsplit ) {
+					print OUT "export PYTHONPATH=\"${prefix}/${pname}-${fullversion}/${val}/${pysite}/site-packages:\$PYTHONPATH\"\n";
+				}
 			} elsif ( $key eq "INCLUDE" ) {
-				print OUT "export CPATH=\"${prefix}/${pname}-${fullversion}/${value}:\$CPATH\"\n";
+				for $val ( @valsplit ) {
+					print OUT "export CPATH=\"${prefix}/${pname}-${fullversion}/${val}:\$CPATH\"\n";
+				}
 			} elsif ( $key eq "LIB" ) {
-				print OUT "export LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LIBRARY_PATH\"\n";
-				print OUT "export LD_LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LD_LIBRARY_PATH\"\n";
+				for $val ( @valsplit ) {
+					print OUT "export LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$LIBRARY_PATH\"\n";
+					print OUT "export LD_LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$LD_LIBRARY_PATH\"\n";
+				}
 			} elsif ( exists $stdhash { $key } ) {
 				print OUT "export ${pname}_${key}=\"${value}\"\n";
 			} else {
