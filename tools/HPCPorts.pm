@@ -619,11 +619,11 @@ sub module_file {
 				print OUT "prepend-path LD_LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
 			}
 		} elsif ( exists $stdhash { $key } ) {
-			$val = ${$value}[0];
+			$val = join( " ", @{$value} );
 			print OUT "setenv ${pname}_${key} \"${val}\"\n";
 		} else {
 			if ( $key ne "VERSION" ) {
-				$val = ${$value}[0];
+				$val = join( " ", @{$value} );
 				print OUT "setenv ${key} \"${val}\"\n";
 			}
 		}
@@ -766,11 +766,11 @@ sub shell_file {
 					print OUT "export LD_LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$LD_LIBRARY_PATH\"\n";
 				}
 			} elsif ( exists $stdhash { $key } ) {
-				$val = ${$value}[0];
+				$val = join( " ", @{$value} );
 				print OUT "export ${pname}_${key}=\"${val}\"\n";
 			} else {
 				if ( $key ne "VERSION" ) {
-					$val = ${$value}[0];
+					$val = join( " ", @{$value} );
 					print OUT "export ${key}=\"${val}\"\n";
 				}
 			}
