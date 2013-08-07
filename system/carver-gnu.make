@@ -11,7 +11,7 @@
 # here:
 #
 # 1.0 : gcc-4.7.0, MKL 10.2, OpenMPI 1.4.5
-# 2.0 : same as 1.0, but with new package versioning
+# 2.0 : gcc-4.7.0, MKL 13.0.1, OpenMPI 1.6.3
 #
 
 HPCP_ENV = 2.0
@@ -48,7 +48,7 @@ FC = gfortran
 # MPI compilers
 
 openmpi_OVERRIDE = TRUE
-openmpi_VERSION = 1.4.5
+openmpi_VERSION = 1.6.3
 MPICC = mpicc
 MPICXX = mpicxx
 MPIF77 = mpif77
@@ -77,8 +77,9 @@ LIBS = -lm -lpthread
 # vendor math libraries
 
 VENDOR = intel
-INTEL_INCLUDE = $(MKL_INC)
-INTEL_LIBDIR = $(MKL_HOME)/lib/em64t
+INTEL_PREFIX = /usr/common/usg/intel/13.0.028/composer_xe_2013.1.117
+INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
+INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/em64t
 INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3 -liomp5
 INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3 -liomp5
 INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3 -liomp5
@@ -93,14 +94,14 @@ tk_OVERRIDE = TRUE
 tk_VERSION = 8.4.13
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 10.2
+blas_VERSION = 13.0.1
 blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(INTEL_LIBS_CXX)
 blas_LIBS_F77 = $(INTEL_LIBS_F77)
 blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 10.2
+lapack_VERSION = 13.0.1
 lapack_LIBS_CC = -lmkl_lapack
 lapack_LIBS_CXX = -lmkl_lapack
 lapack_LIBS_F77 = -lmkl_lapack
