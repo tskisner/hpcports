@@ -329,11 +329,11 @@ sub package_vars {
 	while ( <IN> ) {
 		my @F = split;
 		my $n = @F;
-		my $vals = ();
+		my @vals = ();
 		for ( my $v = 2; $v < $n; $v++ ) {
-			push ( @{$vals}, $F[$v] );
+			push ( @vals, $F[$v] );
 		}
-		$vars->{ $F[0] } = $vals;
+		$vars->{ $F[0] } = join ( " ", @vals );
 	}
 	close ( IN );
 
@@ -597,36 +597,23 @@ sub module_file {
 
 	my $key;
 	my $value;
-	my $val;
 	while ( ($key, $value) = each %{$vars} ) {
 		if ( $key eq "BIN" ) {
-			foreach $val ( @{$value} ) {
-				print OUT "prepend-path PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
-			}
+			print OUT "prepend-path PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
 		} elsif ( $key eq "MAN" ) {
-			foreach $val ( @{$value} ) {
-				print OUT "prepend-path MANPATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
-			}
+			print OUT "prepend-path MANPATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
 		} elsif ( $key eq "PYTHON" ) {
-			foreach $val ( @{$value} ) {
-				print OUT "prepend-path PYTHONPATH \"${prefix}/${pname}-${fullversion}/${val}/${pysite}/site-packages\"\n";
-			}
+			print OUT "prepend-path PYTHONPATH \"${prefix}/${pname}-${fullversion}/${value}/${pysite}/site-packages\"\n";
 		} elsif ( $key eq "INCLUDE" ) {
-			foreach $val ( @{$value} ) {
-				print OUT "prepend-path CPATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
-			}
+			print OUT "prepend-path CPATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
 		} elsif ( $key eq "LIB" ) {
-			foreach $val ( @{$value} ) {
-				print OUT "prepend-path LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
-				print OUT "prepend-path LD_LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
-			}
+			print OUT "prepend-path LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
+			print OUT "prepend-path LD_LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${value}\"\n";
 		} elsif ( exists $stdhash { $key } ) {
-			$val = join( " ", @{$value} );
-			print OUT "setenv ${pname}_${key} \"${val}\"\n";
+			print OUT "setenv ${pname}_${key} \"${value}\"\n";
 		} else {
 			if ( $key ne "VERSION" ) {
-				$val = join( " ", @{$value} );
-				print OUT "setenv ${key} \"${val}\"\n";
+				print OUT "setenv ${key} \"${value}\"\n";
 			}
 		}
 	}
@@ -744,36 +731,23 @@ sub shell_file {
 
 		my $key;
 		my $value;
-		my $val;
 		while ( ($key, $value) = each %{$vars} ) {
 			if ( $key eq "BIN" ) {
-				foreach $val ( @{$value} ) {
-					print OUT "export PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$PATH\"\n";
-				}
+				print OUT "export PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$PATH\"\n";
 			} elsif ( $key eq "MAN" ) {
-				foreach $val ( @{$value} ) {
-					print OUT "export MANPATH=\"${prefix}/${pname}-${fullversion}/${val}:\$MANPATH\"\n";
-				}
+				print OUT "export MANPATH=\"${prefix}/${pname}-${fullversion}/${value}:\$MANPATH\"\n";
 			} elsif ( $key eq "PYTHON" ) {
-				foreach $val ( @{$value} ) {
-					print OUT "export PYTHONPATH=\"${prefix}/${pname}-${fullversion}/${val}/${pysite}/site-packages:\$PYTHONPATH\"\n";
-				}
+				print OUT "export PYTHONPATH=\"${prefix}/${pname}-${fullversion}/${value}/${pysite}/site-packages:\$PYTHONPATH\"\n";
 			} elsif ( $key eq "INCLUDE" ) {
-				foreach $val ( @{$value} ) {
-					print OUT "export CPATH=\"${prefix}/${pname}-${fullversion}/${val}:\$CPATH\"\n";
-				}
+				print OUT "export CPATH=\"${prefix}/${pname}-${fullversion}/${value}:\$CPATH\"\n";
 			} elsif ( $key eq "LIB" ) {
-				foreach $val ( @{$value} ) {
-					print OUT "export LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$LIBRARY_PATH\"\n";
-					print OUT "export LD_LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$LD_LIBRARY_PATH\"\n";
-				}
+				print OUT "export LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LIBRARY_PATH\"\n";
+				print OUT "export LD_LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${value}:\$LD_LIBRARY_PATH\"\n";
 			} elsif ( exists $stdhash { $key } ) {
-				$val = join( " ", @{$value} );
-				print OUT "export ${pname}_${key}=\"${val}\"\n";
+				print OUT "export ${pname}_${key}=\"${value}\"\n";
 			} else {
 				if ( $key ne "VERSION" ) {
-					$val = join( " ", @{$value} );
-					print OUT "export ${key}=\"${val}\"\n";
+					print OUT "export ${key}=\"${value}\"\n";
 				}
 			}
 		}
