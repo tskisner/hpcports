@@ -82,6 +82,7 @@ LDFLAGS = -L/usr/lib64 /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 # vendor math libraries
 
 VENDOR = amd
+AMD_PREFIX = $(ACML_DIR)
 AMD_INCLUDE = $(ACML_DIR)/gfortran64_mp/include
 AMD_LIBDIR = $(ACML_DIR)/gfortran64_mp/lib
 AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
