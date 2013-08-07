@@ -11,7 +11,7 @@
 # here:
 #
 # 1.0 :  gnu 4.7.2, cray-mpich2 5.6.1, cray-libsci 12.0.00, fftw 3.3.0.1, python 2.7.3
-# 2.0 :  gnu 4.7.2, cray-mpich 6.0.0, mkl-13.0, fftw-3.3.0.3, python-2.7.3
+# 2.0 :  gnu 4.7.2, cray-mpich 6.0.0, mkl-13.0.1, fftw-3.3.0.3, python-2.7.3
 #
 
 HPCP_ENV = 2.0
@@ -80,9 +80,10 @@ LIBTOOLFLAGS = --preserve-dup-deps
 # vendor math libraries
 
 VENDOR = intel
-INTEL_INCLUDE = $(MKL_INC)
-INTEL_LIBDIR = $(MKL_LIBDIR)
-INTEL_LIBS_CC = $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a $(MKL_LIBDIR)/libmkl_intel_lp64.a $(MKL_LIBDIR)/libmkl_gnu_thread.a $(MKL_LIBDIR)/libmkl_core.a -ldl -lpthread -lm
+INTEL_PREFIX = /opt/intel/composer_xe_2013.1.117
+INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
+INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
+INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a -ldl -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
