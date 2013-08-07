@@ -449,7 +449,7 @@ sub makefile_var_expand {
 	foreach $mat ( @matches ) {
 		my $exp;
 		if ( defined ( ${store}->{$mat} ) ) {
-			$exp = ${store}->{$mat};
+			$exp = join( " ", @{${store}->{$mat}} );
 		} elsif ( defined $ENV{$mat} ) {
 			$exp = $ENV{$mat};
 		} else {
