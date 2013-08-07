@@ -125,10 +125,6 @@ python_OVERRIDE = TRUE
 python_SITE = python2.7
 python_VERSION = 2.7.3
 
-fftw_OVERRIDE = TRUE
-fftw_VERSION = $(FFTW_VERSION)
-fftw_PREFIX = /opt/fftw/$(FFTW_VERSION)
-
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
 
