@@ -24,9 +24,12 @@ hpcports () {
   module unuse /proj/planck/software/hpcports/env/modulefiles
   module unuse /proj/planck/software/hpcports_login/env/modulefiles
   case $1 in
-    login ) module use /proj/planck/software/hpcports_login/env/modulefiles;;
-    gnu ) module use /proj/planck/software/hpcports/env/modulefiles;;
-    * ) echo "usage:  hpcports [ gnu | login ]";;
+    login ) module use /proj/planck/software/hpcports_login/env/modulefiles
+      ;;
+    gnu ) module use /proj/planck/software/hpcports/env/modulefiles
+      ;;
+    * ) echo "usage:  hpcports [ gnu | login ]"
+      ;;
   esac
 }
 
