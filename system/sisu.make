@@ -1,8 +1,5 @@
 
-# use this prefix (set from the command line) to update the 
-# live hpcports install used by many people
-#
-export HPCP_PREFIX=/proj/planck/software/hpcports
+HPCP_PREFIX=/proj/planck/software/hpcports
 
 # OS environment version
 #
@@ -10,7 +7,7 @@ export HPCP_PREFIX=/proj/planck/software/hpcports
 # the minor version when upgrading MPI or vendor libs.  Document configuration
 # here:
 #
-# 1.0 :  gnu 4.8.1, cray-mpich2 5.6.5, mkl-13.5.192
+# 1.0 :  gnu 4.7.3, cray-mpich2 5.6.5, mkl-13.5.192
 #
 
 HPCP_ENV = 1.0
@@ -66,8 +63,8 @@ FCFLAGS = -O3 -static -fPIC -DNDEBUG
 OMPFLAGS = -fopenmp
 
 # Fortran mixing
-FLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
+FLIBS = /opt/gcc/4.7.3/snos/lib64/libgfortran.a
+FCLIBS = /opt/gcc/4.7.3/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
 # Linking
@@ -143,8 +140,8 @@ blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
 lapack_VERSION = 13.5.192
-lapack_LIBS_CC = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_CXX = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_F77 = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_FC = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_CC = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_CXX = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_F77 = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_FC = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
 
