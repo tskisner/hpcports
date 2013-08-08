@@ -6,4 +6,5 @@
     module swap craype craype/1.05
     module swap cray-mpich2 cray-mpich2/5.6.5
     module load git/1.8.1.4
+    module load cmake/2.8.10.2
   }

@@ -1,5 +1,5 @@
 
-HPCP_PREFIX=/proj/planck/software/hpcports
+HPCP_PREFIX = /proj/planck/software/hpcports
 
 # OS environment version
 #
@@ -88,6 +88,12 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 gitgit_OVERRIDE = TRUE
 gitgit_VERSION = 1.8.1.4
+
+openssl_OVERRIDE = TRUE
+openssl_VERSION = 0.9.8j
+
+curl_OVERRIDE = TRUE
+curl_VERSION = 7.19.7
 
 python_OVERRIDE = TRUE
 python_SITE = python2.7
