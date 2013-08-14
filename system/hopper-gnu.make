@@ -56,6 +56,7 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
+MPILIB = mpich
 
 # compile flags
 
