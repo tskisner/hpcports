@@ -79,11 +79,12 @@ LIBS = -lm -lpthread
 VENDOR = intel
 INTEL_PREFIX = /usr/common/usg/intel/13.0.028/composer_xe_2013.1.117
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
-INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/em64t
-INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3 -liomp5
-INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3 -liomp5
-INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3 -liomp5
-INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3 -liomp5
+INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
+#INTEL_LIBS_CC = -lmkl_rt
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lpthread -lm
+INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
+INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
+INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
@@ -102,10 +103,10 @@ blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
 lapack_VERSION = 13.0.1
-lapack_LIBS_CC = -lmkl_lapack
-lapack_LIBS_CXX = -lmkl_lapack
-lapack_LIBS_F77 = -lmkl_lapack
-lapack_LIBS_FC = -lmkl_lapack
+lapack_LIBS_CC = -lmkl_lapack95_lp64
+lapack_LIBS_CXX = -lmkl_lapack95_lp64
+lapack_LIBS_F77 = -lmkl_lapack95_lp64
+lapack_LIBS_FC = -lmkl_lapack95_lp64
 
 gitgit_OVERRIDE = TRUE
 gitgit_VERSION = 1.7.8.3
