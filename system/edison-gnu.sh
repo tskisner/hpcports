@@ -1,6 +1,11 @@
 loaded=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep PrgEnv-gnu`
 if [ "x${loaded}" = x ]; then
-    module swap PrgEnv-intel PrgEnv-gnu
+    if [ is-loaded PrgEnv-cray ] {
+      module swap PrgEnv-cray PrgEnv-gnu
+    }
+    if [ is-loaded PrgEnv-intel ] {
+      module swap PrgEnv-intel PrgEnv-gnu
+    }
     module unload cray-shmem
     module swap gcc gcc/4.7.2
     module swap craype craype/1.05
