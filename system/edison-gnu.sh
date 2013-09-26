@@ -3,10 +3,10 @@ loadedintel=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep PrgEnv-intel`
 loadedcray=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep PrgEnv-cray`
 loadeddarshan=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep darshan`
 if [ "x${loadedgnu}" = x ]; then
-    if [ "x${loadedcray}" = x ]; then
+    if [ "x${loadedcray}" != x ]; then
       module swap PrgEnv-cray PrgEnv-gnu
     fi
-    if [ "x${loadedintel}" = x ]; then
+    if [ "x${loadedintel}" != x ]; then
       module swap PrgEnv-intel PrgEnv-gnu
     fi
     module unload cray-shmem
@@ -21,7 +21,7 @@ if [ "x${loadedgnu}" = x ]; then
     module load mpi4py/1.3
     module load cmake/2.8.10.2
     module load bzip2/1.0.6
-    if [ "x${loadeddarshan}" = x ]; then
+    if [ "x${loadeddarshan}" != x ]; then
         module unload darshan
     fi
     module load darshan/2.2.7-106
