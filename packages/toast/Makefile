@@ -59,6 +59,7 @@ pkg-configure :
 	--with-getdata=$(getdata_PREFIX) \
 	--with-hdf5=$(hdf5_PREFIX)/bin/h5c++ \
 	--with-cfitsio="$(cfitsio_PREFIX)" \
+	--with-wcslib="$(wcslib_PREFIX)" \
 	--with-elemental="$(elemental_PREFIX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
