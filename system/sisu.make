@@ -8,9 +8,10 @@ HPCP_PREFIX = /proj/planck/software/hpcports
 # here:
 #
 # 1.0 :  gnu 4.7.3, cray-mpich2 5.6.5, mkl-13.5.192
+# 2.0 :  gnu 4.8.1, cray-mpich2 6.0.2, craype 1.06, mkl 13.5.192
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -63,14 +64,14 @@ FCFLAGS = -O3 -static -fPIC -DNDEBUG
 OMPFLAGS = -fopenmp
 
 # Fortran mixing
-FLIBS = /opt/gcc/4.7.3/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.7.3/snos/lib64/libgfortran.a
+FLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
+FCLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
 # Linking
 
 LIBS = -lm
-LDFLAGS =
+LDFLAGS = -L/usr/lib64
 LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries

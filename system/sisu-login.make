@@ -8,9 +8,10 @@ HPCP_PREFIX = /proj/planck/software/hpcports_login
 # here:
 #
 # 1.0 :  gnu 4.7.3, cray-mpich2 5.6.5, mkl-13.5.192
+# 2.0 :  gnu 4.8.1, cray-mpich2 6.0.2, craype 1.06, mkl 13.5.192
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -23,7 +24,6 @@ HPCP_POOL = /proj/planck/software/hpcports_pool
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = gnu
-BUILD_DYNAMIC = FALSE
 
 # UNIX tools
 
@@ -61,8 +61,7 @@ FCLIBS = -lgfortran
 # Linking
 
 LIBS = -lm
-LDFLAGS =
-LIBTOOLFLAGS = --preserve-dup-deps
+LDFLAGS = -L/usr/lib64
 
 # vendor math libraries
 
@@ -70,7 +69,7 @@ VENDOR = intel
 INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = -lmkl_rt -lpthread -lm
+INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3 -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -89,6 +88,14 @@ curl_VERSION = 7.19.7
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
 
+readline_OVERRIDE = TRUE
+readline_VERSION = 5.2
+readline_LIBS_CC = -L/usr/lib64 -lhistory -lreadline -ltermcap
+readline_LIBS_CXX = $(readline_LIBS_CC)
+readline_LIBS_F77 = $(readline_LIBS_CC)
+readline_LIBS_FC = $(readline_LIBS_CC)
+
+
 # we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
@@ -100,8 +107,8 @@ blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
 lapack_VERSION = 13.5.192
-lapack_LIBS_CC = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_CXX = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_F77 = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_FC = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_LIBS_CC = -lmkl_lapack95_lp64
+lapack_LIBS_CXX = $(lapack_LIBS_CC)
+lapack_LIBS_F77 = $(lapack_LIBS_CC)
+lapack_LIBS_FC = $(lapack_LIBS_CC)
 
