@@ -1,0 +1,8 @@
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -ltermcap
+LIBS_CXX = -ltermcap
+LIBS_F77 = -ltermcap
+LIBS_FC = -ltermcap
