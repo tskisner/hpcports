@@ -88,14 +88,6 @@ curl_VERSION = 7.19.7
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
 
-readline_OVERRIDE = TRUE
-readline_VERSION = 5.2
-readline_LIBS_CC = -L/usr/lib64 -lhistory -lreadline -ltermcap
-readline_LIBS_CXX = $(readline_LIBS_CC)
-readline_LIBS_F77 = $(readline_LIBS_CC)
-readline_LIBS_FC = $(readline_LIBS_CC)
-
-
 # we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
