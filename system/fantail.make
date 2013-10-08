@@ -36,10 +36,10 @@ INST_PERM = a+rX
 
 # serial compilers
 
-CC = gcc
-CXX = g++
-F77 = gfortran
-FC = gfortran
+CC = gcc-mp-4.8
+CXX = g++-mp-4.8
+F77 = gfortran-mp-4.8
+FC = gfortran-mp-4.8
 
 # compile flags
 
