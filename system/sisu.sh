@@ -1,4 +1,6 @@
 loaded=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep PrgEnv-gnu`
+loadedintel=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep PrgEnv-intel`
+loadedcray=`${MODULESHOME}/bin/modulecmd sh -t list 2>&1 | grep PrgEnv-cray`
 if [ "x${loaded}" = x ]; then
     if [ "x${loadedcray}" != x ]; then
       module swap PrgEnv-cray PrgEnv-gnu

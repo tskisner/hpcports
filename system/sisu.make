@@ -71,7 +71,7 @@ MPIFCLIBS =
 # Linking
 
 LIBS = -lm
-LDFLAGS = -L/usr/lib64
+LDFLAGS =
 LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries
@@ -135,6 +135,9 @@ healpy_VERSION = NA
 
 numexpr_OVERRIDE = TRUE
 numexpr_VERSION = NA
+
+setuptools_OVERRIDE = TRUE
+setuptools_VERSION = NA
 
 # we get BLAS and Lapack from MKL
 
