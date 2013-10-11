@@ -9,6 +9,8 @@ if [ "x${loaded}" = x ]; then
       module swap PrgEnv-intel PrgEnv-gnu
     fi
     module unload cray-shmem
+    module unload cce
+    module unload intel
     module swap gcc gcc/4.8.1
     module swap craype craype/1.06
     module swap cray-mpich cray-mpich/6.0.2
