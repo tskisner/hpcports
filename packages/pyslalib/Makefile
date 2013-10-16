@@ -6,7 +6,7 @@ include ../pkg_defs.make
 PKG_NAME = pyslalib
 
 PKG_FORMAT = git
-PKG_GIT_CLONE = git clone http://github.com/scottransom/pyslalib.git
+PKG_GIT_CLONE = git clone git://github.com/scottransom/pyslalib.git
 PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
 PKG_SRCDIR = pyslalib
