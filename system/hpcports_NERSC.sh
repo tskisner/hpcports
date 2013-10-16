@@ -93,10 +93,12 @@ if [ $NERSC_HOST = "edison" ]; then
     planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
     module unuse /project/projectdirs/cmb/modules/edison/hpcports_gnu/env/modulefiles
+    module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm/env/modulefiles
     module unuse /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles
     if [ "$planck" = "yes" ]; then
       module unuse /project/projectdirs/planck/modules/edison/gnu/modulefiles
       module unuse /project/projectdirs/planck/modules/edison/intel/modulefiles
+      module unuse /project/projectdirs/planck/modules/edison/ccm/modulefiles
     fi
     case $1 in
       intel ) module use /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles
@@ -107,7 +109,11 @@ if [ $NERSC_HOST = "edison" ]; then
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/edison/gnu/modulefiles
             fi;;
-        * ) echo "usage:  hpcports [ gnu | intel ]";;
+      ccm ) module use /project/projectdirs/cmb/modules/edison/hpcports_ccm/env/modulefiles
+            if [ "$planck" = "yes" ]; then
+              module use /project/projectdirs/planck/modules/edison/ccm/modulefiles
+            fi;;
+        * ) echo "usage:  hpcports [ gnu | intel | ccm ]";;
     esac
   }
 fi
