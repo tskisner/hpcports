@@ -14,9 +14,10 @@
 # 2.0 : gcc-4.7.1, ACML 4.4.0, cray-mpich2 5.5.2, fftw 3.3.0.0, python 2.7.1
 # 3.0 : gcc-4.7.2, ACML 4.4.0, cray-mpich2 5.5.5, fftw 3.3.0.1, python 2.7.3
 # 4.0 : gcc-4.7.2, ACML 4.4.0, xt-asyncpe 5.19, cray-mpich2 5.6.4, fftw 3.3.0.2, python 2.7.3
+# 5.0 : gcc-4.7.2, ACML 4.4.0, xt-asyncpe 5.23, cray-mpich2 5.6.4, fftw 3.3.0.2, python 2.7.3, darshan 2.2.6
 #
 
-HPCP_ENV = 4.0
+HPCP_ENV = 5.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -92,6 +93,9 @@ AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/
 AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.7.2/snos/lib64/libgfortran.a /opt/gcc/4.7.2/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # package overrides
+
+termcap_OVERRIDE = TRUE
+termcap_VERSION = 2.0.8
 
 readline_OVERRIDE = TRUE
 readline_VERSION = 5.2
