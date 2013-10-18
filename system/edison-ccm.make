@@ -40,14 +40,14 @@ INST_PERM = g+rwX,o+rX
 
 # serial compilers
 
-CC = cc
-CXX = CC
-F77 = ftn
-FC = ftn
+CC = gcc
+CXX = g++
+F77 = gfortran
+FC = gfortran
 
 # MPI compilers
 
-openmpi_EXTRA = --tm=disable
+openmpi_EXTRA = --without-tm
 
 # compile flags
 
@@ -76,13 +76,15 @@ VENDOR = intel
 INTEL_PREFIX = /opt/intel/composer_xe_2013.1.117
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3
+INTEL_LIBS_CC = -lmkl_rt
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
+gitgit_OVERRIDE = TRUE
+gitgit_VERSION = 1.8.1.1
 
 # we get BLAS and Lapack from MKL
 
