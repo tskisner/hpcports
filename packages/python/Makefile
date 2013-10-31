@@ -38,7 +38,7 @@ pkg-configure :
 	OPT="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
-	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(LIBS)" \
+	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(termcap_LIBS_CC) $(LIBS)" \
 	./configure \
 	$${dyn} $${nognu} \
 	--disable-toolbox-glue \
