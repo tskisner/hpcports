@@ -7,6 +7,10 @@ ifndef BUILD_DYNAMIC
 	export BUILD_DYNAMIC = TRUE
 endif
 
+ifndef BUILD_FORTRAN
+	export BUILD_FORTRAN = TRUE
+endif
+
 ifndef TOOLCHAIN
 	export TOOLCHAIN = gnu
 endif
