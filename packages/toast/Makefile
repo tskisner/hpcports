@@ -31,6 +31,10 @@ pkg-configure :
 		dyn=""; \
 		pyopt="--enable-python"; \
 	fi; \
+	fort=""; \
+	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
+		fort="--disable-fortran"; \
+	fi; \
 	mp=""; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
 		mp="--disable-openmp"; \
@@ -48,7 +52,7 @@ pkg-configure :
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
 	LDFLAGS="$(python_LDFLAGS) $(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} $${pyopt} $${mp} \
+	./configure $${dyn} $${pyopt} $${mp} $${fort} \
 	--enable-exp-all \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \
