@@ -75,6 +75,9 @@ if ( ! defined ( $system ) ) {
 	die ( "\nYou must have the \"HPCP_HOST\" environment variable defined\n\n" );
 }
 
+my $envprefix = $ENV{ "HPCP_PREFIX" };
+my $envpool = $ENV{ "HPCP_POOL" };
+
 # Parse commands
 
 my $ARGC = @ARGV;
@@ -146,6 +149,10 @@ if ( $command eq "status" ) {
 	my $out = $pre."---------------------------------------------------------\n";
 	print $out;
 	$out = $pre."HPCP_HOST = \"".$system."\", HPCP_ENV = \"".$env."\"\n";
+	print $out;
+	$out = $pre."HPCP_PREFIX = \"".$envprefix."\"\n";
+	print $out;
+	$out = $pre."HPCP_POOL = \"".$envpool."\"\n";
 	print $out;
 	$out = $pre."---------------------------------------------------------\n";
 	print $out;

@@ -8,7 +8,9 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # setup environment
-. ${DIR}/system/${HPCP_HOST}.sh
+if [ -e ${DIR}/system/${HPCP_HOST}.sh ]; then
+	. ${DIR}/system/${HPCP_HOST}.sh
+fi
 
 # call actual perl program
 ${DIR}/hpcp_exec.pl "$@"
