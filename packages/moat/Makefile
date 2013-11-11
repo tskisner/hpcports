@@ -43,7 +43,7 @@ pkg-configure :
 		MPICXX="$(MPICXX)" \
 		./configure \
 		$${dyn} \
-		--with-fftw-libs="$(fftw_LDFLAGS) $(fftw_LIBS_CXX)" \
+		--with-fftw-libs="$(fftw_LIBS_CXX)" \
 		--with-accelerate-libs="$(APPLE_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--disable-fortran \
