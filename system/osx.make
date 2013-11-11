@@ -1,17 +1,15 @@
 # This assumes that macports is used, and that you have installed the ports
-# listed in the osx.macports.sh file.
+# listed in the osx.macports.sh file (i.e. run "sudo bash osx.macports.sh").
 
-ifndef HPCP_PREFIX
-  HPCP_PREFIX := $(HOME)/hpcports
-endif
+# software install location (set this in your ~/.bashrc or similar)
+#HPCP_PREFIX = $(HOME)/hpcports
 
 # OS environment version (set to osx version plus macports version)
 
 HPCP_ENV = 10.8-2.2.1
 
-# software download location
-
-HPCP_POOL = $(HOME)/hpcports_pool
+# software download location (set this in your ~/.bashrc or similar)
+#HPCP_POOL = $(HOME)/hpcports_pool
 
 # UNIX tools
 
@@ -92,6 +90,9 @@ bzip2_VERSION = 1.0.6
 cfitsio_OVERRIDE = TRUE
 cfitsio_VERSION = 3.340
 
+cmake_OVERRIDE = TRUE
+cmake_VERSION = 2.8.12
+
 curl_OVERRIDE = TRUE
 curl_VERSION = 7.33.0
 
@@ -119,9 +120,6 @@ gzip_VERSION = 1.6
 h5py_OVERRIDE = TRUE
 h5py_VERSION = 2.2.0
 
-healpy_OVERRIDE = TRUE
-healpy_VERSION = 1.6.3
-
 hdf5_OVERRIDE = TRUE
 hdf5_VERSION = 1.8.11
 
@@ -142,9 +140,6 @@ m4_VERSION = 1.4.16
 
 matplotlib_OVERRIDE = TRUE
 matplotlib_VERSION = 1.3.0
-
-mpi4py_OVERRIDE = TRUE
-mpi4py_VERSION = 1.3_3
 
 mysql_client_OVERRIDE = TRUE
 mysql_client_VERSION = 1.2.3
@@ -191,17 +186,14 @@ python_VERSION = 2.7.5
 readline_OVERRIDE = TRUE
 readline_VERSION = 6.2.000
 
-rpy2_OVERRIDE = TRUE
-rpy2_VERSION = 2.2.1
-
 scientific_OVERRIDE = TRUE
 scientific_VERSION = 2.9.2
 
 scipy_OVERRIDE = TRUE
 scipy_VERSION = 0.13.0
 
-sqlite3_OVERRIDE = TRUE
-sqlite3_VERSION = 3.8.0.2
+sqlite_OVERRIDE = TRUE
+sqlite_VERSION = 3.8.0.2
 
 swig_OVERRIDE = TRUE
 swig_VERSION = 2.0.10

@@ -8,37 +8,35 @@ automake \
 boost \
 bzip2 \
 cfitsio \
+cmake \
 curl \
-eigen3-devel \
+eigen3 \
 expat \
 fftw-3 \
 gettext \
-gsl-devel \
+gsl \
 gzip \
 hdf5-18 \
+jpeg \
 libarchive \
-libjpeg-turbo \
 libtool \
 m4 \
 mysql5 \
 netcdf \
-openmpi \
+openmpi -gcc48 \
 openssl \
 pcre \
 plplot \
 postgresql92 \
 py27-h5py \
-py27-healpy \
 py27-ipython \
 py27-matplotlib \
-py27-mpi4py \
 py27-mysql \
 py27-nose \
 py27-numexpr \
 py27-numpy \
 py27-psycopg2 \
 py27-pyfits \
-py27-rpy2 \
 py27-scientific \
 py27-scipy \
 py27-urwid \
@@ -58,4 +56,4 @@ zlib
 
 # make sure macports python 2.7 is default
 
-port select set python python27
+port select --set python python27
