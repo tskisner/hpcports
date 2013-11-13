@@ -92,6 +92,9 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
+termcap_OVERRIDE = TRUE
+termcap_VERSION = 2.0.8
+
 readline_OVERRIDE = TRUE
 readline_VERSION = 5.2
 
