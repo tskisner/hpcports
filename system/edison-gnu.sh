@@ -18,7 +18,6 @@ if [ "x${loadedgnu}" = x ]; then
     module load python/2.7.3
     module load zlib/1.2.7
     module load curl/7.28.1
-    module load mpi4py/1.3
     module load cmake/2.8.10.2
     module load bzip2/1.0.6
     if [ "x${loadeddarshan}" != x ]; then
