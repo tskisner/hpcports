@@ -1,0 +1,4 @@
+INCLUDE = include
+LIB = lib
+LIBS_CXX = -lelemental -lpmrrr
+LIBS_MPICXX = -lelemental -lpmrrr
