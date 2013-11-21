@@ -6,7 +6,7 @@ include ../pkg_defs.make
 PKG_NAME = gsl
 
 PKG_FORMAT = tar
-PKG_TAR = gsl-$(PKG_VERSION).tar.bz2
+PKG_TAR = gsl-$(PKG_VERSION).tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.gnu.org/gnu/gsl/gsl-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 

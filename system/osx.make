@@ -36,8 +36,8 @@ BUILD_FORTRAN = FALSE
 
 # compile flags
 
-CFLAGS = -O2 -m64 -g -fno-common -fPIC -DNDEBUG
-CXXFLAGS = -O2 -m64 -g -fno-common -fPIC -DNDEBUG
+CFLAGS = -O3 -fno-common -fPIC -DNDEBUG -fnested-functions
+CXXFLAGS = -O3 -fno-common -fPIC -DNDEBUG -fnested-functions
 
 # OpenMP flags
 
