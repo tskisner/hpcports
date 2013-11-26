@@ -1,0 +1,10 @@
+BIN = bin
+INCLUDE = include
+LIB = lib
+PYTHON = lib
+LIBS_CC = -lharp
+LIBS_CXX = -lharp
+LIBS_FC = -lharp
+LIBS_MPICC = -lharp-mpi
+LIBS_MPICXX = -lharp-mpi
+LIBS_MPIFC = -lharp-mpi

@@ -13,7 +13,8 @@ PKG_SRCDIR = Elemental
 
 PKG_BUILDDIR = build
 
-PKG_PATCHES = hpcp_lapack.patch
+PKG_PATCHES = 
+#PKG_PATCHES = hpcp_lapack.patch
 
 
 # rules for this package
@@ -26,31 +27,30 @@ pkg-configure :
 	@cd $(STAGE); \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
+	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
+	math="$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)"; \
+	fort="-D CMAKE_Fortran_COMPILER=\"$(FC)\" -D CMAKE_Fortran_FLAGS=\"$(FCFLAGS)\" -D MPI_Fortran=\"$(MPIFC)\" -D MPI_Fortran_LIBRARIES=\"$(MPIFCLIBS)\""; \
 	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
-		printf "%s%15s :  FORTRAN Disabled, skipping configure\n" "$(HPCP)" "$(PKG_NAME)"; \
-	else \
-		dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
-		math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s# #;#g"`; \
-		cmake $${dyn} \
-		-D CMAKE_C_COMPILER="$(CC)" \
-		-D CMAKE_CXX_COMPILER="$(CXX)" \
-		-D CMAKE_Fortran_COMPILER="$(FC)" \
-		-D CMAKE_BUILD_TYPE=HybridRelease \
-		-D CMAKE_C_FLAGS="$(CFLAGS)" \
-		-D C_PURE_RELEASE_FLAGS="$(CFLAGS)" \
-		-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
-		-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
-		-D CXX_PURE_RELEASE_FLAGS="$(CXXFLAGS)" \
-		-D CXX_HYBRID_RELEASE_FLAGS="$(CXXFLAGS)" \
-		-D CMAKE_Fortran_FLAGS="$(FCFLAGS)" \
-		-D MPI_C_COMPILER="$(MPICC)" \
-		-D MPI_CXX_COMPILER="$(MPICXX)" \
-		-D MPI_Fortran_COMPILER="$(MPIFC)" \
-		-D MPI_Fortran_LIBRARIES="$(MPIFCLIBS)" \
-		-D MATH_LIBS="$${math}" \
-		-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
-		../$(PKG_SRCDIR); \
-	fi
+		fort="-D FORTRAN_WORKS:BOOL=OFF"; \
+	fi; \
+	cmake $${dyn} $${fort} \
+	-D CMAKE_C_COMPILER="$(CC)" \
+	-D CMAKE_CXX_COMPILER="$(CXX)" \
+	-D CMAKE_BUILD_TYPE=HybridRelease \
+	-D CMAKE_C_FLAGS="$(CFLAGS)" \
+	-D C_PURE_RELEASE_FLAGS="$(CFLAGS)" \
+	-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
+	-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+	-D C_FLAGS="$(CFLAGS)" \
+	-D CXX_FLAGS="$(CXXFLAGS)" \
+	-D OpenMP_CXX_FLAGS="$(OMPFLAGS)" \
+	-D CXX_PURE_RELEASE_FLAGS="$(CXXFLAGS)" \
+	-D CXX_HYBRID_RELEASE_FLAGS="$(CXXFLAGS)" \
+	-D MPI_C="$(MPICC)" \
+	-D MPI_CXX="$(MPICXX)" \
+	-D MATH_LIBS="$${math}" \
+	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
+	../$(PKG_SRCDIR); \
 
 
 pkg-build :

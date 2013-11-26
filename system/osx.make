@@ -27,8 +27,8 @@ INST_PERM = a+rX
 
 # serial compilers.  we also explicitly disable fortran
 
-CC = gcc
-CXX = g++
+CC = clang
+CXX = clang++
 F77 = 
 FC = 
 
@@ -36,8 +36,8 @@ BUILD_FORTRAN = FALSE
 
 # compile flags
 
-CFLAGS = -O3 -fno-common -fPIC -DNDEBUG -fnested-functions
-CXXFLAGS = -O3 -fno-common -fPIC -DNDEBUG -fnested-functions
+CFLAGS = -O3 -fno-common -fPIC -DNDEBUG
+CXXFLAGS = -O3 -fno-common -fPIC -DNDEBUG -std=c++11 -stdlib=libc++
 
 # OpenMP flags
 
