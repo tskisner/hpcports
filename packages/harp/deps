@@ -1,1 +1,1 @@
-autoconf automake libtool cfitsio python numpy lapack gitgit elemental
+autoconf automake libtool cfitsio python numpy lapack gitgit boost
