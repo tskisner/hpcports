@@ -1,10 +1,4 @@
-  prepend-path PATH /clusterfs/riemann/data/kisner/software/gcc-4.8.2/bin
-  prepend-path CPATH /clusterfs/riemann/data/kisner/software/gcc-4.8.2/include
-  prepend-path LIBRARY_PATH /clusterfs/riemann/data/kisner/software/gcc-4.8.2/lib64
-  prepend-path LIBRARY_PATH /clusterfs/riemann/data/kisner/software/gcc-4.8.2/lib
-  prepend-path LD_LIBRARY_PATH /clusterfs/riemann/data/kisner/software/gcc-4.8.2/lib64
-  prepend-path LD_LIBRARY_PATH /clusterfs/riemann/data/kisner/software/gcc-4.8.2/lib
-
+  module load gcc/4.8.2
   if [ is-loaded mkl ] {
   } else {
     module load mkl/11.0.084
