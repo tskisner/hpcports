@@ -37,7 +37,7 @@ BUILD_FORTRAN = FALSE
 # compile flags
 
 CFLAGS = -O3 -fno-common -fPIC -DNDEBUG
-CXXFLAGS = -O3 -fno-common -fPIC -DNDEBUG -std=c++11 -stdlib=libc++
+CXXFLAGS = -O3 -fno-common -fPIC -DNDEBUG
 
 # OpenMP flags
 

@@ -14,7 +14,7 @@ PKG_SRCDIR = getdata-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = 
 
 
 # rules for this package
@@ -29,13 +29,16 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --disable-python --disable-perl"; \
 	fi; \
+	fort=""; \
+	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
+		fort="--disable-fortran --disable-fortran95"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure \
-	$${dyn} \
+	./configure $${dyn} $${fort} \
 	--with-pic \
 	--disable-legacy-api \
 	--disable-perl \
