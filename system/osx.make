@@ -86,7 +86,7 @@ automake_VERSION = 1.14
 automake_PREFIX = $(macports)
 
 boost_OVERRIDE = TRUE
-boost_VERSION = 1.54.0
+boost_VERSION = 1.55.0
 boost_PREFIX = $(macports)
 
 bzip2_OVERRIDE = TRUE
@@ -125,7 +125,7 @@ gettext_VERSION = 0.18.3.1
 gettext_PREFIX = $(macports)
 
 gsl_OVERRIDE = TRUE
-gsl_VERSION = 1.16_1
+gsl_VERSION = 1.16
 gsl_PREFIX = $(macports)
 
 gzip_OVERRIDE = TRUE
@@ -161,7 +161,7 @@ m4_VERSION = 1.4.16
 m4_PREFIX = $(macports)
 
 matplotlib_OVERRIDE = TRUE
-matplotlib_VERSION = 1.3.0
+matplotlib_VERSION = 1.3.1
 matplotlib_PREFIX = $(macports)
 
 mysql_client_OVERRIDE = TRUE
@@ -185,11 +185,11 @@ numexpr_VERSION = 2.2.2
 numexpr_PREFIX = $(macports)
 
 numpy_OVERRIDE = TRUE
-numpy_VERSION = 1.7.1
+numpy_VERSION = 1.8.0
 numpy_PREFIX = $(macports)
 
 openmpi_OVERRIDE = TRUE
-openmpi_VERSION = 1.7.2
+openmpi_VERSION = 1.7.3
 openmpi_PREFIX = $(macports)
 
 openssl_OVERRIDE = TRUE
@@ -209,15 +209,15 @@ postgresql_VERSION = 9.2.5
 postgresql_PREFIX = $(macports)
 
 psycopg2_OVERRIDE = TRUE
-psycopg2_VERSION = 2.4.6
+psycopg2_VERSION = 2.5.1
 psycopg2_PREFIX = $(macports)
 
 pyfits_OVERRIDE = TRUE
-pyfits_VERSION = 3.1.2
+pyfits_VERSION = 3.2
 pyfits_PREFIX = $(macports)
 
 python_OVERRIDE = TRUE
-python_VERSION = 2.7.5
+python_VERSION = 2.7.6
 python_PREFIX = $(macports)
 
 readline_OVERRIDE = TRUE
@@ -229,15 +229,15 @@ scientific_VERSION = 2.9.2
 scientific_PREFIX = $(macports)
 
 scipy_OVERRIDE = TRUE
-scipy_VERSION = 0.13.0
+scipy_VERSION = 0.13.1
 scipy_PREFIX = $(macports)
 
 sqlite_OVERRIDE = TRUE
-sqlite_VERSION = 3.8.0.2
+sqlite_VERSION = 3.8.1.0
 sqlite_PREFIX = $(macports)
 
 swig_OVERRIDE = TRUE
-swig_VERSION = 2.0.10
+swig_VERSION = 2.0.11
 swig_PREFIX = $(macports)
 
 tcsh_OVERRIDE = TRUE
