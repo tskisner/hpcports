@@ -1,1 +1,1 @@
-cfitsio numpy setuptools
+cfitsio numpy setuptools stsci_distutils
