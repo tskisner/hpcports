@@ -3,7 +3,7 @@ include ../pkg_defs.make
 
 # Package parameters
 
-PKG_NAME = gitgit
+PKG_NAME = git
 
 PKG_FORMAT = zip
 PKG_ZIP = git-$(PKG_VERSION).zip
@@ -30,6 +30,7 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	NO_GETTEXT=1 \
 	./configure \
+	--disable-pthreads \
 	--without-python \
 	--with-openssl=$(openssl_PREFIX) \
 	--with-curl=$(curl_PREFIX) \

@@ -83,8 +83,8 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.8.1.1
+git_OVERRIDE = TRUE
+git_VERSION = 1.8.1.1
 
 # we get BLAS and Lapack from MKL
 

@@ -104,8 +104,8 @@ gzip_VERSON = 1.3.12
 gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.17.0
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.8.1.1
+git_OVERRIDE = TRUE
+git_VERSION = 1.8.1.1
 
 # module load zlib/1.2.7
 

@@ -87,8 +87,8 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.8.1.4
+git_OVERRIDE = TRUE
+git_VERSION = 1.8.1.4
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = 0.9.8j
