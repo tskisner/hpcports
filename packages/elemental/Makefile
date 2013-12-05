@@ -6,7 +6,7 @@ include ../pkg_defs.make
 PKG_NAME = elemental
 
 PKG_FORMAT = git
-PKG_GIT_CLONE = git clone git://github.com/poulson/Elemental.git
+PKG_GIT_CLONE = git clone git@github.com:elemental/Elemental.git
 PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
 PKG_SRCDIR = Elemental
@@ -33,6 +33,10 @@ pkg-configure :
 	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
 		fort="-D FORTRAN_WORKS:BOOL=OFF"; \
 	fi; \
+	extracpp=""; \
+	if [ "x$(VENDOR)" = "xapple" ]; then \
+		extracpp="-stdlib=libc++"; \
+	fi; \
 	cmake $${dyn} $${fort} \
 	-D CMAKE_C_COMPILER="$(CC)" \
 	-D CMAKE_CXX_COMPILER="$(CXX)" \
@@ -40,17 +44,19 @@ pkg-configure :
 	-D CMAKE_C_FLAGS="$(CFLAGS)" \
 	-D C_PURE_RELEASE_FLAGS="$(CFLAGS)" \
 	-D C_HYBRID_RELEASE_FLAGS="$(CFLAGS)" \
-	-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+	-D CMAKE_CXX_FLAGS="$(CXXFLAGS) $${extracpp}" \
 	-D C_FLAGS="$(CFLAGS)" \
-	-D CXX_FLAGS="$(CXXFLAGS)" \
+	-D CXX_FLAGS="$(CXXFLAGS) $${extracpp}" \
 	-D OpenMP_CXX_FLAGS="$(OMPFLAGS)" \
-	-D CXX_PURE_RELEASE_FLAGS="$(CXXFLAGS)" \
-	-D CXX_HYBRID_RELEASE_FLAGS="$(CXXFLAGS)" \
+	-D CXX_PURE_RELEASE_FLAGS="$(CXXFLAGS) $${extracpp}" \
+	-D CXX_HYBRID_RELEASE_FLAGS="$(CXXFLAGS) $${extracpp}" \
 	-D MPI_C="$(MPICC)" \
 	-D MPI_CXX="$(MPICXX)" \
 	-D MATH_LIBS="$${math}" \
 	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR); \
+
+
 
 
 pkg-build :
