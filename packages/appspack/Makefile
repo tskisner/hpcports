@@ -29,6 +29,10 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
+	blas="yes"; \
+	if [ "x$(blas_LIBS_CXX)" != "x" ]; then \
+		blas="$(blas_LIBS_CXX) $(OMPFLAGS)"; \
+	fi; \
 	lapack="yes"; \
 	if [ "x$(lapack_LIBS_CXX)" != "x" ]; then \
 		lapack="$(lapack_LIBS_CXX)"; \
@@ -44,7 +48,7 @@ pkg-configure :
 	./configure \
 	$${dyn} \
 	--with-pic \
-	--with-blas="$(blas_LIBS_CXX)" \
+	--with-blas="$${blas}" \
 	--with-lapack="$${lapack}" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
