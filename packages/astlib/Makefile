@@ -10,7 +10,7 @@ PKG_TAR = astlib-$(PKG_VERSION).tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/project/platformdownload.php?group_id=202537
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = astlib-$(PKG_VERSION)
+PKG_SRCDIR = astLib-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
