@@ -26,30 +26,30 @@ fetch : prefetch
 	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 		if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
 			if [ ! -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
-				printf "%s%15s :  Fetching tarball\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Fetching tarball\n" "$(HPCP)" "$(PKG_NAME)"; \
 				$(PKG_TAR_FETCH) > $(HPCP_POOL)/$(PKG_NAME).fetchlog 2>&1; \
 				chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_TAR) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
 				chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_TAR) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
 				if [ ! -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
-					printf "%s%15s :  FAILED: %s\n" "$(HPCP)" "$(PKG_NAME)" "$(HPCP_POOL)/$(PKG_TAR) was not fetched!"; \
+					printf "%s%18s :  FAILED: %s\n" "$(HPCP)" "$(PKG_NAME)" "$(HPCP_POOL)/$(PKG_TAR) was not fetched!"; \
 				fi; \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xzip" ]; then \
 			if [ ! -e $(HPCP_POOL)/$(PKG_ZIP) ]; then \
-				printf "%s%15s :  Fetching zip file\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Fetching zip file\n" "$(HPCP)" "$(PKG_NAME)"; \
 				$(PKG_ZIP_FETCH) > $(HPCP_POOL)/$(PKG_NAME).fetchlog 2>&1; \
 				chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_ZIP) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
 				chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_ZIP) $(HPCP_POOL)/$(PKG_NAME).fetchlog; \
 				if [ ! -e $(HPCP_POOL)/$(PKG_ZIP) ]; then \
-					printf "%s%15s :  FAILED: %s\n" "$(HPCP)" "$(PKG_NAME)" "$(HPCP_POOL)/$(PKG_ZIP) was not fetched!"; \
+					printf "%s%18s :  FAILED: %s\n" "$(HPCP)" "$(PKG_NAME)" "$(HPCP_POOL)/$(PKG_ZIP) was not fetched!"; \
 				fi; \
 			fi; \
 		elif [ "x$(PKG_FORMAT)" = "xgit" ]; then \
 			if [ ! -e $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) ]; then \
-				printf "%s%15s :  Cloning git repo\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Cloning git repo\n" "$(HPCP)" "$(PKG_NAME)"; \
 				cd $(HPCP_POOL); \
 				$(PKG_GIT_CLONE) > $(PKG_NAME)-$(PKG_VERSION).fetchlog 2>&1; \
-				printf "%s%15s :  Checking out git revision\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Checking out git revision\n" "$(HPCP)" "$(PKG_NAME)"; \
 				mv $(PKG_SRCDIR) $(PKG_NAME)-$(PKG_VERSION); \
 				cd $(PKG_NAME)-$(PKG_VERSION); \
 				$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME)-$(PKG_VERSION).fetchlog 2>&1; \
@@ -66,7 +66,7 @@ extract : fetch
 		cd $(STAGE); \
 		rm -f log.*; \
 		if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
-			printf "%s%15s :  Extracting\n" "$(HPCP)" "$(PKG_NAME)"; \
+			printf "%s%18s :  Extracting\n" "$(HPCP)" "$(PKG_NAME)"; \
 			if [ "x$(PKG_FORMAT)" = "xtar" ]; then \
 				if [ -e $(HPCP_POOL)/$(PKG_TAR) ]; then \
 					$(PKG_TAR_EXTRACT) $(HPCP_POOL)/$(PKG_TAR) > $(PKG_DIR)/$(STAGE)/log.extract 2>&1; \
@@ -88,12 +88,12 @@ extract : fetch
 			fi; \
 			cd $(PKG_DIR)/$(STAGE); \
 			if [ ! -e $(PKG_SRCDIR) ]; then \
-				printf "%s%15s :  FAILED: %s\n" "$(HPCP)" "$(PKG_NAME)" "extracted source $(PKG_SRCDIR) was not created."; \
+				printf "%s%18s :  FAILED: %s\n" "$(HPCP)" "$(PKG_NAME)" "extracted source $(PKG_SRCDIR) was not created."; \
 			else \
 				touch state.extract; \
 			fi; \
 		else \
-			printf "%s%15s :  Overriding\n" "$(HPCP)" "$(PKG_NAME)"; \
+			printf "%s%18s :  Overriding\n" "$(HPCP)" "$(PKG_NAME)"; \
 			mkdir -p $(PKG_SRCDIR); \
 			touch state.extract; \
 		fi; \
@@ -105,7 +105,7 @@ patch : extract
 	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.extract ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
-				printf "%s%15s :  Patching\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Patching\n" "$(HPCP)" "$(PKG_NAME)"; \
 				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				cd $(STAGE)/$(PKG_SRCDIR); \
 				rm -f ../log.patch; \
@@ -124,7 +124,7 @@ configure : patch
 	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.patch ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
-				printf "%s%15s :  Configuring\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Configuring\n" "$(HPCP)" "$(PKG_NAME)"; \
 				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-configure > $(STAGE)/log.configure 2>&1 && \
 				touch $(STAGE)/state.configure && \
@@ -142,7 +142,7 @@ build : configure
 		if [ -e $(STAGE)/state.configure ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				$(MAKE) uninstall; \
-				printf "%s%15s :  Building\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Building\n" "$(HPCP)" "$(PKG_NAME)"; \
 				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-build > $(STAGE)/log.build 2>&1 && \
 				touch $(STAGE)/state.build && \
@@ -157,17 +157,17 @@ build : configure
 
 install : 
 	@if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) ]; then \
-		printf "%s%15s :  Already Installed\n" "$(HPCP)" "$(PKG_NAME)"; \
+		printf "%s%18s :  Already Installed\n" "$(HPCP)" "$(PKG_NAME)"; \
 	else \
 		$(MAKE) build; \
 		if [ -e $(STAGE)/state.build ]; then \
 			mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
-				printf "%s%15s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
 				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-install > $(STAGE)/log.install 2>&1; \
 			else \
-				printf "%s%15s :  Installing Override\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Installing Override\n" "$(HPCP)" "$(PKG_NAME)"; \
 			fi; \
 			if [ -e $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages ]; then \
 				for pyfile in `find $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages -name \'\*.py\'`; do \
@@ -199,7 +199,7 @@ clean :
 	@if [ -e $(STAGE)/$(PKG_SRCDIR) ]; then \
 		if [ -e $(STAGE)/state.build ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
-				printf "%s%15s :  Cleaning\n" "$(HPCP)" "$(PKG_NAME)"; \
+				printf "%s%18s :  Cleaning\n" "$(HPCP)" "$(PKG_NAME)"; \
 				$(MAKE) pkg-clean > $(STAGE)/log.clean 2>&1 && \
 				touch $(STAGE)/state.configure && \
 				rm $(STAGE)/state.build && \
@@ -214,10 +214,10 @@ clean :
 
 uninstall :
 	@if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
-		printf "%s%15s :  Uninstalling\n" "$(HPCP)" "$(PKG_NAME)"; \
+		printf "%s%18s :  Uninstalling\n" "$(HPCP)" "$(PKG_NAME)"; \
 		rm -f $(STAGE)/log.install; \
 	else \
-		printf "%s%15s :  Uninstalling Override\n" "$(HPCP)" "$(PKG_NAME)"; \
+		printf "%s%18s :  Uninstalling Override\n" "$(HPCP)" "$(PKG_NAME)"; \
 	fi; \
 	rm -rf $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 	rm -f $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
@@ -244,7 +244,7 @@ uninstall :
 
 
 purge :
-	@printf "%s%15s :  Purging\n" "$(HPCP)" "$(PKG_NAME)"; \
+	@printf "%s%18s :  Purging\n" "$(HPCP)" "$(PKG_NAME)"; \
 	rm -rf $(STAGE)
 
 
