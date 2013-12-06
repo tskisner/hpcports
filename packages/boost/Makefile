@@ -26,12 +26,6 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	pyopt="--with-python=python"; \
-	boostmpi=""; \
-	if [ "x$(MPILIB)" = "x" ]; then \
-		boostmpi="mpi"; \
-	else \
-		boostmpi=$(MPILIB); \
-	fi; \
 	boostchain=""; \
 	echo "" > tools/build/v2/user-config.jam; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
@@ -47,11 +41,7 @@ pkg-configure :
 		echo "using intel-linux : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> tools/build/v2/user-config.jam; \
 		boostchain="intel-linux"; \
 	fi; \
-	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		echo "using mpi : \"$(MPICXX)\" : <find-shared-library>$${boostmpi} ;" >> tools/build/v2/user-config.jam; \
-	else \
-		echo "using mpi : \"$(MPICXX)\" : <find-static-library>$${boostmpi} ;" >> tools/build/v2/user-config.jam; \
-	fi; \
+	echo "using mpi : \"$(MPICXX)\" ;" >> tools/build/v2/user-config.jam; \
 	echo "" >> tools/build/v2/user-config.jam; \
 	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
