@@ -11,17 +11,16 @@ if [ "x${loadedgnu}" = x ]; then
     fi
     module unload cray-shmem
     module swap gcc gcc/4.8.1
-    module swap craype craype/1.06
-    module swap cray-mpich cray-mpich/6.0.2
-    module load mkl/13.0.1
+    module swap craype craype/2.01
+    module swap cray-mpich cray-mpich/6.1.1
+    module load mkl/13.0.3
     module load git/1.8.1.1
-    module load python/2.7.3
+    module load python/2.7.5
     module load zlib/1.2.7
     module load curl/7.28.1
-    module load cmake/2.8.10.2
+    module load cmake/2.8.11.2
     module load bzip2/1.0.6
     if [ "x${loadeddarshan}" != x ]; then
         module unload darshan
     fi
-    module load darshan/2.2.7-106
 fi

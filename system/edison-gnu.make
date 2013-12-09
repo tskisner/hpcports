@@ -13,9 +13,10 @@
 # 1.0 :  gnu 4.7.2, cray-mpich2 5.6.1, cray-libsci 12.0.00, fftw 3.3.0.1, python 2.7.3
 # 2.0 :  gnu 4.7.2, cray-mpich 6.0.0, mkl-13.0.1, fftw-3.3.0.3, python-2.7.3
 # 3.0 :  gnu 4.8.1, cray-mpich 6.0.2, mkl-13.0.1, python-2.7.3
+# 4.0 :  gnu 4.8.1, craype-2.01, cray-mpich 6.1.1, mkl-13.0.3, python-2.7.5
 #
 
-HPCP_ENV = 3.0
+HPCP_ENV = 4.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -69,20 +70,20 @@ FCFLAGS = -O3 -static -fPIC -DNDEBUG
 OMPFLAGS = -fopenmp
 
 # Fortran mixing
-FLIBS = /opt/gcc/4.7.2/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.7.2/snos/lib64/libgfortran.a
+FLIBS = -lgfortran
+FCLIBS = -lgfortran
 MPIFCLIBS =
 
 # Linking
 
 LIBS = -lm
-LDFLAGS =
+LDFLAGS = -static
 LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries
 
 VENDOR = intel
-INTEL_PREFIX = /opt/intel/composer_xe_2013.1.117
+INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
 INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a -ldl -lpthread -lm
@@ -125,14 +126,14 @@ openssl_VERSION = 0.9.8
 curl_OVERRIDE = TRUE
 curl_VERSION = 7.28.1
 
-# module load python/2.7.3
+# module load python/2.7.5
 
 python_OVERRIDE = TRUE
 python_SITE = python2.7
-python_VERSION = 2.7.3
+python_VERSION = 2.7.5
 
 cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.10.2
+cmake_VERSION = 2.8.11.2
 
 nose_OVERRIDE = TRUE
 nose_VERSION = 1.1.2
@@ -174,14 +175,14 @@ numexpr_VERSION = NA
 # we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 13.0.1
+blas_VERSION = 13.0.3
 blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(INTEL_LIBS_CXX)
 blas_LIBS_F77 = $(INTEL_LIBS_F77)
 blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 13.0.1
+lapack_VERSION = 13.0.3
 lapack_LIBS_CC = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
 lapack_LIBS_CXX = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
 lapack_LIBS_F77 = $(MKL_LIBDIR)/libmkl_lapack95_lp64.a
