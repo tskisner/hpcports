@@ -1,0 +1,4 @@
+  if [ is-loaded gcc/47 ] {
+  } else {
+    module load gcc/47
+  }
