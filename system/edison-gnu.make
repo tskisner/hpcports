@@ -61,7 +61,7 @@ MPILIB = mpich
 # compile flags
 
 CFLAGS = -O3 -static -fPIC -DNDEBUG
-CXXFLAGS = -O3 -static -fPIC -DNDEBUG
+CXXFLAGS = -O3 -static -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -static -fPIC -DNDEBUG
 FCFLAGS = -O3 -static -fPIC -DNDEBUG
 
@@ -70,14 +70,15 @@ FCFLAGS = -O3 -static -fPIC -DNDEBUG
 OMPFLAGS = -fopenmp
 
 # Fortran mixing
-FLIBS = -lgfortran
-FCLIBS = -lgfortran
+
+FLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
+FCLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
 # Linking
 
-LIBS = -lm
-LDFLAGS = -static
+LIBS = /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries
