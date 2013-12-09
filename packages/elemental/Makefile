@@ -34,10 +34,6 @@ pkg-configure :
 	stripfc=`echo $(FCFLAGS) | sed -e "s#-DNDEBUG##g"`; \
 	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
 	math="$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)"; \
-	fort="-D CMAKE_Fortran_COMPILER=\"$(FC)\" -D CMAKE_Fortran_FLAGS=\"$${stripfc}\" -D MPI_Fortran=\"$(MPIFC)\" -D MPI_Fortran_LIBRARIES=\"$(MPIFCLIBS)\""; \
-	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
-		fort="-D FORTRAN_WORKS:BOOL=OFF"; \
-	fi; \
 	extracpp="-std=c++11"; \
 	if [ "x$(VENDOR)" = "xapple" ]; then \
 		extracpp="-std=c++11 -stdlib=libc++"; \
@@ -57,11 +53,13 @@ pkg-configure :
 	-D CXX_HYBRID_RELEASE_FLAGS="$${stripcxx} $${extracpp}" \
 	-D MPI_C="$(MPICC)" \
 	-D MPI_CXX="$(MPICXX)" \
+	-D CMAKE_Fortran_COMPILER="$(FC)" \
+	-D CMAKE_Fortran_FLAGS="$${stripfc}" \
+	-D MPI_Fortran="$(MPIFC)" \
+	-D MPI_Fortran_LIBRARIES="$(MPIFCLIBS)" \
 	-D MATH_LIBS="$${math}" \
 	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR); \
-
-
 
 
 pkg-build :
