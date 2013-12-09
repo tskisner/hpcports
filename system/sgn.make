@@ -10,7 +10,7 @@
 # the minor version when upgrading MKL or MPI.  Document configuration
 # here:
 #
-# 1.0 : gcc-4.7.1
+# 1.0 : gcc-tsk/4.8.2_rh5
 #
 
 HPCP_ENV = 1.0
@@ -53,9 +53,7 @@ FCFLAGS = -O3 -g -fPIC -DNDEBUG
 
 # OpenMP flags
 
-# the available gcc-4.7.1 has broken/missing libgomp, and it is probably
-# not so nice to hammer all cores of a web server, so we disable OpenMP
-OMPFLAGS = 
+OMPFLAGS = -fopenmp
 
 # Fortran mixing
 
