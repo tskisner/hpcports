@@ -56,10 +56,10 @@ MPIFC = mpif90
 
 # compile flags
 
-CFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-CXXFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-FFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-FCFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
+CFLAGS = -O3 -g -fPIC -DNDEBUG
+CXXFLAGS = -O3 -g -fPIC -DNDEBUG
+FFLAGS = -O3 -g -fPIC -DNDEBUG
+FCFLAGS = -O3 -g -fPIC -DNDEBUG
 
 # OpenMP flags
 
