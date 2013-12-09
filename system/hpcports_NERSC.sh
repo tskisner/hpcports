@@ -179,6 +179,10 @@ if [ $NERSC_HOST = "carver" ]; then
 fi
 
 
+# This contains module files which apply to multiple systems
+module use /project/projectdirs/cmb/modules/modulefiles
+
+
 # This is for environment propagation using
 # Cray CCM
 if [ -e $HOME/.hpcpenv_${NERSC_HOST} ]; then
