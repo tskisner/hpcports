@@ -1,1 +1,1 @@
-python numpy matplotlib pyfits gitgit cython libtool
+autoconf automake libtool python numpy matplotlib pyfits cython

@@ -72,8 +72,8 @@ APPLE_LIBS_FC = -Wl,-framework,Accelerate
 
 # package overrides
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.7.12.4-apple
+git_OVERRIDE = TRUE
+git_VERSION = 1.7.12.4-apple
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 10.8-apple

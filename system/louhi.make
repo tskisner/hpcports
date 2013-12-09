@@ -94,8 +94,8 @@ gzip_VERSON = louhi
 gettext_OVERRIDE = TRUE
 gettext_VERSION = louhi
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.7.7.2
+git_OVERRIDE = TRUE
+git_VERSION = 1.7.7.2
 
 zlib_OVERRIDE = TRUE
 zlib_VERSION = louhi

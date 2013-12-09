@@ -3,15 +3,14 @@ include ../pkg_defs.make
 
 # Package parameters
 
-PKG_NAME = healpy
+PKG_NAME = astlib
 
 PKG_FORMAT = tar
-PKG_TAR = healpy-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/h/healpy/healpy-$(PKG_VERSION).tar.gz
-
+PKG_TAR = astlib-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/project/platformdownload.php?group_id=202537
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = healpy-$(PKG_VERSION)
+PKG_SRCDIR = astLib-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
@@ -30,10 +29,6 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	export CC="$(CC)"; export CFLAGS="$(CFLAGS)"; \
-	export CXX="$(CXX)"; export CXXFLAGS="$(CXXFLAGS)"; \
-	export OMPFLAGS="$(OMPFLAGS)"; \
-	export PKG_CONFIG_PATH=$(cfitsio_PREFIX)/lib/pkgconfig:$(PKG_CONFIG_PATH); \
 	python setup.py build 
 
 
@@ -41,10 +36,6 @@ pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages; \
 	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
-	export CC="$(CC)"; export CFLAGS="$(CFLAGS)"; \
-	export CXX="$(CXX)"; export CXXFLAGS="$(CXXFLAGS)"; \
-	export OMPFLAGS="$(OMPFLAGS)"; \
-	export PKG_CONFIG_PATH=$(cfitsio_PREFIX)/lib/pkgconfig:$(PKG_CONFIG_PATH); \
 	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

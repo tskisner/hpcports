@@ -92,6 +92,9 @@ lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_F77 = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.6.1
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.4.13
+
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.4.13
 

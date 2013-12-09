@@ -179,6 +179,57 @@ if [ $NERSC_HOST = "carver" ]; then
 fi
 
 
+if [ $NERSC_HOST = "scigate" ]; then
+  # Check to see if the modules init file has already been sourced
+  # If not then try to source the init file for this shell.  If that
+  # does not exist, source the basic "sh" file.
+
+  if [ "x${MODULESHOME}" = "x" ]; then
+    if [ -r /usr/share/Modules/default/init/${THISSHELL} ]; then
+      . /usr/share/Modules/default/init/${THISSHELL}
+    else
+        . /usr/share/Modules/default/init/sh
+    fi
+  fi
+
+  # Now set the environment switching function
+  # unload all toolchain options and load the correct one
+
+  hpcports () {
+    export MODULE_VERSION="3.2.10"
+    if [ -r /project/projectdirs/cmb/modules/sgn/Modules/${MODULE_VERSION}/init/${THISSHELL} ]; then
+      source /project/projectdirs/cmb/modules/sgn/Modules/${MODULE_VERSION}/init/${THISSHELL}
+    else
+      source /project/projectdirs/cmb/modules/sgn/Modules/${MODULE_VERSION}/init/sh
+    fi
+    planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
+    polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
+    module unuse /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
+    if [ "$planck" = "yes" ]; then
+	echo "" > /dev/null
+	#module unuse /project/projectdirs/planck/modules/sgn/gnu/modulefiles
+    fi
+    if [ "$polar" = "yes" ]; then
+	echo "" > /dev/null
+	#module unuse /project/projectdirs/polar/modules/sgn/gnu/modulefiles
+    fi
+    module use /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
+    if [ "$planck" = "yes" ]; then
+	echo "" > /dev/null
+	#module use /project/projectdirs/planck/modules/sgn/gnu/modulefiles
+    fi
+    if [ "$polar" = "yes" ]; then
+	echo "" > /dev/null
+	#module use /project/projectdirs/polar/modules/sgn/gnu/modulefiles
+    fi
+  }
+fi
+
+
+# This contains module files which apply to multiple systems
+module use /project/projectdirs/cmb/modules/modulefiles
+
+
 # This is for environment propagation using
 # Cray CCM
 if [ -e $HOME/.hpcpenv_${NERSC_HOST} ]; then

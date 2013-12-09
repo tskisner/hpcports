@@ -6,8 +6,8 @@ include ../pkg_defs.make
 PKG_NAME = hotpants
 
 PKG_FORMAT = tar
-PKG_TAR = hotpants_v5.1.10.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.astro.washington.edu/users/becker/software/hotpants_v5.1.10.tar.gz
+PKG_TAR = hotpants_v$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.astro.washington.edu/users/becker/v2.0/software/hotpants_v$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = hotpants_v5.1.10b

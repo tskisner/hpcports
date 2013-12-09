@@ -156,7 +156,7 @@ if ( $command eq "status" ) {
 	print $out;
 	$out = $pre."---------------------------------------------------------\n";
 	print $out;
-	$out = sprintf ( "%s%16s | %20s |  %s\n", $pre, "Package", "Version", "State" );
+	$out = sprintf ( "%s%18s | %20s |  %s\n", $pre, "Package", "Version", "State" );
 	print $out;
 	$out = $pre."---------------------------------------------------------\n";
 	print $out;
@@ -165,7 +165,7 @@ if ( $command eq "status" ) {
 	my $value;
 
 	my $hpcpstat = HPCPorts::package_state ( $pkgdb, "${pkgdir}/hpcp", $system, $env, $prefix, $overrides );
-	$out = sprintf ( "%s%16s | %20s |  %s\n", $pre, "hpcp", $env, $hpcpstat );
+	$out = sprintf ( "%s%18s | %20s |  %s\n", $pre, "hpcp", $env, $hpcpstat );
 	print $out;
 
 	foreach $key ( sort keys %{$pkgdb} ) {
@@ -177,7 +177,7 @@ if ( $command eq "status" ) {
 		} else {
 			$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $env, $prefix, $overrides );
 		}
-		$out = sprintf ( "%s%16s | %20s |  %s\n", $pre, $key, $value->{ "version" }, $status );
+		$out = sprintf ( "%s%18s | %20s |  %s\n", $pre, $key, $value->{ "version" }, $status );
 		print $out;
 	}
 	

@@ -56,10 +56,10 @@ MPIFC = mpif90
 
 # compile flags
 
-CFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-CXXFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-FFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-FCFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
+CFLAGS = -O3 -g -fPIC -DNDEBUG
+CXXFLAGS = -O3 -g -fPIC -DNDEBUG
+FFLAGS = -O3 -g -fPIC -DNDEBUG
+FCFLAGS = -O3 -g -fPIC -DNDEBUG
 
 # OpenMP flags
 
@@ -109,6 +109,6 @@ lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_F77 = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
 
-gitgit_OVERRIDE = TRUE
-gitgit_VERSION = 1.7.8.3
+git_OVERRIDE = TRUE
+git_VERSION = 1.7.8.3
 
