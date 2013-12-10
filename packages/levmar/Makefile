@@ -34,7 +34,7 @@ pkg-configure :
 		dyn="-DBUILD_SHARED_LIBS:BOOL=OFF"; \
 	fi; \
 	CC="$(CC) $(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" \
+	LDFLAGS="$(LDFLAGS) $(OMPFLAGS)" \
 	LIBS="$(LIBS) -lm" \
 	CXX="$(CXX) $(CXXFLAGS)" \
 	FC="$(F77) $(FFLAGS)" \
