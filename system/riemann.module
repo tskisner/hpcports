@@ -1,4 +1,7 @@
-  module load gcc/4.8.2
+  if [ is-loaded gcc-tsk ] {
+  } else {
+    module load gcc-tsk/4.8.2
+  }
   if [ is-loaded mkl ] {
   } else {
     module load mkl/11.0.084
