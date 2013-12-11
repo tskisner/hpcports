@@ -33,7 +33,7 @@ pkg-configure :
 		boostchain="gcc"; \
 	fi; \
 	if [ "x$(TOOLCHAIN)" = "xdarwin" ]; then \
-		echo "using darwin : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> tools/build/v2/user-config.jam; \
+		echo "using darwin : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" <linkflags>\"-stdlib=libc++\" ;" >> tools/build/v2/user-config.jam; \
 		sed -i "" -E "s|-install_name \"|-install_name \"$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/|" tools/build/v2/tools/darwin.jam; \
 		boostchain="darwin"; \
 	fi; \
