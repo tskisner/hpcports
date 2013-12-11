@@ -5,7 +5,9 @@
 port install \
 autoconf \
 automake \
-boost \
+python27 \
+openmpi -gcc48 \
+boost +openmpi +python27 \
 bzip2 \
 cfitsio \
 cmake \
@@ -23,7 +25,6 @@ libtool \
 m4 \
 mysql5 \
 netcdf \
-openmpi -gcc48 \
 openssl \
 pcre \
 plplot \
@@ -40,7 +41,6 @@ py27-pyfits \
 py27-scientific \
 py27-scipy \
 py27-urwid \
-python27 \
 readline \
 sqlite3 \
 swig \
