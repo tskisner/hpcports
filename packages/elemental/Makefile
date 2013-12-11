@@ -60,10 +60,12 @@ pkg-configure :
 	else \
 		echo "set(BUILD_SHARED_LIBS OFF)" >> hpcp.cmake; \
 		echo "set(SHARED_LIBRARIES OFF)" >> hpcp.cmake; \
+		echo "set(CMAKE_FIND_LIBRARY_SUFFIXES .a $${CMAKE_FIND_LIBRARY_SUFFIXES})" >> hpcp.cmake; \
+		echo "set(CMAKE_EXE_LINKER_FLAGS \"-static\")" >> hpcp.cmake; \
 	fi; \
 	echo "# lapack and other math libraries " >> hpcp.cmake; \
 	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^ *##" -e 's# *$$##'`; \
-	echo "set(MATH_LIBS \"$${math}\")" >> hpcp.cmake; \
+	echo "set(MATH_LIBS $${math})" >> hpcp.cmake; \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
 	cmake \
