@@ -15,8 +15,7 @@ PKG_SRCDIR = elemental-$(PKG_VERSION)
 
 PKG_BUILDDIR = build
 
-PKG_PATCHES = 
-#PKG_PATCHES = hpcp_lapack.patch
+PKG_PATCHES = hpcp_fortran.patch
 
 
 # rules for this package
@@ -27,57 +26,60 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE); \
+	echo "# HPCP toolchain" > hpcp.cmake; \
+	echo "#-------------------" >> hpcp.cmake; \
+	if [ "x$(BUILD_FORTRAN)" = "xTRUE" ]; then \
+		echo "set(HPCP_FORTRAN TRUE)" >> hpcp.cmake; \
+	else \
+		echo "set(HPCP_FORTRAN FALSE)" >> hpcp.cmake; \
+	fi; \
+	if [ "x$(OMPFLAGS)" = "x" ]; then \
+		echo "set(CMAKE_BUILD_TYPE PureRelease)" >> hpcp.cmake; \
+	else \
+		echo "set(CMAKE_BUILD_TYPE HybridRelease)" >> hpcp.cmake; \
+	fi; \
+	echo "# Compilers " >> hpcp.cmake; \
+	echo "set(CMAKE_C_COMPILER $(CC))" >> hpcp.cmake; \
+	echo "set(CMAKE_CXX_COMPILER $(CXX))" >> hpcp.cmake; \
+	echo "set(CMAKE_Fortran_COMPILER $(FC))" >> hpcp.cmake; \
+	echo "set(MPI_C_COMPILER $(MPICC))" >> hpcp.cmake; \
+	echo "set(MPI_CXX_COMPILER $(MPICXX))" >> hpcp.cmake; \
+	echo "set(MPI_Fortran_COMPILER $(MPIFC))" >> hpcp.cmake; \
+	echo "# Compiler flags " >> hpcp.cmake; \
+	echo "set(CMAKE_C_FLAGS \"$(CFLAGS)\")" >> hpcp.cmake; \
+	echo "set(CMAKE_CXX_FLAGS \"$(CXXFLAGS)\")" >> hpcp.cmake; \
+	echo "set(CMAKE_Fortran_FLAGS \"$(FCFLAGS)\")" >> hpcp.cmake; \
+	echo "set(C_FLAGS \"$(CFLAGS)\")" >> hpcp.cmake; \
+	echo "set(CXX_FLAGS \"$(CXXFLAGS)\")" >> hpcp.cmake; \
+	echo "set(Fortran_FLAGS \"$(FCFLAGS)\")" >> hpcp.cmake; \
+	echo "set(OpenMP_CXX_FLAGS \"$(OMPFLAGS)\")" >> hpcp.cmake; \
+	echo "# Shared libraries " >> hpcp.cmake; \
+	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
+		echo "set(BUILD_SHARED_LIBS ON)" >> hpcp.cmake; \
+		echo "set(SHARED_LIBRARIES ON)" >> hpcp.cmake; \
+	else \
+		echo "set(BUILD_SHARED_LIBS OFF)" >> hpcp.cmake; \
+		echo "set(SHARED_LIBRARIES OFF)" >> hpcp.cmake; \
+	fi; \
+	echo "# lapack and other math libraries " >> hpcp.cmake; \
+	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^[:space:]*##g" | sed -e "s#[:space:]*$##g"`; \
+	echo "set(MATH_LIBS \"$${math}\")" >> hpcp.cmake; \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	stripcxx=`echo $(CXXFLAGS) | sed -e "s#-DNDEBUG##g"`; \
-	stripc=`echo $(CFLAGS) | sed -e "s#-DNDEBUG##g"`; \
-	stripfc=`echo $(FCFLAGS) | sed -e "s#-DNDEBUG##g"`; \
-	dyn="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D SHARED:BOOL=OFF"; \
-	math="$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)"; \
-	extracpp="-std=c++11"; \
-	if [ "x$(VENDOR)" = "xapple" ]; then \
-		extracpp="-std=c++11 -stdlib=libc++"; \
-	fi; \
-	cmake $${dyn} $${fort} \
-	-D CMAKE_C_COMPILER="$(CC)" \
-	-D CMAKE_CXX_COMPILER="$(CXX)" \
-	-D CMAKE_BUILD_TYPE=HybridRelease \
-	-D CMAKE_C_FLAGS="$${stripc}" \
-	-D C_PURE_RELEASE_FLAGS="$${stripc}" \
-	-D C_HYBRID_RELEASE_FLAGS="$${stripc}" \
-	-D CMAKE_CXX_FLAGS="$${stripcxx} $${extracpp}" \
-	-D C_FLAGS="$${stripc}" \
-	-D CXX_FLAGS="$${stripcxx} $${extracpp}" \
-	-D OpenMP_CXX_FLAGS="$(OMPFLAGS)" \
-	-D CXX_PURE_RELEASE_FLAGS="$${stripcxx} $${extracpp}" \
-	-D CXX_HYBRID_RELEASE_FLAGS="$${stripcxx} $${extracpp}" \
-	-D MPI_C="$(MPICC)" \
-	-D MPI_CXX="$(MPICXX)" \
-	-D CMAKE_Fortran_COMPILER="$(FC)" \
-	-D CMAKE_Fortran_FLAGS="$${stripfc}" \
-	-D MPI_Fortran="$(MPIFC)" \
-	-D MPI_Fortran_LIBRARIES="$(MPIFCLIBS)" \
-	-D MATH_LIBS="$${math}" \
+	cmake \
+	-D CMAKE_TOOLCHAIN_FILE=../hpcp.cmake \
 	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR); \
 
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
-		printf "%s%15s :  FORTRAN Disabled, skipping build\n" "$(HPCP)" "$(PKG_NAME)"; \
-	else \
-		$(MAKE); \
-	fi
+	$(MAKE)
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
-		printf "%s%15s :  FORTRAN Disabled, skipping install\n" "$(HPCP)" "$(PKG_NAME)"; \
-	else \
-		$(MAKE) install; \
-	fi
+	$(MAKE) install
 
 
 pkg-clean :

@@ -1,0 +1,30 @@
+diff -urN Clique_orig/external/elemental/CMakeLists.txt Clique/external/elemental/CMakeLists.txt
+--- Clique_orig/external/elemental/CMakeLists.txt	2013-12-11 10:29:41.000000000 -0800
++++ Clique/external/elemental/CMakeLists.txt	2013-12-11 10:30:50.000000000 -0800
+@@ -175,7 +175,11 @@
+ 
+ # Set the basic compile flags from the build type
+ if(NOT WIN32) # I forget why we need this guard
+-  set(LANGUAGES CXX C Fortran)
++  if(HPCP_FORTRAN)
++    set(LANGUAGES CXX C Fortran)
++  else()
++    set(LANGUAGES CXX C)
++  endif()
+   foreach(LANG ${LANGUAGES})
+     if(NOT ${LANG}_FLAGS_${UPPER_BUILD_TYPE})
+       if(DEBUG)
+@@ -191,7 +195,12 @@
+ 
+ # Go ahead and check for Fortran, but keep in mind that CMake's 'OPTIONAL' 
+ # argument for enable_language is still completely broken as of 2.8.8
+-workaround_9220(Fortran FORTRAN_WORKS)
++if(HPCP_FORTRAN)
++  workaround_9220(Fortran FORTRAN_WORKS)
++else()
++  set(FORTRAN_WORKS FALSE)
++  set(HAVE_F90_INTERFACE FALSE)
++endif()
+ if(FORTRAN_WORKS)
+   enable_language(Fortran)  
+   set(HAVE_F90_INTERFACE FALSE)

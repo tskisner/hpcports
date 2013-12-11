@@ -37,11 +37,11 @@ BUILD_FORTRAN = FALSE
 # compile flags
 
 CFLAGS = -O3 -fno-common -fPIC -DNDEBUG
-CXXFLAGS = -O3 -fno-common -fPIC -DNDEBUG
+CXXFLAGS = -O3 -fno-common -fPIC -DNDEBUG -std=c++11 -stdlib=libc++
 
 # OpenMP flags
 
-OMPFLAGS = -fopenmp
+OMPFLAGS = 
 
 # Linking
 
@@ -191,6 +191,8 @@ numpy_PREFIX = $(macports)
 openmpi_OVERRIDE = TRUE
 openmpi_VERSION = 1.7.3
 openmpi_PREFIX = $(macports)
+MPICC = mpicc
+MPICXX = mpicxx
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = 1.0.1e
