@@ -62,7 +62,7 @@ pkg-configure :
 		echo "set(SHARED_LIBRARIES OFF)" >> hpcp.cmake; \
 	fi; \
 	echo "# lapack and other math libraries " >> hpcp.cmake; \
-	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^[:space:]*##g" | sed -e "s#[:space:]*$##g"`; \
+	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^ *##" -e 's# *$$##'`; \
 	echo "set(MATH_LIBS \"$${math}\")" >> hpcp.cmake; \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
