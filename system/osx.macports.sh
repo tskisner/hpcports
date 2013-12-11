@@ -7,7 +7,6 @@ autoconf \
 automake \
 python27 \
 openmpi -gcc48 \
-boost +openmpi +python27 \
 bzip2 \
 cfitsio \
 cmake \

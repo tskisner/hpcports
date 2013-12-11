@@ -85,10 +85,6 @@ automake_OVERRIDE = TRUE
 automake_VERSION = 1.14
 automake_PREFIX = $(macports)
 
-boost_OVERRIDE = TRUE
-boost_VERSION = 1.55.0
-boost_PREFIX = $(macports)
-
 bzip2_OVERRIDE = TRUE
 bzip2_VERSION = 1.0.6
 bzip2_PREFIX = $(macports)
