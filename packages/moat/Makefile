@@ -85,7 +85,7 @@ pkg-configure :
 		./configure \
 		$${dyn} \
 		--with-fftw-cpp=no \
-		--with-mkl-libs="$(INTEL_LIBS_CXX) $(OMPFLAGS)" \
+		--with-mkl-libs="$(INTEL_LIBS_CXX) $(OMPFLAGS) $(FCLIBS)" \
 		--with-papi-cpp=no \
 		--with-boost=$(boost_PREFIX) \
 		--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \

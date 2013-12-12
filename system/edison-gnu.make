@@ -78,7 +78,7 @@ MPIFCLIBS =
 # Linking
 
 LIBS = /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = -static /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries
