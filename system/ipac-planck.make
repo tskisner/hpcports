@@ -7,7 +7,7 @@ HPCP_PREFIX = /planck/tools/hpcports
 # the minor version when upgrading MKL or MPI.  Document configuration
 # here:
 #
-# 1.0 : gcc-4.8.1, MKL 10.0.3
+# 1.0 : gcc-4.8.2, MKL 10.0.3
 #
 
 HPCP_ENV = 1.0
@@ -55,10 +55,10 @@ openmpi_EXTRA = \
 
 # compile flags
 
-CFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-CXXFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-FFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
-FCFLAGS = -O3 -g -march=native -fPIC -DNDEBUG
+CFLAGS = -O3 -g -fPIC -DNDEBUG
+CXXFLAGS = -O3 -g -fPIC -DNDEBUG -std=c++11
+FFLAGS = -O3 -g -fPIC -DNDEBUG
+FCFLAGS = -O3 -g -fPIC -DNDEBUG
 
 # OpenMP flags
 
@@ -67,21 +67,20 @@ OMPFLAGS = -fopenmp
 # Fortran mixing
 
 FCLIBS = -lgfortran
-MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # general linking
 
-LIBS = -lm
+LIBS = -lpthread -lm
 
 # vendor math libraries
 
 VENDOR = intel
 INTEL_INCLUDE = /opt/intel/mkl/10.0.3.020/include
 INTEL_LIBDIR = /opt/intel/mkl/10.0.3.020/lib/em64t
-INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -liomp5 -lpthread -lm
-INTEL_LIBS_CXX = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -liomp5 -lpthread -lm
-INTEL_LIBS_F77 = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -liomp5 -lpthread -lm
-INTEL_LIBS_FC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -liomp5 -lpthread -lm
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -liomp5
+INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
+INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
+INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
