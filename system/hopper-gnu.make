@@ -79,8 +79,8 @@ MPIFCLIBS =
 
 # Linking
 
-LIBS = -L/usr/common/usg/acml/4.4.0/gfortran64_mp/lib -lacml_mp /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+LIBS = -lacml_mp /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
+LDFLAGS = -L/usr/common/usg/acml/4.4.0/gfortran64_mp/lib
 
 # vendor math libraries
 

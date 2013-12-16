@@ -43,7 +43,7 @@ pkg-configure :
 	fi; \
 	echo "using mpi : \"$(MPICXX)\" ;" >> tools/build/v2/user-config.jam; \
 	echo "" >> tools/build/v2/user-config.jam; \
-	./bootstrap.sh $${pyopt} --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
+	./bootstrap.sh $${pyopt} --user-config=tools/build/v2/user-config.jam --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :
@@ -58,7 +58,7 @@ pkg-install :
 	else \
 		opts="$${opts}link=static runtime-link=static"; \
 	fi; \
-	./b2 $${opts} install
+	./b2 $${opts} --user-config=tools/build/v2/user-config.jam install
 
 
 pkg-clean :
