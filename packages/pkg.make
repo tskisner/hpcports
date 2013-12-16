@@ -166,6 +166,7 @@ install :
 				printf "%s%18s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
 				source $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-install > $(STAGE)/log.install 2>&1; \
+				find $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) -name '*.la' -exec rm '{}' \; ; \
 			else \
 				printf "%s%18s :  Installing Override\n" "$(HPCP)" "$(PKG_NAME)"; \
 			fi; \
