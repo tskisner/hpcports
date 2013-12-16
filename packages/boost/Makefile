@@ -25,7 +25,7 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	jampath="./user-config.jam"; \
+	jampath="tools/build/v2/user-config.jam"; \
 	boostchain=""; \
 	echo "" > $${jampath}; \
 	if [ "x$(TOOLCHAIN)" = "xgnu" ]; then \
@@ -43,7 +43,7 @@ pkg-configure :
 	fi; \
 	echo "using mpi : $(MPICXX) ;" >> $${jampath}; \
 	echo "" >> $${jampath}; \
-	./bootstrap.sh --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
+	BOOST_BUILD_USER_CONFIG=$${jampath} ./bootstrap.sh --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-build :
@@ -52,13 +52,14 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	jampath="tools/build/v2/user-config.jam"; \
 	opts="variant=release "; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		opts="$${opts}link=shared runtime-link=shared"; \
 	else \
 		opts="$${opts}link=static runtime-link=static"; \
 	fi; \
-	./b2 $${opts} install
+	BOOST_BUILD_USER_CONFIG=$${jampath} ./b2 $${opts} install
 
 
 pkg-clean :
