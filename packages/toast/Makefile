@@ -25,7 +25,7 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	./autogen.sh; \
-	dyn="--disable-shared"; \
+	dyn="--disable-shared --enable-static --enable-all-static"; \
 	pyopt="--disable-python"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \
