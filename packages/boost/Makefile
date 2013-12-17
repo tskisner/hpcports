@@ -41,7 +41,13 @@ pkg-configure :
 		echo "using intel-linux : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> $${jampath}; \
 		boostchain="intel-linux"; \
 	fi; \
-	echo "using mpi : $(MPICXX) ;" >> $${jampath}; \
+	mpilib=""; \
+	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
+		mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-shared-library>#g"`; \
+	else \
+		mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-static-library>#g"`; \
+	fi; \
+	echo "using mpi : $(MPICXX) : $${mpilib} ;" >> $${jampath}; \
 	echo "" >> $${jampath}; \
 	BOOST_BUILD_USER_CONFIG=$${jampath} ./bootstrap.sh --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
