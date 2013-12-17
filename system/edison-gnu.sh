@@ -13,6 +13,7 @@ if [ "x${loadedgnu}" = x ]; then
     module swap gcc gcc/4.8.1
     module swap craype craype/2.01
     module swap cray-mpich cray-mpich/6.1.1
+    module unload cray-libsci
     module load mkl/13.0.3
     module load git/1.8.1.1
     module load python/2.7.5
@@ -23,4 +24,5 @@ if [ "x${loadedgnu}" = x ]; then
     if [ "x${loadeddarshan}" != x ]; then
         module unload darshan
     fi
+    export CRAYPE_LINK_TYPE=static
 fi
