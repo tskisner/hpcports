@@ -46,11 +46,13 @@ FC = ftn
 # MPI compilers
 
 openmpi_OVERRIDE = TRUE
-openmpi_VERSION = cray.mpich2
+openmpi_VERSION = cray.mpich
 MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
+MPILIBS = -lmpich
+MPICXXLIBS = -lmpichcxx
 
 # compile flags
 
@@ -70,7 +72,7 @@ MPIFCLIBS =
 
 # Linking
 
-LIBS = -lm
+LIBS = -lpthread -lm
 LDFLAGS =
 LIBTOOLFLAGS = --preserve-dup-deps
 
@@ -80,7 +82,7 @@ VENDOR = intel
 INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a -ldl -lpthread -lm
+INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
