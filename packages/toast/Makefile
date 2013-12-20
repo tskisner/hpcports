@@ -57,7 +57,7 @@ pkg-configure :
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \
 	--with-lapack="$(lapack_LIBS_CXX)" \
-	--with-blas="$(blas_LIBS_CXX) $(OMPFLAGS)" \
+	--with-blas="$(blas_LIBS_CXX) $(OMPFLAGS) $(FCLIBS)" \
 	--with-expat=$(expat_PREFIX) \
 	--with-sqlite3=$(sqlite_PREFIX) \
 	--with-getdata=$(getdata_PREFIX) \

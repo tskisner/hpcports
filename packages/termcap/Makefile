@@ -25,15 +25,14 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	dyn="--enable-shared --disable-static"; \
+	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --enable-static"; \
 	fi; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	CC="$(CC) $(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
 	LIBS="$(LIBS)" \
-	./configure \
-	$${dyn} \
+	./configure $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

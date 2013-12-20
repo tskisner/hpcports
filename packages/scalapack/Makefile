@@ -46,22 +46,14 @@ pkg-configure :
 
 
 pkg-build :
-	@if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
-		printf "%s%15s :  FORTRAN Disabled, skipping build\n" "$(HPCP)" "$(PKG_NAME)"; \
-	else \
-		cd $(STAGE)/$(PKG_BUILDDIR); \
-		$(MAKE); \
-	fi
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE)
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib; \
-	@if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
-		printf "%s%15s :  FORTRAN Disabled, skipping install\n" "$(HPCP)" "$(PKG_NAME)"; \
-	else \	
-		cp libscalapack.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/; \
-	fi
+	cp libscalapack.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/
 
 
 pkg-clean :
