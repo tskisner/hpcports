@@ -14,7 +14,7 @@ PKG_SRCDIR = hdf5-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_static.patch
 
 
 # rules for this package
@@ -27,13 +27,16 @@ pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="--disable-shared"; \
+		dyn="--disable-shared --enable-static --enable-static-exec"; \
 	fi; \
+	chmod +x autogen.sh; \
+	./autogen.sh; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
+	--disable-silent-rules \
 	--disable-parallel --disable-threadsafe \
 	--enable-cxx --enable-fortran --enable-fortran2003 \
 	--with-zlib="$(zlib_PREFIX)" \

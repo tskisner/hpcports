@@ -25,9 +25,9 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	dyn="--disable-shared"; \
+	dyn="--disable-shared --enable-static --enable-all-static"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		dyn=""; \
+		dyn="--enable-shared"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
