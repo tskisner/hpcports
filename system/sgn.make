@@ -47,7 +47,7 @@ FC = gfortran
 # compile flags
 
 CFLAGS = -O3 -g -fPIC -DNDEBUG
-CXXFLAGS = -O3 -g -fPIC -DNDEBUG
+CXXFLAGS = -O3 -g -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -g -fPIC -DNDEBUG
 FCFLAGS = -O3 -g -fPIC -DNDEBUG
 
