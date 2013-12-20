@@ -39,9 +39,9 @@ pkg-configure :
 		echo "set(CMAKE_BUILD_TYPE HybridRelease)" >> hpcp.cmake; \
 	fi; \
 	echo "# Compilers " >> hpcp.cmake; \
-	echo "set(CMAKE_C_COMPILER $(CC))" >> hpcp.cmake; \
-	echo "set(CMAKE_CXX_COMPILER $(CXX))" >> hpcp.cmake; \
-	echo "set(CMAKE_Fortran_COMPILER $(FC))" >> hpcp.cmake; \
+	echo "set(CMAKE_C_COMPILER $(MPICC))" >> hpcp.cmake; \
+	echo "set(CMAKE_CXX_COMPILER $(MPICXX))" >> hpcp.cmake; \
+	echo "set(CMAKE_Fortran_COMPILER $(MPIFC))" >> hpcp.cmake; \
 	echo "set(MPI_C_COMPILER $(MPICC))" >> hpcp.cmake; \
 	echo "set(MPI_CXX_COMPILER $(MPICXX))" >> hpcp.cmake; \
 	echo "set(MPI_Fortran_COMPILER $(MPIFC))" >> hpcp.cmake; \
