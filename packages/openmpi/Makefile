@@ -35,7 +35,6 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} $(openmpi_EXTRA) \
 	--disable-vt --disable-silent-rules \
-	--with-wrapper-ldflags="-Wl,-search_paths_first" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
