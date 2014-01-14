@@ -13,6 +13,18 @@ my $dbfile = $pkgdir."/pkg.db";
 
 use HPCPorts;
 
+sub recursive_dot {
+	my ( $handle, $pdb, $name ) = @_;
+
+	my $dep;
+	for $dep ( @{ $pdb->{ $name }->{ "deps" } } ) {
+		print $handle "  ${name} -> ${dep};\n";
+		recursive_dot ( $handle, $pdb, $dep );
+	}
+
+	return;
+}
+
 # check system definition
 
 my $system = $ENV{ "HPCP_HOST" };
@@ -59,11 +71,14 @@ print OUT "-------------------------\n\n";
 
 # write DOT header
 
-open ( DOT, ">${hpcp_root}/docs/source/deps.dot") || die;
+system ( "rm -rf ${hpcp_root}/docs/source/dots" );
+system ( "mkdir -p ${hpcp_root}/docs/source/dots" );
+
+open ( DOT, ">${hpcp_root}/docs/source/dots/ALL.dot" ) || die;
 
 print DOT "digraph HPCPorts {\n";
-
-
+print DOT "  rankdir = LR;\n";
+print DOT "  bgcolor = transparent;\n";
 
 # print package list
 
@@ -90,28 +105,31 @@ foreach $key ( sort keys %{$pdb} ) {
 	print OUT "| Version      : ${version}\n\n";
 	print OUT "| Dependencies : \n\n";
 
-	print DOT "${key} [label=\"${key} ${version}\", shape=box];\n";
+	print DOT "  ${key} [label=\"${key} ${version}\", shape=box];\n";
 
 	my $dep;
 	for $dep ( @{ $pdb->{ $key }->{ "deps" } } ) {
 		my $depversion = $pdb->{ $dep }->{ "version" };
 		print OUT " |   ${dep}  (${depversion})\n";
+		print DOT "  ${key} -> ${dep};\n";
 	}
+
+	my $pkgdot;
+	open ( $pkgdot, ">${hpcp_root}/docs/source/dots/${key}.dot" );
+	print $pkgdot "digraph ${key} {\n";
+	print $pkgdot "  rankdir = LR;\n";
+	print $pkgdot "  bgcolor = transparent;\n";
+	print $pkgdot "  edge [color=red];\n";
+	recursive_dot ( $pkgdot, $pdb, $key );
+	print $pkgdot "}\n";
+	close ( $pkgdot );
 
 	print OUT "\n";
 }
 
+print DOT "}\n";
+
 close ( OUT );
+close ( DOT );
 
-foreach $key ( sort keys %{$pdb} ) {
-	$value = $pdb->{ $key };
-
-	print DOT "${key}";
-
-	my $dep;
-	for $dep ( @{ $pdb->{ $key }->{ "deps" } } ) {
-		print DOT " -> ${dep}";
-	}
-	print DOT "\n";
-}
 
