@@ -33,7 +33,7 @@ After you have a copy of HPCPorts, you need to set up the configuration for the 
 
 	$> cp example.make blah.make
 
-The optional .module and .sh files contain any setup commands that need to be run to load the environment you which to use with HPCPorts (for example, loading modules for other compilers).  These are empty by default, but you can look at the files for other systems for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.
+The optional .module and .sh files contain any setup commands that need to be run to load the environment you wish to use with HPCPorts (for example, loading modules for other compilers).  These are empty by default, but you can look at the files for other systems for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.
 
 .. warning::
 
