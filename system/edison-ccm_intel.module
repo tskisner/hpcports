@@ -1,15 +1,14 @@
-  if [ is-loaded PrgEnv-gnu ] {
+  if [ is-loaded PrgEnv-intel ] {
   } else {
     if [ is-loaded PrgEnv-cray ] {
-      module swap PrgEnv-cray PrgEnv-gnu
+      module swap PrgEnv-cray PrgEnv-intel
     }
-    if [ is-loaded PrgEnv-intel ] {
-      module swap PrgEnv-intel PrgEnv-gnu
+    if [ is-loaded PrgEnv-gnu ] {
+      module swap PrgEnv-gnu PrgEnv-intel
     }
-    module unload cray-shmem
     module unload cray-shmem
     module swap craype craype/2.03
-    module swap gcc gcc/4.8.2
+    module swap intel intel/14.0.0.080
     module load mkl/13.0.3
     module load git/1.8.1.1
     if [ "x${loadeddarshan}" != x ]; then

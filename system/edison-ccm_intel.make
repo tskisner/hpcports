@@ -10,7 +10,7 @@
 # the minor version when upgrading MPI or vendor libs.  Document configuration
 # here:
 #
-# 1.0 :  gnu 4.8.2, mkl-13.0.3
+# 1.0 :  intel-14.0.0.080, mkl-13.0.3
 #
 
 HPCP_ENV = 1.0
@@ -25,7 +25,7 @@ HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
 
 # toolchain (gnu, darwin, intel, ibm)
 
-TOOLCHAIN = gnu
+TOOLCHAIN = intel
 BUILD_DYNAMIC = TRUE
 
 # UNIX tools
@@ -53,16 +53,16 @@ openmpi_EXTRA = --without-tm
 
 CFLAGS = -O3 -fPIC -DNDEBUG
 CXXFLAGS = -O3 -fPIC -DNDEBUG -std=c++11
-FFLAGS = -O3 -fPIC -DNDEBUG
-FCFLAGS = -O3 -fPIC -DNDEBUG
+FFLAGS = -O3 -fPIC -DNDEBUG -fexceptions
+FCFLAGS = -O3 -fPIC -DNDEBUG -fexceptions
 
 # OpenMP flags
 
-OMPFLAGS = -fopenmp
+OMPFLAGS = -openmp
 
 # Fortran mixing
-FLIBS = -lgfortran
-FCLIBS = -lgfortran
+FLIBS = -lifcoremt
+FCLIBS = -lifcoremt
 MPIFCLIBS =
 
 # Linking
@@ -78,7 +78,7 @@ INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
 #INTEL_LIBS_CC = -lmkl_rt
 #INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3
-INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_core -lmkl_gnu_thread -lpthread -lm
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -liomp -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
