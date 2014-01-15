@@ -10,7 +10,7 @@
 # the minor version when upgrading MPI or vendor libs.  Document configuration
 # here:
 #
-# 1.0 :  gnu 4.8.1, mkl-13.0.1
+# 1.0 :  gnu 4.8.2, mkl-13.0.3
 #
 
 HPCP_ENV = 1.0
@@ -52,7 +52,7 @@ openmpi_EXTRA = --without-tm
 # compile flags
 
 CFLAGS = -O3 -fPIC -DNDEBUG
-CXXFLAGS = -O3 -fPIC -DNDEBUG
+CXXFLAGS = -O3 -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -fPIC -DNDEBUG
 FCFLAGS = -O3 -fPIC -DNDEBUG
 
@@ -73,10 +73,12 @@ LDFLAGS =
 # vendor math libraries
 
 VENDOR = intel
-INTEL_PREFIX = /opt/intel/composer_xe_2013.1.117
+INTEL_PREFIX = /opt/intel/composer_xe_2013_sp1.0.080
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = -lmkl_rt
+#INTEL_LIBS_CC = -lmkl_rt
+#INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_core -lmkl_gnu_thread -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -89,16 +91,24 @@ git_VERSION = 1.8.1.1
 # we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 13.0.1
+blas_VERSION = 13.0.3
 blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(INTEL_LIBS_CXX)
 blas_LIBS_F77 = $(INTEL_LIBS_F77)
 blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 13.0.1
+lapack_VERSION = 13.0.3
 lapack_LIBS_CC = -lmkl_lapack95_lp64
 lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_F77 = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
+
+# package overrides
+
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.5.5
+
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.5.5
 
