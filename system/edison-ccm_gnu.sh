@@ -14,5 +14,8 @@ if [ "x${loadedgnu}" = x ]; then
     module swap gcc gcc/4.8.2
     module load mkl/13.0.3
     module load git/1.8.1.1
+    if [ "x${loadeddarshan}" != x ]; then
+        module unload darshan
+    fi
     module load ccm
 fi
