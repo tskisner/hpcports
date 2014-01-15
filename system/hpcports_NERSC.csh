@@ -122,7 +122,7 @@ if ( $NERSC_HOST == "edison" ) then
     endif
   endif
 
-  alias hpcports 'set planck=`planckcheck` ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/intel/modulefiles ; eval "switch (\!:1) \\
+  alias hpcports 'set planck=`planckcheck` ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm_gnu/env/modulefiles; module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm_intel/env/modulefiles; module unuse /project/projectdirs/planck/modules/edison/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/intel/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/ccm_gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/ccm_intel/modulefiles; eval "switch (\!:1) \\
     case "intel": \\
     module use /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles \\
         if (x$planck == x"yes") then \\
@@ -135,14 +135,20 @@ if ( $NERSC_HOST == "edison" ) then
             module use /project/projectdirs/planck/modules/edison/gnu/modulefiles \\
         endif \\
     breaksw \\
-    case "ccm": \\
-    module use /project/projectdirs/cmb/modules/edison/hpcports_ccm/env/modulefiles \\
+    case "ccm_gnu": \\
+    module use /project/projectdirs/cmb/modules/edison/hpcports_ccm_gnu/env/modulefiles \\
         if (x$planck == x"yes") then \\
-            module use /project/projectdirs/planck/modules/edison/ccm/modulefiles \\
+            module use /project/projectdirs/planck/modules/edison/ccm_gnu/modulefiles \\
+        endif \\
+    breaksw \\
+    case "ccm_intel": \\
+    module use /project/projectdirs/cmb/modules/edison/hpcports_ccm_intel/env/modulefiles \\
+        if (x$planck == x"yes") then \\
+            module use /project/projectdirs/planck/modules/edison/ccm_intel/modulefiles \\
         endif \\
     breaksw \\
     default: \\
-    echo "usage:  hpcports \[ gnu OR intel OR ccm OR dx9 \]" \\
+    echo "usage:  hpcports \[ gnu OR intel OR ccm_gnu OR ccm_intel OR dx9 \]" \\
     breaksw \\
   endsw"'
 
