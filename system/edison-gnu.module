@@ -10,7 +10,7 @@
     module swap gcc gcc/4.8.2
     module swap craype craype/2.03
     module swap cray-mpich cray-mpich/6.2.0
-    module unload cray-libsci
+    module load cray-libsci/12.1.3
     module load mkl/13.0.3
     module load git/1.8.1.1
     module load python/2.7.5

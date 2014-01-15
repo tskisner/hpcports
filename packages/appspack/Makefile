@@ -14,7 +14,7 @@ PKG_SRCDIR = appspack-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_static-lapack.patch
 
 
 # rules for this package
@@ -25,9 +25,9 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	dyn=""; \
+	dyn="--enable-shared"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="--disable-shared"; \
+		dyn="--disable-shared --enable-static --enable-all-static"; \
 	fi; \
 	blas="yes"; \
 	if [ "x$(blas_LIBS_CXX)" != "x" ]; then \
@@ -37,6 +37,7 @@ pkg-configure :
 	if [ "x$(lapack_LIBS_CXX)" != "x" ]; then \
 		lapack="$(lapack_LIBS_CXX)"; \
 	fi; \
+	chmod +x autogen.sh ; ./autogen.sh; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
@@ -45,8 +46,7 @@ pkg-configure :
 	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	FLIBS="$(FLIBS)" \
-	./configure \
-	$${dyn} \
+	./configure $${dyn} \
 	--with-pic \
 	--with-blas="$${blas}" \
 	--with-lapack="$${lapack}" \
