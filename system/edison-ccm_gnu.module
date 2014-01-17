@@ -12,9 +12,9 @@
     module swap gcc gcc/4.8.2
     module load mkl/13.0.3
     module load git/1.8.1.1
-    if [ "x${loadeddarshan}" != x ]; then
+    if [ is-loaded darshan ] {
         module unload darshan
-    fi
+    }
     module load ccm
     module load craype-target-native
   }

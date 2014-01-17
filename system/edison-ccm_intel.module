@@ -11,9 +11,9 @@
     module swap intel intel/14.0.0.080
     module load mkl/13.0.3
     module load git/1.8.1.1
-    if [ "x${loadeddarshan}" != x ]; then
+    if [ is-loaded darshan ] {
         module unload darshan
-    fi
+    }
     module load ccm
     module load craype-target-native
   }
