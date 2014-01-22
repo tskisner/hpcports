@@ -9,9 +9,10 @@ HPCP_PREFIX = /proj/planck/software/hpcports
 #
 # 1.0 :  gnu 4.7.3, cray-mpich2 5.6.5, mkl-13.5.192
 # 2.0 :  gnu 4.8.1, cray-mpich2 6.0.2, craype 1.06, mkl 13.5.192
+# 3.0 :  gnu 4.8.2, cray-mpich 6.2.1, craype 2.04, libsci 12.1.3
 #
 
-HPCP_ENV = 2.0
+HPCP_ENV = 3.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -66,8 +67,8 @@ FCFLAGS = -O3 -static -fPIC -DNDEBUG
 OMPFLAGS = -fopenmp
 
 # Fortran mixing
-FLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
+FLIBS = /opt/gcc/4.8.2/snos/lib64/libgfortran.a
+FCLIBS = /opt/gcc/4.8.2/snos/lib64/libgfortran.a
 MPIFCLIBS =
 
 # Linking
@@ -82,7 +83,7 @@ VENDOR = intel
 INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_intel_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a
+INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a -ldl
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -141,19 +142,19 @@ numexpr_VERSION = NA
 setuptools_OVERRIDE = TRUE
 setuptools_VERSION = NA
 
-# we get BLAS and Lapack from MKL
+# we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 13.5.192
-blas_LIBS_CC = $(INTEL_LIBS_CC)
-blas_LIBS_CXX = $(INTEL_LIBS_CXX)
-blas_LIBS_F77 = $(INTEL_LIBS_F77)
-blas_LIBS_FC = $(INTEL_LIBS_FC)
+blas_VERSION = 12.1.3
+blas_LIBS_CC =
+#blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.8.2/snos/lib64/libgfortran.a /opt/gcc/4.8.2/snos/lib64/libgomp.a -ldl
+blas_LIBS_CXX = $(blas_LIBS_CC)
+blas_LIBS_FC = $(blas_LIBS_CC)
+blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 13.5.192
-lapack_LIBS_CC = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_CXX = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_F77 = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
-lapack_LIBS_FC = $(INTEL_LIBDIR)/libmkl_lapack95_lp64.a
+lapack_VERSION = 12.1.3
+
+scalapack_OVERRIDE = TRUE
+scalapack_VERSION = 12.1.3
 

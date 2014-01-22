@@ -9,9 +9,10 @@ HPCP_PREFIX = /proj/planck/software/hpcports_login
 #
 # 1.0 :  gnu 4.7.3, cray-mpich2 5.6.5, mkl-13.5.192
 # 2.0 :  gnu 4.8.1, cray-mpich2 6.0.2, craype 1.06, mkl 13.5.192
+# 3.0 :  gnu 4.8.2, cray-mpich 6.2.1, craype 2.04, libsci 12.1.3
 #
 
-HPCP_ENV = 2.0
+HPCP_ENV = 3.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -37,10 +38,10 @@ INST_PERM = g+rwX,o+rX
 
 # serial compilers
 
-CC = gcc
-CXX = g++
-F77 = gfortran
-FC = gfortran
+CC = cc
+CXX = CC
+F77 = ftn
+FC = ftn
 
 # compile flags
 
