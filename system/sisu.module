@@ -6,7 +6,6 @@
     if [ is-loaded PrgEnv-intel ] {
       module swap PrgEnv-intel PrgEnv-gnu
     }
-    setenv PE_PRODUCT_LIST [join [lsearch -all -inline -not -exact [split $::env(PE_PRODUCT_LIST) ":"] "CRAY"]]
     module unload cray-shmem
     module unload cce
     module unload intel

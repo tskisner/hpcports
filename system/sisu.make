@@ -73,7 +73,7 @@ MPIFCLIBS =
 
 # Linking
 
-LIBS = -lpthread -lm
+LIBS = /opt/gcc/4.8.2/snos/lib64/libgomp.a /usr/lib64/librt.a -lpthread -lm
 LDFLAGS =
 LIBTOOLFLAGS = --preserve-dup-deps
 
