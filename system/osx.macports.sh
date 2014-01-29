@@ -6,7 +6,7 @@ port install \
 autoconf \
 automake \
 python27 \
-openmpi -gcc48 \
+openmpi-llvm \
 bzip2 \
 cfitsio \
 cmake \
