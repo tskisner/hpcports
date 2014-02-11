@@ -52,10 +52,10 @@ LDFLAGS =
 VENDOR = apple
 APPLE_INCLUDE =
 APPLE_LIBDIR = 
-APPLE_LIBS_CC = -Wl,-framework,Accelerate 
-APPLE_LIBS_CXX = -Wl,-framework,Accelerate
-APPLE_LIBS_F77 = -Wl,-framework,Accelerate
-APPLE_LIBS_FC = -Wl,-framework,Accelerate
+APPLE_LIBS_CC = -framework Accelerate 
+APPLE_LIBS_CXX = -framework Accelerate
+APPLE_LIBS_F77 = -framework Accelerate
+APPLE_LIBS_FC = -framework Accelerate
 
 # package overrides
 
@@ -64,10 +64,10 @@ git_VERSION = 1.7.12.4-apple
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 10.8-apple
-blas_LIBS_CC = -Wl,-framework,vecLib
-blas_LIBS_CXX = -Wl,-framework,vecLib
-blas_LIBS_F77 = -Wl,-framework,vecLib
-blas_LIBS_FC = -Wl,-framework,vecLib
+blas_LIBS_CC = -framework vecLib
+blas_LIBS_CXX = -framework vecLib
+blas_LIBS_F77 = -framework vecLib
+blas_LIBS_FC = -framework vecLib
 
 lapack_OVERRIDE = TRUE
 lapack_VERSION = 10.8-apple
@@ -183,12 +183,6 @@ numexpr_PREFIX = $(macports)
 numpy_OVERRIDE = TRUE
 numpy_VERSION = 1.8.0
 numpy_PREFIX = $(macports)
-
-openmpi_OVERRIDE = TRUE
-openmpi_VERSION = 1.7.3
-openmpi_PREFIX = $(macports)
-MPICC = mpicc
-MPICXX = mpicxx
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = 1.0.1e

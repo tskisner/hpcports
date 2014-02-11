@@ -29,11 +29,14 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --enable-static --disable-dlopen"; \
 	fi; \
+	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
+		fort="--disable-mpi-f77 --disable-mpi-f90"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} $(openmpi_EXTRA) \
+	./configure $${dyn} $${fort} $(openmpi_EXTRA) \
 	--disable-vt --disable-silent-rules \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
