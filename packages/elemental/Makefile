@@ -64,7 +64,7 @@ pkg-configure :
 		echo "set(CMAKE_EXE_LINKER_FLAGS \"-static\")" >> hpcp.cmake; \
 	fi; \
 	echo "# lapack and other math libraries " >> hpcp.cmake; \
-	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^ *##" -e 's# *$$##'`; \
+	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^ *##" -e 's# *$$##' -e 's# #;#g'`; \
 	echo "set(MATH_LIBS \"$${math}\")" >> hpcp.cmake; \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
