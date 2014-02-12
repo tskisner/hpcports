@@ -1,5 +1,5 @@
 
-HPCP_PREFIX = /proj/planck/software/hpcports
+HPCP_PREFIX = /proj/planck/software/hpcports_login
 
 # OS environment version
 #
@@ -25,7 +25,7 @@ HPCP_POOL = /proj/planck/software/hpcports_pool
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = gnu
-BUILD_DYNAMIC = FALSE
+BUILD_DYNAMIC = TRUE
 
 # UNIX tools
 
@@ -67,15 +67,15 @@ FCFLAGS = -O3 -m64 -fPIC -DNDEBUG
 OMPFLAGS = -fopenmp
 
 # Fortran mixing
-FLIBS = /opt/gcc/4.8.2/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.8.2/snos/lib64/libgfortran.a
+FLIBS = -lgfortran
+FCLIBS = -lgfortran
 MPIFCLIBS =
 
 # Linking
 
-LIBS = /opt/gcc/4.8.2/snos/lib64/libgomp.a /usr/lib64/librt.a -lpthread -lm
+LIBS = -lpthread -lm
 LDFLAGS =
-LIBTOOLFLAGS = --preserve-dup-deps
+LIBTOOLFLAGS =
 
 # vendor math libraries
 
@@ -83,7 +83,7 @@ VENDOR = intel
 INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a -ldl
+INTEL_LIBS_CC = -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -99,62 +99,31 @@ openssl_VERSION = 0.9.8j
 curl_OVERRIDE = TRUE
 curl_VERSION = 7.19.7
 
-python_OVERRIDE = TRUE
-python_SITE = python2.7
-python_VERSION = NA
-
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
 
-nose_OVERRIDE = TRUE
-nose_VERSION = NA
+termcap_OVERRIDE = TRUE
+termcap_VERSION = 2.0.8
 
-numpy_OVERRIDE = TRUE
-numpy_VERSION = NA
+readline_OVERRIDE = TRUE
+readline_VERSION = 5.2
 
-scipy_OVERRIDE = TRUE
-scipy_VERSION = NA
+zlib_OVERRIDE = TRUE
+zlib_VERSION = 1.2.7
 
-pyfits_OVERRIDE = TRUE
-pyfits_VERSION = NA
-
-ipython_OVERRIDE = TRUE
-ipython_VERSION = NA
-
-matplotlib_OVERRIDE = TRUE
-matplotlib_VERSION = NA
-
-mpi4py_OVERRIDE = TRUE
-mpi4py_VERSION = NA
-
-pyslalib_OVERRIDE = TRUE
-pyslalib_VERSION = NA
-
-scientific_OVERRIDE = TRUE
-scientific_VERSION = NA
-
-healpy_OVERRIDE = TRUE
-healpy_VERSION = NA
-
-numexpr_OVERRIDE = TRUE
-numexpr_VERSION = NA
-
-setuptools_OVERRIDE = TRUE
-setuptools_VERSION = NA
-
-# we get BLAS, Lapack, and ScaLapack from Cray libsci
+# we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 12.1.3
-blas_LIBS_CC =
-#blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.8.2/snos/lib64/libgfortran.a /opt/gcc/4.8.2/snos/lib64/libgomp.a -ldl
-blas_LIBS_CXX = $(blas_LIBS_CC)
-blas_LIBS_FC = $(blas_LIBS_CC)
-blas_LIBS_F77 = $(blas_LIBS_CC)
+blas_VERSION = 13.0.3
+blas_LIBS_CC = $(INTEL_LIBS_CC)
+blas_LIBS_CXX = $(INTEL_LIBS_CXX)
+blas_LIBS_F77 = $(INTEL_LIBS_F77)
+blas_LIBS_FC = $(INTEL_LIBS_FC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 12.1.3
-
-scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 12.1.3
+lapack_VERSION = 13.0.3
+lapack_LIBS_CC = -lmkl_lapack95_lp64
+lapack_LIBS_CXX = $(lapack_LIBS_CC)
+lapack_LIBS_F77 = $(lapack_LIBS_CC)
+lapack_LIBS_FC = $(lapack_LIBS_CC)
 
