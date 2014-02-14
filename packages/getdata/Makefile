@@ -29,10 +29,7 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --disable-python --disable-perl"; \
 	fi; \
-	fort=""; \
-	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
-		fort="--disable-fortran --disable-fortran95"; \
-	fi; \
+	fort="--disable-fortran --disable-fortran95"; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \

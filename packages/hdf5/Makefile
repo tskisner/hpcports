@@ -29,16 +29,17 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --enable-static --enable-static-exec"; \
 	fi; \
+	fort="--disable-fortran --disable-fortran2003" \
 	chmod +x autogen.sh; \
 	./autogen.sh; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} \
+	./configure $${dyn} $${fort} \
 	--disable-silent-rules \
 	--disable-parallel --disable-threadsafe \
-	--enable-cxx --enable-fortran --enable-fortran2003 \
+	--enable-cxx \
 	--with-zlib="$(zlib_PREFIX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

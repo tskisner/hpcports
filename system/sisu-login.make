@@ -111,6 +111,11 @@ readline_VERSION = 5.2
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.7
 
+# healpy is currently broken on this machine
+
+healpy_OVERRIDE = TRUE
+healpy_VERSION = NA
+
 # we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
