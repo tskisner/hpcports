@@ -106,7 +106,7 @@ patch : extract
 		if [ -e $(STAGE)/state.extract ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				printf "%s%18s :  Patching\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/$(PKG_NAME)_deps.sh; \
+				. $(STAGE)/$(PKG_NAME)_deps.sh; \
 				cd $(STAGE)/$(PKG_SRCDIR); \
 				rm -f ../log.patch; \
 				for pfile in $(PKG_PATCHES); do \
@@ -125,7 +125,7 @@ configure : patch
 		if [ -e $(STAGE)/state.patch ]; then \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				printf "%s%18s :  Configuring\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/$(PKG_NAME)_deps.sh; \
+				. $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-configure > $(STAGE)/log.configure 2>&1 && \
 				touch $(STAGE)/state.configure && \
 				rm $(STAGE)/state.patch; \
@@ -143,7 +143,7 @@ build : configure
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				$(MAKE) uninstall; \
 				printf "%s%18s :  Building\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/$(PKG_NAME)_deps.sh; \
+				. $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-build > $(STAGE)/log.build 2>&1 && \
 				touch $(STAGE)/state.build && \
 				rm $(STAGE)/state.configure; \
@@ -164,7 +164,7 @@ install :
 			mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
 			if [ "x$(PKG_OVERRIDE)" != "xTRUE" ]; then \
 				printf "%s%18s :  Installing\n" "$(HPCP)" "$(PKG_NAME)"; \
-				source $(STAGE)/$(PKG_NAME)_deps.sh; \
+				. $(STAGE)/$(PKG_NAME)_deps.sh; \
 				$(MAKE) pkg-install > $(STAGE)/log.install 2>&1; \
 				find $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) -name '*.la' -exec rm '{}' \; ; \
 			else \
