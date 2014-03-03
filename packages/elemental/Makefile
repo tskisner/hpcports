@@ -70,6 +70,7 @@ pkg-configure :
 	cd $(PKG_BUILDDIR); \
 	cmake \
 	-D CMAKE_TOOLCHAIN_FILE=../hpcp.cmake \
+	-D ELEM_TESTS:BOOL=ON \
 	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR); \
 
