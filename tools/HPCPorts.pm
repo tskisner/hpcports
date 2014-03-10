@@ -614,6 +614,8 @@ sub module_file {
 			for $val ( @valsplit ) {
 				print OUT "prepend-path CPATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
 			}
+		} elsif ( $key eq "PATH" ) {
+			print OUT "prepend-path $valsplit[0] \"${prefix}/${pname}-${fullversion}/$valsplit[1]\"\n";
 		} elsif ( $key eq "LIB" ) {
 			for $val ( @valsplit ) {
 				print OUT "prepend-path LIBRARY_PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
@@ -760,6 +762,8 @@ sub shell_file {
 				for $val ( @valsplit ) {
 					print OUT "export CPATH=\"${prefix}/${pname}-${fullversion}/${val}:\$CPATH\"\n";
 				}
+			} elsif ( $key eq "PATH" ) {
+				print OUT "export $valsplit[0]=\"${prefix}/${pname}-${fullversion}/$valsplit[1]:\$$valsplit[0]\"\n";
 			} elsif ( $key eq "LIB" ) {
 				for $val ( @valsplit ) {
 					print OUT "export LIBRARY_PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$LIBRARY_PATH\"\n";

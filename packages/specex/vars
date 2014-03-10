@@ -7,3 +7,4 @@ LIBS_FC = -lspecex
 LIBS_MPICC = -lspecex
 LIBS_MPICXX = -lspecex
 LIBS_MPIFC = -lspecex
+PATH = HARP_PLUGIN_PATH lib
