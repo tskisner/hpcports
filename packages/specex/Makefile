@@ -28,6 +28,7 @@ pkg-configure :
 	./waf configure \
 	--debug=False \
 	--optimize=3 \
+	--enable-openmp=True \
 	--autogen-harp-pkgconfig="." \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
