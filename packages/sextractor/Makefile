@@ -29,7 +29,8 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --enable-static"; \
 	fi; \
-	autoreconf; \
+	chmod +x autogen.sh; \
+	./autogen.sh; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
