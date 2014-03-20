@@ -1,0 +1,12 @@
+diff -urN sextractor-2.19.5_orig/configure.ac sextractor-2.19.5/configure.ac
+--- sextractor-2.19.5_orig/configure.ac	2013-12-14 09:12:32.000000000 -0800
++++ sextractor-2.19.5/configure.ac	2014-03-20 15:48:19.426813000 -0700
+@@ -188,7 +188,7 @@
+     use_pthreads=yes
+     )
+ # Deactivate multithreading for now
+-use_pthreads="no"
++#use_pthreads="no"
+ 
+ # Provide special option for profiling
+ AC_MSG_CHECKING([for profiler mode])

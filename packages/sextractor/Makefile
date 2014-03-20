@@ -14,7 +14,7 @@ PKG_SRCDIR = sextractor-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_thread.patch
 
 
 # rules for this package
@@ -29,10 +29,11 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --enable-static"; \
 	fi; \
+	autoreconf; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
-	--enable-threads \
+	--enable-threads=yes \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
