@@ -39,8 +39,7 @@ pkg-configure :
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure \
-	$${dyn} $${zl} $${tf} \
+	./configure $${dyn} $${zl} $${tf} \
 	--enable-threads \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

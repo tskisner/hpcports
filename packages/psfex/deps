@@ -1,1 +1,1 @@
-autoconf automake libtool automake m4 sfftw plplot atlas
+autoconf automake libtool automake m4 fftw sfftw plplot atlas

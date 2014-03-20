@@ -31,13 +31,8 @@ pkg-configure :
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure \
-	$${dyn} \
+	./configure $${dyn} \
 	--enable-threads \
-	--with-atlas="$(atlas_PREFIX)/lib" \
-	--with-atlas-incdir="$(atlas_PREFIX)/include" \
-	--with-fftw="$(fftw_PREFIX)/lib" \
-	--with-fftw-incdir="$(fftw_PREFIX)/include" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
