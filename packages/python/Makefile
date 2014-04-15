@@ -34,10 +34,10 @@ pkg-configure :
 		nognu=""; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CPPFLAGS="$(sqlite_CPPFLAGS) $(readline_CPPFLAGS)" \
 	OPT="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" \
+	CPPFLAGS="-I$(sqlite_PREFIX)/include -I$(readline_PREFIX)/include" \
+	LDFLAGS="$(LDFLAGS) -L$(sqlite_PREFIX)/lib -L$(readline_PREFIX)/lib" \
 	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(termcap_LIBS_CC) $(LIBS)" \
 	./configure \
 	$${dyn} $${nognu} \
