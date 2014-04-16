@@ -8,7 +8,6 @@ PKG_NAME = healpy
 PKG_FORMAT = tar
 PKG_TAR = healpy-$(PKG_VERSION).tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/h/healpy/healpy-$(PKG_VERSION).tar.gz
-
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = healpy-$(PKG_VERSION)
