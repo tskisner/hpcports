@@ -95,6 +95,12 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.5.5
+
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.5.5
+
 termcap_OVERRIDE = TRUE
 termcap_VERSION = 2.0.8
 

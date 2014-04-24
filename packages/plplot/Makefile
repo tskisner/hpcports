@@ -29,7 +29,7 @@ pkg-configure :
 	cd $(PKG_BUILDDIR); \
 	dyn="-DBUILD_SHARED_LIBS:BOOL=ON"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
-		dyn="-DBUILD_SHARED_LIBS:BOOL=OFF"; \
+		dyn="-DBUILD_SHARED_LIBS:BOOL=OFF -DENABLE_DYNDRIVERS:BOOL=OFF"; \
 	fi; \
 	CC="$(CC) $(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
@@ -38,8 +38,7 @@ pkg-configure :
 	FC="$(F77) $(FFLAGS)" \
 	CMAKE_INCLUDE_PATH="$(tcl_PREFIX)/include:$(tk_PREFIX)/include" \
 	CMAKE_LIBRARY_PATH="$(tcl_PREFIX)/lib:$(tk_PREFIX)/lib" \
-	cmake \
-	$${dyn} \
+	cmake $${dyn} \
 	-D DEFAULT_NO_CAIRO_DEVICES=ON \
 	-D CMAKE_INSTALL_PREFIX="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)" \
 	..
