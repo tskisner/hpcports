@@ -15,7 +15,7 @@ PKG_SRCDIR = elemental-$(PKG_VERSION)
 
 PKG_BUILDDIR = build
 
-PKG_PATCHES = hpcp_fortran.patch
+PKG_PATCHES = 
 
 
 # rules for this package
@@ -26,53 +26,36 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE); \
-	echo "# HPCP toolchain" > hpcp.cmake; \
-	echo "#-------------------" >> hpcp.cmake; \
-	if [ "x$(BUILD_FORTRAN)" = "xTRUE" ]; then \
-		echo "set(HPCP_FORTRAN TRUE)" >> hpcp.cmake; \
-	else \
-		echo "set(HPCP_FORTRAN FALSE)" >> hpcp.cmake; \
-	fi; \
-	if [ "x$(OMPFLAGS)" = "x" ]; then \
-		echo "set(CMAKE_BUILD_TYPE PureRelease)" >> hpcp.cmake; \
-	else \
-		echo "set(CMAKE_BUILD_TYPE HybridRelease)" >> hpcp.cmake; \
-	fi; \
-	echo "# Compilers " >> hpcp.cmake; \
-	echo "set(CMAKE_C_COMPILER $(MPICC))" >> hpcp.cmake; \
-	echo "set(CMAKE_CXX_COMPILER $(MPICXX))" >> hpcp.cmake; \
-	echo "set(CMAKE_Fortran_COMPILER $(MPIFC))" >> hpcp.cmake; \
-	echo "set(MPI_C_COMPILER $(MPICC))" >> hpcp.cmake; \
-	echo "set(MPI_CXX_COMPILER $(MPICXX))" >> hpcp.cmake; \
-	echo "set(MPI_Fortran_COMPILER $(MPIFC))" >> hpcp.cmake; \
-	echo "# Compiler flags " >> hpcp.cmake; \
-	echo "set(CMAKE_C_FLAGS \"$(CFLAGS)\")" >> hpcp.cmake; \
-	echo "set(CMAKE_CXX_FLAGS \"$(CXXFLAGS)\")" >> hpcp.cmake; \
-	echo "set(CMAKE_Fortran_FLAGS \"$(FCFLAGS)\")" >> hpcp.cmake; \
-	echo "set(C_FLAGS \"$(CFLAGS)\")" >> hpcp.cmake; \
-	echo "set(CXX_FLAGS \"$(CXXFLAGS)\")" >> hpcp.cmake; \
-	echo "set(Fortran_FLAGS \"$(FCFLAGS)\")" >> hpcp.cmake; \
-	echo "set(OpenMP_CXX_FLAGS \"$(OMPFLAGS)\")" >> hpcp.cmake; \
-	echo "# Shared libraries " >> hpcp.cmake; \
-	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		echo "set(BUILD_SHARED_LIBS ON)" >> hpcp.cmake; \
-		echo "set(SHARED_LIBRARIES ON)" >> hpcp.cmake; \
-	else \
-		echo "set(BUILD_SHARED_LIBS OFF)" >> hpcp.cmake; \
-		echo "set(SHARED_LIBRARIES OFF)" >> hpcp.cmake; \
-		echo "set(CMAKE_FIND_LIBRARY_SUFFIXES .a $${CMAKE_FIND_LIBRARY_SUFFIXES})" >> hpcp.cmake; \
-		echo "set(CMAKE_EXE_LINKER_FLAGS \"-static\")" >> hpcp.cmake; \
-	fi; \
-	echo "# lapack and other math libraries " >> hpcp.cmake; \
-	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^ *##" -e 's# *$$##' -e 's# #;#g'`; \
-	echo "set(MATH_LIBS \"$${math}\")" >> hpcp.cmake; \
 	mkdir -p $(PKG_BUILDDIR); \
 	cd $(PKG_BUILDDIR); \
-	cmake \
-	-D CMAKE_TOOLCHAIN_FILE=../hpcp.cmake \
+	build="HybridRelease"; \
+	if [ "x$(OMPFLAGS)" = "x" ]; then \
+		build="PureRelease"; \
+	fi; \
+	shared="-D BUILD_SHARED_LIBS:BOOL=ON -D SHARED_LIBRARIES:BOOL=ON"; \
+	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
+		shared="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D CMAKE_EXE_LINKER_FLAGS=-static -D CMAKE_FIND_LIBRARY_SUFFIXES=.a"; \
+	fi; \
+	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^ *##" -e 's# *$$##' -e 's# #;#g'`; \
+	cmake $${shared} \
+	-D CMAKE_BUILD_TYPE=$${build} \
+	-D CMAKE_C_COMPILER=$(MPICC) \
+	-D CMAKE_CXX_COMPILER=$(MPICXX) \
+	-D CMAKE_Fortran_COMPILER=$(MPIFC) \
+	-D MPI_C_COMPILER=$(MPICC) \
+	-D MPI_CXX_COMPILER=$(MPICXX) \
+	-D MPI_Fortran_COMPILER=$(MPIFC) \
+	-D CMAKE_C_FLAGS="$(CFLAGS)" \
+	-D CMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+	-D CMAKE_Fortran_FLAGS="$(FCFLAGS)" \
+	-D C_FLAGS="$(CFLAGS)" \
+	-D CXX_FLAGS="$(CXXFLAGS)" \
+	-D Fortran_FLAGS="$(FCFLAGS)" \
+	-D OpenMP_CXX_FLAGS="$(OMPFLAGS)" \
+	-D MATH_LIBS="$${math}" \
 	-D ELEM_TESTS:BOOL=ON \
 	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
-	../$(PKG_SRCDIR); \
+	../$(PKG_SRCDIR)
 
 
 pkg-build :
