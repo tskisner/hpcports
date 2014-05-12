@@ -7,7 +7,7 @@ PKG_NAME = openmpi
 
 PKG_FORMAT = tar
 PKG_TAR = openmpi-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.open-mpi.org/software/ompi/v1.8/downloads/openmpi-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
 PKG_SRCDIR = openmpi-$(PKG_VERSION)
@@ -32,11 +32,15 @@ pkg-configure :
 	if [ "x$(BUILD_FORTRAN)" = "xFALSE" ]; then \
 		fort="--disable-mpi-f77 --disable-mpi-f90"; \
 	fi; \
+	platform=""; \
+	if [ -e ../../../../system/$(HPCP_HOST).openmpi_platform ]; then \
+		platform="--with-platform=../../../../system/$(HPCP_HOST).openmpi_platform"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} $${fort} $(openmpi_EXTRA) \
+	./configure $${dyn} $${fort} $(openmpi_EXTRA) $${platform} \
 	--disable-vt --disable-silent-rules \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
