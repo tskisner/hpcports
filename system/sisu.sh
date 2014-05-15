@@ -13,6 +13,7 @@ if [ "x${loaded}" = x ]; then
     module swap craype craype/2.04
     module swap cray-mpich cray-mpich/6.2.1
     module load cray-libsci cray-libsci/12.1.3
+    module load fftw/3.3.0.4
     module load git/1.8.1.4
     module load cmake/2.8.10.2
 fi
