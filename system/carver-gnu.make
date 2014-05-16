@@ -12,9 +12,10 @@
 #
 # 1.0 : gcc-4.7.0, MKL 10.2, OpenMPI 1.4.5
 # 2.0 : gcc-4.7.0, MKL 13.0.1, OpenMPI 1.6.3
+# 3.0 : gcc-4.7.0, MKL 13.0.1, self-built OpenMPI 1.8.1
 #
 
-HPCP_ENV = 2.0
+HPCP_ENV = 3.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -45,15 +46,6 @@ CXX = g++
 F77 = gfortran
 FC = gfortran
 
-# MPI compilers
-
-openmpi_OVERRIDE = TRUE
-openmpi_VERSION = 1.6.3
-MPICC = mpicc
-MPICXX = mpicxx
-MPIF77 = mpif77
-MPIFC = mpif90
-
 # compile flags
 
 CFLAGS = -O3 -g -fPIC -DNDEBUG
@@ -68,7 +60,6 @@ OMPFLAGS = -fopenmp
 # Fortran mixing
 
 FCLIBS = -lgfortran
-MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # general linking
 
