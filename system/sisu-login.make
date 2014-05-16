@@ -59,7 +59,6 @@ OMPFLAGS = -fopenmp
 # Fortran mixing
 FLIBS = -lgfortran
 FCLIBS = -lgfortran
-MPIFCLIBS =
 
 # Linking
 
