@@ -46,9 +46,11 @@ CXX = g++
 F77 = gfortran
 FC = gfortran
 
-# compile flags
+# compile flags.  The fgnu89-inline option is to work around a conflict with
+# the (ancient) glibc in redhat 5 mixed with the newer gcc we are using when
+# run in -std=gnu99 mode.
 
-CFLAGS = -O3 -g -fPIC -DNDEBUG
+CFLAGS = -O3 -g -fPIC -DNDEBUG -fgnu89-inline
 CXXFLAGS = -O3 -g -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -g -fPIC -DNDEBUG
 FCFLAGS = -O3 -g -fPIC -DNDEBUG
