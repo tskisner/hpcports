@@ -1,0 +1,8 @@
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -llua
+LIBS_CXX = -llua
+LIBS_F77 = -llua
+LIBS_FC = -llua
