@@ -1,0 +1,8 @@
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lexpat
+LIBS_CXX = -lexpat
+LIBS_F77 = -lexpat
+LIBS_FC = -lexpat
