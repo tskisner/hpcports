@@ -1,11 +1,8 @@
-# This assumes that macports is used, and that you have installed the ports
-# listed in the osx.macports.sh file (i.e. run "sudo bash osx.macports.sh").
 
 # software install location (set this in your ~/.bashrc or similar)
 #HPCP_PREFIX = $(HOME)/hpcports
 
-# OS environment version (set to osx version plus macports version)
-
+# OS environment version
 HPCP_ENV = 13.10
 
 # software download location (set this in your ~/.bashrc or similar)

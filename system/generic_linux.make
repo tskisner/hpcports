@@ -1,12 +1,10 @@
-# This assumes that you have installed all the packages by running the
-# ubuntu-14.04-setup.pl script
 
 # software install location (set this in your ~/.bashrc or similar)
 #HPCP_PREFIX = $(HOME)/hpcports
 
-# OS environment version
+# OS environment version (set to osx version plus macports version)
 
-HPCP_ENV = 14.04
+HPCP_ENV = 1.0
 
 # software download location (set this in your ~/.bashrc or similar)
 #HPCP_POOL = $(HOME)/hpcports_pool
@@ -32,13 +30,6 @@ CXX = g++
 F77 = gfortran
 FC = gfortran
 
-# MPI compilers
-
-MPICC = mpicc
-MPICXX = mpicxx
-MPIF77 = mpif77
-MPIFC = mpif90
-
 # compile flags
 
 CFLAGS = -O3 -fPIC -DNDEBUG
@@ -53,7 +44,6 @@ OMPFLAGS = -fopenmp
 # Fortran mixing
 
 FCLIBS = -lgfortran
-MPIFCLIBS = -lmpi_f90 -lmpi_f77
 
 # Linking
 
@@ -65,16 +55,4 @@ LIBS = -lm
 # (None)
 
 # package overrides
-
-blas_LIBS_CC = -lblas
-blas_LIBS_CXX = $(blas_LIBS_CC)
-blas_LIBS_F77 = $(blas_LIBS_CC)
-blas_LIBS_FC = $(blas_LIBS_CC)
-
-lapack_LIBS_CC = -llapack
-lapack_LIBS_CXX = $(lapack_LIBS_CC)
-lapack_LIBS_F77 = $(lapack_LIBS_CC)
-lapack_LIBS_FC = $(lapack_LIBS_CC)
-
-root = /usr
 
