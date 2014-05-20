@@ -36,8 +36,7 @@ pkg-configure :
 		echo "[mkl]" >> site.cfg; \
 		inteldir=`echo $(INTEL_LIBDIR)`; \
 		echo "library_dirs = $${inteldir}" >> site.cfg; \
-		intellib=`echo $(INTEL_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
-		echo "mkl_libs = $${intellib}" >> site.cfg; \
+		echo "mkl_libs = mkl_rt" >> site.cfg; \
 		lapacklib=`echo $(lapack_LIBS_CC) | sed -e "s#-l##g" -e "s# #,#g"`; \
 		echo "lapack_libs = $${lapacklib}" >> site.cfg; \
 		echo "" >> site.cfg; \
