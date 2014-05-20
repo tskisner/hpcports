@@ -14,7 +14,7 @@ PKG_SRCDIR = Python-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_gcc_test.patch
 
 
 # rules for this package

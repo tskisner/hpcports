@@ -1,0 +1,14 @@
+diff -urN Python-2.7.5_orig/Lib/distutils/unixccompiler.py Python-2.7.5/Lib/distutils/unixccompiler.py
+--- Python-2.7.5_orig/Lib/distutils/unixccompiler.py	2013-05-11 20:32:42.000000000 -0700
++++ Python-2.7.5/Lib/distutils/unixccompiler.py	2014-05-20 14:34:00.836064190 -0700
+@@ -209,7 +209,9 @@
+         return "-L" + dir
+ 
+     def _is_gcc(self, compiler_name):
+-        return "gcc" in compiler_name or "g++" in compiler_name
++        com = compiler_name + ' --version'
++        result = os.popen(com).read().split()[0]
++        return "gcc" in result or "g++" in result
+ 
+     def runtime_library_dir_option(self, dir):
+         # XXX Hackish, at the very least.  See Python bug #445902:
