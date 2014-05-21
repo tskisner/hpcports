@@ -39,6 +39,8 @@ pkg-configure :
 	-C ic "$(CC)" \
 	-F ic "$(CFLAGS)" \
 	-D c -DWALL \
+	--cc="$(CC)" \
+	--cflags="$(CFLAGS)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
