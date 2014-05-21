@@ -63,7 +63,6 @@ OMPFLAGS = -fopenmp
 # Fortran mixing
 FLIBS = -lgfortran
 FCLIBS = -lgfortran
-MPIFCLIBS =
 
 # Linking
 
@@ -76,8 +75,6 @@ VENDOR = intel
 INTEL_PREFIX = /opt/intel/composer_xe_2013_sp1.0.080
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-#INTEL_LIBS_CC = -lmkl_rt
-#INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3
 INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_core -lmkl_gnu_thread -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)

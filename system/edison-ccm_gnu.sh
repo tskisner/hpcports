@@ -9,8 +9,13 @@ if [ "x${loadedgnu}" = x ]; then
     if [ "x${loadedintel}" != x ]; then
       module swap PrgEnv-intel PrgEnv-gnu
     fi
+    module swap craype craype/2.1.1
     module unload cray-shmem
-    module swap craype craype/2.03
+    module unload cray-mpich
+    module unload atp
+    module unload cray-libsci
+    module unload craype-network-aries
+    module load craype-network-none
     module swap gcc gcc/4.8.2
     module load mkl/13.0.3
     module load git/1.8.1.1
@@ -18,5 +23,6 @@ if [ "x${loadedgnu}" = x ]; then
         module unload darshan
     fi
     module load ccm
-    module load craype-target-native
 fi
+
+export CRAYPE_LINK_TYPE=dynamic
