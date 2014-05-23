@@ -1,4 +1,4 @@
-  if [ is-loaded gcc-tsk/4.8.2_rh5 ] {
+  if [ is-loaded gnu-base/gcc490_bin224 ] {
   } else {
-    module load gcc-tsk/4.8.2_rh5
+    module load gnu-base/gcc490_bin224
   }

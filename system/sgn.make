@@ -11,9 +11,10 @@
 # here:
 #
 # 1.0 : gcc-tsk/4.8.2_rh5
+# 2.0 : gnu-base/gcc490_bin224
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -46,7 +47,7 @@ FC = gfortran
 
 # compile flags
 
-CFLAGS = -O3 -g -fPIC -DNDEBUG
+CFLAGS = -O3 -g -fPIC -DNDEBUG -fgnu89-inline
 CXXFLAGS = -O3 -g -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -g -fPIC -DNDEBUG
 FCFLAGS = -O3 -g -fPIC -DNDEBUG
