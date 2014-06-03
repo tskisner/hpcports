@@ -1,6 +1,6 @@
 diff -urN sextractor-2.19.5_orig/autogen.sh sextractor-2.19.5/autogen.sh
 --- sextractor-2.19.5_orig/autogen.sh	1969-12-31 16:00:00.000000000 -0800
-+++ sextractor-2.19.5/autogen.sh	2014-03-20 16:25:19.146997000 -0700
++++ sextractor-2.19.5/autogen.sh	2014-06-02 21:15:56.000000000 -0700
 @@ -0,0 +1,1578 @@
 +#!/bin/sh
 +#                        a u t o g e n . s h
@@ -1582,7 +1582,7 @@ diff -urN sextractor-2.19.5_orig/autogen.sh sextractor-2.19.5/autogen.sh
 +# ex: shiftwidth=4 tabstop=8
 diff -urN sextractor-2.19.5_orig/configure.ac sextractor-2.19.5/configure.ac
 --- sextractor-2.19.5_orig/configure.ac	2013-12-14 09:12:32.000000000 -0800
-+++ sextractor-2.19.5/configure.ac	2014-03-20 16:25:19.148338000 -0700
++++ sextractor-2.19.5/configure.ac	2014-06-02 21:46:04.000000000 -0700
 @@ -96,6 +96,7 @@
  fi
  LT_INIT
@@ -1591,24 +1591,108 @@ diff -urN sextractor-2.19.5_orig/configure.ac sextractor-2.19.5/configure.ac
  
  # Checks for libraries.
  AC_CHECK_LIB(m, sin)
-@@ -188,7 +189,7 @@
-     use_pthreads=yes
-     )
- # Deactivate multithreading for now
--use_pthreads="no"
-+#use_pthreads="no"
+@@ -238,18 +239,41 @@
+   else
+ ################ handle the FFTW library (Fourier transforms) ################
+     ACX_FFTW($with_fftw_libdir,$with_fftw_incdir,$use_pthreads,yes,
+-	LIBS="$FFTW_LIBS $LIBS"
+-	if test x$FFTW_WARN != x; then
+-	  AC_MSG_WARN([$FFTW_WARN])
+-	fi,
+-	AC_MSG_ERROR([$FFTW_ERROR Exiting.]))
++    LIBS="$FFTW_LIBS $LIBS"
++    if test x$FFTW_WARN != x; then
++      AC_MSG_WARN([$FFTW_WARN])
++    fi,
++    AC_MSG_ERROR([$FFTW_ERROR Exiting.]))
+ ################## handle the ATLAS library(linear algebra) ##################
+-    ACX_ATLAS($with_atlas_libdir,$with_atlas_incdir,$use_pthreads,
+-	LIBS="$ATLAS_LIBS $LIBS"
+-	if test x$ATLAS_WARN != x; then
+-	  AC_MSG_WARN([$ATLAS_WARN])
+-	fi,
+-	AC_MSG_ERROR([$ATLAS_ERROR Exiting.]))
++    acx_atlas_ok=no
++    AC_CHECK_HEADERS([cblas.h clapack.h],[acx_atlas_ok=yes])
++    if test x$acx_atlas_ok = xyes; then
++      AC_DEFINE(ATLAS_BLAS_H, "cblas.h", [BLAS header filename.])
++      AC_DEFINE(ATLAS_LAPACK_H, "clapack.h", [CLAPACK header filename.])
++    else
++      ATLAS_ERROR="CBLAS/LAPack include files not found!"
++    fi
++
++    if test x$acx_atlas_ok = xyes; then
++      save_LIBS="$LIBS"; LIBS="$BLAS -lm $LIBS"
++      AC_MSG_CHECKING([for ]cblas_dgemm[ in $BLAS])
++      AC_TRY_LINK_FUNC(cblas_dgemm, [], [acx_atlas_ok=no;ATLAS_ERROR="Cannot link to cblas/clapack"])
++      AC_MSG_RESULT([$acx_atlas_ok])
++      LIBS="$save_LIBS"
++
++      AC_CHECK_LIB(lapack, [dpotrf_],, [acx_atlas_ok=no;ATLAS_ERROR="Cannot link to cblas/clapack"], [-lf2c $BLAS -lm])
++    fi
++
++    if test x$ATLAS_ERROR != x; then
++      AC_MSG_ERROR([$ATLAS_ERROR Exiting.])
++    fi
++
++    ATLAS_LIBPATH=""
++    ATLAS_LIBS="-llapack -lf2c $BLAS -lm"
++
++    AC_SUBST(ATLAS_LIBPATH)
++    AC_SUBST(ATLAS_LIBS)
++	   
+   fi
+ fi
+ AM_CONDITIONAL(USE_MODEL, [test x$enable_model_fitting != xno])
+diff -urN sextractor-2.19.5_orig/src/Makefile.am sextractor-2.19.5/src/Makefile.am
+--- sextractor-2.19.5_orig/src/Makefile.am	2013-04-03 09:36:10.000000000 -0700
++++ sextractor-2.19.5/src/Makefile.am	2014-06-02 21:15:56.000000000 -0700
+@@ -55,7 +55,7 @@
+ ldactoasc_SOURCES 	= ldactoasc.c ldactoasc.h
+ sex_LDADD		= $(srcdir)/fits/libfits.a \
+ 			  $(srcdir)/wcs/libwcs_c.a \
+-			  $(LEVLIB) 
++			  $(LEVLIB) $(ATLAS_LIBS) 
+ ldactoasc_LDADD		= $(srcdir)/fits/libfits.a
+ DATE=`date +"%Y-%m-%d"`
  
- # Provide special option for profiling
- AC_MSG_CHECKING([for profiler mode])
-diff -urN sextractor-2.19.5_orig/src/fft.c sextractor-2.19.5/src/fft.c
---- sextractor-2.19.5_orig/src/fft.c	2013-04-17 06:23:27.000000000 -0700
-+++ sextractor-2.19.5/src/fft.c	2014-03-20 16:26:35.376260000 -0700
-@@ -73,7 +73,7 @@
- #ifdef USE_THREADS
-     if (nthreads > 1)
-       {
--      if (!fftw_init_threads())
-+      if (!fftwf_init_threads())
-         error(EXIT_FAILURE, "*Error*: thread initialization failed in ", "FFTW");
-       fftwf_plan_with_nthreads(prefs.nthreads);
-       }
+diff -urN sextractor-2.19.5_orig/src/pattern.c sextractor-2.19.5/src/pattern.c
+--- sextractor-2.19.5_orig/src/pattern.c	2012-07-09 08:01:16.000000000 -0700
++++ sextractor-2.19.5/src/pattern.c	2014-06-02 21:15:56.000000000 -0700
+@@ -170,6 +170,8 @@
+    PIXTYPE	*outpix,*outpix1,*outpix2;
+    PIXTYPE	*weightpix;
+    int		n,p,p2, nvec, ninpix, noutpix;
++   int info, one=1;
++   char* upper_or_lower="U";
+ 
+   nvec = pattern->size[2];
+   pattern_create(pattern, profit);
+@@ -220,7 +222,8 @@
+ #if defined(HAVE_LAPACKE)
+   LAPACKE_dposv(LAPACK_COL_MAJOR, 'L', nvec, 1, alpha, nvec, beta, nvec);
+ #else
+-  clapack_dposv(CblasRowMajor, CblasUpper, nvec, 1, alpha, nvec, beta, nvec);
++  dposv_(upper_or_lower, &nvec, &one, alpha, &nvec, beta, &nvec, &info);
++  //clapack_dposv(CblasRowMajor, CblasUpper, nvec, 1, alpha, nvec, beta, nvec);
+ #endif
+ 
+   betat = beta;
+diff -urN sextractor-2.19.5_orig/src/wcs/poly.c sextractor-2.19.5/src/wcs/poly.c
+--- sextractor-2.19.5_orig/src/wcs/poly.c	2012-06-16 09:42:47.000000000 -0700
++++ sextractor-2.19.5/src/wcs/poly.c	2014-06-02 21:15:56.000000000 -0700
+@@ -446,10 +446,13 @@
+  ***/
+ void	poly_solve(double *a, double *b, int n)
+   {
++  int info, one=1;
++  char* upper_or_lower="L";
+ #if defined(HAVE_LAPACKE)
+   LAPACKE_dposv(LAPACK_COL_MAJOR, 'L', n, 1, a, n, b, n);
+ #elif defined(HAVE_ATLAS)
+-  clapack_dposv(CblasRowMajor, CblasUpper, n, 1, a, n, b, n);
++  dposv_(upper_or_lower, &n, &one, a, &n, b, &n, &info);
++  //clapack_dposv(CblasRowMajor, CblasUpper, n, 1, a, n, b, n);
+ #else
+   cholsolve(a,b,n);
+ #endif

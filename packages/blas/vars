@@ -1,5 +1,6 @@
 LIB = lib
-LIBS_CC = -lblas
-LIBS_CXX = -lblas
-LIBS_F77 = -lblas
-LIBS_FC = -lblas
+LIBS_CC = -lopenblas
+LIBS_CXX = -lopenblas
+LIBS_F77 = -lopenblas
+LIBS_FC = -lopenblas
+OMP_PROC_BIND = true

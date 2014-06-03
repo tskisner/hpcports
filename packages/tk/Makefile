@@ -42,6 +42,7 @@ pkg-configure :
 	CPPFLAGS="$${tcinc}" \
 	LDFLAGS="$(LDFLAGS) $${tclink}" LIBS="$(LIBS)" \
 	./configure $${dyn} \
+	--with-tcl=$(tcl_PREFIX)/bin \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

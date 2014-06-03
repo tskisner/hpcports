@@ -1,0 +1,6 @@
+INCLUDE = include
+LIB = lib
+LIBS_CC = -llapack -lf2c -lm
+LIBS_CXX = -llapack -lf2c -lm
+LIBS_F77 = -llapack -lf2c -lm
+LIBS_FC = -llapack -lf2c -lm
