@@ -49,13 +49,15 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE)
+	$(MAKE) lapacklib tmglib lapackelib
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib; \
-	cp liblapack.a libtmglib.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/include; \
+	cp liblapack.a libtmglib.a liblapacke.a $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/; \
+	cp lapacke/include/*.h $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/include/
 
 
 pkg-clean :

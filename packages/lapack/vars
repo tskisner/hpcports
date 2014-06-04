@@ -1,3 +1,4 @@
+INCLUDE = include
 LIB = lib
 LIBS_CC = -llapack
 LIBS_CXX = -llapack
