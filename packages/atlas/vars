@@ -1,6 +1,0 @@
-INCLUDE = include
-LIB = lib
-LIBS_CC = -llapack -lf77blas -lcblas -latlas
-LIBS_CXX = -llapack -lf77blas -lcblas -latlas
-LIBS_F77 = -llapack -lf77blas -lcblas -latlas
-LIBS_FC = -llapack -lf77blas -lcblas -latlas
