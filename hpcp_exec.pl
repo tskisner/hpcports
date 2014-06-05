@@ -60,12 +60,6 @@ sub install_list {
 	return;
 }
 
-
-my $hpcp_root = $FindBin::Bin;
-my $pkgdir = $hpcp_root."/packages";
-my $dbfile = $pkgdir."/pkg.db";
-my $dbversion = $dbfile.".version";
-
 my $pre = "---> ";
 
 # check system definition
@@ -74,6 +68,11 @@ my $system = $ENV{ "HPCP_HOST" };
 if ( ! defined ( $system ) ) {
 	die ( "\nYou must have the \"HPCP_HOST\" environment variable defined\n\n" );
 }
+
+my $hpcp_root = $FindBin::Bin;
+my $pkgdir = $hpcp_root."/packages";
+my $dbfile = $pkgdir."/pkg_".$system.".db";
+my $dbversion = $dbfile.".version";
 
 my $envprefix = $ENV{ "HPCP_PREFIX" };
 my $envpool = $ENV{ "HPCP_POOL" };

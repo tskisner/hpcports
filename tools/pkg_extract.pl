@@ -9,7 +9,6 @@ use HPCPorts;
 
 my $hpcp_root = "$FindBin::Bin/..";
 my $pkgdir = $hpcp_root."/packages";
-my $dbfile = $pkgdir."/pkg.db";
 
 use HPCPorts;
 
@@ -19,6 +18,8 @@ my $system = $ENV{ "HPCP_HOST" };
 if ( ! defined ( $system ) ) {
 	die ( "\nYou must have the \"HPCP_HOST\" environment variable defined\n\n" );
 }
+
+my $dbfile = $pkgdir."/pkg_".$system.".db";
 
 # check arguments
 
