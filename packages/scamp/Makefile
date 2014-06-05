@@ -14,7 +14,7 @@ PKG_SRCDIR = scamp-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = hpcp_lapack.patch
 
 
 # rules for this package
@@ -29,10 +29,13 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --enable-static"; \
 	fi; \
+	chmod +x autogen.sh; \
+	./autogen.sh; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
 	--enable-threads \
+	--with-lapacke="$(lapack_LIBS_CC) $(blas_LIBS_CC) $(FCLIBS)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

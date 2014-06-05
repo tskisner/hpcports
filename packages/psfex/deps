@@ -1,1 +1,1 @@
-autoconf automake libtool automake m4 fftw sfftw plplot clapack
+autoconf automake libtool automake m4 fftw sfftw plplot lapack

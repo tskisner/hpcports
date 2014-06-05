@@ -103,7 +103,6 @@ sub generate_version {
 		my $raw = md5_hex ( $depstr );
 		$raw =~ s/(.{8}).*/$1/;
 		$outver = $raw;
-
 	}
 
 	return $outver;

@@ -14,7 +14,7 @@ PKG_SRCDIR = psfex-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_clapack.patch
+PKG_PATCHES = hpcp_lapack.patch
 
 
 # rules for this package
@@ -33,9 +33,9 @@ pkg-configure :
 	./autogen.sh; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	BLAS="$(blas_LIBS_CC) $(FFLAGS)" \
 	./configure $${dyn} \
 	--enable-threads \
+	--with-lapacke="$(lapack_LIBS_CC) $(blas_LIBS_CC) $(FCLIBS)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

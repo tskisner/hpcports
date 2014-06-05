@@ -1,1 +1,1 @@
-autoconf automake libtool atlas sfftw
+autoconf automake libtool lapack sfftw

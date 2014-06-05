@@ -1,1 +1,1 @@
-autoconf automake libtool clapack plplot fftw sfftw cdsclient
+autoconf automake libtool lapack plplot fftw sfftw cdsclient

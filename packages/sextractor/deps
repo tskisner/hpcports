@@ -1,1 +1,1 @@
-autoconf automake libtool clapack sfftw
+autoconf automake libtool lapack sfftw

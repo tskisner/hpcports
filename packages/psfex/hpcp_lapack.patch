@@ -1,141 +1,73 @@
-diff -urN psfex-3.17.0_orig/acx_atlas.m4 psfex-3.17.0/acx_atlas.m4
---- psfex-3.17.0_orig/acx_atlas.m4	2014-02-26 01:23:51.000000000 -0800
-+++ psfex-3.17.0/acx_atlas.m4	2014-06-03 00:13:59.000000000 -0700
-@@ -7,7 +7,7 @@
- dnl
- dnl	This file part of:	AstrOmatic software
- dnl
--dnl	Copyright:		(C) 2003-2014 Emmanuel Bertin -- IAP/CNRS/UPMC
-+dnl	Copyright:		(C) 2003-2010 Emmanuel Bertin -- IAP/CNRS/UPMC
- dnl
- dnl	License:		GNU General Public License
- dnl
-@@ -23,7 +23,7 @@
- dnl	along with AstrOmatic software.
- dnl	If not, see <http://www.gnu.org/licenses/>.
- dnl
--dnl	Last modified:		18/02/2014
-+dnl	Last modified:		12/12/2011
- dnl
- dnl %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- dnl
-@@ -118,17 +118,11 @@
- dnl Search library files
- dnl --------------------
- 
--dnl Check whether we are using a Debian distribution:
--if test -f /etc/debian_version; then
--  lapack_lib="lapack_atlas"
--else
--  lapack_lib="lapack"
--fi
- if test x$acx_atlas_ok = xyes; then
-   OLIBS="$LIBS"
-   LIBS=""
-   if test x$1 = x; then
--    AC_CHECK_LIB($lapack_lib, [clapack_dpotrf],, [acx_atlas_ok=no],
-+    AC_CHECK_LIB(lapack, [clapack_dpotrf],, [acx_atlas_ok=no],
- 		[-lcblas -latlas -lm])
-     AC_CHECK_LIB(cblas, cblas_dgemm,, [acx_atlas_ok=no],
- 		[-latlas -lm])
-@@ -137,10 +131,9 @@
-     else
-       atlas_def=/usr/local/atlas
-       unset ac_cv_lib_lapack_clapack_dpotrf
--      unset ac_cv_lib_lapack_atlas_clapack_dpotrf
-       unset ac_cv_lib_cblas_cblas_dgemm
-       acx_atlas_ok=yes
--      AC_CHECK_LIB($lapack_lib, [clapack_dpotrf],, [acx_atlas_ok=no],
-+      AC_CHECK_LIB(lapack, [clapack_dpotrf],, [acx_atlas_ok=no],
- 		[-L$atlas_def/lib -lcblas -latlas -lm])
-       AC_CHECK_LIB(cblas, cblas_dgemm,, [acx_atlas_ok=no],
- 		[-L$atlas_def/lib -latlas -lm])
-@@ -149,10 +142,9 @@
-       else
-         atlas_def=/usr/lib64/atlas
-         unset ac_cv_lib_lapack_clapack_dpotrf
--        unset ac_cv_lib_lapack_atlas_clapack_dpotrf
-         unset ac_cv_lib_cblas_cblas_dgemm
-         acx_atlas_ok=yes
--        AC_CHECK_LIB($lapack_lib, [clapack_dpotrf],, [acx_atlas_ok=no],
-+        AC_CHECK_LIB(lapack, [clapack_dpotrf],, [acx_atlas_ok=no],
- 		[-L$atlas_def -lcblas -latlas -lm])
-         AC_CHECK_LIB(cblas, cblas_dgemm,, [acx_atlas_ok=no],
- 		[-L$atlas_def -latlas -lm])
-@@ -161,10 +153,9 @@
-         else
-           atlas_def=/usr/lib/atlas
-           unset ac_cv_lib_lapack_clapack_dpotrf
--          unset ac_cv_lib_lapack_atlas_clapack_dpotrf
-           unset ac_cv_lib_cblas_cblas_dgemm
-           acx_atlas_ok=yes
--          AC_CHECK_LIB($lapack_lib, [clapack_dpotrf],, [acx_atlas_ok=no],
-+          AC_CHECK_LIB(lapack, [clapack_dpotrf],, [acx_atlas_ok=no],
- 		[-L$atlas_def -lcblas -latlas -lm])
-           AC_CHECK_LIB(cblas, cblas_dgemm,, [acx_atlas_ok=no],
- 		[-L$atlas_def -latlas -lm])
-@@ -173,10 +164,9 @@
-           else
-             atlas_def=/usr/atlas
-             unset ac_cv_lib_lapack_clapack_dpotrf
--            unset ac_cv_lib_lapack_atlas_clapack_dpotrf
-             unset ac_cv_lib_cblas_cblas_dgemm
-             acx_atlas_ok=yes
--            AC_CHECK_LIB($lapack_lib, [clapack_dpotrf],, [acx_atlas_ok=no],
-+            AC_CHECK_LIB(lapack, [clapack_dpotrf],, [acx_atlas_ok=no],
- 		[-L$atlas_def/lib -lcblas -latlas -lm])
-             AC_CHECK_LIB(cblas, cblas_dgemm,, [acx_atlas_ok=no],
- 		[-L$atlas_def/lib -latlas -lm])
-@@ -190,7 +180,7 @@
-       fi
-     fi
-   else
--    AC_CHECK_LIB($lapack_lib, [clapack_dpotrf],, [acx_atlas_ok=no],
-+    AC_CHECK_LIB(lapack, [clapack_dpotrf],, [acx_atlas_ok=no],
- 		[-L$1 -lcblas -latlas -lm])
-     AC_CHECK_LIB(cblas, cblas_dgemm,, [acx_atlas_ok=no],
- 		[-L$1 -latlas -lm])
-@@ -198,10 +188,9 @@
-       ATLAS_LIBPATH="-L$1"
-     else
-       unset ac_cv_lib_lapack_clapack_dpotrf
--      unset ac_cv_lib_lapack_atlas_clapack_dpotrf
-       unset ac_cv_lib_cblas_cblas_dgemm
-       acx_atlas_ok=yes
--      AC_CHECK_LIB($lapack_lib, [clapack_dpotrf],, [acx_atlas_ok=no],
-+      AC_CHECK_LIB(lapack, [clapack_dpotrf],, [acx_atlas_ok=no],
- 		[-L$1/lib -lcblas -latlas -lm])
-       AC_CHECK_LIB(cblas, cblas_dgemm,, [acx_atlas_ok=no],
- 		[-L$1/lib -latlas -lm])
-@@ -229,14 +218,14 @@
-     AC_CHECK_LIB(ptcblas, cblas_dgemm, [acx_atlast_ok=yes], [acx_atlast_ok=no],
- 	[$ATLAS_LIBPATH -lcblas -latlas -lm])
-     if test x$acx_atlast_ok = xyes; then
--      ATLAS_LIBS="$ATLAS_LIBPATH -l$lapack_lib -lptcblas -lcblas -latlas"
-+      ATLAS_LIBS="$ATLAS_LIBPATH -llapack -lptcblas -lcblas -latlas"
-       LIBS="$OLIBS"
-       AC_SUBST(ATLAS_LIBS)
-       AC_DEFINE(HAVE_ATLAS_MP,1,
- 	[Define if you have the parallel ATLAS libraries.])
-       $4
-     else
--      ATLAS_LIBS="$ATLAS_LIBPATH -l$lapack_lib -lcblas -latlas"
-+      ATLAS_LIBS="$ATLAS_LIBPATH -llapack -lcblas -latlas"
-       LIBS="$OLIBS"
-       AC_SUBST(ATLAS_LIBS)
-       ATLAS_WARN="CBLAS/LAPack was compiled without multithreading support!"
-@@ -244,7 +233,7 @@
-       $4         
-     fi
-   else
--    ATLAS_LIBS="$ATLAS_LIBPATH -l$lapack_lib -lcblas -latlas"
-+    ATLAS_LIBS="$ATLAS_LIBPATH -llapack -lcblas -latlas"
-     LIBS="$OLIBS"
-     AC_SUBST(ATLAS_LIBS)
-     $4
+diff -urN psfex-3.17.0_orig/acx_lapacke.m4 psfex-3.17.0/acx_lapacke.m4
+--- psfex-3.17.0_orig/acx_lapacke.m4	1969-12-31 16:00:00.000000000 -0800
++++ psfex-3.17.0/acx_lapacke.m4	2014-06-05 10:47:01.000000000 -0700
+@@ -0,0 +1,63 @@
++dnl
++dnl				acx_lapacke.m4
++dnl
++dnl Set up options for using the lapacke library.
++dnl
++dnl This file is part of a patch to the astromatic toolkit,
++dnl to allow use of fftw and separate lapacke, rather than MKL.
++dnl
++
++AC_DEFUN([ACX_LAPACKE], [
++acx_lapacke_ok=no
++
++LAPACKE_LIBS=""
++
++AC_ARG_WITH([lapacke], [AC_HELP_STRING([--with-lapacke=<link command>], [use specified LAPACKE link command.  Set to "no" to disable.])])
++
++if test x"$with_lapacke" != x; then
++   if test x"$with_lapacke" != xno; then
++      LAPACKE_LIBS="$with_lapacke"
++   else
++      acx_lapacke_ok=disable
++   fi
++fi
++
++if test $acx_lapacke_ok = disable; then
++   echo "**** LAPACKE explicitly disabled by configure."
++else
++
++    # First, check LAPACKE_LIBS environment variable
++    if test "x$LAPACKE_LIBS" != x; then
++        save_LIBS="$LIBS"; LIBS="$LAPACKE_LIBS $LIBS"
++        AC_MSG_CHECKING([for LAPACKE_cheev in $LAPACKE_LIBS])
++        AC_TRY_LINK_FUNC(LAPACKE_cheev, [acx_lapacke_ok=yes], [LAPACKE_LIBS=""])
++        AC_MSG_RESULT($acx_lapacke_ok)
++        LIBS="$save_LIBS"
++        if test $acx_lapacke_ok = no; then
++            LAPACKE_LIBS=""
++        fi
++    fi
++
++    # Generic LAPACKE library?
++    if test $acx_lapacke_ok = no; then
++        save_LIBS="$LIBS"; LIBS="-llapacke $LIBS"
++        AC_CHECK_LIB(lapacke, LAPACKE_cheev,
++            [acx_lapacke_ok=yes; LAPACKE_LIBS="-llapacke"], [], [])
++        LIBS="$save_LIBS"
++    fi
++
++fi
++
++AC_SUBST(LAPACKE_LIBS)
++
++if test x"$acx_lapacke_ok" != xyes; then
++  AC_MSG_ERROR([cannot link to lapacke!])
++fi
++
++AC_DEFINE(HAVE_LAPACK,1, [Define if you have the LAPACK libraries.])
++AC_DEFINE(HAVE_LAPACKE,1, [Define if you have the LAPACKe libraries.])
++AC_DEFINE_UNQUOTED(LAPACK_H, "lapacke.h", [LAPACK header filename.])
++AC_DEFINE_UNQUOTED(LAPACKE_H, "lapacke.h", [LAPACKe header filename.])
++
++])dnl ACX_LAPACKE
++
 diff -urN psfex-3.17.0_orig/autogen.sh psfex-3.17.0/autogen.sh
 --- psfex-3.17.0_orig/autogen.sh	1969-12-31 16:00:00.000000000 -0800
-+++ psfex-3.17.0/autogen.sh	2014-06-03 00:13:59.000000000 -0700
++++ psfex-3.17.0/autogen.sh	2014-06-05 10:47:01.000000000 -0700
 @@ -0,0 +1,1578 @@
 +#!/bin/sh
 +#                        a u t o g e n . s h
@@ -1717,7 +1649,16 @@ diff -urN psfex-3.17.0_orig/autogen.sh psfex-3.17.0/autogen.sh
 +# ex: shiftwidth=4 tabstop=8
 diff -urN psfex-3.17.0_orig/configure.ac psfex-3.17.0/configure.ac
 --- psfex-3.17.0_orig/configure.ac	2014-03-19 06:25:43.000000000 -0700
-+++ psfex-3.17.0/configure.ac	2014-06-03 00:13:59.000000000 -0700
++++ psfex-3.17.0/configure.ac	2014-06-05 10:47:01.000000000 -0700
+@@ -45,7 +45,7 @@
+ AC_SUBST(DATE3, "$date3")
+ 
+ # Include macros
+-sinclude(acx_atlas.m4)
++sinclude(acx_lapacke.m4)
+ sinclude(acx_fftw.m4)
+ sinclude(acx_mkl.m4)
+ sinclude(acx_plplot.m4)
 @@ -97,6 +97,7 @@
  fi
  LT_INIT
@@ -1726,64 +1667,41 @@ diff -urN psfex-3.17.0_orig/configure.ac psfex-3.17.0/configure.ac
  
  # Checks for libraries.
  AC_CHECK_LIB(m, sin)
-@@ -238,19 +239,42 @@
-   LIBS="$LIBS $MKL_LIBS"
- else
- ################ handle the FFTW library (Fourier transforms) ################
--  ACX_FFTW($with_fftw_libdir,$with_fftw_incdir,$use_pthreads,yes,
--	[LIBS="$FFTW_LIBS $LIBS"]
--	if test "$FFTW_WARN" != ""; then
--	  AC_MSG_WARN([$FFTW_WARN])
--	fi,
--	AC_MSG_ERROR([$FFTW_ERROR Exiting.]))
-+    ACX_FFTW($with_fftw_libdir,$with_fftw_incdir,$use_pthreads,yes,
-+    LIBS="$FFTW_LIBS $LIBS"
-+    if test x$FFTW_WARN != x; then
-+      AC_MSG_WARN([$FFTW_WARN])
-+    fi,
-+    AC_MSG_ERROR([$FFTW_ERROR Exiting.]))
- ################# handle the ATLAS library (linear algebra) ##################
+@@ -149,14 +150,6 @@
+ 	[AS_HELP_STRING([--with-plplot-incdir=<PLPlot include dir>],
+ 	[Provide an alternative path to the PLPlot include directory])])
+ 
+-# Provide special options for ATLAS
+-AC_ARG_WITH(atlas-libdir,
+-	[AS_HELP_STRING([--with-atlas-libdir=<ATLAS library path>],
+-	[Provide an alternative path to the ATLAS library])])
+-AC_ARG_WITH(atlas-incdir,
+-	[AS_HELP_STRING([--with-atlas-incdir=<ATLAS include dir>],
+-	[Provide an alternative path to the ATLAS include directory])])
+-
+ # Provide special options for FFTW
+ AC_ARG_WITH(fftw-libdir,
+ 	[AS_HELP_STRING([--with-fftw-libdir=<FFTW library path>],
+@@ -244,13 +237,9 @@
+ 	  AC_MSG_WARN([$FFTW_WARN])
+ 	fi,
+ 	AC_MSG_ERROR([$FFTW_ERROR Exiting.]))
+-################# handle the ATLAS library (linear algebra) ##################
 -  ACX_ATLAS($with_atlas_libdir,$with_atlas_incdir,$use_pthreads,
 -	[LIBS="$ATLAS_LIBS $LIBS"]
 -	if test "$ATLAS_WARN" != ""; then
 -	  AC_MSG_WARN([$ATLAS_WARN])
 -	fi,
 -	AC_MSG_ERROR([$ATLAS_ERROR Exiting.]))
-+  	acx_atlas_ok=no
-+	AC_CHECK_HEADERS([cblas.h clapack.h],[acx_atlas_ok=yes])
-+	if test x$acx_atlas_ok = xyes; then
-+	  AC_DEFINE(ATLAS_BLAS_H, "cblas.h", [BLAS header filename.])
-+	  AC_DEFINE(ATLAS_LAPACK_H, "clapack.h", [CLAPACK header filename.])
-+	else
-+	  ATLAS_ERROR="CBLAS/LAPack include files not found!"
-+	fi
-+
-+	if test x$acx_atlas_ok = xyes; then
-+	  save_LIBS="$LIBS"; LIBS="$BLAS -lm $LIBS"
-+	  AC_MSG_CHECKING([for ]cblas_dgemm[ in $BLAS])
-+	  AC_TRY_LINK_FUNC(cblas_dgemm, [], [acx_atlas_ok=no;ATLAS_ERROR="Cannot link to cblas/clapack"])
-+	  AC_MSG_RESULT([$acx_atlas_ok])
-+	  LIBS="$save_LIBS"
-+
-+	  AC_CHECK_LIB(lapack, [dpotrf_],, [acx_atlas_ok=no;ATLAS_ERROR="Cannot link to cblas/clapack"], [-lf2c $BLAS -lm])
-+	fi
-+
-+	if test x$ATLAS_ERROR != x; then
-+	  AC_MSG_ERROR([$ATLAS_ERROR Exiting.])
-+	fi
-+
-+	ATLAS_LIBPATH=""
-+	ATLAS_LIBS="-llapack -lf2c $BLAS -lm"
-+
-+	AC_SUBST(ATLAS_LIBPATH)
-+	AC_SUBST(ATLAS_LIBS)
-+
++  ######## look for standalone lapacke library ###########
++    ACX_LAPACKE
++    LIBS="$LAPACKE_LIBS $LIBS"
  fi
  
  ################# handle the PLPlot library (graphic plots) ##################
 diff -urN psfex-3.17.0_orig/src/cplot.c psfex-3.17.0/src/cplot.c
 --- psfex-3.17.0_orig/src/cplot.c	2012-06-17 13:46:27.000000000 -0700
-+++ psfex-3.17.0/src/cplot.c	2014-06-03 00:14:10.000000000 -0700
++++ psfex-3.17.0/src/cplot.c	2014-06-05 10:47:48.000000000 -0700
 @@ -527,7 +527,7 @@
  
  /* Draw meridians */
@@ -2001,118 +1919,3 @@ diff -urN psfex-3.17.0_orig/src/cplot.c psfex-3.17.0/src/cplot.c
      cplot_drawbounds(wcs, wcsout);
      }
  
-diff -urN psfex-3.17.0_orig/src/homo.c psfex-3.17.0/src/homo.c
---- psfex-3.17.0_orig/src/homo.c	2012-11-20 07:15:21.000000000 -0800
-+++ psfex-3.17.0/src/homo.c	2014-06-03 00:13:59.000000000 -0700
-@@ -83,6 +83,8 @@
-    int			bigsize[2],
- 			c,c1,c2,c3,c4,d,f1,f2,i,j,j1,j2,n,p,
- 			nt, npix,nbigpix, ndim, nbasis,ncoeff,nfree;
-+    int info, one=1;
-+   char* upper_or_lower="L";
- 
- //  NFPRINTF(OUTPUT,"Computing the PSF homogenization kernel...");
- 
-@@ -224,7 +226,8 @@
-   if (LAPACKE_dposv(LAPACK_COL_MAJOR,'L',nfree,1,amat,nfree,bmat,nfree) != 0)
-  #endif
- #else
--  if (clapack_dposv(CblasRowMajor,CblasUpper,nfree,1,amat,nfree,bmat,nfree)!=0)
-+  if (dposv_(upper_or_lower, &nfree, &one, amat, &nfree, bmat, &nfree, &info)!=0)
-+  //if (clapack_dposv(CblasRowMajor,CblasUpper,nfree,1,amat,nfree,bmat,nfree)!=0)
- #endif
-     warning("Not a positive definite matrix", " in homogenization solver");
- 
-diff -urN psfex-3.17.0_orig/src/Makefile.am psfex-3.17.0/src/Makefile.am
---- psfex-3.17.0_orig/src/Makefile.am	2014-02-26 09:18:58.000000000 -0800
-+++ psfex-3.17.0/src/Makefile.am	2014-06-03 00:13:59.000000000 -0700
-@@ -44,7 +44,7 @@
- 			  wcscelsys.h xml.h
- psfex_LDADD		= $(srcdir)/fits/libfits.a \
- 			  $(srcdir)/levmar/liblevmar.a \
--			  $(srcdir)/wcs/libwcs_c.a
-+			  $(srcdir)/wcs/libwcs_c.a $(ATLAS_LIBS) $(PLPLOT_LIBS)
- 
- DATE=`date +"%Y-%m-%d"`
- 
-diff -urN psfex-3.17.0_orig/src/psf.c psfex-3.17.0/src/psf.c
---- psfex-3.17.0_orig/src/psf.c	2013-12-05 08:45:12.000000000 -0800
-+++ psfex-3.17.0/src/psf.c	2014-06-03 00:13:59.000000000 -0700
-@@ -666,6 +666,8 @@
- 			norm, fval, vigstep, psf_extraccu2, wval, sval;
-    int			i,j,n,ix,iy, ndim,npix,nsample, cw,ch,ncpix, okflag,
- 			accuflag, nchi2;
-+   int info, one=1, three=3;
-+   char* upper_or_lower="L";
- 
-   accuflag = (prof_accuracy > 1.0/BIG);
-   vigstep = 1/psf->pixstep;
-@@ -778,7 +780,8 @@
-         if (LAPACKE_dposv(LAPACK_COL_MAJOR,'L',3,1,amat,3,bmat,3) != 0)
-  #endif
- #else
--        if (clapack_dposv(CblasRowMajor,CblasUpper,3,1,amat,3,bmat,3) != 0)
-+        if (dposv_(upper_or_lower, &three, &one, amat, &three, bmat, &three, &info)!=0)
-+        //if (clapack_dposv(CblasRowMajor,CblasUpper,3,1,amat,3,bmat,3) != 0)
- #endif
-           warning("Not a positive definite matrix", " in PSF model solver");
- 
-@@ -921,6 +924,8 @@
- 			*desindex0,*desindex02;
-    int			i,j,jo,k,l,c,n, npix,nvpix, ndata,ncoeff,nsample,npsf,
- 			ncontext, nunknown, matoffset, dindex;
-+    int info, one=1;
-+   char* upper_or_lower="L";
- 
- /* Exit if no pixel is to be "refined" or if no sample is available */
-   if (!set->nsample || !psf->basis)
-@@ -1106,8 +1111,8 @@
- 	betamat,nunknown) != 0)
-  #endif
- #else
--  if (clapack_dposv(CblasRowMajor,CblasUpper,nunknown,1,alphamat,nunknown,
--	betamat,nunknown) != 0)
-+  if (dposv_(upper_or_lower, &nunknown, &one, alphamat, &nunknown, betamat, &nunknown, &info)!=0)
-+  //if (clapack_dposv(CblasRowMajor,CblasUpper,nunknown,1,alphamat,nunknown,betamat,nunknown) != 0)
- #endif
-     warning("Not a positive definite matrix"," in PSF model refinement solver");
- 
-diff -urN psfex-3.17.0_orig/src/wcs/poly.c psfex-3.17.0/src/wcs/poly.c
---- psfex-3.17.0_orig/src/wcs/poly.c	2013-12-16 07:53:58.000000000 -0800
-+++ psfex-3.17.0/src/wcs/poly.c	2014-06-03 00:13:59.000000000 -0700
-@@ -508,10 +508,13 @@
-  ***/
- int	poly_solve(double *a, double *b, int n)
-   {
-+  int info, one=1;
-+  char* upper_or_lower="L";
- #if defined(HAVE_LAPACKE)
-   return LAPACKE_dposv(LAPACK_COL_MAJOR, 'L', n, 1, a, n, b, n);
- #elif defined(HAVE_ATLAS)
--  return clapack_dposv(CblasRowMajor, CblasUpper, n, 1, a, n, b, n);
-+  return dposv_(upper_or_lower, &n, &one, a, &n, b, &n, &info);
-+  //return clapack_dposv(CblasRowMajor, CblasUpper, n, 1, a, n, b, n);
- #else
-   return cholsolve(a,b,n);
- #endif
-@@ -661,6 +664,9 @@
- 		*rdiag, *deortho,
- 		scale,s, dval;
-    int		c,i,j,m,n, ndmc, ndim,ncoeff;
-+   int info, one=1;
-+   char* upper_or_lower="L";
-+   char* nonunit="N";
- 
- /* Prepare the vectors and counters */
-   ndim = poly->ndim;
-@@ -724,8 +730,8 @@
- #if defined(HAVE_LAPACKE)
-   LAPACKE_dtrtri(LAPACK_ROW_MAJOR, 'L', 'N', ncoeff,poly->orthomat,ncoeff);
- #elif defined(HAVE_ATLAS)
--  clapack_dtrtri(CblasRowMajor, CblasLower, CblasNonUnit, ncoeff,
--	poly->orthomat, ncoeff);
-+  dtrtri_(upper_or_lower, nonunit, &ncoeff, poly->orthomat, &ncoeff, &info);
-+  //clapack_dtrtri(CblasRowMajor, CblasLower, CblasNonUnit, ncoeff, poly->orthomat, ncoeff);
- #else
-   qerror("*Internal Error*: no routine available", " for triangular inverse");
- #endif
