@@ -12,7 +12,7 @@
 #
 # 1.0 : gcc-4.7.0, MKL 10.2, OpenMPI 1.4.5
 # 2.0 : gcc-4.7.0, MKL 13.0.1, OpenMPI 1.6.3
-# 3.0 : gcc-4.7.0, MKL 13.0.1, self-built OpenMPI 1.8.1
+# 3.0 : gcc-4.9.0 / binutils 2.24, MKL 13.0.1
 #
 
 HPCP_ENV = 3.0
@@ -73,8 +73,6 @@ VENDOR = intel
 INTEL_PREFIX = /usr/common/usg/intel/13.0.028/composer_xe_2013.1.117
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-#INTEL_LIBS_CC = -lmkl_rt
-#INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3
 INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
