@@ -67,7 +67,7 @@ if ( defined ( $overrides->{ $pname } ) ) {
 	if ( $pname eq "hpcp" ) {
 		HPCPorts::module_version ( "${pname}.modversion", $pname, $env, $env, $suffix );
 	} else {
-		HPCPorts::module_version ( "${pname}.modversion", $pname, $pdb->{ $pname }->{ "version" }, $env, $suffix );
+		HPCPorts::module_version ( "${pname}.modversion", $pname, $pdb->{ $pname }->{ "version" }."_".$pdb->{ $pname }->{ "dephash" }, $env, $suffix );
 	}
 
 	HPCPorts::shell_file ( "${pname}.sh", $pdb, $pname, $vars, $conflicts, $env, $suffix, $pysite, "${hpcp_root}/system/${system}.sh", $prefix, $overrides );
@@ -76,7 +76,7 @@ if ( defined ( $overrides->{ $pname } ) ) {
 	if ( $pname eq "hpcp" ) {
 		print VER $env, "\n";
 	} else {
-		print VER $pdb->{ $pname }->{ "version" }, "-", $env, "\n";
+		print VER $pdb->{ $pname }->{ "version" }."_".$pdb->{ $pname }->{ "dephash" }, "-", $env, "\n";
 	}
 	close ( VER );
 

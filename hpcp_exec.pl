@@ -172,7 +172,7 @@ if ( $command eq "status" ) {
 		} else {
 			$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $env, $prefix, $overrides );
 		}
-		$out = sprintf ( "%s%18s | %20s |  %s\n", $pre, $key, $value->{ "version" }, $status );
+		$out = sprintf ( "%s%18s | %20s |  %s\n", $pre, $key, $value->{ "version" }."_".$value->{ "dephash" }, $status );
 		print $out;
 	}
 	

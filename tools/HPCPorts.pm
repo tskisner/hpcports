@@ -87,7 +87,7 @@ sub hpcp_version {
 # Compute a version number from dependency versions
 
 sub generate_version {
-	my ( $depversions ) = @_;
+	my ( $depversions, $pname ) = @_;
 
 	my $outver = "";
 
@@ -102,6 +102,9 @@ sub generate_version {
 		}
 		my $raw = md5_hex ( $depstr );
 		$raw =~ s/(.{8}).*/$1/;
+		if ( $pname eq "automake" ) {
+			print "$depstr ==> $raw\n";
+		}
 		$outver = $raw;
 	}
 
@@ -207,6 +210,7 @@ sub package_db {
 			unshift ( @{ $tree->{ $pname }->{ "rawdeps" } }, "hpcp" );
 		}
 		$tree->{ $pname }->{ "deps" } = ();
+		$tree->{ $pname }->{ "dephash" } = "";
 		$tree->{ $pname }->{ "vdeps" } = {};
 		$tree->{ $pname }->{ "rdeps" } = ();
 	}
@@ -277,8 +281,13 @@ sub package_db {
 
 			# generate the version if possible
 			if ( $can_gen ) {
-
-				my $depstring = generate_version ( $depvers );
+				if ( $pname eq "automake" ) {
+					print "$pname\n";
+				}
+				my $depstring = generate_version ( $depvers, $pname );
+				if ( $pname eq "automake" ) {
+					print "\n";
+				}
 
 				if ( $value->{ "version" } eq "GENERATED" ) {
 				
@@ -286,12 +295,13 @@ sub package_db {
 						die ( "\nPackage has no dependencies (not even hpcp).  This should never happen...\n\n" );
 					} else {
 						$value->{ "version" } = $depstring;
+						$value->{ "dephash" } = $depstring;
 					}
 					
 				} else {
 
 					if ( $depstring ne "" ) {
-						$value->{ "version" } .= "_".$depstring;
+						$value->{ "dephash" } = $depstring;
 					}
 
 				}
@@ -314,7 +324,7 @@ sub package_db {
 
 		my $dep;
 		for $dep ( @{ $value->{ "deps" } } ) {
-			$value->{ "vdeps" }->{ $dep } = $tree->{ $dep }->{ "version" };
+			$value->{ "vdeps" }->{ $dep } = $tree->{ $dep }->{ "version" }."_".$tree->{ $dep }->{ "dephash" };
 		}
 	}
 
@@ -400,7 +410,7 @@ sub package_fullversion {
 		if ( $pname eq "hpcp" ) {
 			$full = $env;
 		} else {
-			$full = $pdb->{ $pname }->{ "version" };
+			$full = $pdb->{ $pname }->{ "version" }."_".$pdb->{ $pname }->{ "dephash" };
 			$full .= "-".$env;
 		}
 	}
