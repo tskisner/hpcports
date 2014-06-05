@@ -123,7 +123,7 @@ sub package_list {
 
 	my $file;
 	foreach $file ( @listing ) {
-		if ( ( $file ne "." ) && ( $file ne ".." ) && ( $file ne "hpcp" ) ) {
+		if ( ( $file ne "." ) && ( $file ne ".." ) ) {
 			my $filepath = $pdir."/".$file;
 			if ( -d $filepath ) {
 				push ( @{$pkg}, $file );
@@ -138,25 +138,31 @@ sub package_list {
 # Get version of a package and its (unversioned) dependencies
 
 sub package_info {
-	my ( $dir ) = @_;
+	my ( $dir, $env ) = @_;
 	my $verfile = $dir."/version";
 	my $depsfile = $dir."/deps";
 
-	#FIXME: enforce all packages to have a version file, which may contain "GENERATED"?
+	my $version = $env;
 
-	my $version;
-	open ( IN, $verfile ) || die ( "\nCannot open package version file $verfile\n\n" );
-	my $line = <IN>;
-	close ( IN );
-	my @F = split ( /\s+/, $line );
-	$version = $F[0];
+	if ( -e $verfile ) {
+		open ( IN, $verfile ) || die ( "\nCannot open package version file $verfile\n\n" );
+		my $line = <IN>;
+		close ( IN );
+		my @F = split ( /\s+/, $line );
+		$version = $F[0];
+	}
 
-	open ( IN, $depsfile ) || die ( "\nCannot open package deps file $depsfile\n\n" );
-	$line = <IN>;
-	close ( IN );
 	my $deps = ();
-	if ( defined ( $line ) ) {
-		@{$deps} = split ( /\s+/, $line );
+
+	# deps are optional for hpcp module
+
+	if ( -e $depsfile ) {
+		open ( IN, $depsfile ) || die ( "\nCannot open package deps file $depsfile\n\n" );
+		my $line = <IN>;
+		close ( IN );
+		if ( defined ( $line ) ) {
+			@{$deps} = split ( /\s+/, $line );
+		}
 	}
 
 	return ( $version, $deps );
@@ -179,7 +185,7 @@ sub all_deps {
 }
 
 sub package_db {
-	my ( $pdir ) = @_;
+	my ( $pdir, $env ) = @_;
 
 	my $tree = {};
 
@@ -193,10 +199,13 @@ sub package_db {
 		my $path = $pdir."/".$pname;
 		my $version;
 		my $deps;
-		( $version, $deps ) = package_info ( $path );
+		( $version, $deps ) = package_info ( $path, $env );
 		$tree->{ $pname } = {};
 		$tree->{ $pname }->{ "version" } = $version;
 		$tree->{ $pname }->{ "rawdeps" } = $deps;
+		if ( $pname ne "hpcp" ) {
+			unshift ( @{ $tree->{ $pname }->{ "rawdeps" } }, "hpcp" );
+		}
 		$tree->{ $pname }->{ "deps" } = ();
 		$tree->{ $pname }->{ "vdeps" } = {};
 		$tree->{ $pname }->{ "rdeps" } = ();
@@ -210,12 +219,15 @@ sub package_db {
 	# here is important, since we must install packages lower
 	# in the dependency tree first.
 
-	while ( ($key, $value) = each %{$tree} ) {
+	foreach $key ( keys %{$tree} ) {
+		$value = $tree->{ $key };
 		$pname = $key;
 
-		all_deps ( $tree, $pname, $pname );
+		if ( $pname ne "hpcp" ) {
+			all_deps ( $tree, $pname, $pname );
+		}
 
-		my @unique;
+		my @unique = ();
 		my $dup;
 		my %seen;
 		foreach $dup ( @{ $tree->{ $pname }->{ "deps" } } ) {
@@ -228,13 +240,17 @@ sub package_db {
 		}
 
 		@{ $tree->{ $pname }->{ "deps" } } = @unique;
+		#use Data::Dumper;
+		#print "$pname ", $tree->{ $pname }->{ "version" }, "\n";
+		#print Dumper ( @{ $tree->{ $pname }->{ "deps" } } );
 	}
 
 	# Generate package versions based on dependencies.
 
 	my $dogen = 0;
 
-	while ( ($key, $value) = each %{$tree} ) {
+	foreach $key ( keys %{$tree} ) {
+		$value = $tree->{ $key };
 		$dogen++;
 	}
 
@@ -243,7 +259,8 @@ sub package_db {
 	while ( $dogen > 0 ) {
 		$lastgen = $dogen;
 
-		while ( ($key, $value) = each %{$tree} ) {
+		foreach $key ( keys %{$tree} ) {
+			$value = $tree->{ $key };
 			$pname = $key;
 
 			# make sure that no dependencies have generated versions
@@ -266,12 +283,11 @@ sub package_db {
 				if ( $value->{ "version" } eq "GENERATED" ) {
 				
 					if ( $depstring eq "" ) {
-						die ( "\nPackages with generated versions must have at least one dependency\n\n" );
+						die ( "\nPackage has no dependencies (not even hpcp).  This should never happen...\n\n" );
 					} else {
 						$value->{ "version" } = $depstring;
 					}
 					
-
 				} else {
 
 					if ( $depstring ne "" ) {
@@ -292,7 +308,8 @@ sub package_db {
 
 	# compute dependency versions
 
-	while ( ($key, $value) = each %{$tree} ) {
+	foreach $key ( keys %{$tree} ) {
+		$value = $tree->{ $key };
 		$pname = $key;
 
 		my $dep;
@@ -303,7 +320,8 @@ sub package_db {
 
 	# compute full list of reverse dependencies
 
-	while ( ($key, $value) = each %{$tree} ) {
+	foreach $key ( keys %{$tree} ) {
+		$value = $tree->{ $key };
 		$pname = $key;
 
 		my $dep;
@@ -372,8 +390,12 @@ sub package_fullversion {
 	my $full;
 
 	if ( defined ( $overrides->{ $pname } ) ) {
-		$full = $overrides->{ $pname }->{ "VERSION" };
-		$full .= "-".$env;
+		if ( defined $overrides->{ $pname }->{ "VERSION" } ) {
+			$full = $overrides->{ $pname }->{ "VERSION" };
+			$full .= "-".$env;
+		} else {
+			die ( "overridden package \"${pname}\" does not have the variable \"${pname}_VERSION\" defined\n" );
+		}
 	} else {
 		if ( $pname eq "hpcp" ) {
 			$full = $env;
@@ -508,7 +530,8 @@ sub config_vars {
 				# scan for package variables
 				my $key;
 				my $value;
-				while ( ($key, $value) = each %{$overrides} ) {
+				foreach $key ( keys %{$overrides} ) {
+					$value = $overrides->{ $key };
 					if ( $F[0] =~ /${key}_(.*)/ ) {
 						$value->{ $1 } = $explhs;
 					}
@@ -595,7 +618,8 @@ sub module_file {
 	my $key;
 	my $value;
 	my $val;
-	while ( ($key, $value) = each %{$vars} ) {
+	foreach $key ( keys %{$vars} ) {
+		$value = $vars->{ $key };
 		my @valsplit = split ( /\s+/, $value );
 		if ( $key eq "BIN" ) {
 			for $val ( @valsplit ) {
@@ -675,14 +699,6 @@ sub module_file {
 
 	} else {
 
-		print OUT "if [ module-info mode load ] {\n";
-		print OUT "\tif [ is-loaded hpcp ] {\n";
-		print OUT "\t} else {\n";
-		print OUT "\t\tmodule load hpcp/${hpcpenv}\n";
-		print OUT "\t}\n";
-		print OUT "}\n";
-		print OUT "\n";
-
 		my $dep;
 		foreach $dep ( @{ $pdb->{ $pname }->{ "deps" } } ) {
 			my $depmod = $dep.$modsuffix;
@@ -743,7 +759,8 @@ sub shell_file {
 		my $key;
 		my $value;
 		my $val;
-		while ( ($key, $value) = each %{$vars} ) {
+		foreach $key ( keys %{$vars} ) {
+			$value = $vars->{ $key };
 			my @valsplit = split ( /\s+/, $value );
 			if ( $key eq "BIN" ) {
 				for $val ( @valsplit ) {
@@ -801,8 +818,6 @@ sub dep_file {
 		print OUT "# (hpcp module has no dependencies)\n";
 
 	} else {
-
-		print OUT ". ${prefix}/env/hpcp_${hpcpenv}.sh\n";
 
 		my $dep;
 		foreach $dep ( @{ $pdb->{ $pname }->{ "deps" } } ) {

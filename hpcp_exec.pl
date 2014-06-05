@@ -120,10 +120,12 @@ if ( ( $dbver ne $hpcpver ) || ( $command eq "update" ) ) {
 	$needupdate = 1;
 }
 
+my ( $env, $suffix, $prefix, $overrides ) = HPCPorts::config_vars ( "${hpcp_root}/system/${system}.make" );
+
 # Update package DB if needed
 
 if ( $needupdate ) {
-	my $pkgdb = HPCPorts::package_db ( $pkgdir );
+	my $pkgdb = HPCPorts::package_db ( $pkgdir, $env );
 	store ( $pkgdb, $dbfile );
 	open ( DB, ">$dbversion" ) || die ( "\nCannot open DB version file $dbversion\n\n" );
 	print DB $hpcpver,"\n";
@@ -136,8 +138,6 @@ if ( $command eq "update" ) {
 }
 
 my $pkgdb = retrieve ( $dbfile );
-
-my ( $env, $suffix, $prefix, $overrides ) = HPCPorts::config_vars ( "${hpcp_root}/system/${system}.make" );
 
 #use Data::Dumper;
 #print Dumper ( $pkgdb );
@@ -163,10 +163,6 @@ if ( $command eq "status" ) {
 
 	my $key;
 	my $value;
-
-	my $hpcpstat = HPCPorts::package_state ( $pkgdb, "${pkgdir}/hpcp", $system, $env, $prefix, $overrides );
-	$out = sprintf ( "%s%18s | %20s |  %s\n", $pre, "hpcp", $env, $hpcpstat );
-	print $out;
 
 	foreach $key ( sort keys %{$pkgdb} ) {
 		$value = $pkgdb->{ $key };
@@ -209,7 +205,8 @@ if ( $command eq "status" ) {
 	my $value;
 	my $state;
 
-	while ( ($key, $value) = each %{$pkgdb} ) {
+	foreach $key ( keys %{$pkgdb} ) {
+		$value = $pkgdb->{ $key };
 		foreach $state ( @states ) {
 			purge_state ( $pkgdb, $key, $state, $hpcp_root, $system, $env, $prefix, $overrides );
 		}
@@ -250,7 +247,8 @@ if ( $command eq "status" ) {
 		my $value;
 		my $status;
 
-		while ( ($key, $value) = each %{$pkgdb} ) {
+		foreach $key ( keys %{$pkgdb} ) {
+			$value = $pkgdb->{ $key };
 			if ( ! defined ( $overrides->{ $key } ) ) {
 				$status = HPCPorts::package_state ( $pkgdb, "${pkgdir}/${key}", $system, $env, $prefix, $overrides );
 				if ( $status eq "stale" ) {
@@ -330,7 +328,8 @@ if ( $command eq "status" ) {
 		my $value;
 		my $fullversion;
 
-		while ( ($key, $value) = each %{$pkgdb} ) {
+		foreach $key ( keys %{$pkgdb} ) {
+			$value = $pkgdb->{ $key };
 			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make uninstall" );
 		}
@@ -358,7 +357,8 @@ if ( $command eq "status" ) {
 		my $key;
 		my $value;
 
-		while ( ($key, $value) = each %{$pkgdb} ) {
+		foreach $key ( keys %{$pkgdb} ) {
+			$value = $pkgdb->{ $key };
 			my $fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make fetch" );
 		}
@@ -384,7 +384,8 @@ if ( $command eq "status" ) {
 		my $value;
 		my $fullversion;
 
-		while ( ($key, $value) = each %{$pkgdb} ) {
+		foreach $key ( keys %{$pkgdb} ) {
+			$value = $pkgdb->{ $key };
 			$fullversion = HPCPorts::package_fullversion ( $pkgdb, $key, $env, $overrides );
 			system ( "export PKG_FULLVERSION=${fullversion}; cd ${hpcp_root}/packages/${key}; make clean" );
 		}
