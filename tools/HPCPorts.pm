@@ -315,7 +315,11 @@ sub package_db {
 
 		my $dep;
 		for $dep ( @{ $value->{ "deps" } } ) {
-			$value->{ "vdeps" }->{ $dep } = $tree->{ $dep }->{ "version" }."_".$tree->{ $dep }->{ "dephash" };
+			if ( $dep eq "hpcp" ) {
+				$value->{ "vdeps" }->{ $dep } = $tree->{ $dep }->{ "version" };
+			} else {
+				$value->{ "vdeps" }->{ $dep } = $tree->{ $dep }->{ "version" }."_".$tree->{ $dep }->{ "dephash" };
+			}
 		}
 	}
 
