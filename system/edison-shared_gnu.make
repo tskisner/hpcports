@@ -14,7 +14,7 @@
 # 2.0 :  gnu 4.7.2, cray-mpich 6.0.0, mkl-13.0.1, fftw-3.3.0.3, python-2.7.3
 # 3.0 :  gnu 4.8.1, cray-mpich 6.0.2, mkl-13.0.1, python-2.7.3
 # 4.0 :  gnu 4.8.2, craype-2.03, cray-mpich 6.2.0, cray-libsci 12.1.3, mkl-13.0.3, python-2.7.5
-# 4.1 :  gnu 4.8.2, craype-2.1.1 cray-mpich 6.3.1, cray-libsci 12.2.0, mkl-13.0.3, python-2.7.5
+# 4.1 :  gnu 4.8.2, craype-2.1.1 cray-mpich 6.3.1, cray-libsci 12.2.0, mkl-13.0.3
 #
 
 HPCP_ENV = 4.1
@@ -30,7 +30,7 @@ HPCP_POOL = /project/projectdirs/cmb/modules/hpcports_pool
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = gnu
-BUILD_DYNAMIC = FALSE
+BUILD_DYNAMIC = TRUE
 
 # UNIX tools
 
@@ -73,15 +73,15 @@ OMPFLAGS = -fopenmp
 
 # Fortran mixing
 
-FLIBS = /opt/gcc/4.8.2/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.8.2/snos/lib64/libgfortran.a
+FLIBS = -lgfortran
+FCLIBS = -lgfortran
 MPIFCLIBS =
 
 # Linking
 
-LIBS = /opt/gcc/4.8.2/snos/lib64/libgomp.a /usr/lib64/librt.a -lpthread -lm
+LIBS = -lm
 LDFLAGS =
-LIBTOOLFLAGS = --preserve-dup-deps
+LIBTOOLFLAGS = 
 
 # vendor math libraries
 
@@ -89,7 +89,7 @@ VENDOR = intel
 INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a -ldl
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -135,58 +135,14 @@ openssl_VERSION = 0.9.8
 curl_OVERRIDE = TRUE
 curl_VERSION = 7.28.1
 
-# module load python/2.7.5
-
-python_OVERRIDE = TRUE
-python_SITE = python2.7
-python_VERSION = 2.7.5
-
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.11.2
-
-nose_OVERRIDE = TRUE
-nose_VERSION = 1.1.2
-
-numpy_OVERRIDE = TRUE
-numpy_VERSION = 1.6.2
-
-scipy_OVERRIDE = TRUE
-scipy_VERSION = 0.11.0
-
-pyfits_OVERRIDE = TRUE
-pyfits_VERSION = NA
-
-# module load ipython/0.13.1
-
-ipython_OVERRIDE = TRUE
-ipython_VERSION = 0.13.1
-
-matplotlib_OVERRIDE = TRUE
-matplotlib_VERSION = 1.1.0
-
-# module load mpi4py/1.3
-
-mpi4py_OVERRIDE = TRUE
-mpi4py_VERSION = 1.3
-
-pyslalib_OVERRIDE = TRUE
-pyslalib_VERSION = NA
-
-scientific_OVERRIDE = TRUE
-scientific_VERSION = NA
-
-healpy_OVERRIDE = TRUE
-healpy_VERSION = NA
-
-numexpr_OVERRIDE = TRUE
-numexpr_VERSION = NA
 
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 12.2.0
 blas_LIBS_CC = 
-#blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.8.2/snos/lib64/libgfortran.a /opt/gcc/4.8.2/snos/lib64/libgomp.a -ldl
 blas_LIBS_CXX = $(blas_LIBS_CC)
 blas_LIBS_FC = $(blas_LIBS_CC)
 blas_LIBS_F77 = $(blas_LIBS_CC)
