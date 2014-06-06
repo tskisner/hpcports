@@ -1,7 +1,7 @@
 diff -urN scamp-2.0.1_orig/acx_lapacke.m4 scamp-2.0.1/acx_lapacke.m4
 --- scamp-2.0.1_orig/acx_lapacke.m4	1969-12-31 16:00:00.000000000 -0800
-+++ scamp-2.0.1/acx_lapacke.m4	2014-06-05 11:02:44.000000000 -0700
-@@ -0,0 +1,63 @@
++++ scamp-2.0.1/acx_lapacke.m4	2014-06-06 13:52:22.013188000 -0700
+@@ -0,0 +1,79 @@
 +dnl
 +dnl				acx_lapacke.m4
 +dnl
@@ -14,6 +14,8 @@ diff -urN scamp-2.0.1_orig/acx_lapacke.m4 scamp-2.0.1/acx_lapacke.m4
 +AC_DEFUN([ACX_LAPACKE], [
 +acx_lapacke_ok=no
 +
++LAPACK_H=""
++LAPACKE_H=""
 +LAPACKE_LIBS=""
 +
 +AC_ARG_WITH([lapacke], [AC_HELP_STRING([--with-lapacke=<link command>], [use specified LAPACKE link command.  Set to "no" to disable.])])
@@ -30,7 +32,23 @@ diff -urN scamp-2.0.1_orig/acx_lapacke.m4 scamp-2.0.1/acx_lapacke.m4
 +   echo "**** LAPACKE explicitly disabled by configure."
 +else
 +
-+    # First, check LAPACKE_LIBS environment variable
++    # check for both standard and MKL headers
++    acx_lapacke_header_ok=no
++    AC_CHECK_HEADER([mkl_lapacke.h], [acx_lapacke_header_ok=yes], [])
++    if test $acx_lapacke_header_ok = yes; then
++       AC_DEFINE_UNQUOTED(LAPACK_H, "mkl_lapack.h", [LAPACK header filename.])
++       AC_DEFINE_UNQUOTED(LAPACKE_H, "mkl_lapacke.h", [LAPACKe header filename.])
++    else
++       AC_CHECK_HEADER([lapacke.h], [acx_lapacke_header_ok=yes], [])
++       if test $acx_lapacke_header_ok = yes; then
++       	  AC_DEFINE_UNQUOTED(LAPACK_H, "lapacke.h", [LAPACK header filename.])
++	  AC_DEFINE_UNQUOTED(LAPACKE_H, "lapacke.h", [LAPACKe header filename.])
++       else
++          AC_MSG_ERROR([Cannot find lapacke header])
++       fi
++    fi
++
++    # First, check LAPACKE_LIBS variable
 +    if test "x$LAPACKE_LIBS" != x; then
 +        save_LIBS="$LIBS"; LIBS="$LAPACKE_LIBS $LIBS"
 +        AC_MSG_CHECKING([for LAPACKE_cheev in $LAPACKE_LIBS])
@@ -60,14 +78,12 @@ diff -urN scamp-2.0.1_orig/acx_lapacke.m4 scamp-2.0.1/acx_lapacke.m4
 +
 +AC_DEFINE(HAVE_LAPACK,1, [Define if you have the LAPACK libraries.])
 +AC_DEFINE(HAVE_LAPACKE,1, [Define if you have the LAPACKe libraries.])
-+AC_DEFINE_UNQUOTED(LAPACK_H, "lapacke.h", [LAPACK header filename.])
-+AC_DEFINE_UNQUOTED(LAPACKE_H, "lapacke.h", [LAPACKe header filename.])
 +
 +])dnl ACX_LAPACKE
 +
 diff -urN scamp-2.0.1_orig/autogen.sh scamp-2.0.1/autogen.sh
 --- scamp-2.0.1_orig/autogen.sh	1969-12-31 16:00:00.000000000 -0800
-+++ scamp-2.0.1/autogen.sh	2014-06-05 11:02:44.000000000 -0700
++++ scamp-2.0.1/autogen.sh	2014-06-06 13:52:15.722837000 -0700
 @@ -0,0 +1,1578 @@
 +#!/bin/sh
 +#                        a u t o g e n . s h
@@ -1649,7 +1665,7 @@ diff -urN scamp-2.0.1_orig/autogen.sh scamp-2.0.1/autogen.sh
 +# ex: shiftwidth=4 tabstop=8
 diff -urN scamp-2.0.1_orig/configure.ac scamp-2.0.1/configure.ac
 --- scamp-2.0.1_orig/configure.ac	2014-03-06 13:34:34.000000000 -0800
-+++ scamp-2.0.1/configure.ac	2014-06-05 11:02:44.000000000 -0700
++++ scamp-2.0.1/configure.ac	2014-06-06 13:52:15.724112000 -0700
 @@ -45,7 +45,7 @@
  AC_SUBST(DATE3, "$date3")
  
@@ -1701,7 +1717,7 @@ diff -urN scamp-2.0.1_orig/configure.ac scamp-2.0.1/configure.ac
  ################# handle the PLPlot library (graphic plots) ##################
 diff -urN scamp-2.0.1_orig/src/astrcplot.c scamp-2.0.1/src/astrcplot.c
 --- scamp-2.0.1_orig/src/astrcplot.c	2013-11-12 06:52:54.000000000 -0800
-+++ scamp-2.0.1/src/astrcplot.c	2014-06-05 11:03:33.000000000 -0700
++++ scamp-2.0.1/src/astrcplot.c	2014-06-06 13:52:15.725918000 -0700
 @@ -101,7 +101,7 @@
  /* Draw meridians and parallels */
    plfont(2);
@@ -2257,7 +2273,7 @@ diff -urN scamp-2.0.1_orig/src/astrcplot.c scamp-2.0.1/src/astrcplot.c
  
 diff -urN scamp-2.0.1_orig/src/photcplot.c scamp-2.0.1/src/photcplot.c
 --- scamp-2.0.1_orig/src/photcplot.c	2013-11-12 06:53:52.000000000 -0800
-+++ scamp-2.0.1/src/photcplot.c	2014-06-05 11:03:25.000000000 -0700
++++ scamp-2.0.1/src/photcplot.c	2014-06-06 13:52:15.726770000 -0700
 @@ -197,7 +197,7 @@
      plcol0(15);
      plschr(0.0,0.5);

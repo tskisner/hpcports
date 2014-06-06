@@ -1,7 +1,7 @@
 diff -urN psfex-3.17.0_orig/acx_lapacke.m4 psfex-3.17.0/acx_lapacke.m4
 --- psfex-3.17.0_orig/acx_lapacke.m4	1969-12-31 16:00:00.000000000 -0800
-+++ psfex-3.17.0/acx_lapacke.m4	2014-06-05 10:47:01.000000000 -0700
-@@ -0,0 +1,63 @@
++++ psfex-3.17.0/acx_lapacke.m4	2014-06-06 13:37:51.353454000 -0700
+@@ -0,0 +1,79 @@
 +dnl
 +dnl				acx_lapacke.m4
 +dnl
@@ -14,6 +14,8 @@ diff -urN psfex-3.17.0_orig/acx_lapacke.m4 psfex-3.17.0/acx_lapacke.m4
 +AC_DEFUN([ACX_LAPACKE], [
 +acx_lapacke_ok=no
 +
++LAPACK_H=""
++LAPACKE_H=""
 +LAPACKE_LIBS=""
 +
 +AC_ARG_WITH([lapacke], [AC_HELP_STRING([--with-lapacke=<link command>], [use specified LAPACKE link command.  Set to "no" to disable.])])
@@ -30,7 +32,23 @@ diff -urN psfex-3.17.0_orig/acx_lapacke.m4 psfex-3.17.0/acx_lapacke.m4
 +   echo "**** LAPACKE explicitly disabled by configure."
 +else
 +
-+    # First, check LAPACKE_LIBS environment variable
++    # check for both standard and MKL headers
++    acx_lapacke_header_ok=no
++    AC_CHECK_HEADER([mkl_lapacke.h], [acx_lapacke_header_ok=yes], [])
++    if test $acx_lapacke_header_ok = yes; then
++       AC_DEFINE_UNQUOTED(LAPACK_H, "mkl_lapack.h", [LAPACK header filename.])
++       AC_DEFINE_UNQUOTED(LAPACKE_H, "mkl_lapacke.h", [LAPACKe header filename.])
++    else
++       AC_CHECK_HEADER([lapacke.h], [acx_lapacke_header_ok=yes], [])
++       if test $acx_lapacke_header_ok = yes; then
++       	  AC_DEFINE_UNQUOTED(LAPACK_H, "lapacke.h", [LAPACK header filename.])
++	  AC_DEFINE_UNQUOTED(LAPACKE_H, "lapacke.h", [LAPACKe header filename.])
++       else
++          AC_MSG_ERROR([Cannot find lapacke header])
++       fi
++    fi
++
++    # First, check LAPACKE_LIBS variable
 +    if test "x$LAPACKE_LIBS" != x; then
 +        save_LIBS="$LIBS"; LIBS="$LAPACKE_LIBS $LIBS"
 +        AC_MSG_CHECKING([for LAPACKE_cheev in $LAPACKE_LIBS])
@@ -60,14 +78,12 @@ diff -urN psfex-3.17.0_orig/acx_lapacke.m4 psfex-3.17.0/acx_lapacke.m4
 +
 +AC_DEFINE(HAVE_LAPACK,1, [Define if you have the LAPACK libraries.])
 +AC_DEFINE(HAVE_LAPACKE,1, [Define if you have the LAPACKe libraries.])
-+AC_DEFINE_UNQUOTED(LAPACK_H, "lapacke.h", [LAPACK header filename.])
-+AC_DEFINE_UNQUOTED(LAPACKE_H, "lapacke.h", [LAPACKe header filename.])
 +
 +])dnl ACX_LAPACKE
 +
 diff -urN psfex-3.17.0_orig/autogen.sh psfex-3.17.0/autogen.sh
 --- psfex-3.17.0_orig/autogen.sh	1969-12-31 16:00:00.000000000 -0800
-+++ psfex-3.17.0/autogen.sh	2014-06-05 10:47:01.000000000 -0700
++++ psfex-3.17.0/autogen.sh	2014-06-06 13:35:26.107023000 -0700
 @@ -0,0 +1,1578 @@
 +#!/bin/sh
 +#                        a u t o g e n . s h
@@ -1649,7 +1665,7 @@ diff -urN psfex-3.17.0_orig/autogen.sh psfex-3.17.0/autogen.sh
 +# ex: shiftwidth=4 tabstop=8
 diff -urN psfex-3.17.0_orig/configure.ac psfex-3.17.0/configure.ac
 --- psfex-3.17.0_orig/configure.ac	2014-03-19 06:25:43.000000000 -0700
-+++ psfex-3.17.0/configure.ac	2014-06-05 10:47:01.000000000 -0700
++++ psfex-3.17.0/configure.ac	2014-06-06 13:35:26.108671000 -0700
 @@ -45,7 +45,7 @@
  AC_SUBST(DATE3, "$date3")
  
@@ -1701,7 +1717,7 @@ diff -urN psfex-3.17.0_orig/configure.ac psfex-3.17.0/configure.ac
  ################# handle the PLPlot library (graphic plots) ##################
 diff -urN psfex-3.17.0_orig/src/cplot.c psfex-3.17.0/src/cplot.c
 --- psfex-3.17.0_orig/src/cplot.c	2012-06-17 13:46:27.000000000 -0700
-+++ psfex-3.17.0/src/cplot.c	2014-06-05 10:47:48.000000000 -0700
++++ psfex-3.17.0/src/cplot.c	2014-06-06 13:35:26.113591000 -0700
 @@ -527,7 +527,7 @@
  
  /* Draw meridians */

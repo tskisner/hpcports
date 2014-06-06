@@ -80,12 +80,6 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
-tcl_OVERRIDE = TRUE
-tcl_VERSION = 8.4.13
-
-tk_OVERRIDE = TRUE
-tk_VERSION = 8.4.13
-
 blas_OVERRIDE = TRUE
 blas_VERSION = 13.0.1
 blas_LIBS_CC = $(INTEL_LIBS_CC) $(FCLIBS)
