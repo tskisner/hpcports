@@ -6,7 +6,7 @@ include ../pkg_defs.make
 PKG_NAME = specex
 
 PKG_FORMAT = git
-PKG_GIT_CLONE = git clone git@github.com:julienguy/specex.git
+PKG_GIT_CLONE = git clone git@github.com:tskisner/specex.git
 PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
 PKG_SRCDIR = specex
