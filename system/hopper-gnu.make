@@ -16,9 +16,10 @@
 # 4.0 : gcc-4.7.2, ACML 4.4.0, xt-asyncpe 5.19, cray-mpich2 5.6.4, fftw 3.3.0.2, python 2.7.3
 # 5.0 : gcc-4.7.2, ACML 4.4.0, xt-asyncpe 5.23, cray-mpich2 5.6.4, fftw 3.3.0.2, python 2.7.3, darshan 2.2.6
 # 6.0 : gcc-4.8.1, ACML 4.4.0, xt-asyncpe 5.23, cray-mpich 6.1.0, fftw 3.3.0.4, python 2.7.5
+# 6.1 : same as 6.0, but with new HPCP dependency version hash
 #
 
-HPCP_ENV = 6.0
+HPCP_ENV = 6.1
 
 # suffix, to avoid name collisions with nersc modules
 

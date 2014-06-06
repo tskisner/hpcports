@@ -9,9 +9,10 @@ HPCP_POOL = /clusterfs/riemann/data/kisner/software/hpcports_pool
 # the minor version when upgrading MKL.  Document configuration here:
 #
 # 1.0 : gcc-4.8.2, MKL 11.0.084
+# 1.1 : same as 1.0, but with new HPCP dependency version hash
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 1.1
 
 # suffix, to avoid name collisions with nersc modules
 
