@@ -15,9 +15,10 @@
 # 3.0 :  gnu 4.8.1, cray-mpich 6.0.2, mkl-13.0.1, python-2.7.3
 # 4.0 :  gnu 4.8.2, craype-2.03, cray-mpich 6.2.0, cray-libsci 12.1.3, mkl-13.0.3, python-2.7.5
 # 4.1 :  gnu 4.8.2, craype-2.1.1 cray-mpich 6.3.1, cray-libsci 12.2.0, mkl-13.0.3, python-2.7.5
+# 4.2 :  same as 4.1, but with new HPCPorts dependency hashes.
 #
 
-HPCP_ENV = 4.1
+HPCP_ENV = 4.2
 
 # suffix, to avoid name collisions with nersc modules
 
