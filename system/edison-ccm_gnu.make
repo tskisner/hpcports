@@ -11,9 +11,10 @@
 # here:
 #
 # 1.0 :  gnu 4.8.2, mkl-13.0.3
+# 2.0 : gcc-4.9.0 / binutils 2.24, MKL 13.0.1
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -51,7 +52,7 @@ openmpi_EXTRA = --without-tm
 
 # compile flags
 
-CFLAGS = -O3 -fPIC -DNDEBUG
+CFLAGS = -O3 -fPIC -DNDEBUG -fgnu89-inline
 CXXFLAGS = -O3 -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -fPIC -DNDEBUG
 FCFLAGS = -O3 -fPIC -DNDEBUG
@@ -100,12 +101,4 @@ lapack_LIBS_CC = -lmkl_lapack95_lp64
 lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_F77 = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
-
-# package overrides
-
-tcl_OVERRIDE = TRUE
-tcl_VERSION = 8.5.5
-
-tk_OVERRIDE = TRUE
-tk_VERSION = 8.5.5
 
