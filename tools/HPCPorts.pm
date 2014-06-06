@@ -102,9 +102,6 @@ sub generate_version {
 		}
 		my $raw = md5_hex ( $depstr );
 		$raw =~ s/(.{8}).*/$1/;
-		if ( $pname eq "automake" ) {
-			print "$depstr ==> $raw\n";
-		}
 		$outver = $raw;
 	}
 
@@ -281,13 +278,7 @@ sub package_db {
 
 			# generate the version if possible
 			if ( $can_gen ) {
-				if ( $pname eq "automake" ) {
-					print "$pname\n";
-				}
 				my $depstring = generate_version ( $depvers, $pname );
-				if ( $pname eq "automake" ) {
-					print "\n";
-				}
 
 				if ( $value->{ "version" } eq "GENERATED" ) {
 				
