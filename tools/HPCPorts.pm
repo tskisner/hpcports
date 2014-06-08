@@ -706,7 +706,12 @@ sub module_file {
 
 		my $dep;
 		foreach $dep ( @{ $pdb->{ $pname }->{ "deps" } } ) {
-			my $depmod = $dep.$modsuffix;
+			my $depmod;
+			if ( $dep eq "hpcp" ) {
+				$depmod = "hpcp";
+			} else {
+				$depmod = $dep.$modsuffix;
+			}
 			my $depver = package_fullversion ( $pdb, $dep, $hpcpenv, $overrides );
 
 			print OUT "if [ module-info mode load ] {\n";
