@@ -1,12 +1,24 @@
-#!/bin/bash
+#!/bin/sh
 
-host=${NERSC_HOST}
+job=${PBS_JOBID}
 
-if [ "x$1" = "xset" ]; then
-    set | awk -F '=' '! /^[0-9A-Z_a-z]+=/ {exit} {print "export", $0}' > ${HOME}/.hpcpenv_${host}
-elif [ "x$1" = "xclear" ]; then
-    rm -f ${HOME}/.hpcpenv_${host}
+if [ "x${1}" = "xset" ]; then
+	if [ "x${job}" = "x" ]; then
+		echo "\"hpcpenv set\" can only be run within a PBS environment"
+		exit 0
+	fi
+    set | awk -F '=' '! /^[0-9A-Z_a-z]+=/ {exit} {print "export", $0}' > ${HOME}/.hpcpenv_${job}
+elif [ "x${1}" = "xclear" ]; then
+	if [ "x${job}" = "x" ]; then
+		echo "\"hpcpenv clear\" can only be run within a PBS environment"
+		exit 0
+	fi
+    rm -f ${HOME}/.hpcpenv_${job}
+elif [ "x${1}" = "xclearall" ]; then
+	echo "Purging all hpcpenv files"
+	rm -f ${HOME}/.hpcpenv_*
 else
-    echo "Usage:  $0 [ set | clear ]"
+    echo "Usage:  ${0} [ set | clear | clearall ]"
 fi
 
+exit 0
