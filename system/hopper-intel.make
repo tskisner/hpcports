@@ -92,7 +92,7 @@ readline_OVERRIDE = TRUE
 readline_VERSION = 5.2
 
 gzip_OVERRIDE = TRUE
-gzip_VERSON = 1.3.12
+gzip_VERSION = 1.3.12
 
 gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.17.0
