@@ -118,11 +118,11 @@ zlib_VERSION = 1.2.3
 tcsh_OVERRIDE = TRUE
 tcsh_VERSION = 6.15
 
-#tcl_OVERRIDE = TRUE
-#tcl_VERSION = 8.5.5
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.5.5
 
-#tk_OVERRIDE = TRUE
-#tk_VERSION = 8.5.5
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.5.5
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = 0.9.8
