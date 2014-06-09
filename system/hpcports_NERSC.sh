@@ -34,41 +34,21 @@ if [ $NERSC_HOST = "hopper" ]; then
     planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
     module unuse /project/projectdirs/cmb/modules/hopper/hpcports_gnu/env/modulefiles
-    module unuse /project/projectdirs/cmb/modules/hopper/hpcports_ccm/env/modulefiles
-    module unuse /project/projectdirs/cmb/modules/hopper/hpcports_intel/env/modulefiles
+    module unuse /project/projectdirs/cmb/modules/hopper/hpcports_gnu_dx9/env/modulefiles
     if [ "$planck" = "yes" ]; then
       module unuse /project/projectdirs/planck/modules/hopper/gnu/modulefiles
-      module unuse /project/projectdirs/planck/modules/hopper/ccm/modulefiles
-      module unuse /project/projectdirs/planck/modules/hopper/intel/modulefiles
-    fi
-    if [ "$polar" = "yes" ]; then
-      module unuse /project/projectdirs/polar/modules/hopper/gnu/modulefiles
-      module unuse /project/projectdirs/polar/modules/hopper/ccm/modulefiles
+      module unuse /project/projectdirs/planck/modules/hopper/gnu_dx9/modulefiles
     fi
     case $1 in
-      intel ) module use /project/projectdirs/cmb/modules/hopper/hpcports_intel/env/modulefiles
-            if [ "$planck" = "yes" ]; then
-              module use /project/projectdirs/planck/modules/hopper/intel/modulefiles
-            fi;;
       dx9 ) module use /project/projectdirs/cmb/modules/hopper/hpcports_gnu_dx9/env/modulefiles
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/hopper/gnu_dx9/modulefiles
             fi;;
       gnu ) module use /project/projectdirs/cmb/modules/hopper/hpcports_gnu/env/modulefiles
-            if [ "$polar" = "yes" ]; then
-              module use /project/projectdirs/polar/modules/hopper/gnu/modulefiles
-            fi
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/hopper/gnu/modulefiles
             fi;;
-      ccm ) module use /project/projectdirs/cmb/modules/hopper/hpcports_ccm/env/modulefiles
-            if [ "$polar" = "yes" ]; then
-              module use /project/projectdirs/polar/modules/hopper/ccm/modulefiles
-            fi
-            if [ "$planck" = "yes" ]; then
-              module use /project/projectdirs/planck/modules/hopper/ccm/modulefiles
-            fi;;
-        * ) echo "usage:  hpcports [ gnu | intel | ccm | dx9 ]";;
+        * ) echo "usage:  hpcports [ gnu | dx9 ]";;
     esac
   }  
 fi
@@ -94,13 +74,17 @@ if [ $NERSC_HOST = "edison" ]; then
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
     module unuse /project/projectdirs/cmb/modules/edison/hpcports_gnu/env/modulefiles
     module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm_gnu/env/modulefiles
+    module unuse /project/projectdirs/cmb/modules/edison/hpcports_shared_gnu/env/modulefiles
     module unuse /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles
-    module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm_intel/env/modulefiles
     if [ "$planck" = "yes" ]; then
       module unuse /project/projectdirs/planck/modules/edison/gnu/modulefiles
       module unuse /project/projectdirs/planck/modules/edison/intel/modulefiles
       module unuse /project/projectdirs/planck/modules/edison/ccm_gnu/modulefiles
-      module unuse /project/projectdirs/planck/modules/edison/ccm_intel/modulefiles
+      module unuse /project/projectdirs/planck/modules/edison/shared_gnu/modulefiles
+    fi
+    if [ "$polar" = "yes" ]; then
+      module unuse /project/projectdirs/polar/modules/edison/shared_gnu/modulefiles
+      module unuse /project/projectdirs/polar/modules/edison/ccm_gnu/modulefiles
     fi
     case $1 in
       intel ) module use /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles
@@ -114,12 +98,22 @@ if [ $NERSC_HOST = "edison" ]; then
       ccm_gnu ) module use /project/projectdirs/cmb/modules/edison/hpcports_ccm_gnu/env/modulefiles
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/edison/ccm_gnu/modulefiles
+            fi
+            if [ "$polar" = "yes" ]; then
+              module use /project/projectdirs/polar/modules/edison/ccm_gnu/modulefiles
+            fi;;
+      shared_gnu ) module use /project/projectdirs/cmb/modules/edison/hpcports_shared_gnu/env/modulefiles
+            if [ "$planck" = "yes" ]; then
+              module use /project/projectdirs/planck/modules/edison/shared_gnu/modulefiles
+            fi
+            if [ "$polar" = "yes" ]; then
+              module use /project/projectdirs/polar/modules/edison/shared_gnu/modulefiles
             fi;;
       ccm_intel ) module use /project/projectdirs/cmb/modules/edison/hpcports_ccm_intel/env/modulefiles
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/edison/ccm_intel/modulefiles
             fi;;
-        * ) echo "usage:  hpcports [ gnu | intel | ccm_gnu | ccm_intel ]";;
+        * ) echo "usage:  hpcports [ gnu | intel | shared_gnu | ccm_gnu ]";;
     esac
   }
 fi
@@ -151,23 +145,15 @@ if [ $NERSC_HOST = "carver" ]; then
     planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
     module unuse /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles
-    module unuse /project/projectdirs/cmb/modules/carver/hpcports_intel/env/modulefiles
+    module unuse /project/projectdirs/cmb/modules/carver/hpcports_gnu_dx9/env/modulefiles
     if [ "$planck" = "yes" ]; then
       module unuse /project/projectdirs/planck/modules/carver/gnu/modulefiles
-      module unuse /project/projectdirs/planck/modules/carver/intel/modulefiles
+      module unuse /project/projectdirs/planck/modules/carver/gnu_dx9/modulefiles
     fi
     if [ "$polar" = "yes" ]; then
       module unuse /project/projectdirs/polar/modules/carver/gnu/modulefiles
-      module unuse /project/projectdirs/polar/modules/carver/intel/modulefiles
     fi
     case $1 in
-      intel ) module use /project/projectdirs/cmb/modules/carver/hpcports_intel/env/modulefiles
-            if [ "$planck" = "yes" ]; then
-              module use /project/projectdirs/planck/modules/carver/intel/modulefiles
-            fi
-            if [ "$polar" = "yes" ]; then
-              module use /project/projectdirs/polar/modules/carver/intel/modulefiles
-            fi;;
       gnu ) module use /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/carver/gnu/modulefiles
@@ -212,21 +198,21 @@ if [ $NERSC_HOST = "scigate" ]; then
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
     module unuse /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
     if [ "$planck" = "yes" ]; then
-	echo "" > /dev/null
-	#module unuse /project/projectdirs/planck/modules/sgn/gnu/modulefiles
+      echo "" > /dev/null
+      #module unuse /project/projectdirs/planck/modules/sgn/gnu/modulefiles
     fi
     if [ "$polar" = "yes" ]; then
-	echo "" > /dev/null
-	#module unuse /project/projectdirs/polar/modules/sgn/gnu/modulefiles
+      echo "" > /dev/null
+      #module unuse /project/projectdirs/polar/modules/sgn/gnu/modulefiles
     fi
     module use /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
     if [ "$planck" = "yes" ]; then
-	echo "" > /dev/null
-	#module use /project/projectdirs/planck/modules/sgn/gnu/modulefiles
+      echo "" > /dev/null
+      #module use /project/projectdirs/planck/modules/sgn/gnu/modulefiles
     fi
     if [ "$polar" = "yes" ]; then
-	echo "" > /dev/null
-	#module use /project/projectdirs/polar/modules/sgn/gnu/modulefiles
+      echo "" > /dev/null
+      #module use /project/projectdirs/polar/modules/sgn/gnu/modulefiles
     fi
   }
 fi
@@ -238,8 +224,9 @@ module use /project/projectdirs/cmb/modules/modulefiles
 
 # This is for environment propagation using
 # Cray CCM
-if [ -e $HOME/.hpcpenv_${NERSC_HOST} ]; then
-  source $HOME/.hpcpenv_${NERSC_HOST}
+if [ "x${PBS_JOBID}" != x ]; then
+  if [ -e $HOME/.hpcpenv_${PBS_JOBID} ]; then
+    source $HOME/.hpcpenv_${PBS_JOBID}
+  fi
 fi
-
 

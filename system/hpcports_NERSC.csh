@@ -33,16 +33,7 @@ if ( $NERSC_HOST == "hopper" ) then
     endif
   endif
 
-  alias hpcports 'set planck=`planckcheck` ; module unuse /project/projectdirs/cmb/modules/hopper/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/hopper/hpcports_intel/env/modulefiles ; module unuse /project/projectdirs/planck/modules/hopper/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/hopper/intel/modulefiles ; eval "switch (\!:1) \\
-    case "login": \\
-    module use /project/projectdirs/cmb/modules/hopper/hpcports_login/env/modulefiles \\
-    breaksw \\
-    case "intel": \\
-    module use /project/projectdirs/cmb/modules/hopper/hpcports_intel/env/modulefiles \\
-        if (x$planck == x"yes") then \\
-            module use /project/projectdirs/planck/modules/hopper/intel/modulefiles \\
-        endif \\
-    breaksw \\
+  alias hpcports 'set planck=`planckcheck` ; module unuse /project/projectdirs/cmb/modules/hopper/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/hopper/hpcports_gnu_dx9/env/modulefiles ; module unuse /project/projectdirs/planck/modules/hopper/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/hopper/gnu_dx9/modulefiles ; eval "switch (\!:1) \\
     case "gnu": \\
     module use /project/projectdirs/cmb/modules/hopper/hpcports_gnu/env/modulefiles \\
         if (x$planck == x"yes") then \\
@@ -56,7 +47,7 @@ if ( $NERSC_HOST == "hopper" ) then
         endif \\
     breaksw \\
     default: \\
-    echo "usage:  hpcports \[ gnu OR intel OR ccm OR dx9 \]" \\
+    echo "usage:  hpcports \[ gnu OR dx9 \]" \\
     breaksw \\
   endsw"'
 
@@ -76,16 +67,7 @@ if ( $NERSC_HOST == "carver" ) then
     endif
   endif
 
-  alias hpcports 'setenv PATH /usr/common/usg/tcsh/6.18.01/bin:$PATH ; setenv SHELL /usr/common/usg/tcsh/6.18.01/bin/tcsh ; set planck=`planckcheck` ; set polar=`polarcheck` ; module unuse /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/carver/hpcports_intel/env/modulefiles ; module unuse /project/projectdirs/planck/modules/carver/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/carver/intel/modulefiles ; module unuse /project/projectdirs/polar/modules/carver/gnu/modulefiles ; module unuse /project/projectdirs/polar/modules/carver/intel/modulefiles ; eval "switch (\!:1) \\
-    case "intel": \\
-    module use /project/projectdirs/cmb/modules/carver/hpcports_intel/env/modulefiles \\
-        if (x$planck == x"yes") then \\
-            module use /project/projectdirs/planck/modules/carver/intel/modulefiles \\
-        endif \\
-        if (x$polar == x"yes") then \\
-            module use /project/projectdirs/polar/modules/carver/intel/modulefiles \\
-        endif \\
-    breaksw \\
+  alias hpcports 'setenv PATH /usr/common/usg/tcsh/6.18.01/bin:$PATH ; setenv SHELL /usr/common/usg/tcsh/6.18.01/bin/tcsh ; set planck=`planckcheck` ; set polar=`polarcheck` ; module unuse /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/carver/hpcports_gnu_dx9/env/modulefiles ; module unuse /project/projectdirs/planck/modules/carver/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/carver/gnu_dx9/modulefiles ; module unuse /project/projectdirs/polar/modules/carver/gnu/modulefiles ; eval "switch (\!:1) \\
     case "gnu": \\
     module use /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles \\
         if (x$planck == x"yes") then \\
@@ -102,7 +84,7 @@ if ( $NERSC_HOST == "carver" ) then
         endif \\
     breaksw \\
     default: \\
-    echo "usage:  hpcports \[ gnu OR intel \]" \\
+    echo "usage:  hpcports \[ gnu OR dx9 \]" \\
     breaksw \\
   endsw" ; tcsh'
 
@@ -122,7 +104,7 @@ if ( $NERSC_HOST == "edison" ) then
     endif
   endif
 
-  alias hpcports 'set planck=`planckcheck` ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm_gnu/env/modulefiles; module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm_intel/env/modulefiles; module unuse /project/projectdirs/planck/modules/edison/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/intel/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/ccm_gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/ccm_intel/modulefiles; eval "switch (\!:1) \\
+  alias hpcports 'set planck=`planckcheck` ; set polar=`polarcheck` ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_ccm_gnu/env/modulefiles ; module unuse /project/projectdirs/cmb/modules/edison/hpcports_shared_gnu/env/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/intel/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/ccm_gnu/modulefiles ; module unuse /project/projectdirs/planck/modules/edison/shared_gnu/modulefiles ; module unuse /project/projectdirs/polar/modules/edison/ccm_gnu/modulefiles ; module unuse /project/projectdirs/polar/modules/edison/shared_gnu/modulefiles ; eval "switch (\!:1) \\
     case "intel": \\
     module use /project/projectdirs/cmb/modules/edison/hpcports_intel/env/modulefiles \\
         if (x$planck == x"yes") then \\
@@ -140,25 +122,37 @@ if ( $NERSC_HOST == "edison" ) then
         if (x$planck == x"yes") then \\
             module use /project/projectdirs/planck/modules/edison/ccm_gnu/modulefiles \\
         endif \\
+        if (x$polar == x"yes") then \\
+            module use /project/projectdirs/polar/modules/edison/ccm_gnu/modulefiles \\
+        endif \\
     breaksw \\
-    case "ccm_intel": \\
-    module use /project/projectdirs/cmb/modules/edison/hpcports_ccm_intel/env/modulefiles \\
+    case "shared_gnu": \\
+    module use /project/projectdirs/cmb/modules/edison/hpcports_shared_gnu/env/modulefiles \\
         if (x$planck == x"yes") then \\
-            module use /project/projectdirs/planck/modules/edison/ccm_intel/modulefiles \\
+            module use /project/projectdirs/planck/modules/edison/shared_gnu/modulefiles \\
+        endif \\
+        if (x$polar == x"yes") then \\
+            module use /project/projectdirs/polar/modules/edison/shared_gnu/modulefiles \\
         endif \\
     breaksw \\
     default: \\
-    echo "usage:  hpcports \[ gnu OR intel OR ccm_gnu OR ccm_intel OR dx9 \]" \\
+    echo "usage:  hpcports \[ gnu OR intel OR ccm_gnu OR shared_gnu \]" \\
     breaksw \\
   endsw"'
 
 endif
 
 
+# This contains module files which apply to multiple systems
+module use /project/projectdirs/cmb/modules/modulefiles
+
+
 # This is for environment propagation using
 # Cray CCM
-if ( -e $HOME/.hpcpenv_${NERSC_HOST} ) then
-  source $HOME/.hpcpenv_$NERSC_HOST
+if ( x$PBS_JOBID != x ) then
+  if ( -e $HOME/.hpcpenv_$PBS_JOBID ) then
+    source $HOME/.hpcpenv_$PBS_JOBID
+  endif
 endif
 
 
