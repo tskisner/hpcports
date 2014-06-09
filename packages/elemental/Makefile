@@ -53,7 +53,7 @@ pkg-configure :
 	-D Fortran_FLAGS="$(FCFLAGS)" \
 	-D OpenMP_CXX_FLAGS="$(OMPFLAGS)" \
 	-D MATH_LIBS="$${math}" \
-	-D ELEM_TESTS:BOOL=ON \
+	-D ELEM_TESTS:BOOL=OFF \
 	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR)
 

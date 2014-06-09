@@ -37,7 +37,7 @@ pkg-configure :
 	CXX="$(CXX) $(CXXFLAGS)" \
 	FC="$(F77) $(FFLAGS)" \
 	CMAKE_INCLUDE_PATH="$(tcl_PREFIX)/include:$(tk_PREFIX)/include" \
-	CMAKE_LIBRARY_PATH="$(tcl_PREFIX)/lib:$(tk_PREFIX)/lib" \
+	CMAKE_LIBRARY_PATH="$(tcl_PREFIX)/lib:$(tk_PREFIX)/lib:$(tcl_PREFIX)/lib64:$(tk_PREFIX)/lib64" \
 	cmake $${dyn} \
 	-D DEFAULT_NO_CAIRO_DEVICES:BOOL=ON \
 	-D DEFAULT_NO_QT_DEVICES:BOOL=ON \
