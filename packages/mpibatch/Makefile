@@ -17,19 +17,19 @@ PKG_PATCHES =
 # rules for this package
 
 pkg-prefetch :
-	@mkdir -p $(STAGE); \
-	echo "PREFIX = $(HPCP_PREFIX)" > $(STAGE)/opts.make; \
-	echo "NAME = $(PKG_NAME)" >> $(STAGE)/opts.make; \
-	echo "VERSION = $(PKG_FULLVERSION)" >> $(STAGE)/opts.make; \
-	echo "MPICC = $(MPICC)" >> $(STAGE)/opts.make; \
-	echo "CC = $(CC)" >> $(STAGE)/opts.make; \
-	echo "CFLAGS = $(CFLAGS)" >> $(STAGE)/opts.make; \
-	echo "LDFLAGS = $(LDFLAGS)" >> $(STAGE)/opts.make; \
-	echo "LIBS = $(LIBS)" >> $(STAGE)/opts.make
+	@echo "" > /dev/null
 
 
 pkg-configure :
-	@echo "" > /dev/null
+	@cd $(STAGE); \
+	echo "PREFIX = $(HPCP_PREFIX)" > opts.make; \
+	echo "NAME = $(PKG_NAME)" >> opts.make; \
+	echo "VERSION = $(PKG_FULLVERSION)" >> opts.make; \
+	echo "MPICC = $(MPICC)" >> opts.make; \
+	echo "CC = $(CC)" >> opts.make; \
+	echo "CFLAGS = $(CFLAGS)" >> opts.make; \
+	echo "LDFLAGS = $(LDFLAGS)" >> opts.make; \
+	echo "LIBS = $(LIBS)" >> opts.make
 
 
 pkg-build :

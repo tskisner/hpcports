@@ -35,7 +35,7 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
 	--enable-threads \
-	--with-lapacke="$(lapack_LIBS_CC) $(blas_LIBS_CC) $(FCLIBS)" \
+	--with-lapacke="$(lapack_LIBS_CC) $(blas_LIBS_CC) $(FCLIBS) $(OMPFLAGS)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
