@@ -40,7 +40,7 @@ pkg-configure :
 	./configure $${dyn} $${pyopt} \
 	--with-boost=$(boost_PREFIX) \
 	--with-lapack="$(lapack_LIBS_CXX)" \
-	--with-blas="$(blas_LIBS_CXX)" \
+	--with-blas="$(blas_LIBS_CXX) $(FCLIBS)" \
 	--with-cfitsio="$(cfitsio_PREFIX)" \
 	--with-elemental="$(elemental_PREFIX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)

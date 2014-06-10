@@ -41,7 +41,7 @@ FC = gfortran
 
 # compile flags
 
-CFLAGS = -O3 -fPIC -DNDEBUG
+CFLAGS = -O3 -fPIC -DNDEBUG -fgnu89-inline
 CXXFLAGS = -O3 -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -fPIC -DNDEBUG
 FCFLAGS = -O3 -fPIC -DNDEBUG
@@ -56,7 +56,7 @@ FCLIBS = -lgfortran
 
 # general linking
 
-LIBS = -lm -lpthread
+LIBS = -lm -lpthread -ldl
 
 # disable infiniband on riemann, since there is no hardware for it
 
@@ -64,34 +64,34 @@ openmpi_EXTRA = --without-openib
 
 # vendor math libraries
 
-VENDOR = intel
-INTEL_PREFIX = $(MKL_DIR)
-INTEL_INCLUDE = $(INTEL_PREFIX)/include
-INTEL_LIBDIR = $(INTEL_PREFIX)/lib/em64t
-#INTEL_LIBS_CC = -lmkl_rt
-#INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3
-#INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
-#INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3
-INTEL_LIBS_CC = -lmkl_def -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3
-INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
-INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
-INTEL_LIBS_FC = $(INTEL_LIBS_CC)
+VENDOR = 
+#INTEL_PREFIX = $(MKL_DIR)
+#INTEL_INCLUDE = $(INTEL_PREFIX)/include
+#INTEL_LIBDIR = $(INTEL_PREFIX)/lib/em64t
+##INTEL_LIBS_CC = -lmkl_rt
+##INTEL_LIBS_CC = -lmkl_rt -lmkl_mc3
+##INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
+##INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3
+#INTEL_LIBS_CC = -lmkl_def -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lmkl_mc3
+#INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
+#INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
+#INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
-blas_OVERRIDE = TRUE
-blas_VERSION = 11.0.084
-blas_LIBS_CC = $(INTEL_LIBS_CC) $(FCLIBS)
-blas_LIBS_CXX = $(INTEL_LIBS_CXX) $(FCLIBS)
-blas_LIBS_F77 = $(INTEL_LIBS_F77)
-blas_LIBS_FC = $(INTEL_LIBS_FC)
+#blas_OVERRIDE = TRUE
+#blas_VERSION = 11.0.084
+#blas_LIBS_CC = $(INTEL_LIBS_CC) $(FCLIBS)
+#blas_LIBS_CXX = $(INTEL_LIBS_CXX) $(FCLIBS)
+#blas_LIBS_F77 = $(INTEL_LIBS_F77)
+#blas_LIBS_FC = $(INTEL_LIBS_FC)
 
-lapack_OVERRIDE = TRUE
-lapack_VERSION = 11.0.084
-lapack_LIBS_CC = -lmkl_lapack
-lapack_LIBS_CXX = $(lapack_LIBS_CC)
-lapack_LIBS_F77 = $(lapack_LIBS_CC)
-lapack_LIBS_FC = $(lapack_LIBS_CC)
+#lapack_OVERRIDE = TRUE
+#lapack_VERSION = 11.0.084
+#lapack_LIBS_CC = -lmkl_lapack
+#lapack_LIBS_CXX = $(lapack_LIBS_CC)
+#lapack_LIBS_F77 = $(lapack_LIBS_CC)
+#lapack_LIBS_FC = $(lapack_LIBS_CC)
 
 tcl_OVERRIDE = TRUE
 tcl_VERSION = 8.4.13
