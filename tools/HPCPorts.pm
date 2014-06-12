@@ -645,7 +645,7 @@ sub module_file {
 			}
 		} elsif ( $key eq "TCL" ) {
 			for $val ( @valsplit ) {
-				print OUT "setenv TCLLIBPATH \"${prefix}/${pname}-${fullversion}/${val} \\\${TCLLIBPATH}\"\n";
+				print OUT "prepend-path -d \" \" TCLLIBPATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
 			}
 		} elsif ( $key eq "LIB" ) {
 			for $val ( @valsplit ) {
