@@ -53,7 +53,8 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR)/unix; \
-	$(MAKE) install
+	$(MAKE) install; \
+	ln -s $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/libtk8.5.so $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/libtk.so
 
 
 pkg-clean :

@@ -24,7 +24,11 @@ pkg-prefetch :
 
 
 pkg-configure :
-	@echo "" > /dev/null
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	dirs=`echo $(CPATH) | sed -e "s#/include##g" -e "s#:#,#g"`; \
+	echo "[directories]" > setup.cfg; \
+	echo "basedirlist = $${dirs},/usr" >> setup.cfg; \
+	echo "" >> setup.cfg
 
 
 pkg-build :

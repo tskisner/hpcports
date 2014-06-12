@@ -44,7 +44,8 @@ pkg-build :
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR)/unix; \
 	$(MAKE) install; \
-	$(MAKE) install-private-headers
+	$(MAKE) install-private-headers; \
+	ln -s $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/libtcl8.5.so $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/libtcl.so
 
 
 pkg-clean :

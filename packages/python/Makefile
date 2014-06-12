@@ -36,11 +36,10 @@ pkg-configure :
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	OPT="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	CPPFLAGS="-I$(sqlite_PREFIX)/include -I$(readline_PREFIX)/include" \
-	LDFLAGS="$(LDFLAGS) -L$(sqlite_PREFIX)/lib -L$(readline_PREFIX)/lib" \
-	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(termcap_LIBS_CC) $(LIBS)" \
-	./configure \
-	$${dyn} $${nognu} \
+	CPPFLAGS="-I$(sqlite_PREFIX)/include -I$(readline_PREFIX)/include -I$(tk_PREFIX)/include -I$(tcl_PREFIX)/include -I$(bzip2_PREFIX)/include" \
+	LDFLAGS="$(LDFLAGS) -L$(sqlite_PREFIX)/lib -L$(readline_PREFIX)/lib -L$(tk_PREFIX)/lib -L$(tcl_PREFIX)/lib -L$(bzip2_PREFIX)/lib" \
+	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(termcap_LIBS_CC) $(tk_LIBS_CC) $(tcl_LIBS_CC) $(bzip2_LIBS_CC) $(LIBS)" \
+	./configure $${dyn} $${nognu} \
 	--disable-toolbox-glue \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
