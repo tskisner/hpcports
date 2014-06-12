@@ -1,6 +1,7 @@
 BIN = bin
 MAN = man
 INCLUDE = include
+TCL = lib
 LIB = lib
 LIBS_CC = -ltcl8.5
 LIBS_CXX = -ltcl8.5
