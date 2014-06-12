@@ -33,7 +33,8 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} \
 	--with-python=no \
-	--with-zlib=$(zlib_PREFIX) \
+	--with-zlib=no \
+	--with-lzma=no \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
