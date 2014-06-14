@@ -97,6 +97,12 @@ AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/g
 
 # package overrides
 
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.5.5
+
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.5.5
+
 termcap_OVERRIDE = TRUE
 termcap_VERSION = 2.0.8
 
