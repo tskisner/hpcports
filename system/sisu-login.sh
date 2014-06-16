@@ -8,14 +8,14 @@ if [ "x${loaded}" = x ]; then
     if [ "x${loadedintel}" != x ]; then
       module swap PrgEnv-intel PrgEnv-gnu
     fi
-    module swap craype craype/2.1.0
+    module swap craype craype/2.1.2
     module unload cray-shmem
     module unload cray-mpich
     module unload atp
     module unload cray-libsci
     module unload craype-network-aries
     module load craype-network-none
-    module swap gcc gcc/4.8.2
+    module swap gcc gcc/4.9.0
     module load git/1.8.1.4
     module load cmake/2.8.10.2
 fi
