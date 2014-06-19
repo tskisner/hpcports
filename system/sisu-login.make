@@ -48,10 +48,10 @@ FC = ftn
 
 # compile flags
 
-CFLAGS = -O3 -m64 -fPIC -DNDEBUG -target-cpu=sandybridge -target-network=none
-CXXFLAGS = -O3 -m64 -fPIC -DNDEBUG -std=c++11 -target-cpu=sandybridge -target-network=none
-FFLAGS = -O3 -m64 -fPIC -DNDEBUG -target-cpu=sandybridge -target-network=none
-FCFLAGS = -O3 -m64 -fPIC -DNDEBUG -target-cpu=sandybridge -target-network=none
+CFLAGS = -O3 -m64 -fPIC -DNDEBUG -fgnu89-inline
+CXXFLAGS = -O3 -m64 -fPIC -DNDEBUG -std=c++11
+FFLAGS = -O3 -m64 -fPIC -DNDEBUG
+FCFLAGS = -O3 -m64 -fPIC -DNDEBUG
 
 # OpenMP flags
 
@@ -82,6 +82,12 @@ openssl_VERSION = 0.9.8j
 curl_OVERRIDE = TRUE
 curl_VERSION = 7.19.7
 
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.5.5
+
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.5.5
+
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
 
@@ -93,9 +99,4 @@ readline_VERSION = 5.2
 
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.7
-
-# healpy is broken
-
-healpy_OVERRIDE = TRUE
-healpy_VERSION = NA
 
