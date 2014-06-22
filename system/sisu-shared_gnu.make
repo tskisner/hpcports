@@ -1,5 +1,5 @@
 
-HPCP_PREFIX = /proj/planck/software/hpcports
+HPCP_PREFIX = /proj/planck/software/hpcports_shared_gnu
 
 # OS environment version
 #
@@ -11,7 +11,7 @@ HPCP_PREFIX = /proj/planck/software/hpcports
 # 2.0 :  gnu 4.8.1, cray-mpich2 6.0.2, craype 1.06, mkl 13.5.192
 # 3.0 :  gnu 4.8.2, cray-mpich 6.2.1, craype 2.04, libsci 12.1.3
 # 4.0 :  gnu 4.8.2, cray-mpich 6.3.0, craype 2.1.0, libsci 12.2.0, fftw/3.3.0.4
-# 5.0 :  gnu 4.9.0, cray-mpich 7.0.0, craype 2.1.2, libsci 13.0.0, fftw/3.3.0.4
+# 5.0 :  gnu 4.9.0, cray-mpich 7.0.0, craype 2.1.2, libsci 13.0.0, mkl-13
 #
 
 HPCP_ENV = 5.0
@@ -76,11 +76,17 @@ MPIFCLIBS =
 
 LIBS = -lpthread -lm
 LDFLAGS =
-LIBTOOLFLAGS = 
 
 # vendor math libraries
 
-VENDOR = 
+VENDOR = intel
+INTEL_PREFIX = /opt/intel/composer_xe_2013_sp1.3.174
+INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
+INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
+INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
+INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
+INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
@@ -99,11 +105,20 @@ tcl_VERSION = 8.5.5
 tk_OVERRIDE = TRUE
 tk_VERSION = 8.5.5
 
+termcap_OVERRIDE = TRUE
+termcap_VERSION = 2.0.8
+
+readline_OVERRIDE = TRUE
+readline_VERSION = 5.2
+
+gzip_OVERRIDE = TRUE
+gzip_VERSION = 1.3.12
+
+gettext_OVERRIDE = TRUE
+gettext_VERSION = 0.17.0
+
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
-
-fftw_OVERRIDE = TRUE
-fftw_VERSION = 3.3.0.4
 
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 

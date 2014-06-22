@@ -17,12 +17,18 @@ if ( ! $?MODULESHOME ) then
   endif
 endif
 
-module unuse /proj/planck/software/hpcports_login/env/modulefiles ; module unuse /proj/planck/software/hpcports/env/modulefiles ; eval "switch (\!:1) \\
+alias hpcports 'module unuse /proj/planck/software/hpcports_shared_gnu/env/modulefiles ; module unuse /proj/planck/software/hpcports_gnu/env/modulefiles ; module unuse /proj/planck/software/planck_shared_gnu/modulefiles ; module unuse /proj/planck/software/planck_gnu/modulefiles eval "switch (\!:1) \\
   case "login": \\
-  module use /proj/planck/software/hpcports_login/env/modulefiles \\
+  module use /proj/planck/software/hpcports_shared_gnu/env/modulefiles \\
+  module use /proj/planck/software/planck_shared_gnu/modulefiles \\
+  breaksw \\
+  case "shared_gnu": \\
+  module use /proj/planck/software/hpcports_shared_gnu/env/modulefiles \\
+  module use /proj/planck/software/planck_shared_gnu/modulefiles \\
   breaksw \\
   case "gnu": \\
-  module use /proj/planck/software/hpcports/env/modulefiles \\
+  module use /proj/planck/software/hpcports_gnu/env/modulefiles \\
+  module use /proj/planck/software/planck_gnu/modulefiles
   breaksw \\
   default: \\
   echo "usage:  hpcports \[ gnu OR login \]" \\

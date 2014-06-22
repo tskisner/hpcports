@@ -21,14 +21,21 @@ fi
 # unload all toolchain options and load the correct one
 
 hpcports () {
-  module unuse /proj/planck/software/hpcports/env/modulefiles
-  module unuse /proj/planck/software/hpcports_login/env/modulefiles
+  module unuse /proj/planck/software/hpcports_gnu/env/modulefiles
+  module unuse /proj/planck/software/hpcports_shared_gnu/env/modulefiles
+  module unuse /proj/planck/software/planck_shared_gnu/modulefiles
+  module unuse /proj/planck/software/planck_gnu/modulefiles
   case $1 in
-    login ) module use /proj/planck/software/hpcports_login/env/modulefiles
+    shared_gnu ) module use /proj/planck/software/hpcports_shared_gnu/env/modulefiles
+      module use /proj/planck/software/planck_shared_gnu/modulefiles
       ;;
-    gnu ) module use /proj/planck/software/hpcports/env/modulefiles
+    login ) module use /proj/planck/software/hpcports_shared_gnu/env/modulefiles
+      module use /proj/planck/software/planck_shared_gnu/modulefiles
       ;;
-    * ) echo "usage:  hpcports [ gnu | login ]"
+    gnu ) module use /proj/planck/software/hpcports_gnu/env/modulefiles
+      module use /proj/planck/software/planck_gnu/modulefiles
+      ;;
+    * ) echo "usage:  hpcports [ gnu | shared_gnu ]"
       ;;
   esac
 }
