@@ -8,9 +8,10 @@ HPCP_PREFIX = /planck/tools/hpcports
 # here:
 #
 # 1.0 : gcc-4.8.2, MKL 10.0.3
+# 1.1 : same as 1.0, but use new version hashes
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 1.1
 
 # suffix, to avoid name collisions with nersc modules
 
