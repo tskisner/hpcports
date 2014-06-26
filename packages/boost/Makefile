@@ -43,7 +43,7 @@ pkg-configure :
 	fi; \
 	mpilib=""; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-shared-library>#g"`; \
+		mpilib=""; \
 	else \
 		mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-static-library>#g"`; \
 	fi; \

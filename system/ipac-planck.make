@@ -55,10 +55,10 @@ openmpi_EXTRA = \
 
 # compile flags
 
-CFLAGS = -O3 -g -fPIC -DNDEBUG
-CXXFLAGS = -O3 -g -fPIC -DNDEBUG -std=c++11
-FFLAGS = -O3 -g -fPIC -DNDEBUG
-FCFLAGS = -O3 -g -fPIC -DNDEBUG
+CFLAGS = -O3 -fPIC -DNDEBUG
+CXXFLAGS = -O3 -fPIC -DNDEBUG -std=c++11
+FFLAGS = -O3 -fPIC -DNDEBUG
+FCFLAGS = -O3 -fPIC -DNDEBUG
 
 # OpenMP flags
 
