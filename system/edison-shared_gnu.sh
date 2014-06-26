@@ -10,10 +10,10 @@ if [ "x${loadedgnu}" = x ]; then
       module swap PrgEnv-intel PrgEnv-gnu
     fi
     module unload cray-shmem
-    module swap gcc gcc/4.8.2
-    module swap craype craype/2.1.1
-    module swap cray-mpich cray-mpich/6.3.1
-    module load cray-libsci/12.2.0
+    module swap gcc gcc/4.9.0
+    module swap craype craype/2.1.2
+    module swap cray-mpich cray-mpich/7.0.0
+    module load cray-libsci/13.0.0
     module load mkl/13.0.3
     module load git/1.8.1.1
     module load zlib/1.2.7

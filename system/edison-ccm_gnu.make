@@ -11,10 +11,11 @@
 # here:
 #
 # 1.0 :  gnu 4.8.2, mkl-13.0.3
-# 2.0 : gcc-4.9.0 / binutils 2.24, MKL 13.0.1
+# 2.0 :  gcc-4.9.0 / binutils 2.24, MKL 13.0.1
+# 3.0 :  cray gcc/4.9.0, craype/2.1.2, mkl/13.0.3
 #
 
-HPCP_ENV = 2.0
+HPCP_ENV = 3.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -46,9 +47,10 @@ CXX = CC
 F77 = ftn
 FC = ftn
 
-# MPI compilers
+# MPI compilers:  disable support for the scheduler and infiniband to work
+# correctly in CCM environment.
 
-openmpi_EXTRA = --without-tm
+openmpi_EXTRA = --without-tm --enable-mca-no-build=btl-openib
 
 # compile flags
 
@@ -73,7 +75,7 @@ LDFLAGS =
 # vendor math libraries
 
 VENDOR = intel
-INTEL_PREFIX = /opt/intel/composer_xe_2013_sp1.0.080
+INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
 INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_core -lmkl_gnu_thread -lpthread -lm
