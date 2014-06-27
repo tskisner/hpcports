@@ -65,6 +65,7 @@ pkg-configure :
 	--with-cfitsio="$(cfitsio_PREFIX)" \
 	--with-wcslib="$(wcslib_PREFIX)" \
 	--with-elemental="$(elemental_PREFIX)" \
+	--with-healpix_cxx="$(healpix_PREFIX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
