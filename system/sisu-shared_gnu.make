@@ -12,9 +12,18 @@ HPCP_PREFIX = /proj/planck/software/hpcports_shared_gnu
 # 3.0 :  gnu 4.8.2, cray-mpich 6.2.1, craype 2.04, libsci 12.1.3
 # 4.0 :  gnu 4.8.2, cray-mpich 6.3.0, craype 2.1.0, libsci 12.2.0, fftw/3.3.0.4
 # 5.0 :  gnu 4.9.0, cray-mpich 7.0.0, craype 2.1.2, libsci 13.0.0, mkl-13
+# 5.1 :  gnu 4.9.0, cray-mpich 7.0.1, craype 2.1.3, libsci 13.0.0, mkl-13
 #
 
-HPCP_ENV = 5.0
+HPCP_ENV = 5.1
+
+# we are cross-compiling
+
+HPCP_CROSS_HOST = x86_64-unknown-linux-gnu
+BUILD_CC = gcc
+BUILD_CXX = g++
+BUILD_FC = gfortran
+BUILD_F77 = gfortran
 
 # suffix, to avoid name collisions with nersc modules
 

@@ -25,6 +25,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
@@ -40,7 +44,7 @@ pkg-configure :
 	CC="$(CC)" CFLAGS="$(CFLAGS) $${osx}" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS) $${osx}" \
-	./configure $${dyn} $${zl} \
+	./configure $${dyn} $${zl} $${host} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

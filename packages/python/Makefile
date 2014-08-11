@@ -25,6 +25,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn="--enable-shared"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
@@ -39,7 +43,7 @@ pkg-configure :
 	CPPFLAGS="-I$(sqlite_PREFIX)/include -I$(readline_PREFIX)/include -I$(tk_PREFIX)/include -I$(tcl_PREFIX)/include -I$(bzip2_PREFIX)/include" \
 	LDFLAGS="$(LDFLAGS) -L$(sqlite_PREFIX)/lib -L$(readline_PREFIX)/lib -L$(tk_PREFIX)/lib -L$(tcl_PREFIX)/lib -L$(bzip2_PREFIX)/lib" \
 	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(termcap_LIBS_CC) $(tk_LIBS_CC) $(tcl_LIBS_CC) $(bzip2_LIBS_CC) $(LIBS)" \
-	./configure $${dyn} $${nognu} \
+	./configure $${dyn} $${nognu} $${host} \
 	--disable-toolbox-glue \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

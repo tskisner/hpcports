@@ -90,4 +90,28 @@ ifndef openmpi_EXTRA
 	export openmpi_EXTRA =
 endif
 
+# host variable used for cross compiling
+
+ifndef HPCP_CROSS_HOST
+	export HPCP_CROSS_HOST =
+endif
+
+# compilers used to target build system, for use in
+# constructing tools that are only used on the build machine
+
+ifndef BUILD_CC
+	export BUILD_CC = $(CC)
+endif
+
+ifndef BUILD_CXX
+	export BUILD_CXX = $(CXX)
+endif
+
+ifndef BUILD_FC
+	export BUILD_FC = $(FC)
+endif
+
+ifndef BUILD_F77
+	export BUILD_F77 = $(F77)
+endif
 

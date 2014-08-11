@@ -25,6 +25,10 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	./autogen.sh; \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
@@ -41,8 +45,7 @@ pkg-configure :
 	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	FLIBS="$(FLIBS)" \
-	./configure \
-	$${dyn} \
+	./configure $${dyn} $${host} \
 	--with-pic \
 	--with-blas="$(blas_LIBS_CXX)" \
 	--with-lapack="$${lapack}" \

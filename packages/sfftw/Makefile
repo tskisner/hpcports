@@ -25,6 +25,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
@@ -32,7 +36,7 @@ pkg-configure :
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	MPICC="$(MPICC)" \
-	./configure \
+	./configure $${host} \
 	--enable-single \
 	--enable-threads --enable-mpi $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)

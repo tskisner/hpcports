@@ -25,6 +25,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
@@ -32,8 +36,7 @@ pkg-configure :
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	./configure \
-	$${dyn} \
+	./configure $${dyn} $${host} \
 	--with-pic \
 	--disable-csharp \
 	--disable-java \

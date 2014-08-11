@@ -25,6 +25,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	CC="$(BUILD_CC)" \
+	CXX="$(BUILD_CXX)" \
+	FC="$(BUILD_FC)" \
+	F77="$(BUILD_F77)" \
 	./configure \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

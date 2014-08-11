@@ -29,6 +29,9 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
+	CC="$(BUILD_CC)" \
+	CXX="$(BUILD_CXX)" \
+	FC="$(BUILD_FC)" \
 	./configure $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

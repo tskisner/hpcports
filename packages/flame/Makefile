@@ -25,6 +25,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn="--enable-dynamic-build"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-dynamic-build"; \
@@ -40,7 +44,7 @@ pkg-configure :
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS) -lm" \
-	./configure $${dyn} $${fopt} $${omp} \
+	./configure $${dyn} $${fopt} $${omp} $${host} \
 	--disable-builtin-blas \
 	--enable-vector-intrinsics=sse \
 	--with-cc="$(CC)" \

@@ -25,6 +25,10 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	./autogen.sh; \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn="--disable-shared --enable-static --enable-all-static"; \
 	pyopt="--disable-python"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
@@ -37,7 +41,7 @@ pkg-configure :
 	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	MPICXX="$(MPICXX)" \
 	LDFLAGS="$(LDFLAGS) $(OMPFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} $${pyopt} \
+	./configure $${dyn} $${pyopt} $${host} \
 	--with-boost=$(boost_PREFIX) \
 	--with-lapack="$(lapack_LIBS_CXX)" \
 	--with-blas="$(blas_LIBS_CXX) $(FCLIBS)" \

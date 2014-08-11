@@ -25,6 +25,10 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn=""; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared --disable-python --disable-perl"; \
@@ -36,7 +40,7 @@ pkg-configure :
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} $${fort} \
+	./configure $${dyn} $${fort} $${host} \
 	--with-pic \
 	--disable-legacy-api \
 	--disable-perl \

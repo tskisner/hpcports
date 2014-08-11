@@ -29,11 +29,15 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	CC="$(BUILD_CC)" \
+	CXX="$(BUILD_CXX)" \
+	FC="$(BUILD_FC)" \
+	F77="$(BUILD_F77)" \
+	CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	F77="$(F77)" FFLAGS="$(FFLAGS)" \
-	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
+	CXXFLAGS="$(CXXFLAGS)" \
+	FFLAGS="$(FFLAGS)" \
+	FCFLAGS="$(FCFLAGS)" \
 	./configure $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

@@ -25,8 +25,16 @@ pkg-prefetch :
 
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR)/git-$(PKG_VERSION); \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	$(MAKE) configure; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
+	CC="$(BUILD_CC)" \
+	CXX="$(BUILD_CXX)" \
+	FC="$(BUILD_FC)" \
+	F77="$(BUILD_F77)" \
+	CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	NO_GETTEXT=1 \
 	./configure \

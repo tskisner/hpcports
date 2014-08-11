@@ -25,6 +25,10 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	./autogen.sh; \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn="--disable-shared --enable-static --enable-all-static"; \
 	pyopt="--disable-python"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
@@ -52,7 +56,7 @@ pkg-configure :
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
 	LDFLAGS="$(python_LDFLAGS) $(LDFLAGS)" LIBS="$(LIBS)" \
-	./configure $${dyn} $${pyopt} $${mp} $${fort} \
+	./configure $${dyn} $${pyopt} $${mp} $${fort} $${host} \
 	--enable-exp-all \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
 	--with-boost=$(boost_PREFIX) \

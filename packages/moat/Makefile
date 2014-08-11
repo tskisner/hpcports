@@ -25,6 +25,10 @@ pkg-prefetch :
 pkg-configure :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	./autogen.sh; \
+	host=""; \
+	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
+		host="--host=$(HPCP_CROSS_HOST)"; \
+	fi; \
 	dyn="--disable-shared --enable-static --enable-all-static"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \
@@ -41,8 +45,7 @@ pkg-configure :
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
 		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
-		./configure \
-		$${dyn} \
+		./configure $${dyn} $${host} \
 		--with-fftw-libs="$(fftw_LIBS_CXX)" \
 		--with-accelerate-libs="$(APPLE_LIBS_CXX)" \
 		--with-papi-cpp=no \
@@ -62,8 +65,7 @@ pkg-configure :
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
 		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
-		./configure \
-		$${dyn} \
+		./configure $${dyn} $${host} \
 		--with-fftw-cpp=no \
 		--with-acml-libs="$(AMD_LIBS_CXX)" \
 		--with-papi-cpp=no \
@@ -82,8 +84,7 @@ pkg-configure :
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
 		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
-		./configure \
-		$${dyn} \
+		./configure $${dyn} $${host} \
 		--with-fftw-cpp=no \
 		--with-mkl-libs="$(INTEL_LIBS_CXX) $(OMPFLAGS) $(FCLIBS)" \
 		--with-papi-cpp=no \
@@ -102,8 +103,7 @@ pkg-configure :
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
 		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
-		./configure \
-		$${dyn} \
+		./configure $${dyn} $${host} \
 		--with-fftw-libs="$(fftw_LIBS_CXX)" \
 		--with-papi-cpp=no \
 		--with-boost=$(boost_PREFIX) \
