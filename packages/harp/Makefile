@@ -40,7 +40,7 @@ pkg-configure :
 	OPENMP_CXXFLAGS="$(OMPFLAGS)" \
 	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	MPICXX="$(MPICXX)" \
-	LDFLAGS="$(LDFLAGS) $(OMPFLAGS)" LIBS="$(LIBS)" \
+	LDFLAGS="$(LDFLAGS) $(OMPFLAGS) -L$(boost_PREFIX)/lib" LIBS="$(LIBS)" \
 	./configure $${dyn} $${pyopt} $${host} \
 	--with-boost=$(boost_PREFIX) \
 	--with-lapack="$(lapack_LIBS_CXX)" \

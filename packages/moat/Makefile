@@ -43,7 +43,7 @@ pkg-configure :
 		OPENMP_CXXFLAGS="$(OMPFLAGS)" \
 		LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
-		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+		LDFLAGS="$(LDFLAGS) -L$(boost_PREFIX)/lib" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
 		./configure $${dyn} $${host} \
 		--with-fftw-libs="$(fftw_LIBS_CXX)" \
@@ -63,7 +63,7 @@ pkg-configure :
 		OPENMP_CXXFLAGS="$(OMPFLAGS)" \
 		LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
-		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+		LDFLAGS="$(LDFLAGS) -L$(boost_PREFIX)/lib" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
 		./configure $${dyn} $${host} \
 		--with-fftw-cpp=no \
@@ -82,7 +82,7 @@ pkg-configure :
 		OPENMP_CXXFLAGS="$(OMPFLAGS)" \
 		LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
-		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+		LDFLAGS="$(LDFLAGS) -L$(boost_PREFIX)/lib" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
 		./configure $${dyn} $${host} \
 		--with-fftw-cpp=no \
@@ -101,7 +101,7 @@ pkg-configure :
 		OPENMP_CXXFLAGS="$(OMPFLAGS)" \
 		LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 		FLIBS="$(FLIBS)" FCLIBS="$(FCLIBS)" \
-		LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+		LDFLAGS="$(LDFLAGS) -L$(boost_PREFIX)/lib" LIBS="$(LIBS)" \
 		MPICXX="$(MPICXX)" \
 		./configure $${dyn} $${host} \
 		--with-fftw-libs="$(fftw_LIBS_CXX)" \
