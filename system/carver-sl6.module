@@ -1,0 +1,8 @@
+  if [ is-loaded openmpi-gcc ] {
+  } else {
+    module unload pgi
+    module unload openmpi
+    module load gcc/4.8.3
+    module load mkl/14.0.2
+    module load openmpi-gcc/1.8.1
+  }
