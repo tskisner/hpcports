@@ -107,3 +107,10 @@ lapack_LIBS_FC = $(lapack_LIBS_CC)
 git_OVERRIDE = TRUE
 git_VERSION = 1.7.1
 
+termcap_OVERRIDE = TRUE
+termcap_VERSION = 5.7
+
+readline_OVERRIDE = TRUE
+readline_VERSION = 6.0
+
+
