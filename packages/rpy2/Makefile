@@ -7,8 +7,9 @@ PKG_NAME = rpy2
 
 PKG_FORMAT = tar
 PKG_TAR = rpy2-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/r/rpy2/rpy2-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) --no-check-certificate https://pypi.python.org/packages/source/r/rpy2/rpy2-2.4.3.tar.gz#md5=57e3fda409226dffb543c913c8553cdc
 PKG_TAR_EXTRACT = $(GXTAR)
+
 
 PKG_SRCDIR = rpy2-$(PKG_VERSION)
 
@@ -34,6 +35,7 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages; \
 	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
 	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

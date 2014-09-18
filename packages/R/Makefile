@@ -7,7 +7,7 @@ PKG_NAME = R
 
 PKG_FORMAT = tar
 PKG_TAR = R-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://cran.rstudio.com/src/base/R-2/R-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://cran.cnr.berkeley.edu/src/base/R-3/R-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = R-$(PKG_VERSION)
@@ -29,12 +29,14 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
-	./configure \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
+	BLAS_LIBS="$(blas_LIBS_CC)" \
+	BLAS_LIBS="$(lapack_LIBS_CC)" \
+	./configure \
 	--without-aqua $${dyn} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
@@ -57,6 +59,4 @@ pkg-clean :
 # Include common package rules
 
 include ../pkg.make
-
-
 

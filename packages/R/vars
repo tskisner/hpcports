@@ -1,2 +1,2 @@
-BIN = R.framework/Versions/Current/Resources/bin
-LIB = lib
+BIN = bin
+LIB = lib/R/lib lib64/R/lib
