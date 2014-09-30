@@ -13,9 +13,10 @@
 # 1.0 :  gnu 4.8.2, mkl-13.0.3
 # 2.0 :  gcc-4.9.0 / binutils 2.24, MKL 13.0.1
 # 3.0 :  cray gcc/4.9.0, craype/2.1.2, mkl/13.0.3
+# 4.0 :  (CDT 1.19) gnu 4.9.1, craype-2.2.0, mkl-13.0.3
 #
 
-HPCP_ENV = 3.0
+HPCP_ENV = 4.0
 
 # suffix, to avoid name collisions with nersc modules
 

@@ -16,10 +16,11 @@
 # 4.0 :  gnu 4.8.2, craype-2.03, cray-mpich 6.2.0, cray-libsci 12.1.3, mkl-13.0.3, python-2.7.5
 # 4.1 :  gnu 4.8.2, craype-2.1.1 cray-mpich 6.3.1, cray-libsci 12.2.0, mkl-13.0.3
 # 4.2 :  same as 4.1, but with new HPCPorts dependency hashes.
-# 5.0 :  (CDT 1.6) gnu 4.9.0, craype-2.1.2, cray-mpich 7.0.0, cray-libsci 13.0.0, mkl-13.0.3, python-2.7.5
+# 5.0 :  (CDT 1.16) gnu 4.9.0, craype-2.1.2, cray-mpich 7.0.0, cray-libsci 13.0.0, mkl-13.0.3, python-2.7.5
+# 6.0 :  (CDT 1.19) gnu 4.9.1, craype-2.2.0, cray-mpich 7.0.3, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 #
 
-HPCP_ENV = 5.0
+HPCP_ENV = 6.0
 
 # suffix, to avoid name collisions with nersc modules
 
