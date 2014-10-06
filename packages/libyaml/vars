@@ -1,0 +1,6 @@
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lyaml
+LIBS_CXX = -lyaml
+LIBS_F77 = -lyaml
+LIBS_FC = -lyaml
