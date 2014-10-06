@@ -60,6 +60,8 @@ pkg-prefetch :
 	echo "export HPCP_MPIFCLIBS=\"$(MPIFCLIBS)\"" >> $(STAGE)/base.sh; \
 	echo "setenv HPCP_TARGET \"$(HPCP_TARGET)\"" >> $(STAGE)/base.module; \
 	echo "export HPCP_TARGET=\"$(HPCP_TARGET)\"" >> $(STAGE)/base.sh; \
+	echo "setenv HPCP_HOST \"$(HPCP_HOST)\"" >> $(STAGE)/base.module; \
+	echo "export HPCP_HOST=\"$(HPCP_HOST)\"" >> $(STAGE)/base.sh; \
 	echo "setenv HPCP_ENV \"$(HPCP_ENV)\"" >> $(STAGE)/base.module; \
 	echo "export HPCP_ENV=\"$(HPCP_ENV)\"" >> $(STAGE)/base.sh; \
 	echo "setenv HPCP_TOOLCHAIN \"$(TOOLCHAIN)\"" >> $(STAGE)/base.module; \
