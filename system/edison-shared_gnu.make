@@ -60,6 +60,8 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
+MPICPPFLAGS = /opt/cray/mpt/7.0.3/gni/mpich2-gnu/49/include
+MPILDFLAGS = /opt/cray/mpt/7.0.3/gni/mpich2-gnu/49/lib
 MPILIBS = -lmpich
 MPICXXLIBS = -lmpichcxx
 

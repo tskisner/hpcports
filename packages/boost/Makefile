@@ -41,13 +41,18 @@ pkg-configure :
 		echo "using intel-linux : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> $${jampath}; \
 		boostchain="intel-linux"; \
 	fi; \
+	mpicppflags="<include>$(MPICPPFLAGS)"; \
+	mpildflags="<library-path>$(MPILDFLAGS)"; \
 	mpilib=""; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		mpilib=""; \
+		if [ "x$(MPILIBS)" != "x" ]; then \
+			mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-shared-library>#g"`; \
+		fi; \
 	else \
 		mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-static-library>#g"`; \
 	fi; \
-	echo "using mpi : $(MPICXX) : $${mpilib} ;" >> $${jampath}; \
+	echo "using mpi : $(MPICXX) : $${mpicppflags} $${mpildflags} $${mpilib} ;" >> $${jampath}; \
 	echo "" >> $${jampath}; \
 	BOOST_BUILD_USER_CONFIG=$${jampath} ./bootstrap.sh --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
@@ -59,7 +64,7 @@ pkg-build :
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	jampath="tools/build/user-config.jam"; \
-	opts="--layout=tagged variant=release threading=single,multi "; \
+	opts="--layout=tagged variant=release threading=multi "; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		opts="$${opts}link=shared runtime-link=shared"; \
 	else \
