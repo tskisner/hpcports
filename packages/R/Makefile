@@ -34,6 +34,7 @@ pkg-configure :
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
+	FLIBS="$(FCLIBS)" FCLIBS="$(FCLIBS)" \
 	BLAS_LIBS="$(blas_LIBS_CC)" \
 	BLAS_LIBS="$(lapack_LIBS_CC)" \
 	./configure \
