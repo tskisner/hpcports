@@ -41,18 +41,28 @@ pkg-configure :
 		echo "using intel-linux : : $(CXX) : <cflags>\"$(CFLAGS)\" <cxxflags>\"$(CXXFLAGS)\" ;" >> $${jampath}; \
 		boostchain="intel-linux"; \
 	fi; \
-	mpicppflags="<include>$(MPICPPFLAGS)"; \
-	mpildflags="<library-path>$(MPILDFLAGS)"; \
-	mpilib=""; \
-	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
-		mpilib=""; \
-		if [ "x$(MPILIBS)" != "x" ]; then \
-			mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-shared-library>#g"`; \
+	if [ "x$(MPILIBS)" != "x" ]; then \
+		mpicppflags=""; \
+		if [ "x$(MPICPPFLAGS)" != "x" ]; then \
+			mpicppflags="<include>$(MPICPPFLAGS)"; \
 		fi; \
+		mpildflags=""; \
+		if [ "x$(MPILDFLAGS)" != "x" ]; then \
+			mpildflags="<library-path>$(MPILDFLAGS)"; \
+		fi; \
+		mpilib=""; \
+		if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
+			mpilib=""; \
+			if [ "x$(MPILIBS)" != "x" ]; then \
+				mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-shared-library>#g"`; \
+			fi; \
+		else \
+			mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-static-library>#g"`; \
+		fi; \
+		echo "using mpi : $(MPICXX) : $${mpicppflags} $${mpildflags} $${mpilib} ;" >> $${jampath}; \
 	else \
-		mpilib=`echo "$(MPICXXLIBS) $(MPILIBS)" | sed -e "s#-l#<find-static-library>#g"`; \
+		echo "using mpi ;" >> $${jampath}; \
 	fi; \
-	echo "using mpi : $(MPICXX) : $${mpicppflags} $${mpildflags} $${mpilib} ;" >> $${jampath}; \
 	echo "" >> $${jampath}; \
 	BOOST_BUILD_USER_CONFIG=$${jampath} ./bootstrap.sh --with-toolset=$${boostchain} --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

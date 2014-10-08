@@ -68,8 +68,10 @@ MPICC = mpicc
 MPICXX = mpicxx
 MPIF77 = mpif77
 MPIFC = mpif90
-MPILIBS = -lmpi
-MPICXXLIBS = -lmpicxx
+#MPICPPFLAGS = /usr/common/usg/openmpi/1.8.1/gcc/include
+#MPILDFLAGS = /usr/common/usg/openmpi/1.8.1/gcc/lib
+#MPILIBS = -lmpi
+#MPICXXLIBS = -lmpicxx
 
 # Fortran mixing
 
