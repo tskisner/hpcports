@@ -29,7 +29,7 @@ pkg-configure :
 	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
 		host="--host=$(HPCP_CROSS_HOST)"; \
 	fi; \
-	dyn="--disable-shared --enable-static --enable-all-static"; \
+	dyn="--disable-shared --enable-static --enable-all-static --enable-static-boost"; \
 	pyopt="--disable-python"; \
 	if [ "x$(BUILD_DYNAMIC)" = "xTRUE" ]; then \
 		dyn=""; \
