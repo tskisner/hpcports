@@ -2,19 +2,38 @@
 # the HPCPorts modules environment.  You should source this file in your
 # bourne compatible shell resource file, at the very beginning of that file.
 
-export NERSC_HOST=`/usr/common/usg/bin/nersc_host`
+if [ "x${NERSC_HOST}" = "x" ]; then
+    export NERSC_HOST=`/usr/common/usg/bin/nersc_host`
+fi
 
 # What shell are we using?
 THISSHELL=`echo $SHELL | sed -e 's/.*\/\(.*\)$/\1/'`
 
 
-if [ $NERSC_HOST = "datatran" ]; then
-  . /usr/share/Modules/init/${THISSHELL}
+if [ "x${NERSC_HOST}" = "xdatatran" ]; then
 
+  # Check to see if the modules init file has already been sourced
+  # If not then try to source the init file for this shell.  If that
+  # does not exist, source the basic "sh" file.
+
+  if [ "x${MODULESHOME}" = "x" ]; then
+    if [ -r /usr/share/Modules/init/${THISSHELL} ]; then
+      . /usr/share/Modules/init/${THISSHELL}
+    else
+        . /usr/share/Modules/init/sh
+    fi
+  fi
+
+  # Now set the environment switching function
+  # unload all toolchain options and load the correct one
+
+  hpcports () {
+    module use /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
+  }
 fi
 
 
-if [ $NERSC_HOST = "hopper" ]; then
+if [ "x${NERSC_HOST}" = "xhopper" ]; then
   # Check to see if the modules init file has already been sourced
   # If not then try to source the init file for this shell.  If that
   # does not exist, source the basic "sh" file.
@@ -53,7 +72,7 @@ if [ $NERSC_HOST = "hopper" ]; then
   }  
 fi
 
-if [ $NERSC_HOST = "edison" ]; then
+if [ "x${NERSC_HOST}" = "xedison" ]; then
   # Check to see if the modules init file has already been sourced
   # If not then try to source the init file for this shell.  If that
   # does not exist, source the basic "sh" file.
@@ -119,7 +138,7 @@ if [ $NERSC_HOST = "edison" ]; then
 fi
 
 
-if [ $NERSC_HOST = "carver" ]; then
+if [ "x${NERSC_HOST}" = "xcarver" ]; then
   # Check to see if the modules init file has already been sourced
   # If not then try to source the init file for this shell.  If that
   # does not exist, source the basic "sh" file.
@@ -128,7 +147,11 @@ if [ $NERSC_HOST = "carver" ]; then
     if [ -r /usr/common/nsg/opt/Modules/default/init/${THISSHELL} ]; then
       . /usr/common/nsg/opt/Modules/default/init/${THISSHELL}
     else
-        . /usr/common/nsg/opt/Modules/default/init/sh
+      if [ -r /usr/share/Modules/init/${THISSHELL} ]; then
+        . /usr/share/Modules/init/${THISSHELL}
+      else
+        . /usr/share/Modules/init/sh
+      fi
     fi
   fi
 
@@ -136,51 +159,58 @@ if [ $NERSC_HOST = "carver" ]; then
   # unload all toolchain options and load the correct one
 
   hpcports () {
-    export MODULE_VERSION="3.2.10"
-    if [ -r /project/projectdirs/cmb/modules/carver/Modules/${MODULE_VERSION}/init/${THISSHELL} ]; then
-      source /project/projectdirs/cmb/modules/carver/Modules/${MODULE_VERSION}/init/${THISSHELL}
-    else
-      source /project/projectdirs/cmb/modules/carver/Modules/${MODULE_VERSION}/init/sh
-    fi
     planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
     module unuse /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles
+    module unuse /project/projectdirs/cmb/modules/carver/hpcports_sl6/env/modulefiles
     module unuse /project/projectdirs/cmb/modules/carver/hpcports_gnu_dx9/env/modulefiles
     if [ "$planck" = "yes" ]; then
       module unuse /project/projectdirs/planck/modules/carver/gnu/modulefiles
+      module unuse /project/projectdirs/planck/modules/carver/sl6/modulefiles
       module unuse /project/projectdirs/planck/modules/carver/gnu_dx9/modulefiles
     fi
     if [ "$polar" = "yes" ]; then
       module unuse /project/projectdirs/polar/modules/carver/gnu/modulefiles
+      module unuse /project/projectdirs/polar/modules/carver/sl6/modulefiles
     fi
     case $1 in
-      gnu ) module use /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles
-            if [ "$planck" = "yes" ]; then
-              module use /project/projectdirs/planck/modules/carver/gnu/modulefiles
-            fi
-            if [ "$polar" = "yes" ]; then
-              module use /project/projectdirs/polar/modules/carver/gnu/modulefiles
+      gnu ) if [ "x$CHOS" = "xsl6carver" ]; then
+              module use /project/projectdirs/cmb/modules/carver/hpcports_sl6/env/modulefiles
+              if [ "$planck" = "yes" ]; then
+                module use /project/projectdirs/planck/modules/carver/sl6/modulefiles
+              fi
+              if [ "$polar" = "yes" ]; then
+                module use /project/projectdirs/polar/modules/carver/sl6/modulefiles
+              fi
+            else
+              module use /project/projectdirs/cmb/modules/carver/hpcports_gnu/env/modulefiles
+              if [ "$planck" = "yes" ]; then
+                module use /project/projectdirs/planck/modules/carver/gnu/modulefiles
+              fi
+              if [ "$polar" = "yes" ]; then
+                module use /project/projectdirs/polar/modules/carver/gnu/modulefiles
+              fi
             fi;;
       dx9 ) module use /project/projectdirs/cmb/modules/carver/hpcports_gnu_dx9/env/modulefiles
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/carver/gnu_dx9/modulefiles
             fi;;
-        * ) echo "usage:  hpcports [ gnu | intel | dx9 ]";;
+        * ) echo "usage:  hpcports [ gnu | dx9 ]";;
     esac
   }
 fi
 
 
-if [ $NERSC_HOST = "scigate" ]; then
+if [ "x${NERSC_HOST}" = "xscigate" ]; then
   # Check to see if the modules init file has already been sourced
   # If not then try to source the init file for this shell.  If that
   # does not exist, source the basic "sh" file.
 
   if [ "x${MODULESHOME}" = "x" ]; then
-    if [ -r /usr/share/Modules/default/init/${THISSHELL} ]; then
-      . /usr/share/Modules/default/init/${THISSHELL}
+    if [ -r /usr/share/Modules/init/${THISSHELL} ]; then
+      . /usr/share/Modules/init/${THISSHELL}
     else
-        . /usr/share/Modules/default/init/sh
+        . /usr/share/Modules/init/sh
     fi
   fi
 
@@ -188,32 +218,7 @@ if [ $NERSC_HOST = "scigate" ]; then
   # unload all toolchain options and load the correct one
 
   hpcports () {
-    export MODULE_VERSION="3.2.10"
-    if [ -r /project/projectdirs/cmb/modules/sgn/Modules/${MODULE_VERSION}/init/${THISSHELL} ]; then
-      source /project/projectdirs/cmb/modules/sgn/Modules/${MODULE_VERSION}/init/${THISSHELL}
-    else
-      source /project/projectdirs/cmb/modules/sgn/Modules/${MODULE_VERSION}/init/sh
-    fi
-    planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
-    polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
-    module unuse /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
-    if [ "$planck" = "yes" ]; then
-      echo "" > /dev/null
-      #module unuse /project/projectdirs/planck/modules/sgn/gnu/modulefiles
-    fi
-    if [ "$polar" = "yes" ]; then
-      echo "" > /dev/null
-      #module unuse /project/projectdirs/polar/modules/sgn/gnu/modulefiles
-    fi
     module use /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
-    if [ "$planck" = "yes" ]; then
-      echo "" > /dev/null
-      #module use /project/projectdirs/planck/modules/sgn/gnu/modulefiles
-    fi
-    if [ "$polar" = "yes" ]; then
-      echo "" > /dev/null
-      #module use /project/projectdirs/polar/modules/sgn/gnu/modulefiles
-    fi
   }
 fi
 
@@ -224,7 +229,7 @@ module use /project/projectdirs/cmb/modules/modulefiles
 
 # This is for environment propagation using
 # Cray CCM
-if [ "x${PBS_JOBID}" != x ]; then
+if [ "x${PBS_JOBID}" != "x" ]; then
   if [ -e $HOME/.hpcpenv_${PBS_JOBID} ]; then
     source $HOME/.hpcpenv_${PBS_JOBID}
   fi

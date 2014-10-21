@@ -14,9 +14,10 @@
 # 2.0 :  gcc-4.9.0 / binutils 2.24, MKL 13.0.1
 # 3.0 :  cray gcc/4.9.0, craype/2.1.2, mkl/13.0.3
 # 4.0 :  (CDT 1.19) gnu 4.9.1, craype-2.2.0, mkl-13.0.3
+# 4.1 :  same as 4.0, with more overrides
 #
 
-HPCP_ENV = 4.0
+HPCP_ENV = 4.1
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -86,8 +87,47 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 
 # package overrides
 
+tcl_OVERRIDE = TRUE
+tcl_VERSION = 8.5.5
+
+tk_OVERRIDE = TRUE
+tk_VERSION = 8.5.5
+
+termcap_OVERRIDE = TRUE
+termcap_VERSION = 2.0.8
+
+readline_OVERRIDE = TRUE
+readline_VERSION = 5.2  
+
+gzip_OVERRIDE = TRUE
+gzip_VERSION = 1.3.12
+
+gettext_OVERRIDE = TRUE
+gettext_VERSION = 0.17.0
+
 git_OVERRIDE = TRUE
 git_VERSION = 1.8.1.1
+
+# module load zlib/1.2.7
+
+zlib_OVERRIDE = TRUE
+zlib_VERSION = 1.2.7
+
+# module load bzip2/1.0.6
+
+bzip2_OVERRIDE = TRUE
+bzip2_VERSION = 1.0.6
+
+openssl_OVERRIDE = TRUE
+openssl_VERSION = 0.9.8
+
+# module load curl/7.28.1
+
+curl_OVERRIDE = TRUE
+curl_VERSION = 7.28.1
+
+cmake_OVERRIDE = TRUE
+cmake_VERSION = 2.8.11.2
 
 # we get BLAS and Lapack from MKL
 
