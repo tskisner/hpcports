@@ -42,11 +42,59 @@ if ( $NERSC_HOST == "carver" ) then
     if ( -r /usr/common/nsg/opt/Modules/default/init/$THISSHELL ) then
       source /usr/common/nsg/opt/Modules/default/init/$THISSHELL
     else
-      source /usr/common/nsg/opt/Modules/default/init/csh
+      if ( -r /usr/share/Modules/init/$THISSHELL ) then
+        source /usr/share/Modules/init/$THISSHELL
+      else
+        source /usr/share/Modules/init/csh
+      endif
     endif
   endif
 
-  source /project/projectdirs/cmb/modules/hpcports_NERSC_carver.csh
+  if ( $?CHOS ) then
+    if ( x$CHOS == x"sl6carver" ) then
+      source /project/projectdirs/cmb/modules/hpcports_NERSC_carver-sl6.csh
+    else
+      source /project/projectdirs/cmb/modules/hpcports_NERSC_carver-sl5.csh
+    endif
+  else
+    source /project/projectdirs/cmb/modules/hpcports_NERSC_carver-sl5.csh
+  endif
+
+endif
+
+
+if ( $NERSC_HOST == "scigate" ) then
+  # Check to see if the modules init file has already been sourced
+  # If not then try to source the init file for this shell.  If that
+  # does not exist, source the basic "csh" file.
+
+  if ( ! $?MODULESHOME ) then
+    if ( -r /usr/share/Modules/init/$THISSHELL ) then
+      source /usr/share/Modules/init/$THISSHELL
+    else
+      source /usr/share/Modules/init/csh
+    endif
+  endif
+
+  source /project/projectdirs/cmb/modules/hpcports_NERSC_scigate.csh
+
+endif
+
+
+if ( $NERSC_HOST == "datatran" ) then
+  # Check to see if the modules init file has already been sourced
+  # If not then try to source the init file for this shell.  If that
+  # does not exist, source the basic "csh" file.
+
+  if ( ! $?MODULESHOME ) then
+    if ( -r /usr/share/Modules/init/$THISSHELL ) then
+      source /usr/share/Modules/init/$THISSHELL
+    else
+      source /usr/share/Modules/init/csh
+    endif
+  endif
+
+  source /project/projectdirs/cmb/modules/hpcports_NERSC_scigate.csh
 
 endif
 
