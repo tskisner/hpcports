@@ -67,10 +67,10 @@ MPICXXLIBS = -lmpichcxx
 
 # compile flags
 
-CFLAGS = -O0 -g -m64 -fPIC -DNDEBUG -fgnu89-inline
-CXXFLAGS = -O0 -g -m64 -fPIC -DNDEBUG -std=c++11
-FFLAGS = -O0 -g -m64 -fPIC -DNDEBUG
-FCFLAGS = -O0 -g -m64 -fPIC -DNDEBUG
+CFLAGS = -O3 -g -m64 -fPIC -DNDEBUG -fgnu89-inline
+CXXFLAGS = -O3 -g -m64 -fPIC -DNDEBUG -std=c++11
+FFLAGS = -O3 -g -m64 -fPIC -DNDEBUG
+FCFLAGS = -O3 -g -m64 -fPIC -DNDEBUG
 
 # OpenMP flags
 
