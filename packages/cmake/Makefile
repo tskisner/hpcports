@@ -7,7 +7,7 @@ PKG_NAME = cmake
 
 PKG_FORMAT = tar
 PKG_TAR = cmake-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.cmake.org/files/v2.8/cmake-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.cmake.org/files/v3.0/cmake-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = cmake-$(PKG_VERSION)

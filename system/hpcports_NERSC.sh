@@ -28,7 +28,7 @@ if [ "x${NERSC_HOST}" = "xdatatran" ]; then
   # unload all toolchain options and load the correct one
 
   hpcports () {
-    module use /project/projectdirs/cmb/modules/sgn/hpcports/env/modulefiles
+    module use /project/projectdirs/cmb/modules/dtn/hpcports/env/modulefiles
   }
 fi
 

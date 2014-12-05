@@ -94,7 +94,7 @@ if ( $NERSC_HOST == "datatran" ) then
     endif
   endif
 
-  source /project/projectdirs/cmb/modules/hpcports_NERSC_scigate.csh
+  source /project/projectdirs/cmb/modules/hpcports_NERSC_datatran.csh
 
 endif
 

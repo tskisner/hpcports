@@ -1,0 +1,4 @@
+  if [ is-loaded gnu-base/gcc492_bin224_C6 ] {
+  } else {
+    module load gnu-base/gcc492_bin224_C6
+  }
