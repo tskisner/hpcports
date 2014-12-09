@@ -23,30 +23,25 @@ pkg-prefetch :
 
 
 pkg-configure :
-	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	PKG_CONFIG_PATH="$(PKG_CONFIG_PATH):." \
-	./waf configure \
-	--debug=False \
-	--optimize=3 \
-	--enable-openmp=True \
-	--autogen-harp-pkgconfig="." \
-	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
+	@echo "" > /dev/null
 
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	./waf
+	SPECEX_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
+	make
 
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	./waf install; \
+	SPECEX_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
+	make install; \
 	ln -s $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/libharp_plugin_specex.so $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/harp_plugin_specex.so
 
 
 pkg-clean :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	./waf clean
+	make clean
 
 
 # Include common package rules
