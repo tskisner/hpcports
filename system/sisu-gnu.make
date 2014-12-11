@@ -171,6 +171,11 @@ numexpr_VERSION = NA
 setuptools_OVERRIDE = TRUE
 setuptools_VERSION = NA
 
+# pkg-config already works
+
+pkgconfig_OVERRIDE = TRUE
+pkgconfig_VERSION = sys
+
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE

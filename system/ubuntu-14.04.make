@@ -302,3 +302,8 @@ automake_OVERRIDE = TRUE
 automake_PREFIX = $(root)
 automake_VERSION = 1.14.1
 
+# pkg-config already works
+
+pkgconfig_OVERRIDE = TRUE
+pkgconfig_VERSION = sys
+

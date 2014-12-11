@@ -88,6 +88,11 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 git_OVERRIDE = TRUE
 git_VERSION = 1.8.1.1
 
+# pkg-config already works
+
+pkgconfig_OVERRIDE = TRUE
+pkgconfig_VERSION = sys
+
 # we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE

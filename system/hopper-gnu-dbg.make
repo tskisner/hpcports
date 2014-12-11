@@ -124,6 +124,11 @@ healpy_VERSION = 2.7.1
 numexpr_OVERRIDE = TRUE
 numexpr_VERSION = 2.7.1
 
+# pkg-config already works
+
+pkgconfig_OVERRIDE = TRUE
+pkgconfig_VERSION = sys
+
 # we get BLAS from ACML and Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE

@@ -143,6 +143,11 @@ curl_VERSION = 7.28.1
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.11.2
 
+# pkg-config already works
+
+pkgconfig_OVERRIDE = TRUE
+pkgconfig_VERSION = sys
+
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE

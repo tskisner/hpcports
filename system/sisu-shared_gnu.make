@@ -129,6 +129,11 @@ gettext_VERSION = 0.17.0
 cmake_OVERRIDE = TRUE
 cmake_VERSION = 2.8.10.2
 
+# pkg-config already works
+
+pkgconfig_OVERRIDE = TRUE
+pkgconfig_VERSION = sys
+
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE

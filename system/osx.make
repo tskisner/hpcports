@@ -270,6 +270,10 @@ zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.8
 zlib_PREFIX = $(macports)
 
+# pkg-config already works
+
+pkgconfig_OVERRIDE = TRUE
+pkgconfig_VERSION = sys
 
 
 
