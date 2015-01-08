@@ -9,7 +9,7 @@ if [ "x${loadedgnu}" = x ]; then
     if [ "x${loadedintel}" != x ]; then
       module swap PrgEnv-intel PrgEnv-gnu
     fi
-    module swap craype craype/2.2.0
+    module swap craype craype/2.2.1
     module unload cray-shmem
     module unload cray-mpich
     module unload atp
