@@ -1,0 +1,21 @@
+  if [ is-loaded PrgEnv-gnu ] {
+  } else {
+    if [ is-loaded PrgEnv-cray ] {
+      module swap PrgEnv-cray PrgEnv-gnu
+    }
+    if [ is-loaded PrgEnv-pgi ] {
+      module swap PrgEnv-pgi PrgEnv-gnu
+    }
+    module unload cray-shmem
+    module swap gcc gcc/4.8.2
+    module swap cray-mpich cray-mpich/6.0.1
+    module load cray-libsci/12.1.01
+    module load git/1.7.7.4
+    module load zlib/1.2.7
+    if [ is-loaded darshan ] {
+        module unload darshan
+    }
+  }
+  
+  setenv XTPE_LINK_TYPE dynamic
+  prepend-path LD_LIBRARY_PATH /usr/lib/alps
