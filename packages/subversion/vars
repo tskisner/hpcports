@@ -1,0 +1,4 @@
+BIN = bin
+INCLUDE = include
+LIB = lib
+MAN = share/man
