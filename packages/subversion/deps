@@ -1,1 +1,1 @@
-autoconf automake libtool openssl zlib sqlite expat
+autoconf automake libtool openssl zlib sqlite expat apr apr_util

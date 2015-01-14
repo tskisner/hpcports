@@ -3,14 +3,14 @@ include ../pkg_defs.make
 
 # Package parameters
 
-PKG_NAME = subversion
+PKG_NAME = apr_util
 
 PKG_FORMAT = tar
-PKG_TAR = subversion-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://apache.spinellicreations.com/subversion/subversion-$(PKG_VERSION).tar.bz2
+PKG_TAR = apr-util-$(PKG_VERSION).tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://mirrors.koehn.com/apache/apr/apr-util-$(PKG_VERSION).tar.bz2
 PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = subversion-$(PKG_VERSION)
+PKG_SRCDIR = apr-util-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
@@ -36,11 +36,9 @@ pkg-configure :
 		dyn="--disable-shared"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} $${host} \
 	--with-apr=$(apr_PREFIX) \
-	--with-apr-util=$(apr_util_PREFIX) \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
