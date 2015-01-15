@@ -37,10 +37,11 @@ pkg-configure :
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	LDFLAGS="$(LDFLAGS) -L$(sqlite_PREFIX)/lib" LIBS="$(sqlite_LIBS_CC) $(LIBS)" \
 	./configure $${dyn} $${host} \
 	--with-apr=$(apr_PREFIX) \
 	--with-apr-util=$(apr_util_PREFIX) \
+	--with-serf=$(serf_PREFIX) \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 

@@ -35,8 +35,12 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
+	ssl=""; \
+	if [ "x$(openssl_PREFIX)" != "x" ]; then \
+		ssl="-L$(openssl_PREFIX)/lib"; \
+	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	LDFLAGS="$(LDFLAGS) $${ssl}" LIBS="$(LIBS)" \
 	./configure $${dyn} $${host} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 

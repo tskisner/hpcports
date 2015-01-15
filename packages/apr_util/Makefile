@@ -39,6 +39,8 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} $${host} \
 	--with-apr=$(apr_PREFIX) \
+	--with-sqlite3=$(sqlite_PREFIX) \
+	--with-openssl=$(openssl_PREFIX) \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
