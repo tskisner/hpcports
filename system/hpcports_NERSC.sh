@@ -52,11 +52,17 @@ if [ "x${NERSC_HOST}" = "xhopper" ]; then
   hpcports () {
     planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
+    module unuse /project/projectdirs/cmb/modules/hopper/hpcports_shared_gnu/env/modulefiles
     module unuse /project/projectdirs/cmb/modules/hopper/hpcports_gnu/env/modulefiles
     module unuse /project/projectdirs/cmb/modules/hopper/hpcports_gnu_dx9/env/modulefiles
     if [ "$planck" = "yes" ]; then
+      module unuse /project/projectdirs/planck/modules/hopper/shared_gnu/modulefiles
       module unuse /project/projectdirs/planck/modules/hopper/gnu/modulefiles
       module unuse /project/projectdirs/planck/modules/hopper/gnu_dx9/modulefiles
+    fi
+    if [ "$polar" = "yes" ]; then
+      module unuse /project/projectdirs/polar/modules/hopper/shared_gnu/modulefiles
+      module unuse /project/projectdirs/polar/modules/hopper/gnu/modulefiles
     fi
     case $1 in
       dx9 ) module use /project/projectdirs/cmb/modules/hopper/hpcports_gnu_dx9/env/modulefiles
@@ -67,7 +73,14 @@ if [ "x${NERSC_HOST}" = "xhopper" ]; then
             if [ "$planck" = "yes" ]; then
               module use /project/projectdirs/planck/modules/hopper/gnu/modulefiles
             fi;;
-        * ) echo "usage:  hpcports [ gnu | dx9 ]";;
+      shared_gnu ) module use /project/projectdirs/cmb/modules/hopper/hpcports_shared_gnu/env/modulefiles
+            if [ "$planck" = "yes" ]; then
+              module use /project/projectdirs/planck/modules/hopper/shared_gnu/modulefiles
+            fi
+            if [ "$polar" = "yes" ]; then
+              module use /project/projectdirs/polar/modules/hopper/shared_gnu/modulefiles
+            fi;;
+        * ) echo "usage:  hpcports [ shard_gnu | gnu | dx9 ]";;
     esac
   }  
 fi

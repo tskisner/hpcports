@@ -19,9 +19,10 @@
 # 5.0 :  (CDT 1.16) gnu 4.9.0, craype-2.1.2, cray-mpich 7.0.0, cray-libsci 13.0.0, mkl-13.0.3, python-2.7.5
 # 6.0 :  (CDT 1.19) gnu 4.9.1, craype-2.2.0, cray-mpich 7.0.3, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 # 6.1 :  gnu 4.9.1, craype-2.2.1, cray-mpich 7.0.4, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
+# 7.0 :  (CDT 15.01) gnu 4.9.2, craype-2.2.1, cray-mpich 7.1.1, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 #
 
-HPCP_ENV = 6.1
+HPCP_ENV = 7.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -123,6 +124,9 @@ gettext_VERSION = 0.17.0
 git_OVERRIDE = TRUE
 git_VERSION = 1.8.1.1
 
+cmake_OVERRIDE = TRUE
+cmake_VERSION = 3.0.0
+
 # module load zlib/1.2.7
 
 zlib_OVERRIDE = TRUE
@@ -146,9 +150,6 @@ curl_VERSION = 7.28.1
 python_OVERRIDE = TRUE
 python_SITE = python2.7
 python_VERSION = 2.7.5
-
-cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.11.2
 
 nose_OVERRIDE = TRUE
 nose_VERSION = 1.1.2

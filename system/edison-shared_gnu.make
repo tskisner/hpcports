@@ -19,9 +19,10 @@
 # 5.0 :  (CDT 1.16) gnu 4.9.0, craype-2.1.2, cray-mpich 7.0.0, cray-libsci 13.0.0, mkl-13.0.3, python-2.7.5
 # 6.0 :  (CDT 1.19) gnu 4.9.1, craype-2.2.0, cray-mpich 7.0.3, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 # 6.1 :  gnu 4.9.1, craype-2.2.1, cray-mpich 7.0.4, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
+# 7.0 :  (CDT 15.01) gnu 4.9.2, craype-2.2.1, cray-mpich 7.1.1, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 #
 
-HPCP_ENV = 6.1
+HPCP_ENV = 7.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -141,9 +142,6 @@ openssl_VERSION = 0.9.8
 curl_OVERRIDE = TRUE
 curl_VERSION = 7.28.1
 
-cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.11.2
-
 # pkg-config already works
 
 pkgconfig_OVERRIDE = TRUE
@@ -152,15 +150,15 @@ pkgconfig_VERSION = sys
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 13.0.0
+blas_VERSION = 13.0.1
 blas_LIBS_CC = 
 blas_LIBS_CXX = $(blas_LIBS_CC)
 blas_LIBS_FC = $(blas_LIBS_CC)
 blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 13.0.0
+lapack_VERSION = 13.0.1
 
 scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 13.0.0
+scalapack_VERSION = 13.0.1
 

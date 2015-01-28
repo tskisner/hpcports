@@ -16,9 +16,10 @@
 # 4.0 :  (CDT 1.19) gnu 4.9.1, craype-2.2.0, mkl-13.0.3
 # 4.1 :  same as 4.0, with more overrides
 # 4.2 :  gnu 4.9.1, craype-2.2.1, mkl-13.0.3
+# 5.0 :  (CDT 15.01) gnu 4.9.2, craype-2.2.1, mkl-13.0.3
 #
 
-HPCP_ENV = 4.2
+HPCP_ENV = 5.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -126,9 +127,6 @@ openssl_VERSION = 0.9.8
 
 curl_OVERRIDE = TRUE
 curl_VERSION = 7.28.1
-
-cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.11.2
 
 # pkg-config already works
 
