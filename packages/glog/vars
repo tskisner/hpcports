@@ -1,0 +1,6 @@
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib
+LIBS_CC = -lglog
+LIBS_CXX = -lglog
