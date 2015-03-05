@@ -1,0 +1,6 @@
+BIN = bin
+MAN = share/man
+INCLUDE = include
+LIB = lib64
+LIBS_CC = -lceres
+LIBS_CXX = -lceres
