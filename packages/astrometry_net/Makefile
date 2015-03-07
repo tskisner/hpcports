@@ -37,7 +37,8 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install INSTALL_DIR=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
+	$(MAKE) install INSTALL_DIR=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+	(cd $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/python && ln -s . $(python_SITE) && ln -s . site-packages)
 
 pkg-clean :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
