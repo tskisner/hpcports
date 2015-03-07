@@ -34,6 +34,7 @@ sub standard_vars {
 		"BIN",
 		"MAN",
 		"PYTHON",
+		"PKG_CONFIG",
 		"INCLUDE",
 		"DATA",
 		"TCL",
@@ -639,6 +640,10 @@ sub module_file {
 			for $val ( @valsplit ) {
 				print OUT "prepend-path PYTHONPATH \"${prefix}/${pname}-${fullversion}/${val}/${pysite}/site-packages\"\n";
 			}
+		} elsif ( $key eq "PKG_CONFIG" ) {
+			for $val ( @valsplit ) {
+				print OUT "prepend-path PKG_CONFIG_PATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
+			}
 		} elsif ( $key eq "INCLUDE" ) {
 			for $val ( @valsplit ) {
 				print OUT "prepend-path CPATH \"${prefix}/${pname}-${fullversion}/${val}\"\n";
@@ -786,6 +791,10 @@ sub shell_file {
 			} elsif ( $key eq "PYTHON" ) {
 				for $val ( @valsplit ) {
 					print OUT "export PYTHONPATH=\"${prefix}/${pname}-${fullversion}/${val}/${pysite}/site-packages:\$PYTHONPATH\"\n";
+				}
+			} elsif ( $key eq "PKG_CONFIG" ) {
+				for $val ( @valsplit ) {
+					print OUT "export PKG_CONFIG_PATH=\"${prefix}/${pname}-${fullversion}/${val}:\$PKG_CONFIG_PATH\"\n";
 				}
 			} elsif ( $key eq "TCL" ) {
 				for $val ( @valsplit ) {
