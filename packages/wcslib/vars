@@ -1,6 +1,7 @@
 BIN = bin
 INCLUDE = include
 MAN = share/man
+PKG_CONFIG = lib/pkgconfig
 LIB = lib
 LIBS_CC = -lwcs
 LIBS_CXX = -lwcs
