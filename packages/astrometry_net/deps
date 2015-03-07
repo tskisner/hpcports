@@ -1,1 +1,1 @@
-numpy cfitsio libjpeg pkgconfig python wcslib gzip
+numpy cfitsio libjpeg pkgconfig python wcslib zlib

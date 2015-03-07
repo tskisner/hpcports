@@ -3,7 +3,7 @@ include ../pkg_defs.make
 
 # Package parameters
 
-PKG_NAME = astrometry.net
+PKG_NAME = astrometry_net
 
 PKG_FORMAT = tar
 PKG_TAR = astrometry.net-$(PKG_VERSION).tar.gz
@@ -27,9 +27,9 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) WCSLIB_INC="-I$(wcslib_PREFIX)/include" WCSLIB_LIB="-L$(wcslib_PREFIX)/lib $(wcslib_LIBS_CC)" ZLIB_INC="-I$(zlib_PREFIX)/include" ZLIB_LIB="-L$(zlib_PREFIX)/lib $(zlib_LIBC_CC)" CFITS_INC="-I$(cfitsio_PREFIX)/include" CFITS_LIB="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CC)"; \
-	$(MAKE) -C util py WCSLIB_INC="-I$(wcslib_PREFIX)/include" WCSLIB_LIB="-L$(wcslib_PREFIX)/lib $(wcslib_LIBS_CC)" ZLIB_INC="-I$(zlib_PREFIX)/include" ZLIB_LIB="-L$(zlib_PREFIX)/lib $(zlib_LIBC_CC)" CFITS_INC="-I$(cfitsio_PREFIX)/include" CFITS_LIB="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CC)"; \
-	$(MAKE) -C libkd py WCSLIB_INC="-I$(wcslib_PREFIX)/include" WCSLIB_LIB="-L$(wcslib_PREFIX)/lib $(wcslib_LIBS_CC)" ZLIB_INC="-I$(zlib_PREFIX)/include" ZLIB_LIB="-L$(zlib_PREFIX)/lib $(zlib_LIBC_CC)" CFITS_INC="-I$(cfitsio_PREFIX)/include" CFITS_LIB="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CC)";
+	$(MAKE) WCSLIB_INC="-I$(wcslib_PREFIX)/include" WCSLIB_LIB="-L$(wcslib_PREFIX)/lib $(wcslib_LIBS_CC)" ZLIB_INC="-I$(zlib_PREFIX)/include" ZLIB_LIB="-L$(zlib_PREFIX)/lib $(zlib_LIBS_CC)" CFITS_INC="-I$(cfitsio_PREFIX)/include" CFITS_LIB="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CC)"; \
+	$(MAKE) -C util py WCSLIB_INC="-I$(wcslib_PREFIX)/include" WCSLIB_LIB="-L$(wcslib_PREFIX)/lib $(wcslib_LIBS_CC)" ZLIB_INC="-I$(zlib_PREFIX)/include" ZLIB_LIB="-L$(zlib_PREFIX)/lib $(zlib_LIBS_CC)" CFITS_INC="-I$(cfitsio_PREFIX)/include" CFITS_LIB="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CC)"; \
+	$(MAKE) -C libkd py WCSLIB_INC="-I$(wcslib_PREFIX)/include" WCSLIB_LIB="-L$(wcslib_PREFIX)/lib $(wcslib_LIBS_CC)" ZLIB_INC="-I$(zlib_PREFIX)/include" ZLIB_LIB="-L$(zlib_PREFIX)/lib $(zlib_LIBS_CC)" CFITS_INC="-I$(cfitsio_PREFIX)/include" CFITS_LIB="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CC)";
 
 
 # "make py" tries to build plotstuff, which depends on cairo...
