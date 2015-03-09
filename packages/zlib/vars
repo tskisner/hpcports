@@ -1,5 +1,6 @@
 MAN = share/man
 INCLUDE = include
+PKG_CONFIG = lib/pkgconfig
 LIB = lib
 LIBS_CC = -lz
 LIBS_CXX = -lz
