@@ -3,6 +3,7 @@ MAN = share/man
 INCLUDE = include
 DATA = share/data
 LIB = lib
+PKG_CONFIG = lib/pkgconfig
 LIBS_CC = -lexample
 LIBS_CXX = -lexample
 LIBS_F77 = -lexample
