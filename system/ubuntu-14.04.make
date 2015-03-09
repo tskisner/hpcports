@@ -185,6 +185,10 @@ curl_VERSION = 7.35.0
 zlib_OVERRIDE = TRUE
 zlib_PREFIX = $(root)
 zlib_VERSION = 1.2.8.dfsg
+zlib_LIBS_CC = -lz
+zlib_LIBS_CXX = -lz
+zlib_LIBS_F77 = -lz
+zlib_LIBS_FC = -lz
 
 scipy_OVERRIDE = TRUE
 scipy_PREFIX = $(root)

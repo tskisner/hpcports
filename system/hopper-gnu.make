@@ -120,6 +120,10 @@ git_VERSION = 1.7.7.4
 
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.3
+zlib_LIBS_CC = -lz
+zlib_LIBS_CXX = -lz
+zlib_LIBS_F77 = -lz
+zlib_LIBS_FC = -lz
 
 tcsh_OVERRIDE = TRUE
 tcsh_VERSION = 6.15

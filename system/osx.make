@@ -269,6 +269,10 @@ xpa_VERSION = 2.1.11
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.8
 zlib_PREFIX = $(macports)
+zlib_LIBS_CC = -lz
+zlib_LIBS_CXX = -lz
+zlib_LIBS_F77 = -lz
+zlib_LIBS_FC = -lz
 
 # pkg-config already works
 

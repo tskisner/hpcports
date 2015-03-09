@@ -126,6 +126,10 @@ git_VERSION = 1.8.1.1
 
 zlib_OVERRIDE = TRUE
 zlib_VERSION = 1.2.7
+zlib_LIBS_CC = -lz
+zlib_LIBS_CXX = -lz
+zlib_LIBS_F77 = -lz
+zlib_LIBS_FC = -lz
 
 # module load bzip2/1.0.6
 
