@@ -1,5 +1,6 @@
 BIN = bin
 INCLUDE = include
+PKG_CONFIG = lib/pkgconfig
 LIB = lib
 LIBS_CC = -lcfitsio
 LIBS_CXX = -lcfitsio
