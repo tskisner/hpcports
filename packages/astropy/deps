@@ -1,1 +1,1 @@
-numpy cfitsio expat cython
+setuptools numpy cfitsio expat cython
