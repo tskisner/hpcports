@@ -7,7 +7,7 @@ PKG_NAME = netcdf
 
 PKG_FORMAT = tar
 PKG_TAR = netcdf-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = netcdf-$(PKG_VERSION)
