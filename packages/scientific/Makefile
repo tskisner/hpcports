@@ -7,7 +7,7 @@ PKG_NAME = scientific
 
 PKG_FORMAT = tar
 PKG_TAR = ScientificPython-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourcesup.renater.fr/frs/download.php/4153/ScientificPython-2.9.2.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://sourcesup.renater.fr/frs/download.php/4570/ScientificPython-2.9.4.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = ScientificPython-$(PKG_VERSION)
