@@ -36,7 +36,7 @@ pkg-configure :
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
 	LIBS="$(LIBS)" \
-	./configure $${dyn} $${host} \
+	./configure --disable-shared --enable-static $${host} \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
