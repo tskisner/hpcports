@@ -6,11 +6,11 @@ include ../pkg_defs.make
 PKG_NAME = sqlite
 
 PKG_FORMAT = tar
-PKG_TAR = sqlite-autoconf-3071700.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.sqlite.org/2013/sqlite-autoconf-3071700.tar.gz
+PKG_TAR = sqlite-autoconf-3080803.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://www.sqlite.org/2015/sqlite-autoconf-3080803.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = sqlite-autoconf-3071700
+PKG_SRCDIR = sqlite-autoconf-3080803
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
