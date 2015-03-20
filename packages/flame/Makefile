@@ -7,7 +7,7 @@ PKG_NAME = flame
 
 PKG_FORMAT = tar
 PKG_TAR = libflame-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.cs.utexas.edu/users/flame/snapshots/libflame-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/flame/libflame/archive/$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = libflame-$(PKG_VERSION)
