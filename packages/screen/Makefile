@@ -5,11 +5,12 @@ include ../pkg_defs.make
 
 PKG_NAME = screen
 
-PKG_FORMAT = git
-PKG_GIT_CLONE = git clone git://git.savannah.gnu.org/screen.git
-PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
+PKG_FORMAT = tar
+PKG_TAR = screen-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/screen/screen-$(PKG_VERSION).tar.gz
+PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = screen
+PKG_SRCDIR = screen-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
