@@ -7,7 +7,7 @@ PKG_NAME = ipython
 
 PKG_FORMAT = tar
 PKG_TAR = ipython-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://archive.ipython.org/release/$(PKG_VERSION)/ipython-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/i/ipython/ipython-3.0.0.tar.gz#md5=b3f00f3c0be036fafef3b0b9d663f27e
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = ipython-$(PKG_VERSION)
