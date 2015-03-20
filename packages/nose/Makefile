@@ -7,7 +7,7 @@ PKG_NAME = nose
 
 PKG_FORMAT = tar
 PKG_TAR = nose-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/n/nose/nose-1.3.0.tar.gz#md5=95d6d32b9d6b029c3c65674bd9e7eabe
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/n/nose/nose-1.3.4.tar.gz#md5=6ed7169887580ddc9a8e16048d38274d
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = nose-$(PKG_VERSION)
