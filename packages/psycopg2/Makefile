@@ -7,7 +7,7 @@ PKG_NAME = psycopg2
 
 PKG_FORMAT = tar
 PKG_TAR = psycopg2-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/p/psycopg2/psycopg2-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/p/psycopg2/psycopg2-2.6.tar.gz#md5=fbbb039a8765d561a1c04969bbae7c74
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = psycopg2-$(PKG_VERSION)
