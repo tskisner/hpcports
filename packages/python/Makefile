@@ -6,9 +6,10 @@ include ../pkg_defs.make
 PKG_NAME = python
 
 PKG_FORMAT = tar
-PKG_TAR = Python-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.python.org/ftp/python/$(PKG_VERSION)/Python-$(PKG_VERSION).tar.bz2
-PKG_TAR_EXTRACT = $(BXTAR)
+PKG_TAR = Python-$(PKG_VERSION).tgz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://www.python.org/ftp/python/$(PKG_VERSION)/Python-$(PKG_VERSION).tgz
+
+PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = Python-$(PKG_VERSION)
 
