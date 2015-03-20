@@ -7,7 +7,7 @@ PKG_NAME = readline
 
 PKG_FORMAT = tar
 PKG_TAR = readline-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.gnu.org/gnu/readline/readline-6.2.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) ftp://ftp.gnu.org/gnu/readline/readline-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = readline-$(PKG_VERSION)
