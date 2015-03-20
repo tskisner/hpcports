@@ -7,7 +7,7 @@ PKG_NAME = cython
 
 PKG_FORMAT = tar
 PKG_TAR = Cython-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.cython.org/release/Cython-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://cython.org/release/Cython-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = Cython-$(PKG_VERSION)
