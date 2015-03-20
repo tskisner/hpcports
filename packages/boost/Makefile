@@ -6,11 +6,11 @@ include ../pkg_defs.make
 PKG_NAME = boost
 
 PKG_FORMAT = tar
-PKG_TAR = boost_1_56_0.tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/boost/files/boost/1.56.0/boost_1_56_0.tar.bz2/download
+PKG_TAR = boost_1_57_0.tar.bz2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.tar.bz2/download
 PKG_TAR_EXTRACT = $(BXTAR)
 
-PKG_SRCDIR = boost_1_56_0
+PKG_SRCDIR = boost_1_57_0
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
