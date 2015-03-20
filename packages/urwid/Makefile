@@ -7,7 +7,7 @@ PKG_NAME = urwid
 
 PKG_FORMAT = tar
 PKG_TAR = urwid-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://excess.org/urwid/urwid-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/u/urwid/urwid-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = urwid-$(PKG_VERSION)
