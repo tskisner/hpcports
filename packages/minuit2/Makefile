@@ -7,10 +7,10 @@ PKG_NAME = minuit2
 
 PKG_FORMAT = tar
 PKG_TAR = minuit2-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.cern.ch/mathlibs/sw/5_28_00/Minuit2/Minuit2-5.28.00.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://www.cern.ch/mathlibs/sw/5_34_14/Minuit2/Minuit2-5.34.14.tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = Minuit2-5.28.00
+PKG_SRCDIR = Minuit2-5.34.14
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
