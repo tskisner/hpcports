@@ -7,7 +7,7 @@ PKG_NAME = setuptools
 
 PKG_FORMAT = tar
 PKG_TAR = setuptools-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/s/setuptools/setuptools-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/s/setuptools/setuptools-14.3.1.tar.gz#md5=cdba2741b16acaa3ed06c2252623f6b9
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = setuptools-$(PKG_VERSION)
