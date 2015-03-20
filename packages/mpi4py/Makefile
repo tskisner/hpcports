@@ -7,7 +7,7 @@ PKG_NAME = mpi4py
 
 PKG_FORMAT = tar
 PKG_TAR = mpi4py-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://mpi4py.googlecode.com/files/mpi4py-1.3.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/m/mpi4py/mpi4py-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = mpi4py-$(PKG_VERSION)
