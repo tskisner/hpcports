@@ -7,7 +7,7 @@ PKG_NAME = astlib
 
 PKG_FORMAT = tar
 PKG_TAR = astlib-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/project/platformdownload.php?group_id=202537
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/a/astLib/astLib-0.8.0.tar.gz#md5=50871e614a04cded84bcfcc555dc9121
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = astLib-$(PKG_VERSION)
