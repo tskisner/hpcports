@@ -7,7 +7,7 @@ PKG_NAME = numexpr
 
 PKG_FORMAT = tar
 PKG_TAR = numexpr-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://numexpr.googlecode.com/files/numexpr-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/n/numexpr/numexpr-2.4.tar.gz#md5=df7e8d9e9dbb145b56d43c465c2bf854
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = numexpr-$(PKG_VERSION)
