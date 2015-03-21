@@ -24,12 +24,12 @@ pkg-prefetch :
 
 
 pkg-configure :
-	@cd $(STAGE)/$(PKG_BUILDDIR)/git-$(PKG_VERSION); \
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	$(MAKE) configure; \
 	host=""; \
 	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
 		host="--host=$(HPCP_CROSS_HOST)"; \
 	fi; \
-	$(MAKE) configure; \
 	CC="$(BUILD_CC)" \
 	CXX="$(BUILD_CXX)" \
 	FC="$(BUILD_FC)" \
