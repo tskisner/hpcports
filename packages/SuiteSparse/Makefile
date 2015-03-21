@@ -27,7 +27,7 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) LAPACK="$(lapack_LIBS_FC)" BLAS="$(blas_LIBS_FC)" CXX=$(HPCP_CXX)
+	$(MAKE) LAPACK="$(lapack_LIBS_FC) $(FCLIBS)" BLAS="$(blas_LIBS_FC) $(FCLIBS) $(OMPFLAGS)" CXX=$(HPCP_CXX)
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
