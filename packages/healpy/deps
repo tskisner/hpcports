@@ -1,1 +1,1 @@
-autoconf automake libtool python numpy matplotlib pyfits cython
+autoconf automake libtool python numpy matplotlib astropy cython
