@@ -1,1 +1,1 @@
-python numpy hdf5
+python numpy hdf5 cython
