@@ -6,9 +6,9 @@ include ../pkg_defs.make
 PKG_NAME = gdb
 
 PKG_FORMAT = tar
-PKG_TAR = gdb-$(PKG_VERSION).tar.bz2
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/gdb/gdb-$(PKG_VERSION).tar.bz2
-PKG_TAR_EXTRACT = $(BXTAR)
+PKG_TAR = gdb-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://ftp.gnu.org/gnu/gdb/gdb-$(PKG_VERSION).tar.gz
+PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = gdb-$(PKG_VERSION)
 
