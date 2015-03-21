@@ -29,7 +29,8 @@ pkg-configure :
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	python setup.py build --numpy
+	NETCDF_PREFIX=$(netcdf_PREFIX) \
+	python setup.py build
 
 
 pkg-install :
