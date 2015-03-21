@@ -6,11 +6,11 @@ include ../pkg_defs.make
 PKG_NAME = pyephem
 
 PKG_FORMAT = tar
-PKG_TAR = pyephem-$(PKG_VERSION).tar.gz
+PKG_TAR = ephem-$(PKG_VERSION).tar.gz
 PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/e/ephem/ephem-3.7.5.3.tar.gz#md5=0e33905844e3be5c901c13e5a9c938a3
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = pyephem-$(PKG_VERSION)
+PKG_SRCDIR = ephem-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
