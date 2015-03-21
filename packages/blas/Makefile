@@ -37,7 +37,7 @@ pkg-build :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		shared="NO_SHARED=1"; \
 	fi; \
-	$(MAKE) $${shared} $${threads} \
+	$(MAKE) NO_SHARED=1 $${threads} \
 	NO_LAPACK=1 \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	CC="$(CC)" CFLAGS="$(CFLAGS)"
