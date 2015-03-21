@@ -1,1 +1,1 @@
-autoconf automake libtool lapack libjpeg libtiff zlib bzip2 pcre
+autoconf automake libtool lapack libjpeg libtiff zlib bzip2 pcre readline
