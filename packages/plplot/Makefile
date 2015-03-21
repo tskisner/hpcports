@@ -5,12 +5,18 @@ include ../pkg_defs.make
 
 PKG_NAME = plplot
 
-PKG_FORMAT = tar
-PKG_TAR = plplot-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/plplot/files/plplot/$(PKG_VERSION)%20Source/plplot-$(PKG_VERSION).tar.gz/download
-PKG_TAR_EXTRACT = $(GXTAR)
+PKG_FORMAT = git
+PKG_GIT_CLONE = git clone git://git.code.sf.net/p/plplot/plplot plplot-plplot
+PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 
-PKG_SRCDIR = plplot-$(PKG_VERSION)
+PKG_SRCDIR = plplot-plplot
+
+#PKG_FORMAT = tar
+#PKG_TAR = plplot-$(PKG_VERSION).tar.gz
+#PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/plplot/files/plplot/$(PKG_VERSION)%20Source/plplot-$(PKG_VERSION).tar.gz/download
+#PKG_TAR_EXTRACT = $(GXTAR)
+
+#PKG_SRCDIR = plplot-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)/build
 
