@@ -14,7 +14,7 @@ PKG_SRCDIR = boost_1_57_0
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = shptr_helper.patch
+PKG_PATCHES = 
 
 
 # rules for this package
