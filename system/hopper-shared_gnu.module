@@ -7,15 +7,16 @@
       module swap PrgEnv-pgi PrgEnv-gnu
     }
     module unload cray-shmem
-    module swap gcc gcc/4.8.2
-    module swap cray-mpich cray-mpich/6.0.1
-    module load cray-libsci/12.1.01
-    module load git/1.7.7.4
-    module load zlib/1.2.7
+    module swap gcc gcc/4.9.2
+    module swap craype craype/2.2.1
+    module swap cray-mpich cray-mpich/7.1.1
+    module load cray-libsci/13.0.1
+    module load zlib/1.2.8
+    module load curl/7.35.0
+    module load bzip2/1.0.6
     if [ is-loaded darshan ] {
         module unload darshan
     }
   }
   
-  setenv XTPE_LINK_TYPE dynamic
-  prepend-path LD_LIBRARY_PATH /usr/lib/alps
+  setenv CRAYPE_LINK_TYPE dynamic

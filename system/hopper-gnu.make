@@ -2,7 +2,7 @@
 # use this prefix (set from the command line) to update the 
 # live hpcports install used by many people
 #
-# export HPCP_PREFIX=/project/projectdirs/cmb/modules/hopper/hpcports_gnu
+#export HPCP_PREFIX=/scratch1/scratchdirs/kisner/software/hpcports_gnu
 
 # OS environment version
 #
@@ -17,9 +17,10 @@
 # 5.0 : gcc-4.7.2, ACML 4.4.0, xt-asyncpe 5.23, cray-mpich2 5.6.4, fftw 3.3.0.2, python 2.7.3, darshan 2.2.6
 # 6.0 : gcc-4.8.1, ACML 4.4.0, xt-asyncpe 5.23, cray-mpich 6.1.0, fftw 3.3.0.4, python 2.7.5
 # 6.1 : same as 6.0, but with new HPCP dependency version hash
+# 7.0 : gcc-4.9.2, craype-2.2.1, cray-mpich 7.1.1, cray-libsci 13.0.1, python 2.7.9
 #
 
-HPCP_ENV = 6.1
+HPCP_ENV = 7.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -59,15 +60,17 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
+MPICPPFLAGS = /opt/cray/mpt/7.1.1/gni/mpich2-gnu/49/include
+MPILDFLAGS = /opt/cray/mpt/7.1.1/gni/mpich2-gnu/49/lib
 MPILIBS = -lmpich
 MPICXXLIBS = -lmpichcxx
 
 # compile flags
 
-CFLAGS = -O3 -m64 -static -fPIC -DNDEBUG
-CXXFLAGS = -O3 -m64 -static -fPIC -DNDEBUG -std=c++11
-FFLAGS = -O3 -m64 -static -fPIC -DNDEBUG
-FCFLAGS = -O3 -m64 -static -fPIC -DNDEBUG
+CFLAGS = -O3 -m64 -fPIC -DNDEBUG -fgnu89-inline
+CXXFLAGS = -O3 -m64 -fPIC -DNDEBUG -std=c++11
+FFLAGS = -O3 -m64 -fPIC -DNDEBUG
+FCFLAGS = -O3 -m64 -fPIC -DNDEBUG
 
 # OpenMP flags
 
@@ -75,25 +78,18 @@ OMPFLAGS = -fopenmp
 
 # Fortran mixing
 
-FLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
-FCLIBS = /opt/gcc/4.8.1/snos/lib64/libgfortran.a
+FLIBS = -lgfortran
+FCLIBS = -lgfortran
 MPIFCLIBS =
 
 # Linking
 
-LIBS = /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-LDFLAGS = -L/usr/common/usg/acml/4.4.0/gfortran64_mp/lib
+LIBS = -lpthread -lm
+LDFLAGS =
+LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries
 
-VENDOR = amd
-AMD_PREFIX = $(ACML_DIR)
-AMD_INCLUDE = $(ACML_DIR)/gfortran64_mp/include
-AMD_LIBDIR = $(ACML_DIR)/gfortran64_mp/lib
-AMD_LIBS_CC = -lacml_mp -lacml_mv /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_CXX = -lacml_mp -lacml_mv /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_F77 = -lacml_mp -lacml_mv /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
-AMD_LIBS_FC = -lacml_mp -lacml_mv /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a /usr/lib64/librt.a
 
 # package overrides
 
@@ -116,57 +112,63 @@ gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.17.0
 
 git_OVERRIDE = TRUE
-git_VERSION = 1.7.7.4
+git_VERSION = 2.3.1
+
+cmake_OVERRIDE = TRUE
+cmake_VERSION = 3.1.3
+
+# module load zlib/1.2.8
 
 zlib_OVERRIDE = TRUE
-zlib_VERSION = 1.2.3
+zlib_VERSION = 1.2.8
 zlib_LIBS_CC = -lz
 zlib_LIBS_CXX = -lz
 zlib_LIBS_F77 = -lz
 zlib_LIBS_FC = -lz
 
-tcsh_OVERRIDE = TRUE
-tcsh_VERSION = 6.15
+# module load bzip2/1.0.6
+
+bzip2_OVERRIDE = TRUE
+bzip2_VERSION = 1.0.6
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = 0.9.8
 
+# module load curl/7.35.0
+
 curl_OVERRIDE = TRUE
-curl_VERSION = 7.19.0
+curl_VERSION = 7.35.0
+
+# module load python/2.7.9
 
 python_OVERRIDE = TRUE
 python_SITE = python2.7
-python_VERSION = 2.7.5
-
-fftw_OVERRIDE = TRUE
-fftw_VERSION = 3.3.0.4
+python_VERSION = 2.7.9
 
 nose_OVERRIDE = TRUE
-nose_VERSION = NA
-
-astropy_OVERRIDE = TRUE
-astropy_VERSION = NA
-
-pyraf_OVERRIDE = TRUE
-pyraf_VERSION = NA
+nose_VERSION = 1.1.2
 
 numpy_OVERRIDE = TRUE
-numpy_VERSION = NA
+numpy_VERSION = 1.6.2
 
 scipy_OVERRIDE = TRUE
-scipy_VERSION = NA
+scipy_VERSION = 0.11.0
 
 pyfits_OVERRIDE = TRUE
 pyfits_VERSION = NA
 
+# module load ipython/0.13.1
+
 ipython_OVERRIDE = TRUE
-ipython_VERSION = NA
+ipython_VERSION = 0.13.1
 
 matplotlib_OVERRIDE = TRUE
-matplotlib_VERSION = NA
+matplotlib_VERSION = 1.1.0
+
+# module load mpi4py/1.3
 
 mpi4py_OVERRIDE = TRUE
-mpi4py_VERSION = NA
+mpi4py_VERSION = 1.3
 
 pyslalib_OVERRIDE = TRUE
 pyslalib_VERSION = NA
@@ -188,15 +190,15 @@ pkgconfig_VERSION = sys
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 12.1.01
-blas_LIBS_CC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a
-blas_LIBS_CXX = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a
-blas_LIBS_FC = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a
-blas_LIBS_F77 = $(CRAY_LIBSCI_PREFIX_DIR)/lib/libsci_gnu_mp.a /opt/gcc/4.8.1/snos/lib64/libgfortran.a /opt/gcc/4.8.1/snos/lib64/libgomp.a
+blas_VERSION = 13.0.1
+blas_LIBS_CC = 
+blas_LIBS_CXX = $(blas_LIBS_CC)
+blas_LIBS_FC = $(blas_LIBS_CC)
+blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 12.1.01
+lapack_VERSION = 13.0.1
 
 scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 12.1.01
+scalapack_VERSION = 13.0.1
 
