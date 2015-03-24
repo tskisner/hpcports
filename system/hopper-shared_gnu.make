@@ -134,18 +134,3 @@ curl_VERSION = 7.35.0
 pkgconfig_OVERRIDE = TRUE
 pkgconfig_VERSION = sys
 
-# we get BLAS, Lapack, and ScaLapack from Cray libsci
-
-blas_OVERRIDE = TRUE
-blas_VERSION = 13.0.1
-blas_LIBS_CC = 
-blas_LIBS_CXX = $(blas_LIBS_CC)
-blas_LIBS_FC = $(blas_LIBS_CC)
-blas_LIBS_F77 = $(blas_LIBS_CC)
-
-lapack_OVERRIDE = TRUE
-lapack_VERSION = 13.0.1
-
-scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 13.0.1
-
