@@ -38,6 +38,7 @@ pkg-configure :
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	./configure $${dyn} $${host} \
+	--with-internal-glib \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
