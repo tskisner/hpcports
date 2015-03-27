@@ -3,18 +3,18 @@ include ../pkg_defs.make
 
 # Package parameters
 
-PKG_NAME = pkgconfig
+PKG_NAME = libpng
 
 PKG_FORMAT = tar
-PKG_TAR = pkg-config--$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://pkgconfig.freedesktop.org/releases/pkg-config-$(PKG_VERSION).tar.gz
+PKG_TAR = libpng-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://prdownloads.sourceforge.net/libpng/libpng-$(PKG_VERSION).tar.gz?download
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = pkg-config-$(PKG_VERSION)
+PKG_SRCDIR = libpng-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = 
 
 
 # rules for this package
@@ -34,11 +34,11 @@ pkg-configure :
 		dyn="--disable-shared"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	F77="$(F77)" FFLAGS="$(FFLAGS)" \
+	CPPFLAGS="-I$(zlib_PREFIX)/include" \
+	LDFLAGS="-L$(zlib_PREFIX)/lib $(LDFLAGS)" \
+	LIBS="$(LIBS)" \
 	./configure $${dyn} $${host} \
-	--with-internal-glib \
+	--with-zlib-prefix="$(zlib_PREFIX)" \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
@@ -49,7 +49,7 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	$(MAKE) install; $(MAKE) install-lib
 
 
 pkg-clean :
