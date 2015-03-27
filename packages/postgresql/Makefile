@@ -34,7 +34,9 @@ pkg-configure :
 		dyn="--disable-shared --without-python"; \
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+	CPPFLAGS="-I$(openssl_PREFIX)/include" \
+	LDFLAGS="-L$(openssl_PREFIX)/lib $(LDFLAGS)" \
+	LIBS="$(LIBS)" \
 	./configure $${dyn} $${host} \
 	--with-openssl \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
