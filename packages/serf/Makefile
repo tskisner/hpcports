@@ -34,9 +34,18 @@ pkg-build :
 	if [ "x$(openssl_PREFIX)" != "x" ]; then \
 		ssl="OPENSSL=$(openssl_PREFIX)"; \
 	fi; \
+	expat=""; \
+	if [ "x$(expat_PREFIX)" != "x" ]; then \
+		expat="LINKFLAGS=-L$(expat_PREFIX)/lib"; \
+	fi; \
+	zlib=""; \
+	if [ "x$(zlib_PREFIX)" != "x" ]; then \
+		zlib="ZLIB=$(zlib_PREFIX)"; \
+	fi; \
 	scons \
 	PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
-	APR=$(apr_PREFIX) APU=$(apr_util_PREFIX) $${ssl}
+	CC="$(CC)" CFLAGS="$(CFLAGS)" $${expat} $${zlib} \
+	APR="$(apr_PREFIX)" APU="$(apr_util_PREFIX)" $${ssl}
 
 
 pkg-install :

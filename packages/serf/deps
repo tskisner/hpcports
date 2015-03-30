@@ -1,1 +1,1 @@
-scons apr apr_util openssl
+scons apr apr_util openssl expat zlib
