@@ -3,29 +3,35 @@
 Current Packages
 ==================================
 
-At the time of the last documentation update (git revision 9638d08), the list of availabe packages is found below
+At the time of the last documentation update (git revision 07f4ff9), the list of availabe packages is found below
 
 Package List
 -------------------------
 
 * :ref:`R <pkg_R>`
+* :ref:`SuiteSparse <pkg_SuiteSparse>`
 * :ref:`appspack <pkg_appspack>`
+* :ref:`apr <pkg_apr>`
+* :ref:`apr_util <pkg_apr_util>`
 * :ref:`astlib <pkg_astlib>`
 * :ref:`astromatic <pkg_astromatic>`
+* :ref:`astrometry_net <pkg_astrometry_net>`
 * :ref:`astropy <pkg_astropy>`
-* :ref:`atlas <pkg_atlas>`
+* :ref:`astropy_helpers <pkg_astropy_helpers>`
 * :ref:`autoconf <pkg_autoconf>`
 * :ref:`automake <pkg_automake>`
 * :ref:`blas <pkg_blas>`
 * :ref:`boost <pkg_boost>`
 * :ref:`bzip2 <pkg_bzip2>`
 * :ref:`cdsclient <pkg_cdsclient>`
+* :ref:`ceres <pkg_ceres>`
 * :ref:`cfitsio <pkg_cfitsio>`
 * :ref:`cmake <pkg_cmake>`
 * :ref:`cmb <pkg_cmb>`
 * :ref:`cnpy <pkg_cnpy>`
 * :ref:`curl <pkg_curl>`
 * :ref:`cython <pkg_cython>`
+* :ref:`dateutil <pkg_dateutil>`
 * :ref:`effconv <pkg_effconv>`
 * :ref:`eigen <pkg_eigen>`
 * :ref:`elemental <pkg_elemental>`
@@ -36,10 +42,12 @@ Package List
 * :ref:`fitsio <pkg_fitsio>`
 * :ref:`fitstools <pkg_fitstools>`
 * :ref:`flame <pkg_flame>`
+* :ref:`freetype <pkg_freetype>`
 * :ref:`gdb <pkg_gdb>`
 * :ref:`getdata <pkg_getdata>`
 * :ref:`gettext <pkg_gettext>`
 * :ref:`git <pkg_git>`
+* :ref:`glog <pkg_glog>`
 * :ref:`gsl <pkg_gsl>`
 * :ref:`gzip <pkg_gzip>`
 * :ref:`h5py <pkg_h5py>`
@@ -47,16 +55,22 @@ Package List
 * :ref:`hdf5 <pkg_hdf5>`
 * :ref:`hdf5_mpi <pkg_hdf5_mpi>`
 * :ref:`healpix <pkg_healpix>`
+* :ref:`healpix_cxx <pkg_healpix_cxx>`
 * :ref:`healpix_legacy <pkg_healpix_legacy>`
 * :ref:`healpy <pkg_healpy>`
 * :ref:`hotpants <pkg_hotpants>`
+* :ref:`hpcp <pkg_hpcp>`
 * :ref:`ipython <pkg_ipython>`
 * :ref:`lapack <pkg_lapack>`
 * :ref:`levmar <pkg_levmar>`
 * :ref:`libarchive <pkg_libarchive>`
 * :ref:`libjpeg <pkg_libjpeg>`
+* :ref:`libpng <pkg_libpng>`
 * :ref:`libtiff <pkg_libtiff>`
 * :ref:`libtool <pkg_libtool>`
+* :ref:`libxml2 <pkg_libxml2>`
+* :ref:`libyaml <pkg_libyaml>`
+* :ref:`lua <pkg_lua>`
 * :ref:`m4 <pkg_m4>`
 * :ref:`matplotlib <pkg_matplotlib>`
 * :ref:`minuit2 <pkg_minuit2>`
@@ -72,17 +86,23 @@ Package List
 * :ref:`numpy <pkg_numpy>`
 * :ref:`openmpi <pkg_openmpi>`
 * :ref:`openssl <pkg_openssl>`
+* :ref:`paramiko <pkg_paramiko>`
 * :ref:`pcre <pkg_pcre>`
+* :ref:`photutils <pkg_photutils>`
 * :ref:`pil <pkg_pil>`
+* :ref:`pkgconfig <pkg_pkgconfig>`
 * :ref:`plplot <pkg_plplot>`
 * :ref:`postgresql <pkg_postgresql>`
 * :ref:`psfex <pkg_psfex>`
 * :ref:`psycopg2 <pkg_psycopg2>`
+* :ref:`pycrypto <pkg_pycrypto>`
+* :ref:`pydl <pkg_pydl>`
 * :ref:`pyephem <pkg_pyephem>`
-* :ref:`pyfits <pkg_pyfits>`
 * :ref:`pyraf <pkg_pyraf>`
 * :ref:`pyslalib <pkg_pyslalib>`
 * :ref:`python <pkg_python>`
+* :ref:`pytz <pkg_pytz>`
+* :ref:`pyyaml <pkg_pyyaml>`
 * :ref:`readline <pkg_readline>`
 * :ref:`rpy2 <pkg_rpy2>`
 * :ref:`scalapack <pkg_scalapack>`
@@ -91,14 +111,18 @@ Package List
 * :ref:`scipy <pkg_scipy>`
 * :ref:`scons <pkg_scons>`
 * :ref:`screen <pkg_screen>`
+* :ref:`serf <pkg_serf>`
 * :ref:`setuptools <pkg_setuptools>`
 * :ref:`sextractor <pkg_sextractor>`
 * :ref:`sfftw <pkg_sfftw>`
 * :ref:`skymaker <pkg_skymaker>`
+* :ref:`sncosmo <pkg_sncosmo>`
+* :ref:`specex <pkg_specex>`
+* :ref:`specter <pkg_specter>`
 * :ref:`sqlite <pkg_sqlite>`
 * :ref:`stiff <pkg_stiff>`
-* :ref:`stsci_distutils <pkg_stsci_distutils>`
 * :ref:`stuff <pkg_stuff>`
+* :ref:`subversion <pkg_subversion>`
 * :ref:`swarp <pkg_swarp>`
 * :ref:`swig <pkg_swig>`
 * :ref:`tcl <pkg_tcl>`
@@ -112,6 +136,7 @@ Package List
 * :ref:`wcstools <pkg_wcstools>`
 * :ref:`weightwatcher <pkg_weightwatcher>`
 * :ref:`xpa <pkg_xpa>`
+* :ref:`yaml <pkg_yaml>`
 * :ref:`zlib <pkg_zlib>`
 
 
@@ -123,202 +148,359 @@ Package Details
 R
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.15.3_95011db8
+| Version      : 3.1.3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   libjpeg  (6b_483d17a1)
- |   zlib  (1.2.8)
- |   libtiff  (4.0.3_a0a74c3e)
+ |   hpcp  (1.0)
  |   bzip2  (1.0.6)
- |   pcre  (8.33_9fe592f5)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libjpeg  (6b)
+ |   zlib  (1.2.8)
+ |   libtiff  (4.0.3)
+ |   pcre  (8.36)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+
+.. _pkg_SuiteSparse:
+
+SuiteSparse
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 4.4.3
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
 
 .. _pkg_appspack:
 
 appspack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 5.0.1-C3_e2adf2f7
+| Version      : 5.0.1-C3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+
+.. _pkg_apr:
+
+apr
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.5.1
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+
+.. _pkg_apr_util:
+
+apr_util
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.5.4
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   apr  (1.5.1)
+ |   sqlite  (3.8.8.3)
+ |   expat  (2.1.0)
 
 .. _pkg_astlib:
 
 astlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.7.0_04ce6e18
+| Version      : 0.8.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   matplotlib  (1.3.1_980b32ea)
- |   cfitsio  (3.35_b9d0ae94)
- |   setuptools  (0.8_c054a381)
- |   stsci_distutils  (0.3.6_c0eb83ea)
- |   pyfits  (3.2_135820ea)
- |   scipy  (0.13.1_5aecf979)
- |   libjpeg  (6b_483d17a1)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
  |   zlib  (1.2.8)
- |   pil  (1.1.7_50f25725)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   setuptools  (14.3.1)
+ |   dateutil  (2.4.1)
+ |   pkgconfig  (0.28)
+ |   libpng  (1.6.16)
+ |   freetype  (2.5.5)
+ |   matplotlib  (1.4.3)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   cython  (0.22)
+ |   astropy  (1.0.1)
+ |   scipy  (0.15.1)
+ |   libjpeg  (6b)
+ |   pil  (1.1.7)
 
 .. _pkg_astromatic:
 
 astromatic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 506a724b
+| Version      : c6f4dab7
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
- |   eye  (1.4.1_72f03d5a)
- |   missfits  (2.4.0_72f03d5a)
- |   openmpi  (1.6.5_0c2e8be2)
- |   sfftw  (3.3.3_03f9c884)
- |   cmake  (2.8.11.2)
- |   tcl  (8.5.12_9fe592f5)
- |   tk  (8.5.12_5eeb8a16)
- |   plplot  (5.9.9_aae7a2ec)
- |   atlas  (3.10.0)
- |   psfex  (3.9.1_385f8e67)
- |   cdsclient  (3.72)
- |   scamp  (1.7.0_5ab51340)
- |   fftw  (3.3.3_03f9c884)
- |   sextractor  (2.8.6_182a46b5)
- |   skymaker  (3.3.3_182a46b5)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
+ |   eye  (1.4.1)
+ |   missfits  (2.8.0)
  |   zlib  (1.2.8)
- |   libtiff  (4.0.3_a0a74c3e)
- |   libjpeg  (6b_483d17a1)
- |   stiff  (2.1.3_7fd93264)
- |   stuff  (1.19_9fe592f5)
- |   swarp  (2.19.1_9fe592f5)
- |   weightwatcher  (1.8.10_9fe592f5)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   sfftw  (3.3.4)
+ |   cmake  (3.2.1)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   plplot  (04dab2)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   psfex  (3.17.1)
+ |   cdsclient  (3.72)
+ |   scamp  (2.0.4)
+ |   sextractor  (2.19.5)
+ |   skymaker  (3.10.5)
+ |   libtiff  (4.0.3)
+ |   libjpeg  (6b)
+ |   stiff  (2.4.0)
+ |   stuff  (1.26.0)
+ |   swarp  (2.38.0)
+ |   weightwatcher  (1.12)
+
+.. _pkg_astrometry_net:
+
+astrometry_net
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.53
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   cfitsio  (3.37)
+ |   libjpeg  (6b)
+ |   pkgconfig  (0.28)
+ |   wcslib  (4.25.1)
 
 .. _pkg_astropy:
 
 astropy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.2.4_7bf6df89
+| Version      : 1.0.1
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   cfitsio  (3.35_b9d0ae94)
- |   expat  (2.1.0_4f2c7b0d)
- |   cython  (0.19.1_41630ef5)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   cython  (0.22)
 
-.. _pkg_atlas:
+.. _pkg_astropy_helpers:
 
-atlas
+astropy_helpers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.10.0
+| Version      : 0.4.1
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   cython  (0.22)
+ |   astropy  (1.0.1)
 
 .. _pkg_autoconf:
 
 autoconf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.69_cb56a547
+| Version      : 2.69
 
 | Dependencies : 
 
- |   m4  (1.4.16)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
 
 .. _pkg_automake:
 
 automake
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.14_b9d0ae94
+| Version      : 1.15
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
 
 .. _pkg_blas:
 
 blas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 20110419
+| Version      : 0.2.13
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
 
 .. _pkg_boost:
 
 boost
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.55.0_937dd196
+| Version      : 1.57.0
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
 
 .. _pkg_bzip2:
 
@@ -329,6 +511,7 @@ bzip2
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
 
 .. _pkg_cdsclient:
 
@@ -339,94 +522,128 @@ cdsclient
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
+
+.. _pkg_ceres:
+
+ceres
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.10.0
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   cmake  (3.2.1)
+ |   eigen  (3.2.4)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   glog  (0.3.3)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   SuiteSparse  (4.4.3)
 
 .. _pkg_cfitsio:
 
 cfitsio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.35_b9d0ae94
+| Version      : 3.37
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
 
 .. _pkg_cmake:
 
 cmake
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.8.11.2
+| Version      : 3.2.1
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
 
 .. _pkg_cmb:
 
 cmb
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2533eff6
+| Version      : bb1de591
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   scalapack  (2.0.2_8768c0bb)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   boost  (1.55.0_937dd196)
- |   cfitsio  (3.35_b9d0ae94)
- |   fitstools  (latest_fad38fc9)
- |   expat  (2.1.0_4f2c7b0d)
- |   zlib  (1.2.8)
+ |   hpcp  (1.0)
  |   bzip2  (1.0.6)
- |   mpibatch  (20120627_03f9c884)
- |   scipy  (0.13.1_5aecf979)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   git  (1.8.5.1_30a5e56b)
- |   moat  (73a52fd_85db08af)
- |   getdata  (0.8.5_56df4817)
- |   wcslib  (4.20_72f03d5a)
- |   hdf5  (1.8.12_a0a74c3e)
- |   cmake  (2.8.11.2)
- |   elemental  (0.82-p1_404d94bb)
- |   toast  (0b456db_e7eeb9e3)
- |   healpix  (2.15b_d01f7d11)
- |   setuptools  (0.8_c054a381)
- |   stsci_distutils  (0.3.6_c0eb83ea)
- |   pyfits  (3.2_135820ea)
- |   matplotlib  (1.3.1_980b32ea)
- |   cython  (0.19.1_41630ef5)
- |   healpy  (1.6.3_9caad619)
- |   ipython  (0.13.2_9b36f51c)
- |   mpi4py  (1.3_f0df1ea5)
- |   pyslalib  (6663ead2eb_3bc4bae0)
- |   scientific  (2.9.2_9c2ba8ea)
- |   numexpr  (2.1_69d50aa8)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   scalapack  (2.0.2)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   boost  (1.57.0)
+ |   cfitsio  (3.37)
+ |   fitstools  (latest)
+ |   expat  (2.1.0)
+ |   mpibatch  (20120627)
+ |   scipy  (0.15.1)
+ |   curl  (7.41.0)
+ |   git  (2.3.3)
+ |   moat  (880da73)
+ |   getdata  (0.8.6)
+ |   wcslib  (4.25.1)
+ |   hdf5  (1.8.14)
+ |   cmake  (3.2.1)
+ |   elemental  (0.83)
+ |   healpix  (2.15b)
+ |   toast  (743d23d)
+ |   setuptools  (14.3.1)
+ |   cython  (0.22)
+ |   astropy  (1.0.1)
+ |   dateutil  (2.4.1)
+ |   pkgconfig  (0.28)
+ |   libpng  (1.6.16)
+ |   freetype  (2.5.5)
+ |   matplotlib  (1.4.3)
+ |   healpy  (1.8.4)
+ |   ipython  (3.0.0)
+ |   mpi4py  (1.3.1)
+ |   pyslalib  (46e7c325e1)
+ |   netcdf  (4.3.3.1)
+ |   scientific  (2.9.4)
+ |   numexpr  (2.4)
 
 .. _pkg_cnpy:
 
 cnpy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 58b7ca8_117a41a8
+| Version      : 58b7ca8
 
 | Dependencies : 
 
- |   cmake  (2.8.11.2)
+ |   hpcp  (1.0)
+ |   cmake  (3.2.1)
  |   zlib  (1.2.8)
 
 .. _pkg_curl:
@@ -434,380 +651,510 @@ cnpy
 curl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 7.31.0_16d6d4e1
+| Version      : 7.41.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
+ |   openssl  (1.0.2a)
 
 .. _pkg_cython:
 
 cython
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.19.1_41630ef5
+| Version      : 0.22
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+
+.. _pkg_dateutil:
+
+dateutil
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.4.1
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
 
 .. _pkg_effconv:
 
 effconv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.0_3e3650e0
+| Version      : 1.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
- |   openmpi  (1.6.5_0c2e8be2)
- |   healpix  (2.15b_d01f7d11)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   healpix  (2.15b)
 
 .. _pkg_eigen:
 
 eigen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.2.0_64ff65ff
+| Version      : 3.2.4
 
 | Dependencies : 
 
- |   cmake  (2.8.11.2)
+ |   hpcp  (1.0)
+ |   cmake  (3.2.1)
 
 .. _pkg_elemental:
 
 elemental
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.82-p1_404d94bb
+| Version      : 0.83
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   cmake  (2.8.11.2)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   cmake  (3.2.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
 
 .. _pkg_es:
 
 es
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : f592848_5f46b650
+| Version      : f592848
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   cfitsio  (3.35_b9d0ae94)
- |   openmpi  (1.6.5_0c2e8be2)
- |   appspack  (5.0.1-C3_e2adf2f7)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   cfitsio  (3.37)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   expat  (2.1.0_4f2c7b0d)
- |   git  (1.8.5.1_30a5e56b)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   appspack  (5.0.1-C3)
+ |   curl  (7.41.0)
+ |   expat  (2.1.0)
+ |   git  (2.3.3)
 
 .. _pkg_expat:
 
 expat
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.1.0_4f2c7b0d
+| Version      : 2.1.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
 
 .. _pkg_eye:
 
 eye
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.4.1_72f03d5a
+| Version      : 1.4.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
 
 .. _pkg_fftw:
 
 fftw
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.3.3_03f9c884
+| Version      : 3.3.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
 
 .. _pkg_fitsio:
 
 fitsio
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : ad96da3_0d684612
+| Version      : a2fdf07
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   expat  (2.1.0_4f2c7b0d)
- |   git  (1.8.5.1_30a5e56b)
- |   cfitsio  (3.35_b9d0ae94)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   curl  (7.41.0)
+ |   expat  (2.1.0)
+ |   git  (2.3.3)
+ |   cfitsio  (3.37)
 
 .. _pkg_fitstools:
 
 fitstools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : latest_fad38fc9
+| Version      : latest
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   cfitsio  (3.35_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   cfitsio  (3.37)
 
 .. _pkg_flame:
 
 flame
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : r11679_1cd80fd0
+| Version      : 5.1.0
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+
+.. _pkg_freetype:
+
+freetype
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.5.5
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   automake  (1.15)
+ |   zlib  (1.2.8)
+ |   pkgconfig  (0.28)
+ |   libpng  (1.6.16)
 
 .. _pkg_gdb:
 
 gdb
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 7.6_9fe592f5
+| Version      : 7.9
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_getdata:
 
 getdata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.8.5_56df4817
+| Version      : 0.8.6
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   zlib  (1.2.8)
+ |   hpcp  (1.0)
  |   bzip2  (1.0.6)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
 
 .. _pkg_gettext:
 
 gettext
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.18.3_10bbd44c
+| Version      : 0.19.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   expat  (2.1.0_4f2c7b0d)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   expat  (2.1.0)
 
 .. _pkg_git:
 
 git
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.8.5.1_30a5e56b
+| Version      : 2.3.3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   expat  (2.1.0_4f2c7b0d)
+ |   openssl  (1.0.2a)
+ |   curl  (7.41.0)
+ |   expat  (2.1.0)
+
+.. _pkg_glog:
+
+glog
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.3.3
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
 
 .. _pkg_gsl:
 
 gsl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.15_0c2e8be2
+| Version      : 1.16
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_gzip:
 
 gzip
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.5_9fe592f5
+| Version      : 1.6
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_h5py:
 
 h5py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.1.3_15e95eb2
+| Version      : 2.4.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
  |   zlib  (1.2.8)
- |   hdf5  (1.8.12_a0a74c3e)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   hdf5  (1.8.14)
+ |   cython  (0.22)
 
 .. _pkg_harp:
 
 harp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 7b10800_c36f53e7
+| Version      : 9c0b2c5
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   expat  (2.1.0_4f2c7b0d)
- |   git  (1.8.5.1_30a5e56b)
- |   boost  (1.55.0_937dd196)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   curl  (7.41.0)
+ |   expat  (2.1.0)
+ |   git  (2.3.3)
+ |   boost  (1.57.0)
+ |   cmake  (3.2.1)
+ |   elemental  (0.83)
 
 .. _pkg_hdf5:
 
 hdf5
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.8.12_a0a74c3e
+| Version      : 1.8.14
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   automake  (1.14_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   automake  (1.15)
  |   zlib  (1.2.8)
 
 .. _pkg_hdf5_mpi:
@@ -815,185 +1162,271 @@ hdf5
 hdf5_mpi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.8.11_88ad4e9d
+| Version      : 1.8.14
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   automake  (1.14_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   automake  (1.15)
  |   zlib  (1.2.8)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
 
 .. _pkg_healpix:
 
 healpix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.15b_d01f7d11
+| Version      : 2.15b
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+
+.. _pkg_healpix_cxx:
+
+healpix_cxx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.20
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   automake  (1.15)
+ |   cfitsio  (3.37)
+ |   pkgconfig  (0.28)
 
 .. _pkg_healpix_legacy:
 
 healpix_legacy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.15a_686e0f11
+| Version      : 2.15a
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
 
 .. _pkg_healpy:
 
 healpy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.6.3_9caad619
+| Version      : 1.8.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   matplotlib  (1.3.1_980b32ea)
- |   cfitsio  (3.35_b9d0ae94)
- |   setuptools  (0.8_c054a381)
- |   stsci_distutils  (0.3.6_c0eb83ea)
- |   pyfits  (3.2_135820ea)
- |   cython  (0.19.1_41630ef5)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   setuptools  (14.3.1)
+ |   dateutil  (2.4.1)
+ |   pkgconfig  (0.28)
+ |   libpng  (1.6.16)
+ |   freetype  (2.5.5)
+ |   matplotlib  (1.4.3)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   cython  (0.22)
+ |   astropy  (1.0.1)
 
 .. _pkg_hotpants:
 
 hotpants
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 5.1.10_fad38fc9
+| Version      : 5.1.10
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   cfitsio  (3.35_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   cfitsio  (3.37)
+
+.. _pkg_hpcp:
+
+hpcp
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.0
+
+| Dependencies : 
+
 
 .. _pkg_ipython:
 
 ipython
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.13.2_9b36f51c
+| Version      : 3.0.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   automake  (1.14_b9d0ae94)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   automake  (1.15)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
 
 .. _pkg_lapack:
 
 lapack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.4.2_524a882f
+| Version      : 3.5.0
 
 | Dependencies : 
 
- |   blas  (20110419)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
 
 .. _pkg_levmar:
 
 levmar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.6_11b33956
+| Version      : 2.6
 
 | Dependencies : 
 
- |   cmake  (2.8.11.2)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
+ |   hpcp  (1.0)
+ |   cmake  (3.2.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
 
 .. _pkg_libarchive:
 
 libarchive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.1.2_12f3cea2
+| Version      : 3.1.2
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
  |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   expat  (2.1.0_4f2c7b0d)
- |   openssl  (1.0.1c_6d35ae3a)
+ |   expat  (2.1.0)
+ |   openssl  (1.0.2a)
 
 .. _pkg_libjpeg:
 
 libjpeg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 6b_483d17a1
+| Version      : 6b
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   automake  (1.14_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   automake  (1.15)
+
+.. _pkg_libpng:
+
+libpng
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.6.16
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   automake  (1.15)
+ |   zlib  (1.2.8)
 
 .. _pkg_libtiff:
 
 libtiff
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 4.0.3_a0a74c3e
+| Version      : 4.0.3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   automake  (1.14_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   automake  (1.15)
  |   zlib  (1.2.8)
 
 .. _pkg_libtool:
@@ -1001,621 +1434,996 @@ libtiff
 libtool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.4.2
+| Version      : 2.4.6
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+
+.. _pkg_libxml2:
+
+libxml2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.9.2
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+
+.. _pkg_libyaml:
+
+libyaml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.1.5
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+
+.. _pkg_lua:
+
+lua
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 5.3.0
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
 
 .. _pkg_m4:
 
 m4
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.4.16
+| Version      : 1.4.17
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
 
 .. _pkg_matplotlib:
 
 matplotlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.3.1_980b32ea
+| Version      : 1.4.3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   automake  (1.14_b9d0ae94)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   automake  (1.15)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   setuptools  (14.3.1)
+ |   dateutil  (2.4.1)
+ |   pkgconfig  (0.28)
+ |   libpng  (1.6.16)
+ |   freetype  (2.5.5)
 
 .. _pkg_minuit2:
 
 minuit2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 5.28.00_9fe592f5
+| Version      : 5.34.14
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_missfits:
 
 missfits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.4.0_72f03d5a
+| Version      : 2.8.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
 
 .. _pkg_moat:
 
 moat
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 73a52fd_85db08af
+| Version      : 880da73
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   boost  (1.55.0_937dd196)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   expat  (2.1.0_4f2c7b0d)
- |   git  (1.8.5.1_30a5e56b)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   boost  (1.57.0)
+ |   curl  (7.41.0)
+ |   expat  (2.1.0)
+ |   git  (2.3.3)
 
 .. _pkg_mpi4py:
 
 mpi4py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.3_f0df1ea5
+| Version      : 1.3.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   scipy  (0.13.1_5aecf979)
- |   cython  (0.19.1_41630ef5)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   scipy  (0.15.1)
+ |   cython  (0.22)
 
 .. _pkg_mpibatch:
 
 mpibatch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 20120627_03f9c884
+| Version      : 20120627
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
 
 .. _pkg_mysql_client:
 
 mysql_client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 6.0.2_721a3cf1
+| Version      : 6.0.2
 
 | Dependencies : 
 
- |   cmake  (2.8.11.2)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   cmake  (3.2.1)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
+ |   openssl  (1.0.2a)
 
 .. _pkg_mysql_python:
 
 mysql_python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.2.3_42c0246f
+| Version      : 1.2.3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   setuptools  (0.8_c054a381)
- |   cmake  (2.8.11.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   mysql_client  (6.0.2_721a3cf1)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
+ |   cmake  (3.2.1)
+ |   mysql_client  (6.0.2)
 
 .. _pkg_netcdf:
 
 netcdf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 4.3.0_a79b9c4d
+| Version      : 4.3.3.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
+ |   openssl  (1.0.2a)
+ |   curl  (7.41.0)
 
 .. _pkg_nose:
 
 nose
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.3.0_27e115f9
+| Version      : 1.3.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
 
 .. _pkg_numexpr:
 
 numexpr
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.1_69d50aa8
+| Version      : 2.4
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
 
 .. _pkg_numpy:
 
 numpy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.8.0_0b6364c9
+| Version      : 1.9.2
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
 
 .. _pkg_openmpi:
 
 openmpi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.6.5_0c2e8be2
+| Version      : 1.8.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
 
 .. _pkg_openssl:
 
 openssl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.0.1c_6d35ae3a
+| Version      : 1.0.2a
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
+
+.. _pkg_paramiko:
+
+paramiko
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.15.2
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   pycrypto  (2.6.1)
 
 .. _pkg_pcre:
 
 pcre
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 8.33_9fe592f5
+| Version      : 8.36
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+
+.. _pkg_photutils:
+
+photutils
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.1
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   cython  (0.22)
+ |   astropy  (1.0.1)
 
 .. _pkg_pil:
 
 pil
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.1.7_50f25725
+| Version      : 1.1.7
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   libjpeg  (6b_483d17a1)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
  |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   libjpeg  (6b)
+
+.. _pkg_pkgconfig:
+
+pkgconfig
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.28
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_plplot:
 
 plplot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 5.9.9_aae7a2ec
+| Version      : 04dab2
 
 | Dependencies : 
 
- |   cmake  (2.8.11.2)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   tcl  (8.5.12_9fe592f5)
- |   tk  (8.5.12_5eeb8a16)
+ |   hpcp  (1.0)
+ |   cmake  (3.2.1)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
 
 .. _pkg_postgresql:
 
 postgresql
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 9.1.8_1515a5fb
+| Version      : 9.4.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
+ |   openssl  (1.0.2a)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
 
 .. _pkg_psfex:
 
 psfex
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.9.1_385f8e67
+| Version      : 3.17.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   sfftw  (3.3.3_03f9c884)
- |   cmake  (2.8.11.2)
- |   tcl  (8.5.12_9fe592f5)
- |   tk  (8.5.12_5eeb8a16)
- |   plplot  (5.9.9_aae7a2ec)
- |   atlas  (3.10.0)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   sfftw  (3.3.4)
+ |   cmake  (3.2.1)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   plplot  (04dab2)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
 
 .. _pkg_psycopg2:
 
 psycopg2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.5.1_289a931d
+| Version      : 2.6
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   postgresql  (9.1.8_1515a5fb)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   postgresql  (9.4.1)
+
+.. _pkg_pycrypto:
+
+pycrypto
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2.6.1
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+
+.. _pkg_pydl:
+
+pydl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 0.3.0
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   scipy  (0.15.1)
+ |   setuptools  (14.3.1)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   cython  (0.22)
+ |   astropy  (1.0.1)
 
 .. _pkg_pyephem:
 
 pyephem
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.7.5.1_c62d6983
+| Version      : 3.7.5.3
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   setuptools  (0.8_c054a381)
-
-.. _pkg_pyfits:
-
-pyfits
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-| Version      : 3.2_135820ea
-
-| Dependencies : 
-
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   cfitsio  (3.35_b9d0ae94)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   setuptools  (0.8_c054a381)
- |   stsci_distutils  (0.3.6_c0eb83ea)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   setuptools  (14.3.1)
 
 .. _pkg_pyraf:
 
 pyraf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.1_a2b66ee8
+| Version      : 2.1
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   matplotlib  (1.3.1_980b32ea)
- |   ipython  (0.13.2_9b36f51c)
- |   urwid  (1.1.1_c0eb83ea)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   setuptools  (14.3.1)
+ |   dateutil  (2.4.1)
+ |   pkgconfig  (0.28)
+ |   libpng  (1.6.16)
+ |   freetype  (2.5.5)
+ |   matplotlib  (1.4.3)
+ |   ipython  (3.0.0)
+ |   urwid  (1.3.0)
 
 .. _pkg_pyslalib:
 
 pyslalib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 6663ead2eb_3bc4bae0
+| Version      : 46e7c325e1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   expat  (2.1.0_4f2c7b0d)
- |   git  (1.8.5.1_30a5e56b)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   openssl  (1.0.2a)
+ |   curl  (7.41.0)
+ |   expat  (2.1.0)
+ |   git  (2.3.3)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
 
 .. _pkg_python:
 
 python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.7.5_0261327d
+| Version      : 2.7.9
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+
+.. _pkg_pytz:
+
+pytz
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 2015.2
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   setuptools  (14.3.1)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+
+.. _pkg_pyyaml:
+
+pyyaml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 3.11
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   libyaml  (0.1.5)
 
 .. _pkg_readline:
 
 readline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 6.2_21846833
+| Version      : 6.3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
 
 .. _pkg_rpy2:
 
 rpy2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.3.3_edf24556
+| Version      : 2.5.6
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   libjpeg  (6b_483d17a1)
- |   zlib  (1.2.8)
- |   libtiff  (4.0.3_a0a74c3e)
+ |   hpcp  (1.0)
  |   bzip2  (1.0.6)
- |   pcre  (8.33_9fe592f5)
- |   R  (2.15.3_95011db8)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   setuptools  (14.3.1)
+ |   libjpeg  (6b)
+ |   libtiff  (4.0.3)
+ |   pcre  (8.36)
+ |   R  (3.1.3)
 
 .. _pkg_scalapack:
 
 scalapack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.0.2_8768c0bb
+| Version      : 2.0.2
 
 | Dependencies : 
 
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
 
 .. _pkg_scamp:
 
 scamp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.7.0_5ab51340
+| Version      : 2.0.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   atlas  (3.10.0)
- |   cmake  (2.8.11.2)
- |   tcl  (8.5.12_9fe592f5)
- |   tk  (8.5.12_5eeb8a16)
- |   plplot  (5.9.9_aae7a2ec)
- |   openmpi  (1.6.5_0c2e8be2)
- |   sfftw  (3.3.3_03f9c884)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   cmake  (3.2.1)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   plplot  (04dab2)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   sfftw  (3.3.4)
  |   cdsclient  (3.72)
 
 .. _pkg_scientific:
@@ -1623,430 +2431,697 @@ scamp
 scientific
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.9.2_9c2ba8ea
+| Version      : 2.9.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   curl  (7.41.0)
+ |   netcdf  (4.3.3.1)
 
 .. _pkg_scipy:
 
 scipy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.13.1_5aecf979
+| Version      : 0.15.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
 
 .. _pkg_scons:
 
 scons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.3.0_27e115f9
+| Version      : 2.3.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
 
 .. _pkg_screen:
 
 screen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : c2cd0596_9fe592f5
+| Version      : 4.2.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+
+.. _pkg_serf:
+
+serf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.3.8
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   scons  (2.3.4)
+ |   apr  (1.5.1)
+ |   expat  (2.1.0)
+ |   apr_util  (1.5.4)
 
 .. _pkg_setuptools:
 
 setuptools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0.8_c054a381
+| Version      : 14.3.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
 
 .. _pkg_sextractor:
 
 sextractor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.8.6_182a46b5
+| Version      : 2.19.5
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   atlas  (3.10.0)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   sfftw  (3.3.4)
 
 .. _pkg_sfftw:
 
 sfftw
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.3.3_03f9c884
+| Version      : 3.3.4
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
 
 .. _pkg_skymaker:
 
 skymaker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.3.3_182a46b5
+| Version      : 3.10.5
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   atlas  (3.10.0)
- |   openmpi  (1.6.5_0c2e8be2)
- |   sfftw  (3.3.3_03f9c884)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   sfftw  (3.3.4)
+
+.. _pkg_sncosmo:
+
+sncosmo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.0.0
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   scipy  (0.15.1)
+ |   setuptools  (14.3.1)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   cython  (0.22)
+ |   astropy  (1.0.1)
+ |   astropy_helpers  (0.4.1)
+
+.. _pkg_specex:
+
+specex
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : e378e8d
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   curl  (7.41.0)
+ |   expat  (2.1.0)
+ |   git  (2.3.3)
+ |   boost  (1.57.0)
+ |   cmake  (3.2.1)
+ |   elemental  (0.83)
+ |   harp  (9c0b2c5)
+
+.. _pkg_specter:
+
+specter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 6fa19e9
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   scipy  (0.15.1)
 
 .. _pkg_sqlite:
 
 sqlite
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.7.17_9fe592f5
+| Version      : 3.8.8.3
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_stiff:
 
 stiff
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.1.3_7fd93264
+| Version      : 2.4.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
  |   zlib  (1.2.8)
- |   libtiff  (4.0.3_a0a74c3e)
- |   libjpeg  (6b_483d17a1)
-
-.. _pkg_stsci_distutils:
-
-stsci_distutils
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-| Version      : 0.3.6_c0eb83ea
-
-| Dependencies : 
-
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
+ |   libtiff  (4.0.3)
+ |   libjpeg  (6b)
 
 .. _pkg_stuff:
 
 stuff
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.19_9fe592f5
+| Version      : 1.26.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+
+.. _pkg_subversion:
+
+subversion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 1.8.11
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   sqlite  (3.8.8.3)
+ |   expat  (2.1.0)
+ |   apr  (1.5.1)
+ |   apr_util  (1.5.4)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   scons  (2.3.4)
+ |   serf  (1.3.8)
 
 .. _pkg_swarp:
 
 swarp
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.19.1_9fe592f5
+| Version      : 2.38.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_swig:
 
 swig
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.0.10_1ba887b2
+| Version      : 3.0.5
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
- |   pcre  (8.33_9fe592f5)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   boost  (1.55.0_937dd196)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   pcre  (8.36)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   boost  (1.57.0)
 
 .. _pkg_tcl:
 
 tcl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 8.5.12_9fe592f5
+| Version      : 8.5.12
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_tcsh:
 
 tcsh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 6.18.01_0c2e8be2
+| Version      : 6.18.01
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_termcap:
 
 termcap
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.3.1_4f2c7b0d
+| Version      : 1.3.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
 
 .. _pkg_tk:
 
 tk
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 8.5.12_5eeb8a16
+| Version      : 8.5.12
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   tcl  (8.5.12_9fe592f5)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   tcl  (8.5.12)
 
 .. _pkg_toast:
 
 toast
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 0b456db_e7eeb9e3
+| Version      : 743d23d
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
- |   expat  (2.1.0_4f2c7b0d)
- |   sqlite  (3.7.17_9fe592f5)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   python  (2.7.5_0261327d)
- |   blas  (20110419)
- |   lapack  (3.4.2_524a882f)
- |   openmpi  (1.6.5_0c2e8be2)
- |   fftw  (3.3.3_03f9c884)
- |   nose  (1.3.0_27e115f9)
- |   numpy  (1.8.0_0b6364c9)
- |   zlib  (1.2.8)
+ |   hpcp  (1.0)
  |   bzip2  (1.0.6)
- |   getdata  (0.8.5_56df4817)
- |   wcslib  (4.20_72f03d5a)
- |   boost  (1.55.0_937dd196)
- |   openssl  (1.0.1c_6d35ae3a)
- |   curl  (7.31.0_16d6d4e1)
- |   git  (1.8.5.1_30a5e56b)
- |   moat  (73a52fd_85db08af)
- |   hdf5  (1.8.12_a0a74c3e)
- |   cmake  (2.8.11.2)
- |   elemental  (0.82-p1_404d94bb)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
+ |   expat  (2.1.0)
+ |   sqlite  (3.8.8.3)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   blas  (0.2.13)
+ |   lapack  (3.5.0)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
+ |   fftw  (3.3.4)
+ |   nose  (1.3.4)
+ |   numpy  (1.9.2)
+ |   getdata  (0.8.6)
+ |   wcslib  (4.25.1)
+ |   boost  (1.57.0)
+ |   curl  (7.41.0)
+ |   git  (2.3.3)
+ |   moat  (880da73)
+ |   hdf5  (1.8.14)
+ |   cmake  (3.2.1)
+ |   elemental  (0.83)
+ |   healpix  (2.15b)
 
 .. _pkg_urwid:
 
 urwid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.1.1_c0eb83ea
+| Version      : 1.3.0
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   libtool  (2.4.2)
- |   termcap  (1.3.1_4f2c7b0d)
- |   readline  (6.2_21846833)
- |   automake  (1.14_b9d0ae94)
- |   sqlite  (3.7.17_9fe592f5)
- |   python  (2.7.5_0261327d)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   libtool  (2.4.6)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   automake  (1.15)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
 
 .. _pkg_valgrind:
 
 valgrind
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.9.0_03f9c884
+| Version      : 3.10.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   openmpi  (1.6.5_0c2e8be2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   libxml2  (2.9.2)
+ |   openmpi  (1.8.4)
 
 .. _pkg_wcslib:
 
 wcslib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 4.20_72f03d5a
+| Version      : 4.25.1
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
- |   cfitsio  (3.35_b9d0ae94)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   cfitsio  (3.37)
 
 .. _pkg_wcstools:
 
 wcstools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 3.8.7
+| Version      : 3.9.1
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
 
 .. _pkg_weightwatcher:
 
 weightwatcher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 1.8.10_9fe592f5
+| Version      : 1.12
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
 
 .. _pkg_xpa:
 
 xpa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| Version      : 2.1.14_9fe592f5
+| Version      : 2.1.15
 
 | Dependencies : 
 
- |   m4  (1.4.16)
- |   autoconf  (2.69_cb56a547)
- |   automake  (1.14_b9d0ae94)
- |   libtool  (2.4.2)
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+
+.. _pkg_yaml:
+
+yaml
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| Version      : 536a3f9b
+
+| Dependencies : 
+
+ |   hpcp  (1.0)
+ |   bzip2  (1.0.6)
+ |   m4  (1.4.17)
+ |   autoconf  (2.69)
+ |   automake  (1.15)
+ |   libtool  (2.4.6)
+ |   libyaml  (0.1.5)
+ |   termcap  (1.3.1)
+ |   readline  (6.3)
+ |   sqlite  (3.8.8.3)
+ |   zlib  (1.2.8)
+ |   openssl  (1.0.2a)
+ |   tcl  (8.5.12)
+ |   tk  (8.5.12)
+ |   python  (2.7.9)
+ |   pyyaml  (3.11)
 
 .. _pkg_zlib:
 
@@ -2057,4 +3132,5 @@ zlib
 
 | Dependencies : 
 
+ |   hpcp  (1.0)
 

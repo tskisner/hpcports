@@ -6,16 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation and Setup &mdash; HPCPorts Pre-1.0 (9638d08) documentation</title>
+    <title>Installation and Setup &mdash; HPCPorts Pre-1.0 (07f4ff9) documentation</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'Pre-1.0 (9638d08)',
+        VERSION:     'Pre-1.0 (07f4ff9)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,14 +23,13 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="HPCPorts Pre-1.0 (9638d08) documentation" href="index.html" />
+    <link rel="top" title="HPCPorts Pre-1.0 (07f4ff9) documentation" href="index.html" />
     <link rel="next" title="Command Reference" href="command.html" />
     <link rel="prev" title="Introduction" href="intro.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="index.html">
-          <span>HPCPorts Pre-1.0 (9638d08) documentation</span></a></h1>
+          <span>HPCPorts Pre-1.0 (07f4ff9) documentation</span></a></h1>
         <h2 class="heading"><span>Installation and Setup</span></h2>
       </div>
       <div class="topnav">
@@ -65,14 +63,16 @@
 <div class="section" id="get-the-source">
 <h2>Get the Source<a class="headerlink" href="#get-the-source" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to clone the repo:</p>
-<div class="highlight-python"><pre>$&gt; git clone git://github.com/tskisner/hpcports.git</pre>
+<div class="highlight-python"><div class="highlight"><pre>$&gt; git clone git://github.com/tskisner/hpcports.git
+</pre></div>
 </div>
 <p>Alternatively, you can download a zip file from github if you do not have git installed yet.</p>
 </div>
 <div class="section" id="system-configuration">
 <h2>System Configuration<a class="headerlink" href="#system-configuration" title="Permalink to this headline">¶</a></h2>
 <p>After you have a copy of HPCPorts, you need to set up the configuration for the machine you will be using it on.  Go into the system directory.  For the purposes of this example, let&#8217;s say that your machine is named &#8220;blah&#8221;.  Copy the example file to a new one for your machine:</p>
-<div class="highlight-python"><pre>$&gt; cp example.make blah.make</pre>
+<div class="highlight-python"><div class="highlight"><pre>$&gt; cp example.make blah.make
+</pre></div>
 </div>
 <p>The optional .module and .sh files contain any setup commands that need to be run to load the environment you wish to use with HPCPorts (for example, loading modules for other compilers).  These are empty by default, but you can look at the files for other systems for examples of their contents.  The .make file is what you should edit next.  The example file assumes that you are using gcc / g++ / gfortran and installing everything else from HPCPorts.  You should at least edit the HPCP_PREFIX variable to point to where you want to install the packages built by HPCPorts, and also change the HPCP_POOL variable to the directory where HPCPorts should put package source that it downloads.</p>
 <div class="admonition warning">
@@ -95,11 +95,12 @@
 <p class="last">You should only do this if you are certain that the external software is compatible with the compiler you are using with HPCPorts.  In particular, if you are overriding OpenMPI or Python, these external packages need to be built with exactly the same compiler you are using for HPCPorts.</p>
 </div>
 <p>When overriding a package, you should at the very least specify a version for the external package.  This will ensure correct generation of the module files used to represent this external package in the dependency chain.  For example, let&#8217;s say you want to override the &#8220;cmake&#8221; package to point the already-installed version on your linux box.  In your system .make file, you might put:</p>
-<div class="highlight-python"><pre>cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.8</pre>
+<div class="highlight-python"><div class="highlight"><pre>cmake_OVERRIDE = TRUE
+cmake_VERSION = 2.8.8
+</pre></div>
 </div>
 <p>This is all you need, since this package just provides an executable, and it is already installed in your default path.  Let&#8217;s look at a more complicated example.  Suppose that you have installed your own copy of the Healpix package in /home/user/healpix and you want to use this in place of the HPCPorts version.  Since this package has C, C++, and Fortran libraries and is installed to a non-standard location, we have to give more information:</p>
-<div class="highlight-python"><pre>healpix_OVERRIDE = TRUE
+<div class="highlight-python"><div class="highlight"><pre>healpix_OVERRIDE = TRUE
 healpix_VERSION = 3.0
 healpix_PREFIX = /home/user/healpix
 healpix_BIN = bin
@@ -109,44 +110,50 @@ healpix_DATA = share/healpix
 healpix_LIBS_CC = -lchealpix
 healpix_LIBS_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
 healpix_LIBS_FC = -lhealpix
-healpix_LIBS_MPIFC = -lhealpix-mpi</pre>
+healpix_LIBS_MPIFC = -lhealpix-mpi
+</pre></div>
 </div>
 <p>The module file that HPCPorts creates for this overridden healpix package will now contain all the needed information for packages that depend on it.  Loading this generated healpix module will correctly modify PATH, CPATH, LIBRARY_PATH, LD_LIBRARY_PATH, and set other variables containing the library linking commands.  There are two &#8220;special cases&#8221; of package overrides:  openmpi and python.  In the case of openmpi, you can actually override this with ANY MPI implementation.  The critical variables to define are MPI compiler wrappers and any language mixing flags:</p>
-<div class="highlight-python"><pre>openmpi_OVERRIDE = TRUE
+<div class="highlight-python"><div class="highlight"><pre>openmpi_OVERRIDE = TRUE
 openmpi_VERSION = 1.4.5
 MPICC = mpicc
 MPICXX = mpicxx
 MPIF77 = mpif77
 MPIFC = mpif90
-MPIFCLIBS = -lmpi_f90 -lmpi_f77</pre>
+MPIFCLIBS = -lmpi_f90 -lmpi_f77
+</pre></div>
 </div>
 <p>Another example, this time on a Cray system where we are using the Cray-provided compiler wrappers which use their modified version of MPICH2:</p>
-<div class="highlight-python"><pre>openmpi_OVERRIDE = TRUE
+<div class="highlight-python"><div class="highlight"><pre>openmpi_OVERRIDE = TRUE
 openmpi_VERSION = cray.mpich2
 MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
-MPIFCLIBS =</pre>
+MPIFCLIBS =
+</pre></div>
 </div>
 <p>When overriding python, you must specify the string to use for the site packages subdirectory.  For example:</p>
-<div class="highlight-python"><pre>python_OVERRIDE = TRUE
+<div class="highlight-python"><div class="highlight"><pre>python_OVERRIDE = TRUE
 python_VERSION = 2.7.1
-python_SITE = python2.7</pre>
+python_SITE = python2.7
+</pre></div>
 </div>
 </div>
 <div class="section" id="using-the-tools">
 <h2>Using the Tools<a class="headerlink" href="#using-the-tools" title="Permalink to this headline">¶</a></h2>
 <p>There is one final step to do before being able to manage packages and also to use the installed modules created by HPCPorts.  Edit your ~/.bashrc file and add the location of the git checkout to your PATH and also append the installed module location to your module search path.  You should also set the HPCP_HOST environment variable to the machine name you chose previously (&#8220;blah&#8221; in our example).  Obviously change the lines below to match the location of your git checkout and HPCP_PREFIX:</p>
-<div class="highlight-python"><pre># For building packages with HPCPorts
+<div class="highlight-python"><div class="highlight"><pre># For building packages with HPCPorts
 export PATH=${PATH}:/home/user/git/hpcports
 export HPCP_HOST=blah
 
 # To use HPCPorts installed modules
-module use /home/user/hpcports/env/modulefiles</pre>
+module use /home/user/hpcports/env/modulefiles
+</pre></div>
 </div>
 <p>After making these changes, from a new shell, you can now do:</p>
-<div class="highlight-python"><pre>$&gt; hpcp status</pre>
+<div class="highlight-python"><div class="highlight"><pre>$&gt; hpcp status
+</pre></div>
 </div>
 <p>Once you have installed some packages, typing &#8220;module avail&#8221; should show all the modules installed by HPCPorts.</p>
 </div>
@@ -172,7 +179,7 @@ module use /home/user/hpcports/env/modulefiles</pre>
 
     <div class="footer">
         &copy; Copyright 2013, Theodore Kisner.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

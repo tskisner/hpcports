@@ -6,16 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Command Reference &mdash; HPCPorts Pre-1.0 (9638d08) documentation</title>
+    <title>Command Reference &mdash; HPCPorts Pre-1.0 (07f4ff9) documentation</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/print.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'Pre-1.0 (9638d08)',
+        VERSION:     'Pre-1.0 (07f4ff9)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,14 +23,13 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="HPCPorts Pre-1.0 (9638d08) documentation" href="index.html" />
+    <link rel="top" title="HPCPorts Pre-1.0 (07f4ff9) documentation" href="index.html" />
     <link rel="next" title="Current Packages" href="pkglist.html" />
     <link rel="prev" title="Installation and Setup" href="install.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="index.html">
-          <span>HPCPorts Pre-1.0 (9638d08) documentation</span></a></h1>
+          <span>HPCPorts Pre-1.0 (07f4ff9) documentation</span></a></h1>
         <h2 class="heading"><span>Command Reference</span></h2>
       </div>
       <div class="topnav">
@@ -54,9 +52,9 @@
 <div class="section" id="status">
 <h2>Status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h2>
 <p>Shows the version and installation status of all packages.  Also displays the current system file (HPCP_HOST) that is in use:</p>
-<div class="highlight-python"><pre>$&gt; hpcp status
+<div class="highlight-python"><div class="highlight"><pre>$&gt; hpcp status
 ---&gt; ---------------------------------------------------------
----&gt; HPCP_HOST = "teratorn", HPCP_ENV = "gcc473"
+---&gt; HPCP_HOST = &quot;teratorn&quot;, HPCP_ENV = &quot;gcc473&quot;
 ---&gt; ---------------------------------------------------------
 ---&gt;          Package |              Version |  State
 ---&gt; ---------------------------------------------------------
@@ -67,7 +65,8 @@
 ---&gt;       astrometry |        0.38_28509589 |  purged
 (snipped)
 ---&gt;              xpa |      2.1.14_f577707c |  purged
----&gt;             zlib |                1.2.7 |  installed</pre>
+---&gt;             zlib |                1.2.7 |  installed
+</pre></div>
 </div>
 <p>The possible states are</p>
 <ul class="simple">
@@ -83,7 +82,7 @@
 <div class="section" id="info">
 <h2>Info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h2>
 <p>Shows detailed information about one or more packages.  This includes the version, state, and list of fully expanded dependencies:</p>
-<div class="highlight-python"><pre>$&gt; hpcp info boost
+<div class="highlight-python"><div class="highlight"><pre>$&gt; hpcp info boost
 ---&gt;
 ---&gt;          Name:  boost
 ---&gt;       Version:  1.52.0_2e272961-gcc473
@@ -102,21 +101,23 @@
 ---&gt;               python | 2.7.3_14cc07f1-gcc473
 ---&gt;                 nose | 1.1.2_4ea20b2e-gcc473
 ---&gt;                numpy | 1.6.2_fccbe115-gcc473
----&gt;</pre>
+---&gt;
+</pre></div>
 </div>
 </div>
 <div class="section" id="purge">
 <h2>Purge<a class="headerlink" href="#purge" title="Permalink to this headline">¶</a></h2>
 <p>Purge the entire staging directory for the package(s), including the extracted source tree and generated module files.  This does not impact software that is already installed, so you can run this command after installation to reduce disk space:</p>
-<div class="highlight-python"><pre>$&gt; hpcp purge lapack blas
+<div class="highlight-python"><div class="highlight"><pre>$&gt; hpcp purge lapack blas
 ---&gt;         lapack :  Purging
----&gt;           blas :  Purging</pre>
+---&gt;           blas :  Purging
+</pre></div>
 </div>
 </div>
 <div class="section" id="install">
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>Install each of the specified packages, starting at the current state.  All dependencies will be installed in the correct order.  If the package is stale, it will be purged first.  If it is already installed, then this command does nothing.  In the example below the blas package is overridden, so only the generated module file will be installed:</p>
-<div class="highlight-python"><pre>$&gt; hpcp install lapack
+<div class="highlight-python"><div class="highlight"><pre>$&gt; hpcp install lapack
 ---&gt;           blas :  Overriding
 ---&gt;           blas :  Installing Override
 ---&gt;         lapack :  Extracting
@@ -124,23 +125,26 @@
 ---&gt;         lapack :  Configuring
 ---&gt;         lapack :  Uninstalling
 ---&gt;         lapack :  Building
----&gt;         lapack :  Installing</pre>
+---&gt;         lapack :  Installing
+</pre></div>
 </div>
 </div>
 <div class="section" id="uninstall">
 <h2>Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
 <p>Uninstall the specified packages.  The state of the extracted source trees are not touched:</p>
-<div class="highlight-python"><pre>$&gt; hpcp uninstall lapack blas
+<div class="highlight-python"><div class="highlight"><pre>$&gt; hpcp uninstall lapack blas
 ---&gt;         lapack :  Uninstalling
----&gt;           blas :  Uninstalling Override</pre>
+---&gt;           blas :  Uninstalling Override
+</pre></div>
 </div>
 </div>
 <div class="section" id="fetch">
 <h2>Fetch<a class="headerlink" href="#fetch" title="Permalink to this headline">¶</a></h2>
 <p>Download the source trees for the specified packages.  This is useful if you want to download many packages to the HPCP_POOL location while connected to the network and then install them later while offline:</p>
-<div class="highlight-python"><pre>$&gt; hpcp fetch lapack blas
+<div class="highlight-python"><div class="highlight"><pre>$&gt; hpcp fetch lapack blas
 ---&gt;         lapack :  Fetching tarball
----&gt;           blas :  Fetching tarball</pre>
+---&gt;           blas :  Fetching tarball
+</pre></div>
 </div>
 </div>
 <div class="section" id="clean">
@@ -165,7 +169,7 @@
 
     <div class="footer">
         &copy; Copyright 2013, Theodore Kisner.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
