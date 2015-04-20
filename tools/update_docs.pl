@@ -9,7 +9,6 @@ use HPCPorts;
 
 my $hpcp_root = "$FindBin::Bin/..";
 my $pkgdir = $hpcp_root."/packages";
-my $dbfile = $pkgdir."/pkg.db";
 
 use HPCPorts;
 
@@ -35,6 +34,7 @@ if ( ! defined ( $system ) ) {
 
 # load DB
 
+my $dbfile = $pkgdir."/pkg_".$system.".db";
 my $pdb = retrieve ( $dbfile );
 
 # load system config
