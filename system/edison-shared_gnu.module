@@ -22,3 +22,4 @@
   }
   
   setenv CRAYPE_LINK_TYPE dynamic
+  prepend-path CPATH /opt/cray/libsci/13.0.1/GNU/49/sandybridge/include

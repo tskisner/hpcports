@@ -45,7 +45,7 @@ MAKE = make -s
 # permissions on installed files
 
 INST_GRP = cmb
-INST_PERM = g+rwX,o+rX
+INST_PERM = a+rX
 
 # serial compilers
 
@@ -155,6 +155,8 @@ pkgconfig_VERSION = sys
 
 blas_OVERRIDE = TRUE
 blas_VERSION = 13.0.1
+blas_PREFIX = $(CRAY_LIBSCI_PREFIX_DIR)
+blas_INCLUDE = $(CRAY_LIBSCI_PREFIX_DIR)/include
 blas_LIBS_CC = 
 blas_LIBS_CXX = $(blas_LIBS_CC)
 blas_LIBS_FC = $(blas_LIBS_CC)
@@ -162,6 +164,8 @@ blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
 lapack_VERSION = 13.0.1
+lapack_PREFIX = $(CRAY_LIBSCI_PREFIX_DIR)
+lapack_INCLUDE = $(CRAY_LIBSCI_PREFIX_DIR)/include
 
 scalapack_OVERRIDE = TRUE
 scalapack_VERSION = 13.0.1
