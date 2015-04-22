@@ -29,7 +29,7 @@ pkg-configure :
 	if [ "x$(HPCP_CROSS_HOST)" != "x" ]; then \
 		host="--host=$(HPCP_CROSS_HOST)"; \
 	fi; \
-	dyn=""; \
+	dyn="--enable-shared"; \
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		dyn="--disable-shared"; \
 	fi; \
