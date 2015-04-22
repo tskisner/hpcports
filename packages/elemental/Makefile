@@ -6,12 +6,12 @@ include ../pkg_defs.make
 PKG_NAME = elemental
 
 PKG_FORMAT = tar
-PKG_TAR = elemental-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://libelemental.org/pub/releases/elemental-$(PKG_VERSION).tgz
+PKG_TAR = Elemental-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://libelemental.org/pub/releases/Elemental-$(PKG_VERSION).tgz
 
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = elemental-$(PKG_VERSION)
+PKG_SRCDIR = Elemental-$(PKG_VERSION)
 
 PKG_BUILDDIR = build
 
@@ -36,7 +36,7 @@ pkg-configure :
 	if [ "x$(BUILD_DYNAMIC)" != "xTRUE" ]; then \
 		shared="-D BUILD_SHARED_LIBS:BOOL=OFF -D SHARED_LIBRARIES:BOOL=OFF -D CMAKE_EXE_LINKER_FLAGS=-static -D CMAKE_FIND_LIBRARY_SUFFIXES=.a"; \
 	fi; \
-	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS)" | sed -e "s#^ *##" -e 's# *$$##' -e 's# #;#g'`; \
+	math=`echo "$(lapack_LIBS_CXX) $(blas_LIBS_CXX) $(FCLIBS) $(LDFLAGS) $(LIBS) $(OMPFLAGS)" | sed -e "s#^ *##" -e 's# *$$##' -e 's# #;#g'`; \
 	cmake $${shared} \
 	-D CMAKE_BUILD_TYPE=$${build} \
 	-D CMAKE_C_COMPILER=$(MPICC) \
@@ -54,6 +54,7 @@ pkg-configure :
 	-D OpenMP_CXX_FLAGS="$(OMPFLAGS)" \
 	-D MATH_LIBS="$${math}" \
 	-D ELEM_TESTS:BOOL=OFF \
+	-D INSTALL_PYTHON_PACKAGE=False \
 	-D CMAKE_INSTALL_PREFIX=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION) \
 	../$(PKG_SRCDIR)
 
@@ -65,7 +66,9 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) install
+	$(MAKE) install; \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE); \
+	ln -s $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/include $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages
 
 
 pkg-clean :
