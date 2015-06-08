@@ -1,7 +1,7 @@
-diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
---- wcstools-3.8.6.orig/Makefile	2011-09-15 12:04:39.000000000 -0700
-+++ wcstools-3.8.6/Makefile	2012-12-10 15:58:53.000000000 -0800
-@@ -1,207 +1,46 @@
+diff -urN wcstools-3.9.1_orig/Makefile wcstools-3.9.1/Makefile
+--- wcstools-3.9.1_orig/Makefile	2015-02-04 12:21:51.000000000 -0800
++++ wcstools-3.9.1/Makefile	2015-06-08 06:02:16.782568000 -0700
+@@ -1,210 +1,46 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
 -LIBWCS = libwcs/libwcs.a
@@ -26,7 +26,7 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
  	keyhead skycoor subpix xy2sky wcshead conpix gettab newfits getfits \
  	imstack imextract sumpix remap getcol getdate imfill imsmooth imresize \
  	fileroot filename filext char2sp sp2char crlf isnum isrange isfits \
- 	simpos nedpos bincat
+ 	isfile simpos nedpos bincat
  
 -addpix: addpix.c $(LIBWCS) libwcs/fitsfile.h
 -	$(CC) $(CFLAGS) -o $(BIN)/addpix addpix.c $(LIBS)
@@ -125,6 +125,9 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 -
 -imstar: imstar.c $(LIBWCS) libwcs/fitsfile.h libwcs/wcs.h libwcs/lwcs.h libwcs/wcscat.h
 -	$(CC) $(CFLAGS) -o $(BIN)/imstar imstar.c $(LIBS)
+-
+-isfile: isfile.c $(LIBWCS) libwcs/fitshead.h
+-	$(CC) $(CFLAGS) -o $(BIN)/isfile isfile.c $(LIBS)
 -
 -isfits: isfits.c $(LIBWCS) libwcs/fitshead.h
 -	$(CC) $(CFLAGS) -o $(BIN)/isfits isfits.c $(LIBS)
@@ -243,10 +246,9 @@ diff -urN wcstools-3.8.6.orig/Makefile wcstools-3.8.6/Makefile
 +	$(MAKE) clean
 +
 +.PHONY : clean install
-\ No newline at end of file
-diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
---- wcstools-3.8.6.orig/libned/Makefile	2008-07-31 10:24:39.000000000 -0700
-+++ wcstools-3.8.6/libned/Makefile	2012-12-10 15:58:53.000000000 -0800
+diff -urN wcstools-3.9.1_orig/libned/Makefile wcstools-3.9.1/libned/Makefile
+--- wcstools-3.9.1_orig/libned/Makefile	2008-07-31 10:24:39.000000000 -0700
++++ wcstools-3.9.1/libned/Makefile	2015-06-08 06:00:54.582211000 -0700
 @@ -4,45 +4,32 @@
  # you need to define _NO_PROTO when you compile them
  # you need to link your object files with -lsocket and -lnsl to make executable.
@@ -310,9 +312,9 @@ diff -urN wcstools-3.8.6.orig/libned/Makefile wcstools-3.8.6/libned/Makefile
  
 -clean:
 -	rm -f nedname nedpos byname ex_refcode iau name_resolver nearname nearposn ref *.o *.a
-diff -urN wcstools-3.8.6.orig/libned/nedname.c wcstools-3.8.6/libned/nedname.c
---- wcstools-3.8.6.orig/libned/nedname.c	2004-08-23 11:05:14.000000000 -0700
-+++ wcstools-3.8.6/libned/nedname.c	2012-12-10 15:58:53.000000000 -0800
+diff -urN wcstools-3.9.1_orig/libned/nedname.c wcstools-3.9.1/libned/nedname.c
+--- wcstools-3.9.1_orig/libned/nedname.c	2004-08-23 11:05:14.000000000 -0700
++++ wcstools-3.9.1/libned/nedname.c	2015-06-08 06:00:54.584985767 -0700
 @@ -7,8 +7,8 @@
  #include <stdio.h>
  #include <string.h>
@@ -324,9 +326,9 @@ diff -urN wcstools-3.8.6.orig/libned/nedname.c wcstools-3.8.6/libned/nedname.c
  
  extern int ned_errno;
  static void usage();
-diff -urN wcstools-3.8.6.orig/libned/nedpos.c wcstools-3.8.6/libned/nedpos.c
---- wcstools-3.8.6.orig/libned/nedpos.c	2007-09-14 13:39:45.000000000 -0700
-+++ wcstools-3.8.6/libned/nedpos.c	2012-12-10 15:58:53.000000000 -0800
+diff -urN wcstools-3.9.1_orig/libned/nedpos.c wcstools-3.9.1/libned/nedpos.c
+--- wcstools-3.9.1_orig/libned/nedpos.c	2007-09-14 13:39:45.000000000 -0700
++++ wcstools-3.9.1/libned/nedpos.c	2015-06-08 06:00:54.587892165 -0700
 @@ -7,19 +7,15 @@
  #include <stdio.h>
  #include <string.h>
@@ -359,9 +361,9 @@ diff -urN wcstools-3.8.6.orig/libned/nedpos.c wcstools-3.8.6/libned/nedpos.c
      CrossID *cp, *tmpcp;
      ObjInfo *op, *tmpop;
      MoreData     *mdatap;
-diff -urN wcstools-3.8.6.orig/libwcs/Makefile wcstools-3.8.6/libwcs/Makefile
---- wcstools-3.8.6.orig/libwcs/Makefile	2011-09-15 12:05:05.000000000 -0700
-+++ wcstools-3.8.6/libwcs/Makefile	2012-12-10 15:58:53.000000000 -0800
+diff -urN wcstools-3.9.1_orig/libwcs/Makefile wcstools-3.9.1/libwcs/Makefile
+--- wcstools-3.9.1_orig/libwcs/Makefile	2011-09-15 12:05:05.000000000 -0700
++++ wcstools-3.9.1/libwcs/Makefile	2015-06-08 06:00:54.590285000 -0700
 @@ -1,5 +1,7 @@
 -CFLAGS= -g -D_FILE_OFFSET_BITS=64
 -CC= cc
@@ -382,9 +384,9 @@ diff -urN wcstools-3.8.6.orig/libwcs/Makefile wcstools-3.8.6/libwcs/Makefile
  actread.o:	fitsfile.h wcscat.h wcs.h fitshead.h wcslib.h
  binread.o:	wcscat.h wcs.h fitshead.h wcslib.h
  ctgread.o:	wcscat.h wcs.h fitshead.h wcslib.h
-diff -urN wcstools-3.8.6.orig/libwcs/imsetwcs.c wcstools-3.8.6/libwcs/imsetwcs.c
---- wcstools-3.8.6.orig/libwcs/imsetwcs.c	2012-05-01 15:18:36.000000000 -0700
-+++ wcstools-3.8.6/libwcs/imsetwcs.c	2012-12-10 15:58:13.000000000 -0800
+diff -urN wcstools-3.9.1_orig/libwcs/imsetwcs.c wcstools-3.9.1/libwcs/imsetwcs.c
+--- wcstools-3.9.1_orig/libwcs/imsetwcs.c	2012-05-01 15:18:36.000000000 -0700
++++ wcstools-3.9.1/libwcs/imsetwcs.c	2015-06-08 06:00:54.594487594 -0700
 @@ -235,18 +235,18 @@
  	hputi4 (header, "WCSMATCH", nbin);
  	hputi4 (header, "WCSNREF", nbin);
