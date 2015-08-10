@@ -1,1 +1,1 @@
-m4 autoconf automake libtool blas lapack scalapack boost cfitsio fitstools expat sqlite fftw zlib bzip2 mpibatch readline python nose numpy scipy git moat getdata toast healpix astropy healpy ipython matplotlib mpi4py pyslalib scientific numexpr hdf5 elemental
+m4 autoconf automake libtool blas lapack scalapack boost cfitsio fitstools expat sqlite fftw zlib bzip2 mpibatch readline python nose numpy scipy git moat getdata toast healpix astropy healpy ipython matplotlib mpi4py pyslalib numexpr hdf5 elemental

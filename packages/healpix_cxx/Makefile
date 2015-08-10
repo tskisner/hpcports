@@ -34,7 +34,7 @@ pkg-configure :
 		dyn="--disable-shared --enable-static --enable-static-exec"; \
 	fi; \
 	libtoolize; \
-	autoreconf --install; \
+	autoreconf --install -I "$(pkgconfig_PREFIX)/share/aclocal"; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	CFITSIO_CFLAGS="-I$(cfitsio_PREFIX)/include" CFITSIO_LIBS="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CXX)" \
