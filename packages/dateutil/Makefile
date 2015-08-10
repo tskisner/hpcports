@@ -7,7 +7,7 @@ PKG_NAME = dateutil
 
 PKG_FORMAT = tar
 PKG_TAR = python-dateutil-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.1.tar.gz#md5=6ca9645559545db28c47fe159d288ee2
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.2.tar.gz#md5=4ef68e1c485b09e9f034e10473e5add2
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = python-dateutil-$(PKG_VERSION)
