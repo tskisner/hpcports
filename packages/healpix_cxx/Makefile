@@ -14,7 +14,7 @@ PKG_SRCDIR = Healpix_$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = 
+PKG_PATCHES = hpcp_pkgconfig.patch
 
 
 # rules for this package
@@ -34,7 +34,7 @@ pkg-configure :
 		dyn="--disable-shared --enable-static --enable-static-exec"; \
 	fi; \
 	libtoolize; \
-	autoreconf --install -I "$(pkgconfig_PREFIX)/share/aclocal"; \
+	autoreconf --install; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
 	CFITSIO_CFLAGS="-I$(cfitsio_PREFIX)/include" CFITSIO_LIBS="-L$(cfitsio_PREFIX)/lib $(cfitsio_LIBS_CXX)" \
