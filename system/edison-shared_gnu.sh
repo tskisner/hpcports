@@ -11,9 +11,9 @@ if [ "x${loadedgnu}" = x ]; then
     fi
     module unload cray-shmem
     module swap gcc gcc/4.9.2
-    module swap craype craype/2.2.1
-    module swap cray-mpich cray-mpich/7.1.1
-    module load cray-libsci/13.0.1
+    module swap craype craype/2.3.1
+    module swap cray-mpich cray-mpich/7.2.1
+    module load cray-libsci/13.0.3
     module load mkl/13.0.3
     module load git/1.8.1.1
     module load zlib/1.2.7

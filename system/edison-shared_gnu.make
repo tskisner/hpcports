@@ -20,9 +20,10 @@
 # 6.0 :  (CDT 1.19) gnu 4.9.1, craype-2.2.0, cray-mpich 7.0.3, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 # 6.1 :  gnu 4.9.1, craype-2.2.1, cray-mpich 7.0.4, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 # 7.0 :  (CDT 15.01) gnu 4.9.2, craype-2.2.1, cray-mpich 7.1.1, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
+# 7.1 :  gnu 4.9.2, craype-2.3.1, cray-mpich 7.2.1, cray-libsci 13.0.3, mkl-13.0.3, python-2.7.9
 #
 
-HPCP_ENV = 7.0
+HPCP_ENV = 7.1
 
 # suffix, to avoid name collisions with nersc modules
 
