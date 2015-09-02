@@ -1,0 +1,1 @@
+scons lapack tmv fftw boost astropy pyyaml numpy

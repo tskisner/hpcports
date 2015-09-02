@@ -1,0 +1,12 @@
+diff -urN GalSim-1.3.0.orig/SConstruct GalSim-1.3.0/SConstruct
+--- GalSim-1.3.0.orig/SConstruct	2015-07-30 03:51:44.000000000 -0700
++++ GalSim-1.3.0/SConstruct	2015-09-02 15:20:07.354022788 -0700
+@@ -937,7 +937,7 @@
+ 
+     # Run the given executable with the source file we just built
+     output = config.sconf.confdir.File(f + '.out')
+-    node = config.env.Command(output, source, executable + " < $SOURCE >& $TARGET")
++    node = config.env.Command(output, source, executable + " < $SOURCE > $TARGET 2>&1")
+     ok = config.sconf.BuildNodes(node)
+ 
+     config.sconf.env['SPAWN'] = save_spawn
