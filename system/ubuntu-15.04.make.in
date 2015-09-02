@@ -1,12 +1,12 @@
 # This assumes that you have installed all the packages by running the
-# ubuntu-14.04-setup.pl script
+# ubuntu-15.04-setup.pl script
 
 # software install location (set this in your ~/.bashrc or similar)
 #HPCP_PREFIX = $(HOME)/hpcports
 
 # OS environment version
 
-HPCP_ENV = 14.04
+HPCP_ENV = 15.04
 
 # software download location (set this in your ~/.bashrc or similar)
 #HPCP_POOL = $(HOME)/hpcports_pool
