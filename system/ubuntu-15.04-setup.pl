@@ -11,6 +11,7 @@ my $DEPS = {
 "automake" => "automake",
 "libopenmpi-dev" => "openmpi",
 "libopenblas-dev" => "blas",
+"libgnutls-dev" => "openssl",
 "libboost1.55-all-dev" => "boost",
 "bzip2" => "bzip2",
 "libbz2-dev" => "",
@@ -63,6 +64,9 @@ my $DEPS = {
 "wcslib-dev" => "wcslib",
 "libwcstools-dev" => "wcstools",
 "xpa-tools" => "xpa",
+"libreadline-dev" => "readline",
+"libxml2-dev" => "libxml2",
+"python-nose" => "nose",
 "libxpa1" => "",
 "zlib1g-dev" => "zlib" };
 

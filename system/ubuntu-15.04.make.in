@@ -76,5 +76,9 @@ lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_F77 = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
 
+termcap_OVERRIDE = TRUE
+termcap_VERSION = sys
+
 root = /usr
+
 
