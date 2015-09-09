@@ -1,1 +1,1 @@
-autoconf automake libtool blas lapack cfitsio appspack git
+autoconf automake libtool blas lapack cfitsio appspack git python pyyaml

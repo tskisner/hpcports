@@ -61,12 +61,18 @@ pkg-build :
 
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) LIBTOOLFLAGS="$(LIBTOOLFLAGS)" install
+	$(MAKE) LIBTOOLFLAGS="$(LIBTOOLFLAGS)" install; \
+	cd $(STAGE)/$(PKG_BUILDDIR)/python; \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages; \
+	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
+	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
 pkg-clean :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	$(MAKE) clean
+	$(MAKE) clean; \
+	cd $(STAGE)/$(PKG_BUILDDIR)/python; \
+	python setup.py clean
 
 
 # Include common package rules
