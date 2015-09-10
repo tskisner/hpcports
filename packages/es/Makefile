@@ -37,8 +37,9 @@ pkg-configure :
 	if [ "x$(lapack_LIBS_CXX)" != "x" ]; then \
 		lapack="$(lapack_LIBS_CXX)"; \
 	fi; \
+	mycxxflags=`echo $(HPCP_CXXFLAGS) | sed -e 's#-std=c++11##'`; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
+	CXX="$(CXX)" CXXFLAGS="$${mycxxflags}" \
 	F77="$(F77)" FFLAGS="$(FFLAGS)" \
 	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
 	MPICXX="$(MPICXX)" \
@@ -62,7 +63,7 @@ pkg-build :
 pkg-install :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) LIBTOOLFLAGS="$(LIBTOOLFLAGS)" install; \
-	cd $(STAGE)/$(PKG_BUILDDIR)/python; \
+	cd python; \
 	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages; \
 	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
 	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
@@ -71,7 +72,7 @@ pkg-install :
 pkg-clean :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
 	$(MAKE) clean; \
-	cd $(STAGE)/$(PKG_BUILDDIR)/python; \
+	cd python; \
 	python setup.py clean
 
 
