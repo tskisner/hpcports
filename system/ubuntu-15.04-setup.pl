@@ -4,6 +4,9 @@ use strict;
 
 # List of dependencies
 
+# these are broken...
+# "libgnutls-dev" => "openssl",
+
 my $DEPS = {
 "environment-modules" => "",
 "python-astropy" => "astropy",
@@ -11,7 +14,6 @@ my $DEPS = {
 "automake" => "automake",
 "libopenmpi-dev" => "openmpi",
 "libopenblas-dev" => "blas",
-"libgnutls-dev" => "openssl",
 "libboost1.55-all-dev" => "boost",
 "bzip2" => "bzip2",
 "libbz2-dev" => "",

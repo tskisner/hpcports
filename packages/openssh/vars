@@ -1,0 +1,2 @@
+BIN = bin sbin
+MAN = share/man
