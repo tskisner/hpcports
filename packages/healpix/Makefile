@@ -14,7 +14,7 @@ PKG_SRCDIR = healpix-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = cxx11.patch
 
 
 # rules for this package

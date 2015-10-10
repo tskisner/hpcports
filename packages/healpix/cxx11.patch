@@ -1,0 +1,37 @@
+diff -urN healpix-2.15b_orig/src/cxx/cxxsupport/cxxutils.cc healpix-2.15b/src/cxx/cxxsupport/cxxutils.cc
+--- healpix-2.15b_orig/src/cxx/cxxsupport/cxxutils.cc	2013-12-18 23:02:09.000000000 -0800
++++ healpix-2.15b/src/cxx/cxxsupport/cxxutils.cc	2015-10-10 10:29:03.152542317 -0700
+@@ -55,7 +55,7 @@
+ bool file_present (const string &filename)
+   {
+   ifstream dummy(filename.c_str());
+-  return dummy;
++  return !dummy.fail();
+   }
+ 
+ void assert_present (const string &filename)
+@@ -261,7 +261,7 @@
+   int lineno=0;
+   dict.clear();
+   ifstream inp(filename.c_str());
+-  planck_assert (inp,"Could not open parameter file "+filename);
++  planck_assert (!inp.fail(),"Could not open parameter file "+filename);
+   while (inp)
+     {
+     string line;
+diff -urN healpix-2.15b_orig/src/cxx/cxxsupport/tga_image.cc healpix-2.15b/src/cxx/cxxsupport/tga_image.cc
+--- healpix-2.15b_orig/src/cxx/cxxsupport/tga_image.cc	2013-12-18 23:02:09.000000000 -0800
++++ healpix-2.15b/src/cxx/cxxsupport/tga_image.cc	2015-10-10 10:28:21.875462851 -0700
+@@ -117,10 +117,10 @@
+   int yres = pixel.size2();
+ 
+   const char header[18] = { 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+-    xres%256, xres/256, yres%256, yres/256, 24, 32 };
++			    (char)(xres%256), (char)(xres/256), (char)(yres%256), (char)(yres/256), 24, 32 };
+ 
+   ofstream out(file.c_str(), ios_base::out | ios_base::binary);
+-  planck_assert(out, "could not create file " + file);
++  planck_assert(!out.fail(), "could not create file " + file);
+ 
+   out.write (header, 18);
+ 
