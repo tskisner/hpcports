@@ -7,7 +7,7 @@ PKG_NAME = requests
 
 PKG_FORMAT = tar
 PKG_TAR = $(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/r/requests/$(PKG_TAR)
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/kennethreitz/requests/archive/v$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = $(PKG_NAME)-$(PKG_VERSION)
