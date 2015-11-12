@@ -1,1 +1,1 @@
-readline numpy tk dateutil freetype libpng pyparsing
+readline numpy tk dateutil freetype libpng pyparsing six
