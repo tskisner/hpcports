@@ -1,6 +1,6 @@
 diff -urN Healpix_3.20_orig/src/cxx/autotools/m4/pkg.m4 Healpix_3.20/src/cxx/autotools/m4/pkg.m4
---- Healpix_3.20_orig/src/cxx/autotools/m4/pkg.m4	1969-12-31 16:00:00.000000000 -0800
-+++ Healpix_3.20/src/cxx/autotools/m4/pkg.m4	2015-08-11 09:59:38.263902000 -0700
+--- Healpix_3.30_orig/src/cxx/autotools/m4/pkg.m4	1969-12-31 16:00:00.000000000 -0800
++++ Healpix_3.30/src/cxx/autotools/m4/pkg.m4	2015-08-11 09:59:38.263902000 -0700
 @@ -0,0 +1,214 @@
 +# pkg.m4 - Macros to locate and utilise pkg-config.            -*- Autoconf -*-
 +# serial 1 (pkg-config-0.24)
