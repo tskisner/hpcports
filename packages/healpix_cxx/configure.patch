@@ -1,0 +1,11 @@
+--- Healpix_3.30_orig/src/cxx/autotools/configure.ac	2015-04-03 01:21:16.000000000 -0700
++++ Healpix_3.30/src/cxx/autotools/configure_new.ac	2015-12-03 00:41:29.977157151 -0800
+@@ -17,7 +17,7 @@
+ dnl By default, install the headers into a subdirectory of
+ dnl ${prefix}/include to avoid possible header filename collisions.
+ dnl
+-includedir="${includedir}/${PACKAGE_NAME}"
++dnl includedir="${includedir}/${PACKAGE_NAME}"
+ 
+ dnl
+ dnl Enable silent build rules if this version of Automake supports them

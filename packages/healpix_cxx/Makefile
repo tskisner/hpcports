@@ -14,7 +14,7 @@ PKG_SRCDIR = Healpix_$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_pkgconfig.patch
+PKG_PATCHES = hpcp_pkgconfig.patch configure.patch
 
 
 # rules for this package
