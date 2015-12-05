@@ -1,1 +1,1 @@
-autoconf automake libtool cfitsio expat sqlite python numpy getdata wcslib moat lapack git hdf5 elemental healpix
+autoconf automake libtool cfitsio expat sqlite python numpy getdata wcslib moat lapack git hdf5 elemental healpix_cxx
