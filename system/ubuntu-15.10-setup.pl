@@ -81,6 +81,10 @@ use Data::Dumper;
 my $install = join ( " ", keys( %{$DEPS} ) );
 system( "sudo apt-get install ${install}" );
 
+# enable the environment modules
+
+system( "add.modules" );
+
 # generate override info
 
 system( "cp ubuntu-15.10.make.in ubuntu-15.10.make" );
