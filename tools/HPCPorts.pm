@@ -619,8 +619,21 @@ sub module_file {
 
 	# Write variables
 
-	print OUT "setenv ${pname}_PREFIX \"${prefix}/${pname}-${fullversion}\"\n";
-	print OUT "setenv ${pname}_VERSION \"${fullversion}\"\n\n";
+	if ( defined ( $overrides->{ $pname } ) ) {
+	    if ( defined $overrides->{ $pname }->{ "PREFIX" } ) {
+		my $overridden_prefix = "";
+		$overridden_prefix = $overrides->{ $pname }->{ "PREFIX" };
+		print OUT "setenv ${pname}_PREFIX \"${overridden_prefix}\"\n";
+	    }
+	    if ( defined $overrides->{ $pname }->{ "VERSION" } ) {
+		my $overridden_version = "";
+		$overridden_version = $overrides->{ $pname }->{ "VERSION" };
+		print OUT "setenv ${pname}_VERSION \"${overridden_version}\"\n\n";
+	    }
+	} else {
+	    print OUT "setenv ${pname}_PREFIX \"${prefix}/${pname}-${fullversion}\"\n";
+	    print OUT "setenv ${pname}_VERSION \"${fullversion}\"\n\n";
+	}
 
 	my $key;
 	my $value;
@@ -756,8 +769,21 @@ sub shell_file {
 
 	# Write variables
 
-	print OUT "export ${pname}_PREFIX=\"${prefix}/${pname}-${fullversion}\"\n";
-	print OUT "export ${pname}_VERSION=\"${fullversion}\"\n\n";
+	if ( defined ( $overrides->{ $pname } ) ) {
+	    if ( defined $overrides->{ $pname }->{ "PREFIX" } ) {
+		my $overridden_prefix = "";
+		$overridden_prefix = $overrides->{ $pname }->{ "PREFIX" };
+		print OUT "export ${pname}_PREFIX=\"${overridden_prefix}\"\n";
+	    }
+	    if ( defined $overrides->{ $pname }->{ "VERSION" } ) {
+		my $overridden_version = "";
+		$overridden_version = $overrides->{ $pname }->{ "VERSION" };
+		print OUT "export ${pname}_VERSION=\"${overridden_version}\"\n\n";
+	    }
+	} else {
+	    print OUT "export ${pname}_PREFIX=\"${prefix}/${pname}-${fullversion}\"\n";
+	    print OUT "export ${pname}_VERSION=\"${fullversion}\"\n\n";
+	}
 
 	if ( $pname eq "hpcp" ) {
 		# special handling of hpcp package
