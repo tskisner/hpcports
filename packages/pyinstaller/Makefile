@@ -5,11 +5,12 @@ include ../pkg_defs.make
 
 PKG_NAME = pyinstaller
 
-PKG_FORMAT = git
-PKG_GIT_CLONE = git clone git@github.com:pyinstaller/pyinstaller.git
-PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
+PKG_FORMAT = tar
+PKG_TAR = PyInstaller-3.0.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/pyinstaller/pyinstaller/releases/download/3.0/PyInstaller-3.0.tar.gz
+PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = pyinstaller
+PKG_SRCDIR = PyInstaller-3.0
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
