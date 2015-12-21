@@ -509,6 +509,9 @@ sub config_vars {
 
 	my $varstore = {};
 
+	my @override_names = ();
+	my @override_values = ();
+
 	while ( <IN> ) {
 		chomp;
 		if ( ( ! /^#.*/ ) && ( $_ ne "" ) ) {
@@ -534,17 +537,23 @@ sub config_vars {
 			} elsif ( ( /^(.*)_OVERRIDE.*/ ) && ( $explhs eq "TRUE" ) ) {
 				$overrides->{ $1 } = {};
 			} else {
-				# scan for package variables
-				my $key;
-				my $value;
-				foreach $key ( keys %{$overrides} ) {
-					$value = $overrides->{ $key };
-					if ( $F[0] =~ /${key}_(.*)/ ) {
-						$value->{ $1 } = $explhs;
-					}
-				}
+			        push ( @override_names, $F[0] );
+			        push ( @override_values, $explhs );
 			}
 		}
+	}
+
+	# scan for package variables
+	my $n = @override_names;
+	for ( my $i = 0; $i < $n; $i++ ) {
+	    my $key;
+	    my $value;
+	    foreach $key ( keys %{$overrides} ) {
+		$value = $overrides->{ $key };
+		if ( $override_names[$i] =~ /${key}_(.*)/ ) {
+		    $value->{ $1 } = $override_values[$i];
+		}
+	    }
 	}
 
 	if ( $env eq "" ) {

@@ -76,6 +76,21 @@ lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_F77 = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
 
+cfitsio_LIBS_CC = -lcfitsio
+cfitsio_LIBS_CXX = $(cfitsio_LIBS_CC)
+cfitsio_LIBS_F77 = $(cfitsio_LIBS_CC)
+cfitsio_LIBS_FC = $(cfitsio_LIBS_CC)
+
+fftw_LIBS_CC = -lfftw3_threads -lfftw3
+fftw_LIBS_CXX = $(fftw_LIBS_CC)
+fftw_LIBS_F77 = $(fftw_LIBS_CC)
+fftw_LIBS_FC = $(fftw_LIBS_CC)
+
+fftw_LIBS_MPICC = -lfftw3_mpi
+fftw_LIBS_MPICXX = $(fftw_LIBS_MPICC)
+fftw_LIBS_MPIF77 = $(fftw_LIBS_MPICC)
+fftw_LIBS_MPIFC = $(fftw_LIBS_MPICC)
+
 termcap_OVERRIDE = TRUE
 termcap_VERSION = sys
 
