@@ -21,9 +21,10 @@
 # 6.1 :  gnu 4.9.1, craype-2.2.1, cray-mpich 7.0.4, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 # 7.0 :  (CDT 15.01) gnu 4.9.2, craype-2.2.1, cray-mpich 7.1.1, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 # 7.1 :  gnu 4.9.2, craype-2.3.1, cray-mpich 7.2.1, cray-libsci 13.0.3, mkl-13.0.3, python-2.7.9
+# 8.0 :  gnu 5.2.0, craype-2.5.0, cray-mpich 7.3.0, cray-libsci 13.3.0, intel 15.0.1.133
 #
 
-HPCP_ENV = 7.1
+HPCP_ENV = 8.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -63,8 +64,8 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
-MPICPPFLAGS = /opt/cray/mpt/7.0.3/gni/mpich2-gnu/49/include
-MPILDFLAGS = /opt/cray/mpt/7.0.3/gni/mpich2-gnu/49/lib
+MPICPPFLAGS = /opt/cray/mpt/7.3.0/gni/mpich-gnu/51/include
+MPILDFLAGS = /opt/cray/mpt/7.3.0/gni/mpich-gnu/51/lib
 MPILIBS = -lmpich
 MPICXXLIBS = -lmpichcxx
 
@@ -94,9 +95,9 @@ LIBTOOLFLAGS =
 # vendor math libraries
 
 VENDOR = intel
-INTEL_PREFIX = /opt/intel/composer_xe_2013.5.192
-INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
-INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
+INTEL_PREFIX = $(MKLROOT)
+INTEL_INCLUDE = $(INTEL_PREFIX)/include
+INTEL_LIBDIR = $(INTEL_PREFIX)/lib/intel64
 INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
@@ -123,7 +124,7 @@ gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.17.0
 
 git_OVERRIDE = TRUE
-git_VERSION = 1.8.1.1
+git_VERSION = 2.4.6
 
 # module load zlib/1.2.7
 
@@ -152,22 +153,23 @@ curl_VERSION = 7.28.1
 pkgconfig_OVERRIDE = TRUE
 pkgconfig_VERSION = sys
 
-# we get BLAS, Lapack, and ScaLapack from Cray libsci
+# we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 13.0.1
-blas_PREFIX = $(CRAY_LIBSCI_PREFIX_DIR)
-blas_INCLUDE = $(CRAY_LIBSCI_PREFIX_DIR)/include
-blas_LIBS_CC = 
+blas_VERSION = 2015.1.133
+blas_PREFIX = /opt/intel/composer_xe_2015.1.133/mkl
+blas_INCLUDE = /opt/intel/composer_xe_2015.1.133/mkl/include
+blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(blas_LIBS_CC)
 blas_LIBS_FC = $(blas_LIBS_CC)
 blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 13.0.1
-lapack_PREFIX = $(CRAY_LIBSCI_PREFIX_DIR)
-lapack_INCLUDE = $(CRAY_LIBSCI_PREFIX_DIR)/include
-
-scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 13.0.1
+lapack_VERSION = 2015.1.133
+lapack_PREFIX = /opt/intel/composer_xe_2015.1.133/mkl
+lapack_INCLUDE = /opt/intel/composer_xe_2015.1.133/mkl/include
+lapack_LIBS_CC = -lmkl_lapack95_lp64
+lapack_LIBS_CXX = $(lapack_LIBS_CC)
+lapack_LIBS_FC = $(lapack_LIBS_CC)
+lapack_LIBS_F77 = $(lapack_LIBS_CC)
 
