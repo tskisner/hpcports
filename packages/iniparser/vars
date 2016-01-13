@@ -1,0 +1,6 @@
+INCLUDE = include
+LIB = lib
+LIBS_CC = -liniparser
+LIBS_CXX = -liniparser
+LIBS_F77 = -liniparser
+LIBS_FC = -liniparser
