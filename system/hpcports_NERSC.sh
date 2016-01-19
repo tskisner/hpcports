@@ -98,27 +98,21 @@ if [ "x${NERSC_HOST}" = "xedison" ]; then
     planck=`groups | sed -e "s#.*\(planck\).*#yes#" | sed -e "s# ##g"`
     polar=`groups | sed -e "s#.*\(polar\).*#yes#" | sed -e "s# ##g"`
     module unuse /scratch1/scratchdirs/kisner/software/hpcports_gnu/env/modulefiles
-    module unuse /scratch1/scratchdirs/kisner/software/hpcports_shared_gnu/env/modulefiles
     if [ "$planck" = "yes" ]; then
       module unuse /scratch1/scratchdirs/kisner/software/planck_gnu/modulefiles
-      module unuse /scratch1/scratchdirs/kisner/software/planck_shared_gnu/modulefiles
     fi
     if [ "$polar" = "yes" ]; then
-      module unuse /scratch1/scratchdirs/kisner/software/pbear_shared_gnu/modulefiles
+      module unuse /scratch1/scratchdirs/kisner/software/pbear_gnu/modulefiles
     fi
     case $1 in
-      gnu ) module use /scratch1/scratchdirs/kisner/software/hpcports_gnu/env/modulefiles
+      gnu|shared_gnu ) module use /scratch1/scratchdirs/kisner/software/hpcports_gnu/env/modulefiles
             if [ "$planck" = "yes" ]; then
               module use /scratch1/scratchdirs/kisner/software/planck_gnu/modulefiles
-            fi;;
-      shared_gnu ) module use /scratch1/scratchdirs/kisner/software/hpcports_shared_gnu/env/modulefiles
-            if [ "$planck" = "yes" ]; then
-              module use /scratch1/scratchdirs/kisner/software/planck_shared_gnu/modulefiles
             fi
             if [ "$polar" = "yes" ]; then
-              module use /scratch1/scratchdirs/kisner/software/pbear_shared_gnu/modulefiles
+              module use /scratch1/scratchdirs/kisner/software/pbear_gnu/modulefiles
             fi;;
-        * ) echo "usage:  hpcports [ gnu | shared_gnu ]";;
+        * ) echo "usage:  hpcports [ gnu ]";;
     esac
   }
 fi
