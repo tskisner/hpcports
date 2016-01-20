@@ -7,7 +7,7 @@ PKG_NAME = mpi4py
 
 PKG_FORMAT = tar
 PKG_TAR = mpi4py-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/m/mpi4py/mpi4py-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/mpi4py/mpi4py/archive/$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = mpi4py-$(PKG_VERSION)
@@ -30,7 +30,7 @@ pkg-configure :
 	echo "mpicxx = $(MPICXX)" >> setup.cfg; \
 	echo "mpif77 = $(MPIF77)" >> setup.cfg; \
 	echo "mpif90 = $(MPIFC)" >> setup.cfg; \
-	echo "mpif95 = $(MPIFC)" >> setup.cfg; \
+	echo "mpifort = $(MPIFC)" >> setup.cfg; \
 	echo "" >> setup.cfg; \
 	echo "[build]" >> setup.cfg; \
 	echo "debug = 0" >> setup.cfg; \
