@@ -7,7 +7,7 @@ PKG_NAME = astropy_helpers
 
 PKG_FORMAT = tar
 PKG_TAR = astropy-helpers-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/a/astropy-helpers/astropy-helpers-0.4.1.tar.gz#md5=4361042143e704bfd2e82a4d4ea88966
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/a/astropy-helpers/astropy-helpers-1.1.1.tar.gz#md5=0a44c1c7038efaa065d18691fd768ff1
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = astropy-helpers-$(PKG_VERSION)
