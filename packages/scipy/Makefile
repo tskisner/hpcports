@@ -7,7 +7,7 @@ PKG_NAME = scipy
 
 PKG_FORMAT = tar
 PKG_TAR = scipy-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/scipy/files/scipy/$(PKG_VERSION)/scipy-$(PKG_VERSION).tar.gz/download
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/scipy/scipy/releases/download/v$(PKG_VERSION)/scipy-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = scipy-$(PKG_VERSION)
