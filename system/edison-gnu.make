@@ -47,7 +47,7 @@ MAKE = make -s
 
 # permissions on installed files
 
-INST_GRP = cmb
+#INST_GRP = cmb
 INST_PERM = a+rX
 
 # serial compilers
