@@ -10,7 +10,7 @@ if [ "x${loadedgnu}" = x ]; then
       module swap PrgEnv-intel PrgEnv-gnu
     fi
     module swap gcc gcc/5.2.0
-    module swap intel/15.0.1.133
+    module load intel/15.0.1.133
     module load git/2.4.6
     module load zlib/1.2.7
     module load curl/7.28.1
