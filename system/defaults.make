@@ -20,11 +20,11 @@ ifndef HPCP_MOD_SUFFIX
 endif
 
 ifndef INST_GRP
-	export INST_GRP := $(shell groups | awk {'print $1'})
+	export INST_GRP = 
 endif
 
 ifndef INST_PERM
-	export INST_PERM = g+rwX,o+rX
+	export INST_PERM = 
 endif
 
 # special case:  we need to know the python site directory.  Override this in

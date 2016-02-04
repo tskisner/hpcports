@@ -53,8 +53,12 @@ fetch : prefetch
 				mv $(PKG_SRCDIR) $(PKG_NAME)-$(PKG_VERSION); \
 				cd $(PKG_NAME)-$(PKG_VERSION); \
 				$(PKG_GIT_CHECKOUT) >> ../$(PKG_NAME)-$(PKG_VERSION).fetchlog 2>&1; \
-				chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION).fetchlog; \
-				chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION).fetchlog; \
+				if [ x$(INST_GRP) != "x" ]; then \
+				   chgrp -R $(INST_GRP) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION).fetchlog; \
+				fi; \
+				if [ x$(INST_PERM) != "x" ]; then \
+				   chmod -R $(INST_PERM) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION) $(HPCP_POOL)/$(PKG_NAME)-$(PKG_VERSION).fetchlog; \
+				fi; \
 			fi; \
 		fi; \
 	fi
@@ -175,23 +179,35 @@ install :
 					python -m compileall $${pyfile}; \
 				done; \
 			fi; \
-			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
-			chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+			if [ x$(INST_GRP) != "x" ]; then \
+			   chgrp -R $(INST_GRP) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+			fi; \
+			if [ x$(INST_PERM) != "x" ]; then \
+			   chmod -R $(INST_PERM) $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION); \
+			fi; \
 			suffix="$(HPCP_MOD_SUFFIX)"; \
 			if [ $(PKG_NAME) = "hpcp" ]; then \
 				suffix=""; \
 			fi; \
 			mkdir -p $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
 			cp $(STAGE)/$(PKG_NAME).sh $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
-			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
-			chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
+			if [ x$(INST_GRP) != "x" ]; then \
+			   chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
+			fi; \
+			if [ x$(INST_PERM) != "x" ]; then \
+			   chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/$(PKG_NAME)_$(PKG_FULLVERSION).sh; \
+			fi; \
 			cp $(STAGE)/$(PKG_NAME).module $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/$(PKG_FULLVERSION); \
 			if [ -e $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version ]; then \
 				cp $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.oldversion; \
 			fi; \
 			cp $(STAGE)/$(PKG_NAME).modversion $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}/.version; \
-			chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
-			chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
+			if [ x$(INST_GRP) != "x" ]; then \
+			   chgrp -R $(INST_GRP) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
+			fi; \
+			if [ x$(INST_PERM) != "x" ]; then \
+			   chmod -R $(INST_PERM) $(HPCP_PREFIX)/env/modulefiles/$(PKG_NAME)$${suffix}; \
+			fi; \
 		fi; \
 	fi
 
