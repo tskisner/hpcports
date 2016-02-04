@@ -11,9 +11,10 @@
 # here:
 #
 # 1.0 :  gnu 5.1.0, craype-2.4.2, cray-mpich 7.2.5
+# 1.1 :  same as 1.0, but with different environment setup in hpcp module
 #
 
-HPCP_ENV = 1.0
+HPCP_ENV = 1.1
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -53,8 +54,8 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
-MPICPPFLAGS = /opt/cray/mpt/7.2.5/gni/mpich2-GNU/5.1/include
-MPILDFLAGS = /opt/cray/mpt/7.2.5/gni/mpich2-GNU/5.1/lib
+MPICPPFLAGS = /opt/cray/mpt/7.2.5/gni/mpich2-gnu/5.1/include
+MPILDFLAGS = /opt/cray/mpt/7.2.5/gni/mpich2-gnu/5.1/lib
 MPILIBS = -lmpich
 MPICXXLIBS = -lmpichcxx
 
@@ -112,13 +113,15 @@ gzip_VERSION = 1.3.12
 gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.17.0
 
-git_OVERRIDE = TRUE
-git_VERSION = 1.7.12.4
+# module load git/2.6.3
 
-# module load zlib/1.2.7
+git_OVERRIDE = TRUE
+git_VERSION = 2.6.3
+
+# module load zlib/1.2.8
 
 zlib_OVERRIDE = TRUE
-zlib_VERSION = 1.2.7
+zlib_VERSION = 1.2.8
 zlib_LIBS_CC = -lz
 zlib_LIBS_CXX = -lz
 zlib_LIBS_F77 = -lz

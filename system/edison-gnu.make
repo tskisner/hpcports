@@ -22,9 +22,10 @@
 # 7.0 :  (CDT 15.01) gnu 4.9.2, craype-2.2.1, cray-mpich 7.1.1, cray-libsci 13.0.1, mkl-13.0.3, python-2.7.5
 # 7.1 :  gnu 4.9.2, craype-2.3.1, cray-mpich 7.2.1, cray-libsci 13.0.3, mkl-13.0.3, python-2.7.9
 # 8.0 :  gnu 5.2.0, craype-2.5.0, cray-mpich 7.3.0, cray-libsci 13.3.0, intel 15.0.1.133
+# 8.1 :  same as 8.0, but with different environment setup in hpcp module, and cray-mpich 7.3.1
 #
 
-HPCP_ENV = 8.0
+HPCP_ENV = 8.1
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -64,8 +65,8 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
-MPICPPFLAGS = /opt/cray/mpt/7.3.0/gni/mpich-gnu/51/include
-MPILDFLAGS = /opt/cray/mpt/7.3.0/gni/mpich-gnu/51/lib
+MPICPPFLAGS = /opt/cray/mpt/7.3.1/gni/mpich-gnu/5.1/include
+MPILDFLAGS = /opt/cray/mpt/7.3.1/gni/mpich-gnu/5.1/lib
 MPILIBS = -lmpich
 MPICXXLIBS = -lmpichcxx
 
