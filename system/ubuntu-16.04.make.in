@@ -1,0 +1,99 @@
+# This assumes that you have installed all the packages by running the
+# ubuntu-16.04-setup.pl script
+
+# software install location (set this in your ~/.bashrc or similar)
+#HPCP_PREFIX = $(HOME)/hpcports
+
+# OS environment version
+
+HPCP_ENV = 16.04
+
+# software download location (set this in your ~/.bashrc or similar)
+#HPCP_POOL = $(HOME)/hpcports_pool
+
+# UNIX tools
+
+SHELL = /bin/bash
+MAKE = make -s
+
+# toolchain (gnu, darwin, intel, ibm)
+
+TOOLCHAIN = gnu
+
+# permissions on installed files
+
+INST_GRP = adm
+INST_PERM = a+rX
+
+# serial compilers.
+
+CC = gcc
+CXX = g++
+F77 = gfortran
+FC = gfortran
+
+# MPI compilers
+
+MPICC = mpicc
+MPICXX = mpicxx
+MPIF77 = mpif77
+MPIFC = mpif90
+
+# compile flags
+
+CFLAGS = -O3 -fPIC -DNDEBUG
+CXXFLAGS = -O3 -fPIC -DNDEBUG -std=c++11
+FFLAGS = -O3 -fPIC -DNDEBUG
+FCFLAGS = -O3 -fPIC -DNDEBUG
+
+# OpenMP flags
+
+OMPFLAGS = -fopenmp
+
+# Fortran mixing
+
+FCLIBS = -lgfortran
+MPIFCLIBS = -lmpi_f90 -lmpi_f77
+
+# Linking
+
+LDFLAGS = 
+LIBS = -lm
+
+# vendor math libraries
+
+# (None)
+
+# package overrides
+
+blas_LIBS_CC = -lblas
+blas_LIBS_CXX = $(blas_LIBS_CC)
+blas_LIBS_F77 = $(blas_LIBS_CC)
+blas_LIBS_FC = $(blas_LIBS_CC)
+
+lapack_LIBS_CC = -llapack
+lapack_LIBS_CXX = $(lapack_LIBS_CC)
+lapack_LIBS_F77 = $(lapack_LIBS_CC)
+lapack_LIBS_FC = $(lapack_LIBS_CC)
+
+cfitsio_LIBS_CC = -lcfitsio
+cfitsio_LIBS_CXX = $(cfitsio_LIBS_CC)
+cfitsio_LIBS_F77 = $(cfitsio_LIBS_CC)
+cfitsio_LIBS_FC = $(cfitsio_LIBS_CC)
+
+fftw_LIBS_CC = -lfftw3_threads -lfftw3
+fftw_LIBS_CXX = $(fftw_LIBS_CC)
+fftw_LIBS_F77 = $(fftw_LIBS_CC)
+fftw_LIBS_FC = $(fftw_LIBS_CC)
+
+fftw_LIBS_MPICC = -lfftw3_mpi
+fftw_LIBS_MPICXX = $(fftw_LIBS_MPICC)
+fftw_LIBS_MPIF77 = $(fftw_LIBS_MPICC)
+fftw_LIBS_MPIFC = $(fftw_LIBS_MPICC)
+
+termcap_OVERRIDE = TRUE
+termcap_VERSION = sys
+
+root = /usr
+
+
