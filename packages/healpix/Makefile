@@ -3,11 +3,11 @@ include ../pkg_defs.make
 
 # Package parameters
 
-PKG_NAME = healpix_cxx
+PKG_NAME = healpix
 
 PKG_FORMAT = tar
 PKG_TAR = Healpix_3.30_2015Oct08.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://downloads.sourceforge.net/project/healpix/Healpix_3.30/Healpix_3.30_2015Oct08.tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://sourceforge.net/projects/healpix/files/Healpix_3.30/Healpix_3.30_2015Oct08.tar.gz/download
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = Healpix_$(PKG_VERSION)

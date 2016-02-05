@@ -1,7 +1,0 @@
-BIN = bin
-INCLUDE = include/healpix_cxx
-LIB = lib
-LIBS_CC = 
-LIBS_CXX = -lhealpix_cxx
-LIBS_F77 = 
-LIBS_FC = 
