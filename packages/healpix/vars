@@ -1,8 +1,0 @@
-BIN = bin
-INCLUDE = include
-LIB = lib
-DATA = share/healpix
-LIBS_CC = -lchealpix
-LIBS_CXX = -lhealpix_cxx -lcxxsupport -lfftpack
-LIBS_FC = -lhealpix
-LIBS_MPIFC = -lhealpix-mpi
