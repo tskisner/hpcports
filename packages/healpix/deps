@@ -1,1 +1,1 @@
-autoconf libtool automake cfitsio pkgconfig
+autoconf libtool automake cfitsio pkgconfig numpy matplotlib six astropy setuptools

@@ -5,3 +5,4 @@ LIBS_CC = -lchealpix
 LIBS_CXX = -lhealpix_cxx
 LIBS_F77 = 
 LIBS_FC = -lhealpix
+PYTHON = lib
