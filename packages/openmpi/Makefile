@@ -42,6 +42,7 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
 	./configure $${dyn} $${fort} $(openmpi_EXTRA) $${platform} \
 	--disable-vt --disable-silent-rules \
+	--enable-mpi-fortran=usempi \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
