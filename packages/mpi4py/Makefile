@@ -25,24 +25,20 @@ pkg-prefetch :
 
 pkg-configure :
 	cd $(STAGE)/$(PKG_BUILDDIR); \
-	echo "[config]" > setup.cfg; \
-	echo "mpicc = $(MPICC)" >> setup.cfg; \
-	echo "mpicxx = $(MPICXX)" >> setup.cfg; \
-	echo "mpif77 = $(MPIF77)" >> setup.cfg; \
-	echo "mpif90 = $(MPIFC)" >> setup.cfg; \
-	echo "mpifort = $(MPIFC)" >> setup.cfg; \
-	echo "" >> setup.cfg; \
-	echo "[build]" >> setup.cfg; \
-	echo "debug = 0" >> setup.cfg; \
-	echo "" >> setup.cfg; \
-	echo "[install]" >> setup.cfg; \
-	echo "optimize = 1" >> setup.cfg; \
-	echo "" >> setup.cfg
+	lib=`echo $(MPILIBS) | sed -e "s#-l##g"`; \
+	echo "[hpcp]" >> mpi.cfg; \
+	echo "mpicc = $(MPICC)" >> mpi.cfg; \
+	echo "mpicxx = $(MPICXX)" >> mpi.cfg; \
+	echo "include_dirs = $(MPICPPFLAGS)" >> mpi.cfg; \
+	echo "library_dirs = $(MPILDFLAGS)" >> mpi.cfg; \
+	echo "runtime_library_dirs = $(MPILDFLAGS)" >> mpi.cfg; \
+	echo "libraries = $${lib}" >> mpi.cfg; \
+	echo "" >> mpi.cfg
 
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	python setup.py build
+	python setup.py build --mpi=hpcp
 
 
 pkg-install :
