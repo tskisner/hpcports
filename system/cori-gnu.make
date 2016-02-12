@@ -12,9 +12,10 @@
 #
 # 1.0 :  gnu 5.1.0, craype-2.4.2, cray-mpich 7.2.5
 # 1.1 :  same as 1.0, but with different environment setup in hpcp module
+# 2.0 :  gnu 5.2.0, craype-2.5.1, cray-mpich 7.3.1
 #
 
-HPCP_ENV = 1.1
+HPCP_ENV = 2.0
 
 # suffix, to avoid name collisions with nersc modules
 
