@@ -23,9 +23,10 @@
 # 7.1 :  gnu 4.9.2, craype-2.3.1, cray-mpich 7.2.1, cray-libsci 13.0.3, mkl-13.0.3, python-2.7.9
 # 8.0 :  gnu 5.2.0, craype-2.5.0, cray-mpich 7.3.0, cray-libsci 13.3.0, intel 15.0.1.133
 # 8.1 :  same as 8.0, but with different environment setup in hpcp module, and cray-mpich 7.3.1
+# 8.2 :  same as 8.1, but with different cflags and compilers
 #
 
-HPCP_ENV = 8.1
+HPCP_ENV = 8.2
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -52,10 +53,10 @@ INST_PERM = a+rX
 
 # serial compilers
 
-CC = cc
-CXX = CC
-F77 = ftn
-FC = ftn
+CC = gcc
+CXX = g++
+F77 = gfortran
+FC = gfortran
 
 # MPI compilers
 
@@ -72,7 +73,7 @@ MPICXXLIBS = -lmpichcxx
 
 # compile flags
 
-CFLAGS = -O3 -m64 -fPIC -DNDEBUG -fgnu89-inline
+CFLAGS = -O3 -m64 -fPIC -DNDEBUG
 CXXFLAGS = -O3 -m64 -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -m64 -fPIC -DNDEBUG
 FCFLAGS = -O3 -m64 -fPIC -DNDEBUG
