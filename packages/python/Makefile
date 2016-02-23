@@ -15,7 +15,7 @@ PKG_SRCDIR = Python-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES = hpcp_gcc_test.patch
+PKG_PATCHES = 
 
 
 # rules for this package
@@ -45,7 +45,6 @@ pkg-configure :
 	LDFLAGS="$(LDFLAGS) -L$(sqlite_PREFIX)/lib -L$(readline_PREFIX)/lib -L$(tk_PREFIX)/lib -L$(tcl_PREFIX)/lib -L$(bzip2_PREFIX)/lib -L$(openssl_PREFIX)/lib" \
 	LIBS="$(sqlite_LIBS_CC) $(readline_LIBS_CC) $(termcap_LIBS_CC) $(tk_LIBS_CC) $(tcl_LIBS_CC) $(bzip2_LIBS_CC) $(openssl_LIBS_CC) $(LIBS)" \
 	./configure $${dyn} $${nognu} $${host} \
-	--disable-toolbox-glue \
 	--prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
 
 
