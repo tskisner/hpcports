@@ -24,21 +24,23 @@ pkg-prefetch :
 
 
 pkg-configure :
-	cd $(STAGE)/$(PKG_BUILDDIR); \
-	lib=`echo $(MPILIBS) | sed -e "s#-l##g"`; \
-	echo "[hpcp]" >> mpi.cfg; \
-	echo "mpicc = $(MPICC)" >> mpi.cfg; \
-	echo "mpicxx = $(MPICXX)" >> mpi.cfg; \
-	echo "include_dirs = $(MPICPPFLAGS)" >> mpi.cfg; \
-	echo "library_dirs = $(MPILDFLAGS)" >> mpi.cfg; \
-	echo "runtime_library_dirs = $(MPILDFLAGS)" >> mpi.cfg; \
-	echo "libraries = $${lib}" >> mpi.cfg; \
-	echo "" >> mpi.cfg
+	@echo "" /dev/null
+
+#	cd $(STAGE)/$(PKG_BUILDDIR); \
+#	lib=`echo $(MPILIBS) | sed -e "s#-l##g"`; \
+#	echo "[hpcp]" >> mpi.cfg; \
+#	echo "mpicc = $(MPICC)" >> mpi.cfg; \
+#	echo "mpicxx = $(MPICXX)" >> mpi.cfg; \
+#	echo "include_dirs = $(MPICPPFLAGS)" >> mpi.cfg; \
+#	echo "library_dirs = $(MPILDFLAGS)" >> mpi.cfg; \
+#	echo "runtime_library_dirs = $(MPILDFLAGS)" >> mpi.cfg; \
+#	echo "libraries = $${lib}" >> mpi.cfg; \
+#	echo "" >> mpi.cfg
 
 
 pkg-build :
 	@cd $(STAGE)/$(PKG_BUILDDIR); \
-	python setup.py build --mpi=hpcp
+	python setup.py build --mpicc=cc --mpicxx=CC
 
 
 pkg-install :
