@@ -1,1 +1,4 @@
 *~
+staging_*
+/packages/*.db
+/packages/*.db.version
