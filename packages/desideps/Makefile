@@ -7,7 +7,7 @@ PKG_NAME = desideps
 
 PKG_FORMAT = none
 
-PKG_SRCDIR = 
+PKG_SRCDIR = desideps
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
