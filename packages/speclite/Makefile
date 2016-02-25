@@ -1,0 +1,52 @@
+
+include ../pkg_defs.make
+
+# Package parameters
+
+PKG_NAME = speclite
+
+PKG_FORMAT = tar
+PKG_TAR = speclite-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/s/speclite/speclite-0.4.tar.gz#md5=b352aa877e166bdcbef95e6a44435de9
+PKG_TAR_EXTRACT = $(GXTAR)
+
+PKG_SRCDIR = speclite-$(PKG_VERSION)
+
+PKG_BUILDDIR = $(PKG_SRCDIR)
+
+PKG_PATCHES =
+
+
+# rules for this package
+
+pkg-prefetch :
+	@echo "" > /dev/null
+
+
+pkg-configure :
+	@echo "" > /dev/null
+
+
+pkg-build :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	python setup.py build
+
+
+pkg-install :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	export PYTHONPATH="$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages:$(PYTHONPATH)"; \
+	mkdir -p $(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)/lib/$(python_SITE)/site-packages; \
+	python setup.py install --prefix=$(HPCP_PREFIX)/$(PKG_NAME)-$(PKG_FULLVERSION)
+
+
+pkg-clean :
+	@cd $(STAGE)/$(PKG_BUILDDIR); \
+	python setup.py clean
+
+
+# Include common package rules
+
+include ../pkg.make
+
+
+
