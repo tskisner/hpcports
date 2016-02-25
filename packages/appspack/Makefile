@@ -42,10 +42,10 @@ pkg-configure :
 		lapack="$(lapack_LIBS_CXX)"; \
 	fi; \
 	chmod +x autogen.sh ; ./autogen.sh; \
-	CC="$(CC)" CFLAGS="$(CFLAGS)" \
-	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS)" \
-	F77="$(F77)" FFLAGS="$(FFLAGS)" \
-	FC="$(FC)" FCFLAGS="$(FCFLAGS)" \
+	CC="$(MPICC)" CFLAGS="$(CFLAGS)" \
+	CXX="$(MPICXX)" CXXFLAGS="$(CXXFLAGS)" \
+	F77="$(MPIF77)" FFLAGS="$(FFLAGS)" \
+	FC="$(MPIFC)" FCFLAGS="$(FCFLAGS)" \
 	MPICXX="$(MPICXX)" \
 	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
