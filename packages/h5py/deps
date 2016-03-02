@@ -1,1 +1,1 @@
-python numpy hdf5 cython
+python numpy hdf5 cython pypkgconfig
