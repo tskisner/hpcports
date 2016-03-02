@@ -6,8 +6,8 @@ include ../pkg_defs.make
 PKG_NAME = h5py
 
 PKG_FORMAT = tar
-PKG_TAR = h5py-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/source/h/h5py/h5py-2.5.0.tar.gz#md5=6e4301b5ad5da0d51b0a1e5ac19e3b74
+PKG_TAR = $(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/h5py/h5py/archive/$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = h5py-$(PKG_VERSION)
