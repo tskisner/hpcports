@@ -13,9 +13,11 @@
 # 1.0 :  gnu 5.1.0, craype-2.4.2, cray-mpich 7.2.5
 # 1.1 :  same as 1.0, but with different environment setup in hpcp module
 # 2.0 :  gnu 5.2.0, craype-2.5.1, cray-mpich 7.3.1
+# 2.1 :  same as 2.0, but without actually swapping environment.  do not
+#        use compiler wrappers for serial code.
 #
 
-HPCP_ENV = 2.0
+HPCP_ENV = 2.1
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -42,10 +44,10 @@ INST_PERM = a+rX
 
 # serial compilers
 
-CC = cc
-CXX = CC
-F77 = ftn
-FC = ftn
+CC = gcc
+CXX = g++
+F77 = gfortran
+FC = gfortran
 
 # MPI compilers
 
@@ -62,7 +64,7 @@ MPICXXLIBS = -lmpichcxx
 
 # compile flags
 
-CFLAGS = -O3 -m64 -fPIC -DNDEBUG -fgnu89-inline
+CFLAGS = -O3 -m64 -fPIC -DNDEBUG
 CXXFLAGS = -O3 -m64 -fPIC -DNDEBUG -std=c++11
 FFLAGS = -O3 -m64 -fPIC -DNDEBUG
 FCFLAGS = -O3 -m64 -fPIC -DNDEBUG
