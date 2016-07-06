@@ -6,11 +6,11 @@ include ../pkg_defs.make
 PKG_NAME = pyinstaller
 
 PKG_FORMAT = tar
-PKG_TAR = PyInstaller-3.0.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/pyinstaller/pyinstaller/releases/download/3.0/PyInstaller-3.0.tar.gz
+PKG_TAR = PyInstaller-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/pyinstaller/pyinstaller/releases/download/v$(PKG_VERSION)/PyInstaller-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
-PKG_SRCDIR = PyInstaller-3.0
+PKG_SRCDIR = PyInstaller-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
