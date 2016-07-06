@@ -24,9 +24,10 @@
 # 8.0 :  gnu 5.2.0, craype-2.5.0, cray-mpich 7.3.0, cray-libsci 13.3.0, intel 15.0.1.133
 # 8.1 :  same as 8.0, but with different environment setup in hpcp module, and cray-mpich 7.3.1
 # 8.2 :  same as 8.1, but with different cflags and compilers
+# 8.3 :  gnu 5.2.0, craype-2.5.1, cray-mpich 7.3.1, cray-libsci 13.3.0, intel 15.0.1.133
 #
 
-HPCP_ENV = 8.2
+HPCP_ENV = 8.3
 
 # suffix, to avoid name collisions with nersc modules
 
