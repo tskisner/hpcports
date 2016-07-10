@@ -15,9 +15,10 @@
 # 2.0 :  gnu 5.2.0, craype-2.5.1, cray-mpich 7.3.1
 # 2.1 :  same as 2.0, but without actually swapping environment.  do not
 #        use compiler wrappers for serial code.
+# 3.0 :  gnu 5.3.0, craype-2.5.5, cray-mpich 7.4.0
 #
 
-HPCP_ENV = 2.1
+HPCP_ENV = 3.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -57,8 +58,8 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
-MPICPPFLAGS = /opt/cray/mpt/7.3.1/gni/mpich-gnu/5.1/include
-MPILDFLAGS = /opt/cray/mpt/7.3.1/gni/mpich-gnu/5.1/lib
+MPICPPFLAGS = /opt/cray/pe/mpt/7.4.0/gni/mpich-gnu/5.1/include
+MPILDFLAGS = /opt/cray/pe/mpt/7.4.0/gni/mpich-gnu/5.1/lib
 MPILIBS = -lmpich
 MPICXXLIBS = -lmpichcxx
 
@@ -88,10 +89,10 @@ LIBTOOLFLAGS =
 # vendor math libraries
 
 VENDOR = intel
-INTEL_PREFIX = /opt/intel/parallel_studio_xe_2016.0.047/compilers_and_libraries_2016.0.109/linux
-INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
-INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
+INTEL_PREFIX = $(MKLROOT)
+INTEL_INCLUDE = $(INTEL_PREFIX)/include
+INTEL_LIBDIR = $(INTEL_PREFIX)/lib/intel64
+INTEL_LIBS_CC = -lmkl_rt -fopenmp -lpthread -lm -ldl
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -149,18 +150,18 @@ pkgconfig_VERSION = sys
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 2016.0.047
-blas_PREFIX = /opt/intel/parallel_studio_xe_2016.0.047/compilers_and_libraries_2016.0.109/linux/mkl
-blas_INCLUDE = /opt/intel/parallel_studio_xe_2016.0.047/compilers_and_libraries_2016.0.109/linux/mkl/include
+blas_VERSION = $(INTEL_VERSION)
+blas_PREFIX = $(MKLROOT)
+blas_INCLUDE = $(MKLROOT)/include
 blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(blas_LIBS_CC)
 blas_LIBS_FC = $(blas_LIBS_CC)
 blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 2016.0.047
-lapack_PREFIX = /opt/intel/parallel_studio_xe_2016.0.047/compilers_and_libraries_2016.0.109/linux/mkl
-lapack_INCLUDE = /opt/intel/parallel_studio_xe_2016.0.047/compilers_and_libraries_2016.0.109/linux/mkl/include
+lapack_VERSION = $(INTEL_VERSION)
+lapack_PREFIX = $(MKLROOT)
+lapack_INCLUDE = $(MKLROOT)/include
 lapack_LIBS_CC = -lmkl_lapack95_lp64
 lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
