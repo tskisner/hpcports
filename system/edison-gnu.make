@@ -101,7 +101,7 @@ VENDOR = intel
 INTEL_PREFIX = $(MKLROOT)
 INTEL_INCLUDE = $(INTEL_PREFIX)/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/lib/intel64
-INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
+INTEL_LIBS_CC = -lmkl_rt -fopenmp -lpthread -lm -ldl
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -159,18 +159,18 @@ pkgconfig_VERSION = sys
 # we get BLAS and Lapack from MKL
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 2015.1.133
-blas_PREFIX = /opt/intel/composer_xe_2015.1.133/mkl
-blas_INCLUDE = /opt/intel/composer_xe_2015.1.133/mkl/include
+blas_VERSION = $(INTEL_VERSION)
+blas_PREFIX = $(MKLROOT)
+blas_INCLUDE = $(MKLROOT)/include
 blas_LIBS_CC = $(INTEL_LIBS_CC)
 blas_LIBS_CXX = $(blas_LIBS_CC)
 blas_LIBS_FC = $(blas_LIBS_CC)
 blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 2015.1.133
-lapack_PREFIX = /opt/intel/composer_xe_2015.1.133/mkl
-lapack_INCLUDE = /opt/intel/composer_xe_2015.1.133/mkl/include
+lapack_VERSION = $(INTEL_VERSION)
+lapack_PREFIX = $(MKLROOT)
+lapack_INCLUDE = $(MKLROOT)/include
 lapack_LIBS_CC = -lmkl_lapack95_lp64
 lapack_LIBS_CXX = $(lapack_LIBS_CC)
 lapack_LIBS_FC = $(lapack_LIBS_CC)
