@@ -11,6 +11,7 @@ if [ "x${loadedgnu}" = x ]; then
     fi
     module swap gcc gcc/6.1.0
     module swap cray-mpich cray-mpich/7.4.1
+    module swap cray-shmem cray-shmem/7.4.1
     module load intel
     module load git
     export CRAYPE_LINK_TYPE=dynamic
