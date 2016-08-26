@@ -14,7 +14,7 @@ PKG_SRCDIR = astropy-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
-PKG_PATCHES =
+PKG_PATCHES = pthread.patch
 
 
 # rules for this package

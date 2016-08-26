@@ -1,0 +1,12 @@
+diff -urN astropy-1.2.1_orig/astropy/io/fits/setup_package.py astropy-1.2.1/astropy/io/fits/setup_package.py
+--- astropy-1.2.1_orig/astropy/io/fits/setup_package.py	2016-06-19 16:07:25.000000000 -0700
++++ astropy-1.2.1/astropy/io/fits/setup_package.py	2016-08-26 15:48:03.000000000 -0700
+@@ -39,7 +39,7 @@
+                     '-Wno-uninitialized', '-Wno-format',
+                     '-Wno-strict-prototypes', '-Wno-unused', '-Wno-comments',
+                     '-Wno-switch', '-Wno-strict-aliasing', '-Wno-return-type',
+-                    '-Wno-address'
++                    '-Wno-address', '-D_REENTRANT', '-D_GNU_SOURCE'
+                 ])
+ 
+         cfitsio_path = os.path.join('cextern', 'cfitsio')
