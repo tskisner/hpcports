@@ -6,9 +6,10 @@
     if [ is-loaded PrgEnv-intel ] {
       module swap PrgEnv-intel PrgEnv-gnu
     }
-    module swap gcc gcc/5.3.0
+    module swap gcc gcc/6.1.0
+    module swap cray-mpich cray-mpich/7.4.1
     module load intel
-    module load git/2.6.3
+    module load git
   }
   
   setenv CRAYPE_LINK_TYPE dynamic

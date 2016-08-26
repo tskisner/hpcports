@@ -16,9 +16,10 @@
 # 2.1 :  same as 2.0, but without actually swapping environment.  do not
 #        use compiler wrappers for serial code.
 # 3.0 :  gnu 5.3.0, craype-2.5.5, cray-mpich 7.4.0
+# 4.0 :  gnu 6.1.0, craype-2.5.5, cray-mpich 7.4.1, intel 16.0.3.210
 #
 
-HPCP_ENV = 3.0
+HPCP_ENV = 4.0
 
 # suffix, to avoid name collisions with nersc modules
 
@@ -58,8 +59,8 @@ MPICC = cc
 MPICXX = CC
 MPIF77 = ftn
 MPIFC = ftn
-MPICPPFLAGS = /opt/cray/pe/mpt/7.4.0/gni/mpich-gnu/5.1/include
-MPILDFLAGS = /opt/cray/pe/mpt/7.4.0/gni/mpich-gnu/5.1/lib
+MPICPPFLAGS = /opt/cray/pe/mpt/7.4.1/gni/mpich-gnu/5.1/include
+MPILDFLAGS = /opt/cray/pe/mpt/7.4.1/gni/mpich-gnu/5.1/lib
 MPILIBS = -lmpich
 MPICXXLIBS = -lmpichcxx
 
