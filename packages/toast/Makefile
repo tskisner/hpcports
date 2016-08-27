@@ -55,7 +55,7 @@ pkg-configure :
 	LIBTOOLFLAGS="$(LIBTOOLFLAGS)" \
 	FCLIBS="$(FCLIBS)" MPIFCLIBS="$(MPIFCLIBS)" \
 	MPICC="$(MPICC)" MPIFC="$(MPIFC)" MPICXX="$(MPICXX)" \
-	LDFLAGS="$(python_LDFLAGS) $(LDFLAGS) -L$(boost_PREFIX)/lib" LIBS="$(LIBS)" \
+	LDFLAGS="-L$(python_PREFIX)/lib $(LDFLAGS) -L$(boost_PREFIX)/lib" LIBS="$(LIBS)" \
 	./configure $${dyn} $${pyopt} $${mp} $${fort} $${host} \
 	--enable-exp-all \
 	--with-moatconfig=$(moat_PREFIX)/bin/moatconfig \
