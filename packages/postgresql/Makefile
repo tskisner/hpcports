@@ -35,7 +35,7 @@ pkg-configure :
 	fi; \
 	CC="$(CC)" CFLAGS="$(CFLAGS)" \
 	CPPFLAGS="-I$(openssl_PREFIX)/include" \
-	LDFLAGS="-L$(openssl_PREFIX)/lib $(LDFLAGS)" \
+	LDFLAGS="-L$(openssl_PREFIX)/lib $(LDFLAGS) -pthread" \
 	LIBS="$(LIBS)" \
 	./configure $${dyn} $${host} \
 	--with-openssl \
