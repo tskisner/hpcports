@@ -7,7 +7,8 @@ PKG_NAME = pydl
 
 PKG_FORMAT = tar
 PKG_TAR = pydl-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://pypi.python.org/packages/source/p/pydl/pydl-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/82/37/e1fd5bffa756c9bc1ce1976fd3ba284388a70a92aa853a6ede29304011f2/pydl-0.5.2.tar.gz#md5=631c1337b7f25f240773ad24bc76f96d
+
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = pydl-$(PKG_VERSION)

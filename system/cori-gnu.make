@@ -41,8 +41,8 @@ MAKE = make -s
 
 # permissions on installed files
 
-INST_GRP = cmb
-INST_PERM = a+rX
+INST_GRP = hpcosmo
+INST_PERM = g+rwX,o+rX
 
 # serial compilers
 
