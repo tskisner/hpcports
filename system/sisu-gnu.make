@@ -13,13 +13,12 @@ HPCP_PREFIX = /proj/planck/software/hpcports_gnu
 # 4.0 :  gnu 4.8.2, cray-mpich 6.3.0, craype 2.1.0, libsci 12.2.0, fftw/3.3.0.4
 # 5.0 :  gnu 4.9.0, cray-mpich 7.0.0, craype 2.1.2, libsci 13.0.0, mkl-13
 # 5.1 :  gnu 4.9.0, cray-mpich 7.0.1, craype 2.1.3, libsci 13.0.0, mkl-13
+# 6.0 :  gnu 5.3.0, cray-mpich 7.3.3, craype 2.5.4, libsci 16.03.1, mkl-13
 #
 
-HPCP_ENV = 5.1
+HPCP_ENV = 6.0
 
-# we are cross-compiling
-
-HPCP_CROSS_HOST = x86_64-unknown-linux-gnu
+HPCP_CROSS_HOST =
 BUILD_CC = gcc
 BUILD_CXX = g++
 BUILD_FC = gfortran
@@ -36,7 +35,7 @@ HPCP_POOL = /proj/planck/software/hpcports_pool
 # toolchain (gnu, darwin, intel, ibm)
 
 TOOLCHAIN = gnu
-BUILD_DYNAMIC = FALSE
+BUILD_DYNAMIC = TRUE
 
 # UNIX tools
 
@@ -45,7 +44,7 @@ MAKE = make -s
 
 # permissions on installed files
 
-INST_GRP = pr2fg002
+INST_GRP = project_2000334
 INST_PERM = g+rwX,o+rX
 
 # serial compilers
@@ -86,15 +85,14 @@ MPIFCLIBS =
 
 LIBS = -lpthread -lm
 LDFLAGS =
-LIBTOOLFLAGS = --preserve-dup-deps
 
 # vendor math libraries
 
 VENDOR = intel
-INTEL_PREFIX = /opt/intel/composer_xe_2013_sp1.3.174
+INTEL_PREFIX = /opt/intel/composer_xe_2016.2.181
 INTEL_INCLUDE = $(INTEL_PREFIX)/mkl/include
 INTEL_LIBDIR = $(INTEL_PREFIX)/mkl/lib/intel64
-INTEL_LIBS_CC = $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a $(INTEL_LIBDIR)/libmkl_gf_lp64.a $(INTEL_LIBDIR)/libmkl_gnu_thread.a $(INTEL_LIBDIR)/libmkl_core.a -ldl
+INTEL_LIBS_CC = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -fopenmp -lpthread -lm
 INTEL_LIBS_CXX = $(INTEL_LIBS_CC)
 INTEL_LIBS_F77 = $(INTEL_LIBS_CC)
 INTEL_LIBS_FC = $(INTEL_LIBS_CC)
@@ -102,7 +100,7 @@ INTEL_LIBS_FC = $(INTEL_LIBS_CC)
 # package overrides
 
 git_OVERRIDE = TRUE
-git_VERSION = 1.8.1.4
+git_VERSION = 2.1.0
 
 openssl_OVERRIDE = TRUE
 openssl_VERSION = 0.9.8j
@@ -128,48 +126,48 @@ gzip_VERSION = 1.3.12
 gettext_OVERRIDE = TRUE
 gettext_VERSION = 0.17.0
 
-python_OVERRIDE = TRUE
-python_SITE = python2.7
-python_VERSION = NA
+#python_OVERRIDE = TRUE
+#python_SITE = python2.7
+#python_VERSION = 2.7.9
 
 cmake_OVERRIDE = TRUE
-cmake_VERSION = 2.8.10.2
+cmake_VERSION = 3.2.3
 
-nose_OVERRIDE = TRUE
-nose_VERSION = NA
+#nose_OVERRIDE = TRUE
+#nose_VERSION = NA
 
-numpy_OVERRIDE = TRUE
-numpy_VERSION = NA
+#numpy_OVERRIDE = TRUE
+#numpy_VERSION = 1.9.1
 
-scipy_OVERRIDE = TRUE
-scipy_VERSION = NA
+#scipy_OVERRIDE = TRUE
+#scipy_VERSION = 0.14.0
 
 pyfits_OVERRIDE = TRUE
 pyfits_VERSION = NA
 
-ipython_OVERRIDE = TRUE
-ipython_VERSION = NA
+#ipython_OVERRIDE = TRUE
+#ipython_VERSION = NA
 
-matplotlib_OVERRIDE = TRUE
-matplotlib_VERSION = NA
+#matplotlib_OVERRIDE = TRUE
+#matplotlib_VERSION = 1.4.2
 
-mpi4py_OVERRIDE = TRUE
-mpi4py_VERSION = NA
+#mpi4py_OVERRIDE = TRUE
+#mpi4py_VERSION = 1.3
 
-pyslalib_OVERRIDE = TRUE
-pyslalib_VERSION = NA
+#pyslalib_OVERRIDE = TRUE
+#pyslalib_VERSION = NA
 
 scientific_OVERRIDE = TRUE
 scientific_VERSION = NA
 
-healpy_OVERRIDE = TRUE
-healpy_VERSION = NA
+#healpy_OVERRIDE = TRUE
+#healpy_VERSION = NA
 
 numexpr_OVERRIDE = TRUE
 numexpr_VERSION = NA
 
-setuptools_OVERRIDE = TRUE
-setuptools_VERSION = NA
+#setuptools_OVERRIDE = TRUE
+#setuptools_VERSION = NA
 
 # pkg-config already works
 
@@ -179,15 +177,15 @@ pkgconfig_VERSION = sys
 # we get BLAS, Lapack, and ScaLapack from Cray libsci
 
 blas_OVERRIDE = TRUE
-blas_VERSION = 13.0.0
+blas_VERSION = 16.03.1
 blas_LIBS_CC =
 blas_LIBS_CXX = $(blas_LIBS_CC)
 blas_LIBS_FC = $(blas_LIBS_CC)
 blas_LIBS_F77 = $(blas_LIBS_CC)
 
 lapack_OVERRIDE = TRUE
-lapack_VERSION = 13.0.0
+lapack_VERSION = 16.03.1
 
 scalapack_OVERRIDE = TRUE
-scalapack_VERSION = 13.0.0
+scalapack_VERSION = 16.03.1
 
