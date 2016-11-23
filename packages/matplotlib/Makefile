@@ -7,7 +7,7 @@ PKG_NAME = matplotlib
 
 PKG_FORMAT = tar
 PKG_TAR = matplotlib-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-$(PKG_VERSION)/matplotlib-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/75/4e/2374eed18ac34421ccd7b4907080abd3009e112ca2c11b100c18961312e0/matplotlib-1.5.3.tar.gz#md5=ba993b06113040fee6628d74b80af0fd
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = matplotlib-$(PKG_VERSION)

@@ -7,7 +7,7 @@ PKG_NAME = cython
 
 PKG_FORMAT = tar
 PKG_TAR = Cython-$(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://cython.org/release/Cython-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://pypi.python.org/packages/c6/fe/97319581905de40f1be7015a0ea1bd336a756f6249914b148a17eefa75dc/Cython-0.24.1.tar.gz#md5=890b494a12951f1d6228c416a5789554
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = Cython-$(PKG_VERSION)

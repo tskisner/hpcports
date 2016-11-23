@@ -6,8 +6,8 @@ include ../pkg_defs.make
 PKG_NAME = healpix
 
 PKG_FORMAT = tar
-PKG_TAR = healpix-autotools-3.30.1.tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) http://github.com/tskisner/healpix-autotools/releases/download/v3.30.1/healpix-autotools-3.30.1.tar.gz
+PKG_TAR = healpix-autotools-$(PKG_VERSION).tar.gz
+PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/tskisner/healpix-autotools/releases/download/v$(PKG_VERSION)/healpix-autotools-$(PKG_VERSION).tar.gz
 PKG_TAR_EXTRACT = $(GXTAR)
 
 PKG_SRCDIR = healpix-autotools-$(PKG_VERSION)
