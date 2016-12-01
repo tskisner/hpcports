@@ -5,18 +5,17 @@ include ../pkg_defs.make
 
 PKG_NAME = fitsio
 
-# PKG_FORMAT = git
-# PKG_GIT_CLONE = git clone git://github.com/esheldon/fitsio.git
-# PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
+PKG_FORMAT = git
+PKG_GIT_CLONE = git clone git://github.com/esheldon/fitsio.git
+PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
+PKG_SRCDIR = fitsio
 
-# PKG_SRCDIR = fitsio
-
-PKG_FORMAT = tar
-PKG_TAR = $(PKG_VERSION).tar.gz
-PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/esheldon/fitsio/archive/v$(PKG_VERSION).tar.gz
-PKG_TAR_EXTRACT = $(GXTAR)
-
-PKG_SRCDIR = fitsio-$(PKG_VERSION)
+# PKG_FORMAT = tar
+# PKG_TAR = $(PKG_VERSION).tar.gz
+# PKG_TAR_FETCH = $(WGET) -O $(HPCP_POOL)/$(PKG_TAR) https://github.com/esheldon/fitsio/archive/v$(PKG_VERSION).tar.gz
+# PKG_TAR_EXTRACT = $(GXTAR)
+# 
+# PKG_SRCDIR = fitsio-$(PKG_VERSION)
 
 PKG_BUILDDIR = $(PKG_SRCDIR)
 
