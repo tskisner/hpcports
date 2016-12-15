@@ -6,7 +6,8 @@ include ../pkg_defs.make
 PKG_NAME = fitsio
 
 PKG_FORMAT = git
-PKG_GIT_CLONE = git clone git://github.com/esheldon/fitsio.git
+#PKG_GIT_CLONE = git clone git://github.com/esheldon/fitsio.git
+PKG_GIT_CLONE = git clone git://github.com/dstndstn/fitsio.git
 PKG_GIT_CHECKOUT = git checkout -b hpcports $(PKG_VERSION) >/dev/null 2>&1
 PKG_SRCDIR = fitsio
 
